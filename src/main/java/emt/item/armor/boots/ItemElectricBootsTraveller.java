@@ -144,9 +144,12 @@ public class ItemElectricBootsTraveller extends ItemArmor implements IElectricIt
 		if (event.entity instanceof EntityPlayer) {
 			EntityPlayer entity = (EntityPlayer) event.entity;
 			if ((entity.inventory.armorInventory[0] != null) && (entity.inventory.armorInventory[0].getItem() instanceof ItemElectricBootsTraveller)) {
-				ItemStack stack = entity.inventory.armorInventory[0];
-				if (ElectricItem.manager.use(stack, energyPerDamage, entity))
-					event.setCanceled(true);
+				//Minimum distance for fall damage is 4.  Don't drain energy if not taking actual damage.
+				if (event.distance >= 4) {
+					ItemStack stack = entity.inventory.armorInventory[0];
+					if (ElectricItem.manager.use(stack, energyPerDamage, entity))
+						event.setCanceled(true);
+				}
 			}
 		}
 	}
