@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntitySmokeFX;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -19,8 +20,10 @@ import java.util.Random;
 
 public class BlockEssentiaGenerators extends BlockBaseContainer {
 
+	private static int subtypes=6;
+	
 	public BlockEssentiaGenerators(String name) {
-		super(name, Material.iron, soundTypeMetal, 5, 4.0F);
+		super(name, Material.iron, soundTypeMetal, subtypes, 4.0F);
 	}
 
 	@Override
@@ -29,7 +32,7 @@ public class BlockEssentiaGenerators extends BlockBaseContainer {
 		super.registerBlockIcons(ir);
 		this.blockIcon = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/top");
 
-		for (int meta = 0; meta < 5; meta++) {
+		for (int meta = 0; meta < subtypes; meta++) {
 			iconSets[meta].top = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/top");
 			iconSets[meta].bottom = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/top");
 			iconSets[meta].side = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/side");
@@ -40,6 +43,7 @@ public class BlockEssentiaGenerators extends BlockBaseContainer {
 		iconSets[2].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/auramfront");
 		iconSets[3].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/arborfront");
 		iconSets[4].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/aerfront");
+		iconSets[5].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/aerfront");
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -49,6 +53,7 @@ public class BlockEssentiaGenerators extends BlockBaseContainer {
 		list.add(new ItemStack(id, 1, 2));
 		list.add(new ItemStack(id, 1, 3));
 		list.add(new ItemStack(id, 1, 4));
+		list.add(new ItemStack(id, 1, 5));
 	}
 
 	@Override
@@ -64,6 +69,8 @@ public class BlockEssentiaGenerators extends BlockBaseContainer {
 				return new TileEntityArborGenerator();
 			case 4:
 				return new TileEntityAerGenerator();
+			case 5:
+				return new TileEntityLucrumGenerator();
 		}
 		return super.createTileEntity(world, meta);
 	}
@@ -82,4 +89,19 @@ public class BlockEssentiaGenerators extends BlockBaseContainer {
 			Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 		}
 	}
+	
+	 public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer player, int s, float f1, float f2, float f3)
+	  {
+	    if (player.isSneaking()) {
+	      return false;
+	    }
+	    if (world.isRemote) {
+	      return true;
+	    }
+	    TileEntity tileentity = world.getTileEntity(i, j, k);
+	    if (tileentity != null) {
+	      player.openGui(emt.EMT.instance, 1, world, i, j, k);
+	    }
+	    return true;
+	  }
 }

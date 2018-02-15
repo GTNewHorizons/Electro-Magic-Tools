@@ -4,7 +4,7 @@ public class Registry {
 	public static void register() {
 		EMTBlocks.registerBlocks();
 		EMTItems.registerItems();
-		EMTTiles.registerTiles();
+		EMTTiles.registerTileEntities();
 		EMTRecipes.registerEarlyRecipes();
 	}
 

@@ -25,6 +25,7 @@
 *.classpath
 *.project
 *.lock
+*.log
 
 #Specific files
 MCFPost.txt

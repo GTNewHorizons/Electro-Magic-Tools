@@ -2,11 +2,14 @@ package emt.proxy;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 import emt.client.gui.GuiEtherealMacerator;
+import emt.client.gui.GuiGenerator;
 import emt.client.gui.GuiIndustrialWandRecharger;
+import emt.client.gui.container.ConainerGenerator;
 import emt.client.gui.container.ContainerEtheralMacerator;
 import emt.client.gui.container.ContainerIndustrialWandRecharge;
 import emt.tile.TileEntityEtherealMacerator;
 import emt.tile.TileEntityIndustrialWandRecharge;
+import emt.tile.generator.TileEntityBaseGenerator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -34,6 +37,9 @@ public class CommonProxy implements IGuiHandler {
 				if (entity != null && entity instanceof TileEntityEtherealMacerator) {
 					return new ContainerEtheralMacerator(player.inventory, (TileEntityEtherealMacerator) entity);
 				}
+				else if (entity != null && entity instanceof TileEntityBaseGenerator) {
+					return new ConainerGenerator(player.inventory, (TileEntityBaseGenerator) entity);
+				}
 			default:
 				return null;
 		}
@@ -51,6 +57,9 @@ public class CommonProxy implements IGuiHandler {
 			case 1:
 				if (entity != null && entity instanceof TileEntityEtherealMacerator) {
 					return new GuiEtherealMacerator(player.inventory, (TileEntityEtherealMacerator) entity);
+				}
+				else if (entity != null && entity instanceof TileEntityBaseGenerator) {
+					return new GuiGenerator(player.inventory, (TileEntityBaseGenerator) entity);
 				}
 			default:
 				return null;

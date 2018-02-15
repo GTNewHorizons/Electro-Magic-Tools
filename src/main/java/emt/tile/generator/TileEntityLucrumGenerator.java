@@ -4,15 +4,15 @@ import emt.util.EMTEssentiasOutputs;
 import net.minecraft.util.StatCollector;
 import thaumcraft.api.aspects.Aspect;
 
-public class TileEntityAerGenerator extends TileEntityBaseGenerator {
+public class TileEntityLucrumGenerator extends TileEntityBaseGenerator {
 
-	public TileEntityAerGenerator() {
-		aspect = Aspect.AIR;
+	public TileEntityLucrumGenerator() {
+		aspect = Aspect.GREED;
 		generating = EMTEssentiasOutputs.outputs.get(aspect.getTag());
 	}
 	
 	@Override
 	public String getInventoryName() {
-		return StatCollector.translateToLocal("tile.EMT.essentia.aer.name");
+		return StatCollector.translateToLocal("tile.EMT.essentia.lucrum.name");
 	}
 }

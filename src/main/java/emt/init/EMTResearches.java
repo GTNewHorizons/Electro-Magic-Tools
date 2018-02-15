@@ -123,6 +123,12 @@ public class EMTResearches {
 		}
 
 		if (!EMTConfigHandler.potentiaGeneratorResearch) {
+			if (!EMTConfigHandler.lucrumGeneratorResearch) {
+				new EMTResearchItem("Lucrum Generator", EMTResearchAspects.lucrumGeneratorResearch, -2, 2, 1, new ItemStack(EMTBlocks.essentiaGens, 1, 5)).setSecondary().setParents("Potentia Generator").setConcealed().registerResearchItem().setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.lucrumGenerator));
+			}
+		}
+		
+		if (!EMTConfigHandler.potentiaGeneratorResearch) {
 			if (!EMTConfigHandler.aerGeneratorResearch) {
 				new EMTResearchItem("Aer Generator", EMTResearchAspects.aerGenerator, -2, 6, 1, new ItemStack(EMTBlocks.essentiaGens, 1, 4)).setSecondary().setParents("Potentia Generator").setConcealed().registerResearchItem().setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.aerGenerator));
 			}

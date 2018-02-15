@@ -36,6 +36,8 @@ public class EMTConfigHandler {
 	public static double quantumBootsMinDrop;
 	public static double quantumBootsMaxDrop;
 	
+	public static double EssentiaGeneratorStorage;
+	
 	/** Essentias **/
     public static double fireOutput;
     public static double waterOutput;
@@ -79,6 +81,7 @@ public class EMTConfigHandler {
 	public static boolean ignisGeneratorResearch;
 	public static boolean auramGeneratorResearch;
 	public static boolean arborGeneratorResearch;
+	public static boolean lucrumGeneratorResearch;
 	public static boolean wandChargingSationResearch;
 	public static boolean tinyUraniumResearch;
 	public static boolean thorHammerResearch;
@@ -143,6 +146,9 @@ public class EMTConfigHandler {
         entropyOutput = config.get(OUTPUTS, "Perditio Output", 10000).getDouble(entropyOutput);
         earthOutput = config.get(OUTPUTS, "Terra Output", 2000).getDouble(earthOutput);
         outputCap = config.get(OUTPUTS, "Output Cap", -1).getDouble(outputCap);
+        
+        EssentiaGeneratorStorage=config.get(VALUES,"Essentia Generator Storage",1000000,"This is the number you have to modify if you want to change the size of the "+"internal buffer of the Essentia Generator").getDouble(EssentiaGeneratorStorage);
+        
 
 		wandChargerConsumption = config.get(VALUES, "Wand Charging Station Consumption", 50000, "This is the number you have to modify if you want to make the Industrial Wand Charging " + "Station use more or less EU to charge 1 unit of Vis on your wand.").getDouble(wandChargerConsumption);
 		compressedSolarOutput = config.get(VALUES, "Compressed Solar Panel Output", 10, "This is the number you have to modify if you want to make the Compressed Solar Panel yield " + "more or less EU per tick. Really, you shouldn't touch that, " + "since it's pretty balanced as it is.").getDouble(compressedSolarOutput);
@@ -163,7 +169,7 @@ public class EMTConfigHandler {
 		nanoBootsMinDrop = config.get(VALUES, "Nano Boots of the Traveller minimum drop", 6.0, "The distance allowed to fall without any damage").getDouble(nanoBootsMinDrop);
 		nanoBootsMaxDrop = config.get(VALUES, "Nano Boots of the Traveller maximum healthy drop", 35.0, "Energy amount drained will tripled if player drops more than this amount of blocks").getDouble(nanoBootsMaxDrop);
 		quantumBootsMinDrop = config.get(VALUES, "Quantum Boots of the Traveller minimum drop", 10.0, "The distance allowed to fall without any damage").getDouble(quantumBootsMinDrop);
-  	quantumBootsMaxDrop = config.get(VALUES, "Quantum Boots of the Traveller maximum healthy drop", 100.0, "Energy amount drained will tripled if player drops more than this amount of blocks").getDouble(quantumBootsMaxDrop);
+		quantumBootsMaxDrop = config.get(VALUES, "Quantum Boots of the Traveller maximum healthy drop", 100.0, "Energy amount drained will tripled if player drops more than this amount of blocks").getDouble(quantumBootsMaxDrop);
 
 		thaumiumDrillResearch = config.get(RESEARCH, "Thaumium Drill", false).getBoolean(thaumiumDrillResearch);
 		thaumiumChainsawResearch = config.get(RESEARCH, "Thaumium Chainsaw", false).getBoolean(thaumiumChainsawResearch);
@@ -184,6 +190,7 @@ public class EMTConfigHandler {
 		ignisGeneratorResearch = config.get(RESEARCH, "Ignis Generator", false).getBoolean(ignisGeneratorResearch);
 		auramGeneratorResearch = config.get(RESEARCH, "Auram Generator", false).getBoolean(auramGeneratorResearch);
 		arborGeneratorResearch = config.get(RESEARCH, "Arbor Generator", false).getBoolean(arborGeneratorResearch);
+		lucrumGeneratorResearch = config.get(RESEARCH, "Lucrum Generator", false).getBoolean(lucrumGeneratorResearch);
 		wandChargingSationResearch = config.get(RESEARCH, "Industrial Wand Charging Station", false).getBoolean(wandChargingSationResearch);
 		tinyUraniumResearch = config.get(RESEARCH, "Tiny Piles of Uranium", false).getBoolean(tinyUraniumResearch);
 		thorHammerResearch = config.get(RESEARCH, "Mjolnir", false).getBoolean(thorHammerResearch);

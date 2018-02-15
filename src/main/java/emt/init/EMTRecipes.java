@@ -23,6 +23,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import static thaumcraft.api.ThaumcraftApi.*;
 
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
@@ -154,6 +155,9 @@ public class EMTRecipes {
 
 	public static void registerLateRecipes() {
 		/** Infusion Recipes **/
+		lucrumGenerator = addInfusionCraftingRecipe("Lucrum Generator", new ItemStack(EMTBlocks.essentiaGens, 1, 5), 10, new AspectList().add(Aspect.GREED, 64).add(Aspect.EXCHANGE, 128), new ItemStack(EMTBlocks.essentiaGens, 1, 0),
+				new ItemStack[] {new ItemStack(Blocks.gold_block),new ItemStack(Blocks.gold_block),new ItemStack(Blocks.gold_block),new ItemStack(Blocks.gold_block),new ItemStack(Blocks.gold_block),new ItemStack(Blocks.gold_block)});
+		
 		thaumiumDrill = addInfusionCraftingRecipe("Thaumium Drill", getChargedItem(EMTItems.thaumiumDrill, 10), 5, EMTCraftingAspects.thaumiumDrillCrafting, new ItemStack(IC2Items.getItem("diamondDrill").getItem(), 1, OreDictionary.WILDCARD_VALUE),
 				new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.diamond), new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5), IC2Items.getItem("denseplateiron") });
 
@@ -452,6 +456,7 @@ public class EMTRecipes {
 	public static InfusionRecipe armorChargingRing;
 	public static InfusionRecipe nanoWings;
 	public static InfusionRecipe quantumWings;
+	public static InfusionRecipe lucrumGenerator;
 
 	public static ShapelessArcaneRecipe diamondOmnitool;
 	public static ShapelessArcaneRecipe tinyUranium;

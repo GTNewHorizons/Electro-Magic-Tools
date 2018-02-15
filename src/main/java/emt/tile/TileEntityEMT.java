@@ -21,10 +21,9 @@ public abstract class TileEntityEMT extends TileEntity {
 
 	@Override
 	public void writeToNBT(NBTTagCompound tagCompound) {
-		super.writeToNBT(tagCompound);
-
 		tagCompound.setInteger("facing", facing);
 		tagCompound.setBoolean("isOn", isOn);
+		super.writeToNBT(tagCompound);
 	}
 
 	@Override

@@ -9,6 +9,7 @@ import emt.tile.generator.TileEntityAerGenerator;
 import emt.tile.generator.TileEntityArborGenerator;
 import emt.tile.generator.TileEntityAuramGenerator;
 import emt.tile.generator.TileEntityIgnisGenerator;
+import emt.tile.generator.TileEntityLucrumGenerator;
 import emt.tile.generator.TileEntityPotentiaGenerator;
 import emt.tile.solar.air.TileEntityAirSolar;
 import emt.tile.solar.air.TileEntityDoubleAirSolar;
@@ -34,18 +35,24 @@ import emt.tile.solar.water.TileEntityWaterSolar;
 
 public class EMTTiles {
 
-	public static void registerTiles() {
-		GameRegistry.registerTileEntity(TileEntityPortableNode.class, "tileentityportablenode");
+	public static void registerTileEntities() {
+		
+		//Essentia Gens
 		GameRegistry.registerTileEntity(TileEntityPotentiaGenerator.class, "tileentitypotentiagenerator");
 		GameRegistry.registerTileEntity(TileEntityIgnisGenerator.class, "tileentityignisgenerator");
 		GameRegistry.registerTileEntity(TileEntityAuramGenerator.class, "tileentityauramgenerator");
 		GameRegistry.registerTileEntity(TileEntityArborGenerator.class, "tileentityarborgenerator");
 		GameRegistry.registerTileEntity(TileEntityAerGenerator.class, "tileentityaergenerator");
+		GameRegistry.registerTileEntity(TileEntityLucrumGenerator.class, "tileentityperditiogenerator");
+		
+		//Machinery
 		GameRegistry.registerTileEntity(TileEntityIndustrialWandRecharge.class, "tileentityindustrialwandrecharge");
+		GameRegistry.registerTileEntity(TileEntityEtherealMacerator.class, "tileentityetherealmacerator");
+		
+		//Solars
 		GameRegistry.registerTileEntity(TileEntityCompressedSolar.class, "tileentitycompressedsolar");
 		GameRegistry.registerTileEntity(TileEntityDoubleCompressedSolar.class, "tileentitydoublecompressedsolar");
 		GameRegistry.registerTileEntity(TileEntityTripleCompressedSolar.class, "tileentitytriplecompressedsolar");
-		GameRegistry.registerTileEntity(TileEntityEtherealMacerator.class, "tileentityetherealmacerator");
 		GameRegistry.registerTileEntity(TileEntityWaterSolar.class, "tileentitywatersolar");
 		GameRegistry.registerTileEntity(TileEntityDoubleWaterSolar.class, "tileentitydoublewatersolar");
 		GameRegistry.registerTileEntity(TileEntityTripleWaterSolar.class, "tileentitytriplewatersolar");
@@ -64,6 +71,9 @@ public class EMTTiles {
 		GameRegistry.registerTileEntity(TileEntityEarthSolar.class, "tileentityearthsolar");
 		GameRegistry.registerTileEntity(TileEntityDoubleEarthSolar.class, "tileentitydoubleearthsolar");
 		GameRegistry.registerTileEntity(TileEntityTripleEarthSolar.class, "tileentitytripleearthsolar");
+		
+		//Random Stuff
+		GameRegistry.registerTileEntity(TileEntityPortableNode.class, "tileentityportablenode");
 		GameRegistry.registerTileEntity(TileElectricCloud.class, "tileEntityElectricCloud");
 	}
 }
