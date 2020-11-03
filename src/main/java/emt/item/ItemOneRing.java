@@ -16,6 +16,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.IRunicArmor;
@@ -55,6 +56,14 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
                 break;
         }
         return "item." + EMT.MOD_ID + ".bauble." + name;
+    }
+
+    @Override
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) {
+        String colourCode = ""+ EnumChatFormatting.DARK_RED;
+        list.add(colourCode+"The Ring whispers to you, promising power. But at what cost? Long-term usage is NOT advised.");
+        list.add(colourCode+"Can RUIN your game if you don't understand what this does. READ THE QUEST!!");
+        super.addInformation(itemStack, player, list, par4);
     }
 
     @SideOnly(Side.CLIENT)
