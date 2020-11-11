@@ -61,5 +61,8 @@ public class EMTTiles {
         //Random Stuff
         GameRegistry.registerTileEntity(TileEntityPortableNode.class, "tileentityportablenode");
         GameRegistry.registerTileEntity(TileElectricCloud.class, "tileEntityElectricCloud");
+        
+        //DE Core Crafter Controller
+        //GameRegistry.registerTileEntity(DE_Core_Crafter.class, "deCoreCrafterController");
     }
 }

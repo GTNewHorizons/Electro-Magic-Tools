@@ -23,10 +23,23 @@ public class EMT_CasingBlock extends ItemBlock {
                     EMT.TEXTURE_PATH + ":machines/GT/rawcoreI",
                     EMT.TEXTURE_PATH + ":machines/GT/siderawII",
                     EMT.TEXTURE_PATH + ":machines/GT/rawcoreII",
+                    EMT.TEXTURE_PATH + ":machines/GT/rawcoreII", //unused?
+                    EMT.TEXTURE_PATH + ":machines/GT/ROBUST_NAQUADAH_ALLOY_CASING",//textures don't get used?
+                    EMT.TEXTURE_PATH + ":machines/GT/BLOODY_ICHORIUM_CASING",//and it doesn't show an item one either
+                    EMT.TEXTURE_PATH + ":machines/GT/DRACONIUM_CASING",
+                    EMT.TEXTURE_PATH + ":machines/GT/WYVERN_CASING",
+                    EMT.TEXTURE_PATH + ":machines/GT/AWAKENED_DRACONIUM_CASING",
+                    EMT.TEXTURE_PATH + ":machines/GT/CHAOTIC_CASING",                    
             }
     )};
     protected final String mNoMobsToolTip = GT_LanguageManager.addStringLocalization("gt.nomobspawnsonthisblock", "Mobs cannot Spawn on this Block");
     protected final String mNoTileEntityToolTip = GT_LanguageManager.addStringLocalization("gt.notileentityinthisblock", "This is NOT a TileEntity!");
+    
+    protected final String deccCasing01Tooltip = GT_LanguageManager.addStringLocalization("gt.casing01tooltip", "DE Core Crafter Casing, Tier 1");
+    protected final String deccCasing02Tooltip = GT_LanguageManager.addStringLocalization("gt.casing02tooltip", "DE Core Crafter Casing, Tier 2");
+    protected final String deccCasing03Tooltip = GT_LanguageManager.addStringLocalization("gt.casing03tooltip", "DE Core Crafter Casing, Tier 3");
+    protected final String deccCasing04Tooltip = GT_LanguageManager.addStringLocalization("gt.casing04tooltip", "DE Core Crafter Casing, Tier 4");
+    protected final String deccCasing05Tooltip = GT_LanguageManager.addStringLocalization("gt.casing05tooltip", "DE Core Crafter Casing, Tier 5");
 
     public EMT_CasingBlock(final Block par1) {
         super(par1);
@@ -46,9 +59,30 @@ public class EMT_CasingBlock extends ItemBlock {
     }
 
     @Override
+    @SideOnly(Side.CLIENT) //so it only gets sent clientside?
     public void addInformation(final ItemStack aStack, final EntityPlayer aPlayer, final List aList, final boolean aF3_H) {
         aList.add(this.mNoMobsToolTip);
         aList.add(this.mNoTileEntityToolTip);
+        
+        switch (getDamage(aStack)) {
+        case 8:
+            aList.add(this.deccCasing01Tooltip);
+            break;
+        case 9:
+            aList.add(this.deccCasing02Tooltip);
+            break;
+        case 10:
+            aList.add(this.deccCasing03Tooltip);
+            break;
+        case 11:
+            aList.add(this.deccCasing04Tooltip);
+            break;
+        case 12:
+            aList.add(this.deccCasing05Tooltip);
+            break;
+        default:
+        	break;
+        }    
     }
 
     @Override

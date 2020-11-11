@@ -28,7 +28,7 @@ import java.util.List;
 
 public class ItemMaterials extends Item {
 
-    public IIcon[] icon = new IIcon[16];
+    public IIcon[] icon = new IIcon[20];
 
     public ItemMaterials() {
         this.setCreativeTab(EMT.TAB);
@@ -89,6 +89,18 @@ public class ItemMaterials extends Item {
             case 15:
                 name = "uumatterDrop";
                 break;
+            case 16:
+                name = "draconicSchematic";
+                break;
+            case 17:
+                name = "wyvernSchematic";
+                break;
+            case 18:
+                name = "awakenedSchematic";
+                break;
+            case 19:
+                name = "chaoticSchematic";
+                break;
             default:
                 name = "nothing";
                 break;
@@ -114,6 +126,10 @@ public class ItemMaterials extends Item {
         this.icon[13] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/taintedfeather");
         this.icon[14] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/thaumiumWing");
         this.icon[15] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/uumatterdrop");
+        this.icon[16] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/draconicSchematic");
+        this.icon[17] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/wyvernSchematic");
+        this.icon[18] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/awakenedSchematic");
+        this.icon[19] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/chaoticSchematic");
     }
 
     @SideOnly(Side.CLIENT)
@@ -123,7 +139,7 @@ public class ItemMaterials extends Item {
 
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List list) {
-        for (int i = 1; i <= 15; i++) {
+        for (int i = 1; i <= 19; i++) {
             list.add(new ItemStack(this, 1, i));
         }
     }
