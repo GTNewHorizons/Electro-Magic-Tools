@@ -24,12 +24,12 @@ public class EMT_CasingBlock extends ItemBlock {
                     EMT.TEXTURE_PATH + ":machines/GT/siderawII",
                     EMT.TEXTURE_PATH + ":machines/GT/rawcoreII",
                     EMT.TEXTURE_PATH + ":machines/GT/rawcoreII", //unused?
-                    EMT.TEXTURE_PATH + ":machines/GT/ROBUST_NAQUADAH_ALLOY_CASING",//textures don't get used?
-                    EMT.TEXTURE_PATH + ":machines/GT/BLOODY_ICHORIUM_CASING",//and it doesn't show an item one either
-                    EMT.TEXTURE_PATH + ":machines/GT/DRACONIUM_CASING",
-                    EMT.TEXTURE_PATH + ":machines/GT/WYVERN_CASING",
-                    EMT.TEXTURE_PATH + ":machines/GT/AWAKENED_DRACONIUM_CASING",
-                    EMT.TEXTURE_PATH + ":machines/GT/CHAOTIC_CASING",                    
+                    EMT.TEXTURE_PATH + ":machines/GT/ROBUST_NAQUADAH_ALLOY",//textures don't get used?
+                    EMT.TEXTURE_PATH + ":machines/GT/BLOODY_ICHORIUM",//and it doesn't show an item one either
+                    EMT.TEXTURE_PATH + ":machines/GT/DRACONIUM",
+                    EMT.TEXTURE_PATH + ":machines/GT/WYVERN",
+                    EMT.TEXTURE_PATH + ":machines/GT/AWAKENED_DRACONIUM",
+                    EMT.TEXTURE_PATH + ":machines/GT/CHAOTIC",                    
             }
     )};
     protected final String mNoMobsToolTip = GT_LanguageManager.addStringLocalization("gt.nomobspawnsonthisblock", "Mobs cannot Spawn on this Block");
