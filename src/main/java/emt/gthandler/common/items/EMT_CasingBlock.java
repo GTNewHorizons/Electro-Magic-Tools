@@ -24,8 +24,8 @@ public class EMT_CasingBlock extends ItemBlock {
                     EMT.TEXTURE_PATH + ":machines/GT/siderawII",
                     EMT.TEXTURE_PATH + ":machines/GT/rawcoreII",
                     EMT.TEXTURE_PATH + ":machines/GT/rawcoreII", //unused?
-                    EMT.TEXTURE_PATH + ":machines/GT/ROBUST_NAQUADAH_ALLOY",//textures don't get used?
-                    EMT.TEXTURE_PATH + ":machines/GT/BLOODY_ICHORIUM",//and it doesn't show an item one either
+                    EMT.TEXTURE_PATH + ":machines/GT/ROBUST_NAQUADAH_ALLOY",
+                    EMT.TEXTURE_PATH + ":machines/GT/BLOODY_ICHORIUM",
                     EMT.TEXTURE_PATH + ":machines/GT/DRACONIUM",
                     EMT.TEXTURE_PATH + ":machines/GT/WYVERN",
                     EMT.TEXTURE_PATH + ":machines/GT/AWAKENED_DRACONIUM",
