@@ -379,13 +379,17 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     public void inputintoGTnet() {
+        boolean foundGregTechTile = false;
+
         for (byte i = 0; i < 6; i = (byte) (i + 1)) {
             if (getIGregTechTileEntityAtSide(i) != null) {
-                if (isUniversalEnergyStored(getOutputVoltage() * getOutputAmperage())) {
-                    long tEU = IEnergyConnected.Util.emitEnergyToNetwork(getOutputVoltage(), getOutputAmperage(), this);
-                    drainEnergyUnits(i, getOutputVoltage(), tEU);
-                }
+                foundGregTechTile = true;
             }
+        }
+
+        if (foundGregTechTile && isUniversalEnergyStored(getOutputVoltage() * getOutputAmperage())) {
+            long tEU = IEnergyConnected.Util.emitEnergyToNetwork(getOutputVoltage(), getOutputAmperage(), this);
+            drainEnergyUnits((byte) 0, getOutputVoltage(), tEU);
         }
     }
 
