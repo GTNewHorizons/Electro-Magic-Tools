@@ -475,7 +475,10 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
             byte f = nbt.getByte("f");
 
             nbt.setBoolean("isHolding", true);
-            nbt.setByte("f", (byte) (f + 1));
+            if (IC2.keyboard.isSneakKeyDown(player))
+                nbt.setByte("f", (byte) (0));
+            else
+                nbt.setByte("f", (byte) (f + 1));
 
             if (f > 7) {
                 nbt.setByte("f", (byte) 7);
@@ -483,21 +486,23 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
         } else if (nbt.getBoolean("isHolding")) {
             byte f = nbt.getByte("f");
             nbt.setBoolean("isHolding", false);
-            player.motionY = motionY * f;
+            if (!IC2.keyboard.isSneakKeyDown(player)) {
+                player.motionY = motionY * f;
 
-            if (isElectric) {
-                ElectricItem.manager.use(stack, ((motionY * f) * 10) * amount, player);
-            }
+                if (isElectric) {
+                    ElectricItem.manager.use(stack, ((motionY * f) * 10) * amount, player);
+                }
 
-            if (player.motionX < 0.5 && player.motionZ < 0.5 && player.motionX > -0.5 && player.motionZ > -0.5) {
-                player.motionX /= motionXZ;
-                player.motionZ /= motionXZ;
-            }
+                if (player.motionX < 0.5 && player.motionZ < 0.5 && player.motionX > -0.5 && player.motionZ > -0.5) {
+                    player.motionX /= motionXZ;
+                    player.motionZ /= motionXZ;
+                }
 
-            world.playSoundEffect(player.posX, player.posY, player.posZ, "mob.ghast.fireball", 1, 1);
+                world.playSoundEffect(player.posX, player.posY, player.posZ, "mob.ghast.fireball", 1, 1);
 
-            for (int i = 0; i < 4; i++) {
-                world.spawnParticle("cloud", player.posX - 1 + (world.rand.nextInt(100) / 50d), player.posY - 1, player.posZ - 1 + (world.rand.nextInt(100) / 50d), 0, -0.5, 0);
+                for (int i = 0; i < 4; i++) {
+                    world.spawnParticle("cloud", player.posX - 1 + (world.rand.nextInt(100) / 50d), player.posY - 1, player.posZ - 1 + (world.rand.nextInt(100) / 50d), 0, -0.5, 0);
+                }
             }
 
             nbt.setByte("f", (byte) 0);
