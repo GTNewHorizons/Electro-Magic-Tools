@@ -1,7 +1,9 @@
 package emt.item;
 
 import baubles.api.BaubleType;
+import baubles.api.BaublesApi;
 import baubles.api.IBauble;
+import baubles.common.container.InventoryBaubles;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
@@ -179,20 +181,35 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
                     getItemWarpLevel(stack, true);
                     ((EntityPlayer) player).addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "The Ring suddenly starts to glow purple"));
                 }
-		if (random.nextInt(300) == 0) { //randomly every 5 minutes
-		    ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 1, false); //adds 1 perm warp
-		    ThaumcraftApiHelper.addStickyWarpToPlayer((EntityPlayer) player, random.nextInt(1)); //adds 0-1 sticky warp
-		    ((EntityPlayer) player).addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "Your body suddenly starts to glow purple"));
-		}
-		if (corruption >= 3600) { //if you wear it for more than an hour total
-		    if (random.nextInt(300) == 0) {
-		        ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 5 + random.nextInt(5), false); //adds 5-10 perm warp
-		        ThaumcraftApiHelper.addStickyWarpToPlayer((EntityPlayer) player, 5 + random.nextInt(5)); //adds 5-10 sticky warp
-			ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 10 + random.nextInt(40), true); //adds 10-50 temp warp, but this is ultra easy to remove
-		        ((EntityPlayer) player).addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "Your body resonates with the Ring and suddenly starts to glow purple ominously"));
-		    }
-		}
-            }
+                if (random.nextInt(300) == 0) { //randomly every 5 minutes
+                	ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 1, false); //adds 1 perm warp
+                	ThaumcraftApiHelper.addStickyWarpToPlayer((EntityPlayer) player, random.nextInt(1)); //adds 0-1 sticky warp
+                	((EntityPlayer) player).addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "Your body suddenly starts to glow purple"));
+                }
+                if (corruption >= 3600) { //if you wear it for more than an hour total
+                	if (random.nextInt(300) == 0) {
+                		ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 5 + random.nextInt(5), false); //adds 5-10 perm warp
+                		ThaumcraftApiHelper.addStickyWarpToPlayer((EntityPlayer) player, 5 + random.nextInt(5)); //adds 5-10 sticky warp
+                		ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 10 + random.nextInt(40), true); //adds 10-50 temp warp, but this is ultra easy to remove
+                		((EntityPlayer) player).addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "Your body resonates with the Ring and suddenly starts to glow purple ominously"));
+                	}
+                }
+                if (stack.getTagCompound().getInteger(NBT_TAG_WARP) >= 1000) {//If warp on ring is more than this. Should be about 27.7 hours.
+            		((EntityPlayer) player).addChatMessage(new ChatComponentText(EMTTextHelper.RED + "Sauron has noticed you! He's confiscated his ring."));
+            		player.setInvisible(false);
+            		if (!((EntityPlayer) player).capabilities.isCreativeMode)
+                        ((EntityPlayer) player).capabilities.disableDamage = false;
+
+                    for (int i = 1; i < 3; i++) {
+                    	ItemStack baubleItem = ((InventoryBaubles)BaublesApi.getBaubles((EntityPlayer) player)).getStackInSlot(i);
+                    	if(baubleItem != null) {
+                    		Item item = baubleItem.getItem();
+                    		if(item instanceof ItemOneRing)
+                    			((InventoryBaubles)BaublesApi.getBaubles((EntityPlayer) player)).setInventorySlotContents(i, null);
+                    	}
+                    }
+                }
+            } 
         }
         forgeTag.setInteger(NBT_TAG_MIND_CORRUPTION, ++corruption);
         //tag.setTag( NBT_TAG_FORGE_DATA, forgeTag);
