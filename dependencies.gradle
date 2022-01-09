@@ -1,0 +1,18 @@
+// Add your dependencies here
+
+dependencies {
+    compile("com.github.GTNewHorizons:GT5-Unofficial:master-SNAPSHOT:dev")
+    compile("com.github.GTNewHorizons:CodeChickenLib:master-SNAPSHOT:dev")
+    compile("com.github.GTNewHorizons:CodeChickenCore:master-SNAPSHOT:dev")
+    compile("com.github.GTNewHorizons:StructureLib:master-SNAPSHOT:dev")
+    compile("com.github.GTNewHorizons:NotEnoughItems:master-SNAPSHOT:dev")
+    compile("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev")
+    
+    compileOnly("com.github.GTNewHorizons:Galacticraft:master-SNAPSHOT:dev") {
+        transitive = false
+    }
+    compileOnly("com.github.GTNewHorizons:Baubles:master-SNAPSHOT:dev") {
+        transitive = false
+    }
+
+}

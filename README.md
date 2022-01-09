@@ -4,11 +4,11 @@
 
 Electro-Magic Tools is a Minecraft mod which integrates Thaumcraft 4 with IndustrialCraft 2 by adding cross-mod tools and items, such as magic solar panels, essentia generators and legendary items.
 
-#Downloads
 
-[CurseForge downloads](http://minecraft.curseforge.com/projects/electro-magic-tools)
-
-[Github Releases](https://github.com/fewizz/Electro-Magic-Tools/releases)
+# Fork
+This mod was forked by the GT:NH Team to continue the development of the 1.7.10 Branch.
+The up-to-date Master branch can be found on our Jenkins:
+http://jenkins.usrv.de
 
 #Issues
 
@@ -22,7 +22,6 @@ Before posting to the issue tracker, make sure you meet the following criteria:
 - You speak English or Russian well enough to explain yourself without wondering whether you will be understood. 
 
 
-# Fork
-This mod was forked by the GT:NH Team to continue the development of the 1.7.10 Branch.
-The up-to-date Master branch can be found on our Jenkins:
-http://jenkins.usrv.de
+#Upstream
+
+[CurseForge](http://minecraft.curseforge.com/projects/electro-magic-tools)

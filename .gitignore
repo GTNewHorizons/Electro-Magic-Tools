@@ -11,12 +11,12 @@
 /bin/*
 /download/*
 /.settings/*
-/eclipse/*
 /debug/*
 /.metadata/*
 /config/*
 /logs/*
 /saves/*
+/.idea/
 
 #File Extensions
 *.psd
