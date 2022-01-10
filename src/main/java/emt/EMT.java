@@ -31,8 +31,8 @@ import org.apache.logging.log4j.Logger;
         dependencies = EMT.DEPENDS
 )
 public class EMT {
-    public static final String NAME = "GRADLETOKEN_MODNAME";
-    public static final String MOD_ID = "GRADLETOKEN_MODID";
+    public static final String NAME = "Electro-Magic Tools";
+    public static final String MOD_ID = "EMT";
     public static final String VERSION = "GRADLETOKEN_VERSION";
     public static final String TEXTURE_PATH = "emt";
     public static final String GUI_FACTORY = "emt.client.gui.config.EMTGuiFactory";

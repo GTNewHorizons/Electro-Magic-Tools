@@ -2,17 +2,9 @@
 
 dependencies {
     compile("com.github.GTNewHorizons:GT5-Unofficial:master-SNAPSHOT:dev")
-    compile("com.github.GTNewHorizons:CodeChickenLib:master-SNAPSHOT:dev")
-    compile("com.github.GTNewHorizons:CodeChickenCore:master-SNAPSHOT:dev")
     compile("com.github.GTNewHorizons:StructureLib:master-SNAPSHOT:dev")
-    compile("com.github.GTNewHorizons:NotEnoughItems:master-SNAPSHOT:dev")
-    compile("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev")
-    
-    compileOnly("com.github.GTNewHorizons:Galacticraft:master-SNAPSHOT:dev") {
-        transitive = false
-    }
-    compileOnly("com.github.GTNewHorizons:Baubles:master-SNAPSHOT:dev") {
-        transitive = false
-    }
+    compile("com.github.GTNewHorizons:Baubles:master-SNAPSHOT:dev")
 
+    compile("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev")
+    compile("thaumcraft:Thaumcraft:1.7.10-4.2.3.5:dev")
 }

@@ -1,7 +1,7 @@
 [
   {
     "modid": "${modId}",
-    "name": "Electro-Magic Tools",
+    "name": "${modName}",
     "description": "Ever thought about combining magic and electricity?",
     "version": "${modVersion}",
     "mcversion": "${minecraftVersion}",
