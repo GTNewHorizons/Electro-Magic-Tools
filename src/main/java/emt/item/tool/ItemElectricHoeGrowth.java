@@ -13,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.blocks.BlockCustomPlant;
@@ -106,6 +107,12 @@ public class ItemElectricHoeGrowth extends ItemHoe implements IElectricItem {
             stack.stackTagCompound.setBoolean("Unbreakable", false);
         }
         return did;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+        list.add(StatCollector.translateToLocal("ic2.item.tooltip.PowerTier") + " " + getTier(new ItemStack(this)));
     }
 
     /* IC2 API METHODS */

@@ -19,6 +19,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public class ItemElectricThorHammer extends ItemSword implements IElectricItem {
         this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":hammer/electricthorhammer");
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings("unchecked")
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List itemList) {
         ItemStack itemStack = new ItemStack(this, 1);
@@ -64,9 +65,10 @@ public class ItemElectricThorHammer extends ItemSword implements IElectricItem {
         return false;
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings("unchecked")
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+        list.add(StatCollector.translateToLocal("ic2.item.tooltip.PowerTier") + " " + getTier(new ItemStack(this)));
         list.add(EMTTextHelper.localize("tooltip.EMT.hammer.electric").replace("%player%", player.getCommandSenderName()));
     }
 
