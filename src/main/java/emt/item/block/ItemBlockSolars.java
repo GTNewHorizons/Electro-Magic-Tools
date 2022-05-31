@@ -32,113 +32,12 @@ public class ItemBlockSolars extends ItemBlock {
 
     @Override
     public String getUnlocalizedName(ItemStack itemstack) {
-        String name = "";
-
-        if (instance == 0) {
-            switch (itemstack.getItemDamage()) {
-                case 0: {
-                    name = "compressed";
-                    break;
-                }
-                case 1: {
-                    name = "doublecompressed";
-                    break;
-                }
-                case 2: {
-                    name = "triplecompressed";
-                    break;
-                }
-                case 3: {
-                    name = "water";
-                    break;
-                }
-                case 4: {
-                    name = "doublewater";
-                    break;
-                }
-                case 5: {
-                    name = "triplewater";
-                    break;
-                }
-                case 6: {
-                    name = "dark";
-                    break;
-                }
-                case 7: {
-                    name = "doubledark";
-                    break;
-                }
-                case 8: {
-                    name = "tripledark";
-                    break;
-                }
-                case 9: {
-                    name = "order";
-                    break;
-                }
-                case 10: {
-                    name = "doubleorder";
-                    break;
-                }
-                case 11: {
-                    name = "tripleorder";
-                    break;
-                }
-                case 12: {
-                    name = "fire";
-                    break;
-                }
-                case 13: {
-                    name = "doublefire";
-                    break;
-                }
-                case 14: {
-                    name = "triplefire";
-                    break;
-                }
-                case 15: {
-                    name = "air";
-                    break;
-                }
-                default:
-                    name = "nothing";
-                    break;
-            }
-        } else if (instance == 1) {
-            switch (itemstack.getItemDamage()) {
-                case 0: {
-                    name = "doubleair";
-                    break;
-                }
-                case 1: {
-                    name = "tripleair";
-                    break;
-                }
-                case 2: {
-                    name = "earth";
-                    break;
-                }
-                case 3: {
-                    name = "doubleearth";
-                    break;
-                }
-                case 4: {
-                    name = "tripleearth";
-                    break;
-                }
-                default:
-                    name = "nothing";
-                    break;
-            }
-
-        } else {
-            name = Solars.getNameFromSolar(this.instance, itemstack.getItemDamage());
-            if (!StatCollector.canTranslate("tile." + EMT.MOD_ID + "." + name.replaceAll(" ", "_")))
-                StringTranslate.inject(new ReaderInputStream(new StringReader("tile." + EMT.MOD_ID + "." + name.replaceAll(" ", "_") + ".name=" + name)));
-            return "tile." + EMT.MOD_ID + "." + name.replaceAll(" ", "_");
-        }
-
-        return getUnlocalizedName() + "." + name;
+        final String solarName = Solars.getNameFromSolar(this.instance, itemstack.getItemDamage());
+        final String unlocalizedName = "tile." + EMT.MOD_ID + "." + Solars.getUnlocalizedName(this.instance, itemstack.getItemDamage());
+        final String unlocalizedKey = unlocalizedName + ".name";
+        if (!StatCollector.canTranslate(unlocalizedKey))
+            StringTranslate.inject(new ReaderInputStream(new StringReader(unlocalizedKey + "=" + solarName)));
+        return unlocalizedName;
     }
 
     @Override
