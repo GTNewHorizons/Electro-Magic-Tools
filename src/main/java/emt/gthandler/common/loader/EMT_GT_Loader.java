@@ -18,6 +18,7 @@ import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
@@ -63,8 +64,8 @@ public class EMT_GT_Loader implements Runnable {
 
         DECC = new DE_Core_Crafter(5001, "DE Core Crafter", "DE Core Crafter").getStackForm(1L);
 
-        /*GT_Values.RA.addAssemblylineRecipe(CustomItemList.AssemblingMachineLuV.get(1L), 144000, new Object[]{
-				CustomItemList.AssemblingMachineLuV.get(1L),
+        GT_Values.RA.addAssemblylineRecipe(GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780), 144000, new Object[]{
+				GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780),
 				ItemList.Robot_Arm_LuV.get(2L),
                 ItemList.Electric_Motor_LuV.get(2L),
                 ItemList.Field_Generator_LuV.get(1L),
@@ -73,8 +74,7 @@ public class EMT_GT_Loader implements Runnable {
         }, new FluidStack[]{
                 Materials.SolderingAlloy.getMolten(2304L),
                 Materials.Thaumium.getMolten(1440L),
-        }, EMT_GT_Loader.DECC.get(1L), 1500, 16384);
-        //}, CustomItemList.Machine_Multi_FusionCrafter.get(1L), 1500, 16384);*/
+        }, DECC, 1500, 16384);
 
 
         for (int i = 0; i < ItemList.HATCHES_INPUT.length; i++) {

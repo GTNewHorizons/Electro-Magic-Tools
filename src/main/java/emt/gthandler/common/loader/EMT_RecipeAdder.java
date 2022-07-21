@@ -78,7 +78,7 @@ public class EMT_RecipeAdder {
                 GT_ModHandler.getModItem("AdvancedSolarPanel", "asp_crafting_items", 4, 4),
                 GT_ModHandler.getModItem("DraconicEvolution", "wyvernCore", 1, 0),
                 new ItemStack(EMTItems.itemEMTItems, 0, 18)},
-            GT_ModHandler.getModItem("DraconicEvolution", "draconiumEnergyCore", 1, 0),
+            GT_ModHandler.getModItem("DraconicEvolution", "draconiumEnergyCore", 1, 1),
             2000, 122880, 3);
 
 

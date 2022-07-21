@@ -48,17 +48,17 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
     }
 
     private static final String STRUCTURE_PIECE_MAIN = "main";
-    private static final List<Pair<Block, Integer>> fusionCasingTiers = Arrays.asList(new Pair[]{
+    private static final List<Pair<Block, Integer>> fusionCasingTiers = Arrays.asList(
         Pair.of(GregTech_API.sBlockCasings4, 6),
-        Pair.of(GregTech_API.sBlockCasings4, 8),
-    });
-    private static final List<Pair<Block, Integer>> coreTiers = Arrays.asList(new Pair[]{
+        Pair.of(GregTech_API.sBlockCasings4, 8)
+    );
+    private static final List<Pair<Block, Integer>> coreTiers = Arrays.asList(
         Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 8),
         Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 9),
         Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 10),
         Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 11),
-        Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 12),
-    });
+        Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 12)
+    );
     private static final IStructureDefinition<DE_Core_Crafter> STRUCTURE_DEFINITION = StructureDefinition.<DE_Core_Crafter>builder()
         .addShape(STRUCTURE_PIECE_MAIN, transpose(new String[][]{
             {"nnnnn", "nnnnn", "nnnnn", "nnnnn", "nnnnn"},
