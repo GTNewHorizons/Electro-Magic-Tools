@@ -172,7 +172,7 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
         FluidStack[] tFluids = getCompactedFluids();
         ItemStack[] tInputs = getCompactedInputs();
 
-		if (tInputs.length > 0) {
+        if (tInputs.length > 0) {
             long tVoltage = getMaxInputVoltage();
             byte tTier = (byte) Math.max(1, GT_Utility.getTier(tVoltage));
             GT_Recipe tRecipe = EMT_RecipeAdder.sFusionCraftingRecipes.findRecipe(getBaseMetaTileEntity(), false, gregtech.api.enums.GT_Values.V[tTier], tFluids, tInputs);
@@ -201,8 +201,8 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
                 this.mOutputFluids = new FluidStack[]{tRecipe.getFluidOutput(0)};
                 updateSlots();
                 return true;
-			}
-		}
+            }
+        }
         return false;
     }
 

@@ -13,8 +13,9 @@ import java.util.HashSet;
 import static gregtech.api.enums.GT_Values.E;
 import static gregtech.api.enums.GT_Values.RES_PATH_GUI;
 
+
 public class EMT_RecipeAdder {
-    public static final GT_Recipe.GT_Recipe_Map sFusionCraftingRecipes = new GT_Recipe.GT_Recipe_Map(new HashSet<GT_Recipe>(4), "emt.recipe.fusioncrafting", "The Fusion Crafter", null, RES_PATH_GUI + "basicmachines/Default", 6, 1, 1, 0, 1, "Tier Casing: ", 1, E, false, true);
+    public static final GT_Recipe.GT_Recipe_Map sFusionCraftingRecipes = new GT_Recipe.GT_Recipe_Map(new HashSet<>(4), "emt.recipe.fusioncrafting", "The Fusion Crafter", null, RES_PATH_GUI + "basicmachines/Default", 6, 1, 1, 0, 1, "Tier Casing: ", 1, E, false, false);
 
     public static void addFusionCraftingRecipe(ItemStack[] inputs, ItemStack output, int aDuration, int aEUt, int aTier) {
         sFusionCraftingRecipes.addRecipe(true, inputs, new ItemStack[]{output}, null, null, null, aDuration, aEUt, aTier);

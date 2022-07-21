@@ -13,6 +13,7 @@ import cpw.mods.fml.relauncher.Side;
 import emt.command.CommandOutputs;
 import emt.init.EMTEntities;
 import emt.init.Registry;
+import emt.nei.NEI_Config;
 import emt.network.PacketEMTKeys;
 import emt.network.PacketNodeInfo;
 import emt.proxy.CommonProxy;
@@ -83,6 +84,8 @@ public class EMT {
         EMTDungeonChestGenerator.generateLoot();
         EMTEntities.registerEMTEntities();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, proxy);
+
+        NEI_Config.Init();
     }
 
     @Mod.EventHandler
