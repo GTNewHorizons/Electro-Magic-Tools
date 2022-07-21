@@ -35,8 +35,8 @@ public class NEI_Config implements IConfigureNEI {
     private static void sendHandler(String name, String block) {
         NBTTagCompound aNBT = new NBTTagCompound();
         aNBT.setString("handler", name);
-        aNBT.setString("modName", "EMT");
-        aNBT.setString("modId", "EMT");
+        aNBT.setString("modName", EMT.NAME);
+        aNBT.setString("modId", EMT.MOD_ID);
         aNBT.setBoolean("modRequired", true);
         aNBT.setString("itemName", block);
         aNBT.setInteger("handlerHeight", 135);

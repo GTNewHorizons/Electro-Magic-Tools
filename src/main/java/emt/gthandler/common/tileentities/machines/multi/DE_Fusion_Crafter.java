@@ -102,6 +102,7 @@ public class DE_Fusion_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<
         mFusionTierCasing = -1;
         if (!checkPiece(STRUCTURE_PIECE_MAIN, 2, 9, 0))
             return false;
+        if (mCasing < 19) return false;
         if (mTierCasing == -2 || mFusionTierCasing == -2) return false;
         if (mTierCasing > 3 && mFusionTierCasing < 2) return false;
         return mMaintenanceHatches.size() == 1;
