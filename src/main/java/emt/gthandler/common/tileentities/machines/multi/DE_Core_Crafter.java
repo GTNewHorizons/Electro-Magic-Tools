@@ -5,7 +5,6 @@ import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 import emt.EMT;
 import emt.gthandler.common.items.EMT_CasingBlock;
 import gregtech.api.GregTech_API;
-import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
@@ -27,7 +26,7 @@ import static gregtech.api.util.GT_StructureUtility.ofHatchAdder;
 
 
 public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE_Core_Crafter> {
-    private static final int CASING_INDEX = 185;
+    private static final int CASING_INDEX = 192;
     private int mTierCasing = 0;
     private int mFusionTierCasing = 0;
     private int mCasing = 0;
@@ -46,7 +45,11 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
     }
 
     private static final String STRUCTURE_PIECE_MAIN = "main";
-    private static final List<Pair<Block, Integer>> allKnownTiers = Arrays.asList(new Pair[]{
+    private static final List<Pair<Block, Integer>> fusionCasingTiers = Arrays.asList(new Pair[]{
+        Pair.of(GregTech_API.sBlockCasings4, 6),
+        Pair.of(GregTech_API.sBlockCasings4, 8),
+    });
+    private static final List<Pair<Block, Integer>> coreTiers = Arrays.asList(new Pair[]{
         Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 8),
         Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 9),
         Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 10),
@@ -78,11 +81,11 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
         .addElement('F', ofBlocksTiered((Block b, int m) -> {
             if (b != GregTech_API.sBlockCasings4 || (m != 6 && m != 8)) return -2;
             return m == 6 ? 1 : 2;
-        }, -1, (e, i) -> e.mFusionTierCasing = i, e -> e.mFusionTierCasing))
+        }, fusionCasingTiers, -1, (e, i) -> e.mFusionTierCasing = i, e -> e.mFusionTierCasing))
         .addElement('R', ofBlocksTiered((Block b, int m) -> {
             if (b != EMT_CasingBlock.EMT_GT_BLOCKS[0] || m < 8 || m > 12) return -2;
             return m - 7;
-        }, allKnownTiers, -1, (e, i) -> e.mTierCasing = i, e -> e.mTierCasing))
+        }, coreTiers, -1, (e, i) -> e.mTierCasing = i, e -> e.mTierCasing))
         .build();
 
     @Override
@@ -93,8 +96,11 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
         mCasing = 0;
         mTierCasing = -1;
+        mFusionTierCasing = -1;
         if (!checkPiece(STRUCTURE_PIECE_MAIN, 2, 9, 0))
             return false;
+        if (mTierCasing == -2 || mFusionTierCasing == -2) return false;
+        if (mTierCasing > 3 && mFusionTierCasing < 2) return false;
         return mMaintenanceHatches.size() == 1;
     }
 
@@ -129,21 +135,21 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
         if (aSide == aFacing) {
             if (aActive)
                 return new ITexture[]{
-                    Textures.BlockIcons.getCasingTextureForId(184),
+                    TextureFactory.of(MACHINE_CASING_MAGIC),
                     TextureFactory.builder().addIcon(OVERLAY_TELEPORTER_ACTIVE).extFacing().build(),
                     TextureFactory.builder().addIcon(OVERLAY_TELEPORTER_ACTIVE_GLOW).extFacing().glow().build()};
             return new ITexture[]{
-                Textures.BlockIcons.getCasingTextureForId(184),
+                TextureFactory.of(MACHINE_CASING_MAGIC),
                 TextureFactory.builder().addIcon(OVERLAY_TELEPORTER).extFacing().build(),
                 TextureFactory.builder().addIcon(OVERLAY_TELEPORTER_GLOW).extFacing().glow().build()};
         }
         if (aActive)
             return new ITexture[]{
-                Textures.BlockIcons.getCasingTextureForId(184),
+                TextureFactory.of(MACHINE_CASING_MAGIC),
                 TextureFactory.builder().addIcon(MACHINE_CASING_MAGIC_ACTIVE).extFacing().build(),
                 TextureFactory.builder().addIcon(MACHINE_CASING_MAGIC_ACTIVE_GLOW).extFacing().glow().build()};
         return new ITexture[]{
-            Textures.BlockIcons.getCasingTextureForId(184),
+            TextureFactory.of(MACHINE_CASING_MAGIC),
             TextureFactory.builder().addIcon(MACHINE_CASING_MAGIC).extFacing().build(),
             TextureFactory.builder().addIcon(MACHINE_CASING_MAGIC_GLOW).extFacing().glow().build()};
     }
