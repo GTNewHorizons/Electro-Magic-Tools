@@ -9,6 +9,7 @@ import emt.gthandler.common.implementations.EssentiaHatch;
 import emt.gthandler.common.items.EMT_CasingBlock;
 import emt.gthandler.common.tileentities.machines.multi.DE_Core_Crafter;
 import emt.gthandler.common.tileentities.machines.multi.generator.EMT_Large_Essentia_Gen;
+import emt.tile.GT_MetaTileEntity_ResearchCompleter;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
@@ -32,6 +33,7 @@ public class EMT_GT_Loader implements Runnable {
     public static ItemStack[] EHatch = new ItemStack[TIERS];
     public static ItemStack LEG;
     public static ItemStack DECC;
+    public static ItemStack ResearchMultiblock;
 
     @Override
     public void run() {
@@ -83,6 +85,8 @@ public class EMT_GT_Loader implements Runnable {
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.HATCHES_INPUT[i].get(1L), new ItemStack(ConfigBlocks.blockTube, 1, 4)}, Materials.Thaumium.getMolten(288L), EHatch[i], 100, (int) (GT_Values.V[i] - (GT_Values.V[i] / 10)));
         }
         
+
+        ResearchMultiblock = new GT_MetaTileEntity_ResearchCompleter(aIDoffset + TIERS + 2, "Research Completer", "Research Completer").getStackForm(1L);
     }
 
     public void runlate() {

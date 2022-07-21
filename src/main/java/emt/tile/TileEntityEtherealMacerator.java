@@ -2,13 +2,9 @@ package emt.tile;
 
 import emt.init.EMTBlocks;
 import emt.util.EMTConfigHandler;
-import ic2.api.item.IC2Items;
 import ic2.api.tile.IWrenchable;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
@@ -118,7 +114,7 @@ public class TileEntityEtherealMacerator extends TileEntityEMT implements ISided
     }
 
     public void updateEntity() {
-        if (this.canSmelt() && isOverLimit(1) == false && isOverLimit(2) == false && isOP() == false) {
+        if (this.canSmelt() && !isOverLimit(1) && !isOverLimit(2) && isAllowed()) {
             ++this.cookTime;
             this.isOn = true;
             worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
@@ -226,18 +222,17 @@ public class TileEntityEtherealMacerator extends TileEntityEMT implements ISided
         }
     }
 
-    public boolean isOP() {
-        final int cobblestoneId = OreDictionary.getOreID("blockCobble");
+    public boolean isAllowed() {
 
-        if (OreDictionary.getOreID(this.slots[0]) == cobblestoneId || this.slots[0].getItem() == Item.getItemFromBlock(Blocks.sand) || this.slots[0].getItem() == Items.potato || this.slots[0].getItem() == Items.porkchop || this.slots[0].getItem() == Items.beef || this.slots[0].getItem() == Items.chicken || this.slots[0].getItem() == Items.fish
-                || this.slots[0].getItem() == IC2Items.getItem("coalDust").getItem()
-                || (OreDictionary.getOreName(OreDictionary.getOreID(this.slots[0])).toLowerCase().contains("dust") || this.slots[0].getItem().getUnlocalizedName(this.slots[0]).toLowerCase().contains("armour") || this.slots[0].getItem().getUnlocalizedName(this.slots[0]).toLowerCase().contains("armor") || this.slots[0].getItem().getUnlocalizedName(this.slots[0]).toLowerCase().contains("helm")
-                || this.slots[0].getItem().getUnlocalizedName(this.slots[0]).toLowerCase().contains("legging") || this.slots[0].getItem().getUnlocalizedName(this.slots[0]).toLowerCase().contains("boot") || this.slots[0].getItem().getUnlocalizedName(this.slots[0]).toLowerCase().contains("chestp") || this.slots[0].getItem().getUnlocalizedName(this.slots[0]).toLowerCase().contains("pick")
-                || this.slots[0].getItem().getUnlocalizedName(this.slots[0]).toLowerCase().contains("shovel") || this.slots[0].getItem().getUnlocalizedName(this.slots[0]).toLowerCase().contains("axe") || this.slots[0].getItem().getUnlocalizedName(this.slots[0]).toLowerCase().contains("pick"))) {
-            return true;
-        } else {
-            return false;
+        int[] oreDictIDs = OreDictionary.getOreIDs(this.slots[0]);
+        for (int oreDictID : oreDictIDs) {
+            String tName = OreDictionary.getOreName(oreDictID);
+            for (String allowed : EMTConfigHandler.etherealMaceratorWhiteList) {
+                if (tName.indexOf(allowed) == 0) return true;
+            }
         }
+        return false;
+
     }
 
     @Override

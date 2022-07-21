@@ -14,6 +14,7 @@ import emt.command.CommandOutputs;
 import emt.init.EMTEntities;
 import emt.init.Registry;
 import emt.network.PacketEMTKeys;
+import emt.network.PacketNodeInfo;
 import emt.proxy.CommonProxy;
 import emt.tile.solar.Solars;
 import emt.util.*;
@@ -32,7 +33,7 @@ import org.apache.logging.log4j.Logger;
 public class EMT {
     public static final String NAME = "Electro-Magic Tools";
     public static final String MOD_ID = "EMT";
-    public static final String VERSION = "@version@";
+    public static final String VERSION = "GRADLETOKEN_VERSION";
     public static final String TEXTURE_PATH = "emt";
     public static final String GUI_FACTORY = "emt.client.gui.config.EMTGuiFactory";
     public static final String CLIENT_PROXY = "emt.proxy.ClientProxy";
@@ -96,5 +97,6 @@ public class EMT {
 
     public void registerPackets() {
         INSTANCE.registerMessage(PacketEMTKeys.class, PacketEMTKeys.class, 0, Side.SERVER);
+        INSTANCE.registerMessage(PacketNodeInfo.class, PacketNodeInfo.class, 1, Side.CLIENT);
     }
 }

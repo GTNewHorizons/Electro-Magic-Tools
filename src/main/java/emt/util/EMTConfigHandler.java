@@ -5,6 +5,9 @@ import gregtech.api.enums.GT_Values;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * TODO: Need to rewrite...
@@ -72,6 +75,7 @@ public class EMTConfigHandler {
     public static boolean smoke;
     public static boolean oneRingSpawn;
     public static boolean removeAmberAndCinnabarMacerating;
+    public static List<String> etherealMaceratorWhiteList = new ArrayList<>();
 
     /**
      * Loot chance
@@ -156,6 +160,7 @@ public class EMTConfigHandler {
         chanceOneRing = config.get(RANDOM, "One Ring spawning chance", 15, "If you have a lot of mods adding dungeon loot, you should definetely increase this").getInt();
         removeAmberAndCinnabarMacerating = config.get(RANDOM, "Clear Amber/Cinnabar Macerating", true, "This is here because of conflicts between mods that add the same input and different outputs").getBoolean(removeAmberAndCinnabarMacerating);
         impactOfRain = config.get(RANDOM, "Impact of rain", true, "The impact of rain on all wings").getBoolean(impactOfRain);
+        etherealMaceratorWhiteList.addAll(Arrays.asList(config.get(RANDOM, "White List for Ethereal Processor", new String[]{"ore", "cluster"}, "The allowed ore dictionary prefix for Ethereal Processor.").getStringList()));
 
         // DEFAULTS - Aer -  15,000  Aqua - 5,000  Ignis - 20,000  Ordo -  16,000  Perditio - 10,000  Terra - 2,000
         airOutput = config.get(OUTPUTS, "Aer Output", 15000).getDouble(airOutput);
@@ -189,7 +194,6 @@ public class EMTConfigHandler {
         armorBaubleProduction = config.get(VALUES, "Armor Charging Ring production", 32, "Default is 32").getInt();
         inventoryBaubleProdution = config.get(VALUES, "Inventory Charging Ring production", 32, "Default is 32").getInt();
         wandChargeFocusCost = config.get(VALUES, "Wand Focus: Wand Charging Cost", 40000, "Default is 40000").getInt();
-
 
         nanoBootsMinDrop = config.get(VALUES, "Nano Boots of the Traveller minimum drop", 6.0, "The distance allowed to fall without any damage").getDouble(nanoBootsMinDrop);
         nanoBootsMaxDrop = config.get(VALUES, "Nano Boots of the Traveller maximum healthy drop", 35.0, "Energy amount drained will tripled if player drops more than this amount of blocks").getDouble(nanoBootsMaxDrop);

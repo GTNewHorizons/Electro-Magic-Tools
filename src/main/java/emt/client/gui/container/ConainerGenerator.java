@@ -52,6 +52,8 @@ public class ConainerGenerator
         if (i == 0) {
             this.tileentity.generating = (((int) j) * 400);
         } else if (i == 1) {
+            if (j == 0 || this.tileentity.fuel != j)
+                this.tileentity.tick = 0;
             this.tileentity.fuel = ((byte) j);
         } else if (i == 2) {
             this.tileentity.mpshownstroage = (short) j;
