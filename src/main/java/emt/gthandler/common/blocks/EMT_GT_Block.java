@@ -3,6 +3,10 @@ package emt.gthandler.common.blocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
+import emt.gthandler.common.items.EMT_CasingBlock;
+import gregtech.api.enums.Textures;
+import gregtech.api.render.TextureFactory;
+import gregtech.common.blocks.GT_Block_Casings_Abstract;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,20 +19,21 @@ import net.minecraft.world.IBlockAccess;
 
 import java.util.List;
 
-public class EMT_GT_Block extends Block {
+public class EMT_GT_Block extends GT_Block_Casings_Abstract {
 
     @SideOnly(Side.CLIENT)
     private IIcon[] texture;
     private String[] textureNames;
-    private String name;
 
-    public EMT_GT_Block(String name, String[] texture) {
-        super(Material.anvil);
+    public EMT_GT_Block(String[] texture) {
+        super(EMT_CasingBlock.class, "EMT_GTBLOCK_CASEING", Material.anvil);
         this.setHardness(15.0F);
         this.setResistance(30.0F);
-        this.name = name;
         this.textureNames = texture;
         this.setCreativeTab(EMT.TAB);
+
+        // Taking one texture slot :P
+        Textures.BlockIcons.setCasingTexture((byte) 1, (byte) (0 + 64), TextureFactory.of(this, 7));
     }
 
     @Override
@@ -58,23 +63,4 @@ public class EMT_GT_Block extends Block {
         }
     }
 
-    @Override
-    public boolean isOpaqueCube() {
-        return false;
-    }
-
-    @Override
-    public String getUnlocalizedName() {
-        return name;
-    }
-
-    @Override
-    public boolean canCreatureSpawn(EnumCreatureType type, IBlockAccess world, int x, int y, int z) {
-        return false;
-    }
-
-    @Override
-    public boolean canBeReplacedByLeaves(IBlockAccess world, int x, int y, int z) {
-        return false;
-    }
 }
