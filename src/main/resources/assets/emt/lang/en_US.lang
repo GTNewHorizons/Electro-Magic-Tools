@@ -12,10 +12,10 @@ gui.EMT.inventory=Inventory
 gui.EMT.book.aspect.output.eu.title=Essentia Outputs Book
 gui.EMT.book.aspect.output.essentia.eu=EU Output per Essentia
 gui.EMT.key.unequip=Unequip
-emt.Output=Output: 
-emt.Storage=Storage: 
+emt.Output=Output:
+emt.Storage=Storage:
 emt.PressShift=<Press SHIFT>
-emt.Generating=Generating: 
+emt.Generating=Generating:
 emt.Fuel=Fuel
 emt.OutputMax=Output at Max:
 
@@ -184,12 +184,12 @@ EMT_GTBLOCK_CASEING.2.name=Iridium Ruridit Framebox
 EMT_GTBLOCK_CASEING.3.name=Indium Tungsten Framebox
 EMT_GTBLOCK_CASEING.4.name=Raw Magic Containing Casing
 EMT_GTBLOCK_CASEING.5.name=Raw Essentia Diffusion Cell
-EMT_GTBLOCK_CASEING.7.name=Naquadah Alloy Core Casing
-EMT_GTBLOCK_CASEING.8.name=Bloody Ichorium Core Casing
-EMT_GTBLOCK_CASEING.9.name=Draconium Core Casing
-EMT_GTBLOCK_CASEING.10.name=Wyvern Core Casing
-EMT_GTBLOCK_CASEING.11.name=Awakened Draconium Core Casing
-EMT_GTBLOCK_CASEING.12.name=Chaotic Core Casing
+EMT_GTBLOCK_CASEING.7.name=Naquadah Alloy Fusion Casing
+EMT_GTBLOCK_CASEING.8.name=Bloody Ichorium Fusion Casing
+EMT_GTBLOCK_CASEING.9.name=Draconium Fusion Casing
+EMT_GTBLOCK_CASEING.10.name=Wyvern Fusion Casing
+EMT_GTBLOCK_CASEING.11.name=Awakened Draconium Fusion Casing
+EMT_GTBLOCK_CASEING.12.name=Chaotic Fusion Casing
 
 #=============Thaumonomicon Texts=============
 emt.rsname.Electric Magic Tools=Electric Magic Tools

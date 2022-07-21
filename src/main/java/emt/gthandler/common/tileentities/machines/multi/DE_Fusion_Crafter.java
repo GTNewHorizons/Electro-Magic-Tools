@@ -28,23 +28,23 @@ import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.util.GT_StructureUtility.ofHatchAdder;
 
 
-public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE_Core_Crafter> {
+public class DE_Fusion_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE_Fusion_Crafter> {
     private static final int CASING_INDEX = 192;
     private int mTierCasing = 0;
     private int mFusionTierCasing = 0;
     private int mCasing = 0;
 
-    public DE_Core_Crafter(int aID, String aName, String aNameRegional) {
+    public DE_Fusion_Crafter(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
     }
 
-    public DE_Core_Crafter(String aName) {
+    public DE_Fusion_Crafter(String aName) {
         super(aName);
     }
 
     @Override
     public IMetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
-        return new DE_Core_Crafter(mName);
+        return new DE_Fusion_Crafter(mName);
     }
 
     private static final String STRUCTURE_PIECE_MAIN = "main";
@@ -59,7 +59,7 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
         Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 11),
         Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 12)
     );
-    private static final IStructureDefinition<DE_Core_Crafter> STRUCTURE_DEFINITION = StructureDefinition.<DE_Core_Crafter>builder()
+    private static final IStructureDefinition<DE_Fusion_Crafter> STRUCTURE_DEFINITION = StructureDefinition.<DE_Fusion_Crafter>builder()
         .addShape(STRUCTURE_PIECE_MAIN, transpose(new String[][]{
             {"nnnnn", "nnnnn", "nnnnn", "nnnnn", "nnnnn"},
             {"     ", "  F  ", " FfF ", "  F  ", "     "},
@@ -74,10 +74,10 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
         }))
         .addElement('N', ofChain(
             onElementPass(e -> e.mCasing++, ofBlock(EMT_CasingBlock.EMT_GT_BLOCKS[0], 7)),
-            ofHatchAdder(DE_Core_Crafter::addEnergyInputToMachineList, CASING_INDEX, 1),
-            ofHatchAdder(DE_Core_Crafter::addInputToMachineList, CASING_INDEX, 1),
-            ofHatchAdder(DE_Core_Crafter::addOutputToMachineList, CASING_INDEX, 1),
-            ofHatchAdder(DE_Core_Crafter::addMaintenanceToMachineList, CASING_INDEX, 1)
+            ofHatchAdder(DE_Fusion_Crafter::addEnergyInputToMachineList, CASING_INDEX, 1),
+            ofHatchAdder(DE_Fusion_Crafter::addInputToMachineList, CASING_INDEX, 1),
+            ofHatchAdder(DE_Fusion_Crafter::addOutputToMachineList, CASING_INDEX, 1),
+            ofHatchAdder(DE_Fusion_Crafter::addMaintenanceToMachineList, CASING_INDEX, 1)
         ))
         .addElement('n', onElementPass(e -> e.mCasing++, ofBlock(EMT_CasingBlock.EMT_GT_BLOCKS[0], 7)))
         .addElement('f', ofBlock(GregTech_API.sBlockCasings4, 7))
@@ -92,7 +92,7 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
         .build();
 
     @Override
-    public IStructureDefinition<DE_Core_Crafter> getStructureDefinition() {
+    public IStructureDefinition<DE_Fusion_Crafter> getStructureDefinition() {
         return STRUCTURE_DEFINITION;
     }
 
@@ -111,19 +111,19 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
     protected GT_Multiblock_Tooltip_Builder createTooltip() {
         GT_Multiblock_Tooltip_Builder tt = new GT_Multiblock_Tooltip_Builder();
         tt.
-            addMachineType("DE Fusion Crafter").
-            addInfo("Controller Block for the DE Core Crafter").
+            addMachineType("Fusion Crafter").
+            addInfo("Controller Block for the Draconic Evolution Fusion Crafter").
             addInfo("Machine can be overclocked by using casings above the recipe tier:").
             addInfo("Recipe time is divided by number of tiers above the recipe").
             addInfo("Normal EU OC still applies !").
-            addInfo("To see the structure, use a " + EnumChatFormatting.BLUE + "Tec" + EnumChatFormatting.DARK_BLUE + "Tech" + EnumChatFormatting.GRAY + " machine hologram on the Controller!").
+            addInfo("To see the structure, use a " + EnumChatFormatting.BLUE + "Tec" + EnumChatFormatting.DARK_BLUE + "Tech" + EnumChatFormatting.GRAY + " structure hologram on the Controller!").
             addSeparator().
             beginStructureBlock(5, 10, 5, false).
             addController("Front bottom center").
-            addCasingInfo("Naquadah Alloy Core Casing", 19).
+            addCasingInfo("Naquadah Alloy Fusion Casing", 19).
             addOtherStructurePart("Fusion Coil Block", "Center pillar").
             addOtherStructurePart("Fusion Machine Casing", "Touching Fusion Coil Block at every side").
-            addOtherStructurePart("Tiered Core Casing", "Rings (5x5 hollow) at layer 4 and 7").
+            addOtherStructurePart("Tiered Fusion Casing", "Rings (5x5 hollow) at layer 4 and 7").
             addStructureInfo("Bloody Ichorium for tier 1, Draconium for tier 2, etc").
             addStructureInfo("To use tier 3 + you have to use fusion casing MK II").
             addMaintenanceHatch("Any bottom casing", 1).

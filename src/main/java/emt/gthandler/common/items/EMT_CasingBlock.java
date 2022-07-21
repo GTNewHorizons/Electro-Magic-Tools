@@ -33,11 +33,11 @@ public class EMT_CasingBlock extends GT_Item_Casings_Abstract {
         }
     )};
 
-    protected final String deccCasing01Tooltip = GT_LanguageManager.addStringLocalization("gt.casing01tooltip", "DE Core Crafter Casing, Tier 1");
-    protected final String deccCasing02Tooltip = GT_LanguageManager.addStringLocalization("gt.casing02tooltip", "DE Core Crafter Casing, Tier 2");
-    protected final String deccCasing03Tooltip = GT_LanguageManager.addStringLocalization("gt.casing03tooltip", "DE Core Crafter Casing, Tier 3");
-    protected final String deccCasing04Tooltip = GT_LanguageManager.addStringLocalization("gt.casing04tooltip", "DE Core Crafter Casing, Tier 4");
-    protected final String deccCasing05Tooltip = GT_LanguageManager.addStringLocalization("gt.casing05tooltip", "DE Core Crafter Casing, Tier 5");
+    protected final String deccCasing01Tooltip = GT_LanguageManager.addStringLocalization("gt.casing01tooltip", "Draconic Evolution Fusion Crafter Casing, Tier 1");
+    protected final String deccCasing02Tooltip = GT_LanguageManager.addStringLocalization("gt.casing02tooltip", "Draconic Evolution Fusion Crafter Casing, Tier 2");
+    protected final String deccCasing03Tooltip = GT_LanguageManager.addStringLocalization("gt.casing03tooltip", "Draconic Evolution Fusion Crafter Casing, Tier 3");
+    protected final String deccCasing04Tooltip = GT_LanguageManager.addStringLocalization("gt.casing04tooltip", "Draconic Evolution Fusion Crafter Casing, Tier 4");
+    protected final String deccCasing05Tooltip = GT_LanguageManager.addStringLocalization("gt.casing05tooltip", "Draconic Evolution Fusion Crafter Casing, Tier 5");
 
     public EMT_CasingBlock(final Block par1) {
         super(par1);

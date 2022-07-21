@@ -3,7 +3,7 @@ package emt.gthandler.common.loader;
 import cpw.mods.fml.common.Loader;
 import emt.gthandler.common.implementations.EssentiaHatch;
 import emt.gthandler.common.items.EMT_CasingBlock;
-import emt.gthandler.common.tileentities.machines.multi.DE_Core_Crafter;
+import emt.gthandler.common.tileentities.machines.multi.DE_Fusion_Crafter;
 import emt.gthandler.common.tileentities.machines.multi.generator.EMT_Large_Essentia_Gen;
 import emt.tile.GT_MetaTileEntity_ResearchCompleter;
 import gregtech.api.enums.GT_Values;
@@ -58,7 +58,7 @@ public class EMT_GT_Loader implements Runnable {
 
         EMT_RecipeAdder.Run();
 
-        DECC = new DE_Core_Crafter(5001, "DE Core Crafter", "DE Core Crafter").getStackForm(1L);
+        DECC = new DE_Fusion_Crafter(5001, "de_fusion_crafter", "Draconic Evolution Fusion Crafter").getStackForm(1L);
 
         GT_Values.RA.addAssemblylineRecipe(GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780), 144000, new Object[]{
             GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780),
