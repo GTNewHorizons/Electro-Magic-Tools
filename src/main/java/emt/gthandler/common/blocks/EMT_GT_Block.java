@@ -7,15 +7,12 @@ import emt.gthandler.common.items.EMT_CasingBlock;
 import gregtech.api.enums.Textures;
 import gregtech.api.render.TextureFactory;
 import gregtech.common.blocks.GT_Block_Casings_Abstract;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class EMT_GT_Block extends GT_Block_Casings_Abstract {
 
     @SideOnly(Side.CLIENT)
     private IIcon[] texture;
-    private String[] textureNames;
+    private final String[] textureNames;
 
     public EMT_GT_Block(String[] texture) {
         super(EMT_CasingBlock.class, "EMT_GTBLOCK_CASEING", Material.anvil);

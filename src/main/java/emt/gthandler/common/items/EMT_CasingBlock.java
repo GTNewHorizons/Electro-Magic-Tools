@@ -16,21 +16,21 @@ import java.util.List;
 public class EMT_CasingBlock extends GT_Item_Casings_Abstract {
 
     public static final Block[] EMT_GT_BLOCKS = {new EMT_GT_Block(new String[]
-            {
-                    EMT.TEXTURE_PATH + ":machines/side",
-                    EMT.TEXTURE_PATH + ":machines/GT/inner",
-                    EMT.TEXTURE_PATH + ":machines/GT/siderawI",
-                    EMT.TEXTURE_PATH + ":machines/GT/rawcoreI",
-                    EMT.TEXTURE_PATH + ":machines/GT/siderawII",
-                    EMT.TEXTURE_PATH + ":machines/GT/rawcoreII",
-                    EMT.TEXTURE_PATH + ":machines/GT/rawcoreII", //unused?
-                    EMT.TEXTURE_PATH + ":machines/GT/ROBUST_NAQUADAH_ALLOY",
-                    EMT.TEXTURE_PATH + ":machines/GT/BLOODY_ICHORIUM",
-                    EMT.TEXTURE_PATH + ":machines/GT/DRACONIUM",
-                    EMT.TEXTURE_PATH + ":machines/GT/WYVERN",
-                    EMT.TEXTURE_PATH + ":machines/GT/AWAKENED_DRACONIUM",
-                    EMT.TEXTURE_PATH + ":machines/GT/CHAOTIC",
-            }
+        {
+            EMT.TEXTURE_PATH + ":machines/side",
+            EMT.TEXTURE_PATH + ":machines/GT/inner",
+            EMT.TEXTURE_PATH + ":machines/GT/siderawI",
+            EMT.TEXTURE_PATH + ":machines/GT/rawcoreI",
+            EMT.TEXTURE_PATH + ":machines/GT/siderawII",
+            EMT.TEXTURE_PATH + ":machines/GT/rawcoreII",
+            EMT.TEXTURE_PATH + ":machines/GT/rawcoreII", //unused?
+            EMT.TEXTURE_PATH + ":machines/GT/ROBUST_NAQUADAH_ALLOY",
+            EMT.TEXTURE_PATH + ":machines/GT/BLOODY_ICHORIUM",
+            EMT.TEXTURE_PATH + ":machines/GT/DRACONIUM",
+            EMT.TEXTURE_PATH + ":machines/GT/WYVERN",
+            EMT.TEXTURE_PATH + ":machines/GT/AWAKENED_DRACONIUM",
+            EMT.TEXTURE_PATH + ":machines/GT/CHAOTIC",
+        }
     )};
 
     protected final String deccCasing01Tooltip = GT_LanguageManager.addStringLocalization("gt.casing01tooltip", "DE Core Crafter Casing, Tier 1");
@@ -62,23 +62,23 @@ public class EMT_CasingBlock extends GT_Item_Casings_Abstract {
         super.addInformation(aStack, aPlayer, aList, aF3_H);
 
         switch (getDamage(aStack)) {
-        case 8:
-            aList.add(this.deccCasing01Tooltip);
-            break;
-        case 9:
-            aList.add(this.deccCasing02Tooltip);
-            break;
-        case 10:
-            aList.add(this.deccCasing03Tooltip);
-            break;
-        case 11:
-            aList.add(this.deccCasing04Tooltip);
-            break;
-        case 12:
-            aList.add(this.deccCasing05Tooltip);
-            break;
-        default:
-        	break;
+            case 8:
+                aList.add(this.deccCasing01Tooltip);
+                break;
+            case 9:
+                aList.add(this.deccCasing02Tooltip);
+                break;
+            case 10:
+                aList.add(this.deccCasing03Tooltip);
+                break;
+            case 11:
+                aList.add(this.deccCasing04Tooltip);
+                break;
+            case 12:
+                aList.add(this.deccCasing05Tooltip);
+                break;
+            default:
+                break;
         }
     }
 

@@ -4,6 +4,7 @@ import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 import emt.EMT;
 import emt.gthandler.common.items.EMT_CasingBlock;
+import emt.gthandler.common.loader.EMT_RecipeAdder;
 import gregtech.api.GregTech_API;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
@@ -11,6 +12,8 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_EnhancedMultiBlockBase;
 import gregtech.api.render.TextureFactory;
 import gregtech.api.util.GT_Multiblock_Tooltip_Builder;
+import gregtech.api.util.GT_Recipe;
+import gregtech.api.util.GT_Utility;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -160,14 +163,19 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
     }
 
     @Override
+    public GT_Recipe.GT_Recipe_Map getRecipeMap() {
+        return EMT_RecipeAdder.sFusionCraftingRecipes;
+    }
+
+    @Override
     public boolean checkRecipe(ItemStack aStack) {
         FluidStack[] tFluids = getCompactedFluids();
         ItemStack[] tInputs = getCompactedInputs();
 
-		/*if (tInputList.size() > 0) {
+		if (tInputs.length > 0) {
             long tVoltage = getMaxInputVoltage();
             byte tTier = (byte) Math.max(1, GT_Utility.getTier(tVoltage));
-            GT_Recipe tRecipe = GT_Recipe.GT_Recipe_Map.sFusionCraftingRecipes.findRecipe(getBaseMetaTileEntity(), false, gregtech.api.enums.GT_Values.V[tTier], tFluids, tInputs);
+            GT_Recipe tRecipe = EMT_RecipeAdder.sFusionCraftingRecipes.findRecipe(getBaseMetaTileEntity(), false, gregtech.api.enums.GT_Values.V[tTier], tFluids, tInputs);
             if ((tRecipe != null) && (this.mTierCasing >= tRecipe.mSpecialValue) && (tRecipe.isRecipeInputEqual(true, tFluids, tInputs))) {
                 this.mEfficiency = (10000 - (getIdealStatus() - getRepairStatus()) * 1000);
                 this.mEfficiencyIncrease = 10000;
@@ -177,7 +185,6 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
                     this.mEUt = (tRecipe.mEUt * (1 << tTier - 1) * (1 << tTier - 1));
                     this.mMaxProgresstime = (tRecipe.mDuration / (1 << tTier - 1));
                 } else {
-                    this.mEUt = tRecipe.mEUt;
                     this.mMaxProgresstime = tRecipe.mDuration;
                     while (this.mEUt <= gregtech.api.enums.GT_Values.V[(tTier - 1)]) {
                         this.mEUt *= 4;
@@ -195,7 +202,7 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
                 updateSlots();
                 return true;
 			}
-		}*/
+		}
         return false;
     }
 
