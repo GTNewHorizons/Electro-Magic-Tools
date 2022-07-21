@@ -19,8 +19,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
-import scala.actors.threadpool.Arrays;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
