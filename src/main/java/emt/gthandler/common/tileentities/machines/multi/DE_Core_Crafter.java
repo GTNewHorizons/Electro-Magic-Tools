@@ -1,42 +1,38 @@
 package emt.gthandler.common.tileentities.machines.multi;
 
-import java.util.ArrayList;
-//import java.util.Arrays;//?
-
+import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
+import com.gtnewhorizon.structurelib.structure.StructureDefinition;
+import emt.EMT;
 import emt.gthandler.common.items.EMT_CasingBlock;
 import gregtech.api.GregTech_API;
-import gregtech.api.enums.Dyes;
 import gregtech.api.enums.Textures;
-import gregtech.api.gui.GT_GUIContainer_MultiMachine;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
-//import gregtech.api.items.GT_MetaGenerated_Tool;//?
-import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_MultiBlockBase;
-import gregtech.api.objects.GT_RenderedTexture;
-//import gregtech.api.util.GT_Recipe;//?
-import gregtech.api.util.GT_Utility;
-//import gregtech.common.GT_Pollution;//?
-//import gregtech.common.items.GT_MetaGenerated_Tool_01;//?
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_EnhancedMultiBlockBase;
+import gregtech.api.render.TextureFactory;
+import gregtech.api.util.GT_Multiblock_Tooltip_Builder;
 import net.minecraft.block.Block;
-//import net.minecraft.entity.player.EntityPlayer;//?
-import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
-//import net.minecraft.util.EnumChatFormatting;//?
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.fluids.FluidStack;
+import org.apache.commons.lang3.tuple.Pair;
+import scala.actors.threadpool.Arrays;
 
-//import com.dreammaster.gthandler.casings.GT_Container_CasingsNH;//?
+import java.util.List;
 
-//import static gregtech.api.enums.GT_Values.V;//?
-//import static gregtech.api.enums.GT_Values.VN;//?
+import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
+import static gregtech.api.enums.Textures.BlockIcons.*;
+import static gregtech.api.util.GT_StructureUtility.ofHatchAdder;
 
 
-public class DE_Core_Crafter extends GT_MetaTileEntity_MultiBlockBase {
-	private final int CASING_INDEX = 52;//?
-	private int mTierCasing = 0;
+public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE_Core_Crafter> {
+    private static final int CASING_INDEX = 185;
+    private int mTierCasing = 0;
+    private int mFusionTierCasing = 0;
+    private int mCasing = 0;
 
-	public DE_Core_Crafter(int aID, String aName, String aNameRegional) {
+    public DE_Core_Crafter(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
     }
 
@@ -49,89 +45,118 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_MultiBlockBase {
         return new DE_Core_Crafter(mName);
     }
 
+    private static final String STRUCTURE_PIECE_MAIN = "main";
+    private static final List<Pair<Block, Integer>> allKnownTiers = Arrays.asList(new Pair[]{
+        Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 8),
+        Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 9),
+        Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 10),
+        Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 11),
+        Pair.of(EMT_CasingBlock.EMT_GT_BLOCKS[0], 12),
+    });
+    private static final IStructureDefinition<DE_Core_Crafter> STRUCTURE_DEFINITION = StructureDefinition.<DE_Core_Crafter>builder()
+        .addShape(STRUCTURE_PIECE_MAIN, transpose(new String[][]{
+            {"nnnnn", "nnnnn", "nnnnn", "nnnnn", "nnnnn"},
+            {"     ", "  F  ", " FfF ", "  F  ", "     "},
+            {"     ", "  F  ", " FfF ", "  F  ", "     "},
+            {"RRRRR", "R F R", "RFfFR", "R F R", "RRRRR"},
+            {"     ", "  F  ", " FfF ", "  F  ", "     "},
+            {"     ", "  F  ", " FfF ", "  F  ", "     "},
+            {"RRRRR", "R F R", "RFfFR", "R F R", "RRRRR"},
+            {"     ", "  F  ", " FfF ", "  F  ", "     "},
+            {"     ", "  F  ", " FfF ", "  F  ", "     "},
+            {"NN~NN", "NNNNN", "NNNNN", "NNNNN", "NNNNN"}
+        }))
+        .addElement('N', ofChain(
+            onElementPass(e -> e.mCasing++, ofBlock(EMT_CasingBlock.EMT_GT_BLOCKS[0], 7)),
+            ofHatchAdder(DE_Core_Crafter::addEnergyInputToMachineList, CASING_INDEX, 1),
+            ofHatchAdder(DE_Core_Crafter::addInputToMachineList, CASING_INDEX, 1),
+            ofHatchAdder(DE_Core_Crafter::addOutputToMachineList, CASING_INDEX, 1),
+            ofHatchAdder(DE_Core_Crafter::addMaintenanceToMachineList, CASING_INDEX, 1)
+        ))
+        .addElement('n', onElementPass(e -> e.mCasing++, ofBlock(EMT_CasingBlock.EMT_GT_BLOCKS[0], 7)))
+        .addElement('f', ofBlock(GregTech_API.sBlockCasings4, 7))
+        .addElement('F', ofBlocksTiered((Block b, int m) -> {
+            if (b != GregTech_API.sBlockCasings4 || (m != 6 && m != 8)) return -2;
+            return m == 6 ? 1 : 2;
+        }, -1, (e, i) -> e.mFusionTierCasing = i, e -> e.mFusionTierCasing))
+        .addElement('R', ofBlocksTiered((Block b, int m) -> {
+            if (b != EMT_CasingBlock.EMT_GT_BLOCKS[0] || m < 8 || m > 12) return -2;
+            return m - 7;
+        }, allKnownTiers, -1, (e, i) -> e.mTierCasing = i, e -> e.mTierCasing))
+        .build();
+
     @Override
-    public String[] getDescription() {
-        return new String[]{
-                "Controller Block for the DE Core Crafter",
-        		"Size(WxHxD): 5x10x5",
-        		"Controller: Front bottom",        		
-        		"Layer 1 and 10: Naquadah Alloy Core Casing (5x5)",
-        		"Layer 4 and 7: Tiered Core Casing (5x5, hollow)",        		
-        		"Bloody Ichorium for tier 1, Draconium for tier 2, etc",        		
-        		"Layers 2 - 9: Center pillar of Fusion Coil Blocks,",
-        		"with Fusion Machine Casing MK II in cardinal directions",        		
-        		"Energy, Maintenance, Input and Output Buses go in layer 1",
-        		"Upgraded overclocks reduce recipe time to 50%"//?
-        };
+    public IStructureDefinition<DE_Core_Crafter> getStructureDefinition() {
+        return STRUCTURE_DEFINITION;
+    }
+
+    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
+        mCasing = 0;
+        mTierCasing = -1;
+        if (!checkPiece(STRUCTURE_PIECE_MAIN, 2, 9, 0))
+            return false;
+        return mMaintenanceHatches.size() == 1;
+    }
+
+    @Override
+    protected GT_Multiblock_Tooltip_Builder createTooltip() {
+        GT_Multiblock_Tooltip_Builder tt = new GT_Multiblock_Tooltip_Builder();
+        tt.
+            addMachineType("DE Fusion Crafter").
+            addInfo("Controller Block for the DE Core Crafter").
+            addInfo("Upgraded overclocks reduce recipe time to 50%").
+            addInfo("To see the structure, use a " + EnumChatFormatting.BLUE + "Tec" + EnumChatFormatting.DARK_BLUE + "Tech" + EnumChatFormatting.GRAY + " machine hologram on the Controller!").
+            addSeparator().
+            beginStructureBlock(5, 10, 5, false).
+            addController("Front bottom center").
+            addCasingInfo("Naquadah Alloy Core Casing", 19).
+            addOtherStructurePart("Fusion Coil Block", "Center pillar").
+            addOtherStructurePart("Fusion Machine Casing", "Touching Fusion Coil Block at every side").
+            addOtherStructurePart("Tiered Core Casing", "Rings (5x5 hollow) at layer 4 and 7").
+            addStructureInfo("Bloody Ichorium for tier 1, Draconium for tier 2, etc").
+            addStructureInfo("To use tier 3 + you have to use fusion casing MK II").
+            addMaintenanceHatch("Any bottom casing", 1).
+            addInputBus("Any bottom casing", 1).
+            addOutputBus("Any bottom casing", 1).
+            addInputHatch("Any bottom casing", 1).
+            addEnergyHatch("Any bottom casing", 1).
+            toolTipFinisher(EMT.NAME);
+        return tt;
     }
 
     @Override
     public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone) {
-        ITexture[] sTexture;
         if (aSide == aFacing) {
-            sTexture = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.MACHINE_CASING_MAGIC, Dyes.getModulation(-1, Dyes._NULL.mRGBa)), new GT_RenderedTexture(aActive ? Textures.BlockIcons.OVERLAY_TELEPORTER_ACTIVE : Textures.BlockIcons.OVERLAY_TELEPORTER)};
-        } else {
-            if (!aActive) {
-                sTexture = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.MACHINE_CASING_MAGIC, Dyes.getModulation(-1, Dyes._NULL.mRGBa))};
-            } else {
-                sTexture = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.MACHINE_CASING_MAGIC_ACTIVE, Dyes.getModulation(-1, Dyes._NULL.mRGBa))};
-            }
+            if (aActive)
+                return new ITexture[]{
+                    Textures.BlockIcons.getCasingTextureForId(184),
+                    TextureFactory.builder().addIcon(OVERLAY_TELEPORTER_ACTIVE).extFacing().build(),
+                    TextureFactory.builder().addIcon(OVERLAY_TELEPORTER_ACTIVE_GLOW).extFacing().glow().build()};
+            return new ITexture[]{
+                Textures.BlockIcons.getCasingTextureForId(184),
+                TextureFactory.builder().addIcon(OVERLAY_TELEPORTER).extFacing().build(),
+                TextureFactory.builder().addIcon(OVERLAY_TELEPORTER_GLOW).extFacing().glow().build()};
         }
-        return sTexture;
-    }
-
-    public Object getClientGUI(int aID, InventoryPlayer aPlayerInventory, IGregTechTileEntity aBaseMetaTileEntity) {
-        return new GT_GUIContainer_MultiMachine(aPlayerInventory, aBaseMetaTileEntity, getLocalName(), "DistillationTower.png");//gui, change later?
+        if (aActive)
+            return new ITexture[]{
+                Textures.BlockIcons.getCasingTextureForId(184),
+                TextureFactory.builder().addIcon(MACHINE_CASING_MAGIC_ACTIVE).extFacing().build(),
+                TextureFactory.builder().addIcon(MACHINE_CASING_MAGIC_ACTIVE_GLOW).extFacing().glow().build()};
+        return new ITexture[]{
+            Textures.BlockIcons.getCasingTextureForId(184),
+            TextureFactory.builder().addIcon(MACHINE_CASING_MAGIC).extFacing().build(),
+            TextureFactory.builder().addIcon(MACHINE_CASING_MAGIC_GLOW).extFacing().glow().build()};
     }
 
     @Override
-	public boolean isCorrectMachinePart(ItemStack aStack) {
-		return true;
-	}
-
-	@Override
-    public boolean isFacingValid(byte aFacing) {
-        return aFacing > 1;
+    public boolean isCorrectMachinePart(ItemStack aStack) {
+        return true;
     }
 
-	@Override
-	public boolean checkRecipe(ItemStack aStack) {
-		ArrayList<ItemStack> tInputList = getStoredInputs();
-		int tInputList_sS = tInputList.size();
-		for (int i = 0; i < tInputList_sS - 1; i++) {
-			for (int j = i + 1; j < tInputList_sS; j++) {
-				if (GT_Utility.areStacksEqual((ItemStack) tInputList.get(i), (ItemStack) tInputList.get(j))) {
-					if (((ItemStack) tInputList.get(i)).stackSize >= ((ItemStack) tInputList.get(j)).stackSize) {
-						tInputList.remove(j--);
-						tInputList_sS = tInputList.size();
-					} else {
-						tInputList.remove(i--);
-						tInputList_sS = tInputList.size();
-						break;
-					}
-				}
-			}
-		}
-		tInputList.add(mInventory[1]);
-		ItemStack[] tInputs = tInputList.toArray(new ItemStack[tInputList.size()]);
-
-		ArrayList<FluidStack> tFluidList = getStoredFluids();
-		int tFluidList_sS = tFluidList.size();
-		for (int i = 0; i < tFluidList_sS - 1; i++) {
-			for (int j = i + 1; j < tFluidList_sS; j++) {
-				if (GT_Utility.areFluidsEqual(tFluidList.get(i), tFluidList.get(j))) {
-					if (tFluidList.get(i).amount >= tFluidList.get(j).amount) {
-						tFluidList.remove(j--);
-						tFluidList_sS = tFluidList.size();
-					} else {
-						tFluidList.remove(i--);
-						tFluidList_sS = tFluidList.size();
-						break;
-					}
-				}
-			}
-		}
-		FluidStack[] tFluids = tFluidList.toArray(new FluidStack[tFluidList.size()]);
+    @Override
+    public boolean checkRecipe(ItemStack aStack) {
+        FluidStack[] tFluids = getCompactedFluids();
+        ItemStack[] tInputs = getCompactedInputs();
 
 		/*if (tInputList.size() > 0) {
             long tVoltage = getMaxInputVoltage();
@@ -165,105 +190,7 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_MultiBlockBase {
                 return true;
 			}
 		}*/
-		return false;
-	}
-	
-	private boolean checkMachineFunction(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        int xDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetX*2;
-        int zDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetZ*2;
-        int casingAmount = 0;
-	
-        this.mTierCasing = 0;
-        byte tUsedMeta = aBaseMetaTileEntity.getMetaIDOffset(xDir + 2, 6, zDir);
-        switch (tUsedMeta) {//determines tier
-            case 8:
-                this.mTierCasing = 1;
-                break;
-            case 9:
-                this.mTierCasing = 2;
-                break;
-            case 10:
-                this.mTierCasing = 3;
-                break;
-            case 11:
-                this.mTierCasing = 4;
-                break;
-            case 12:
-                this.mTierCasing = 5;
-                break;
-            default:
-                return false;
-        }
-        
-        for (int i = -2; i < 3; i++) {
-            for (int j = -2; j < 3; j++) {
-                if ((xDir + i != 0) || (zDir + j != 0)) {//checks top
-                	if ((aBaseMetaTileEntity.getBlockOffset(xDir + i, 9, zDir + j) != EMT_CasingBlock.EMT_GT_BLOCKS[0]) || (aBaseMetaTileEntity.getMetaIDOffset(xDir + i, 9, zDir + j) != 7)) {
-                        return false;
-                    }
-                    if (Math.abs(i)==2 || Math.abs(j)==2) {//checks the rings
-                    	if ((aBaseMetaTileEntity.getBlockOffset(xDir + i, 6, zDir + j) != EMT_CasingBlock.EMT_GT_BLOCKS[0]) || (aBaseMetaTileEntity.getMetaIDOffset(xDir + i, 6, zDir + j) != tUsedMeta)){
-                            return false;
-                        }
-                        if ((aBaseMetaTileEntity.getBlockOffset(xDir + i, 3, zDir + j) != EMT_CasingBlock.EMT_GT_BLOCKS[0]) || (aBaseMetaTileEntity.getMetaIDOffset(xDir + i, 3, zDir + j) != tUsedMeta)) {
-                            return false;
-                        }
-                    }
-                }
-            }
-        }
-        
-        //pillar
-        for (int i = 1; i < 9; i++) {//check center
-        	if ((aBaseMetaTileEntity.getBlockOffset(xDir, i, zDir)!= GregTech_API.sBlockCasings4) || (aBaseMetaTileEntity.getMetaIDOffset(xDir, i, zDir)!= 7)) {
-                return false;
-            }
-        }
-        for (int i = 1; i < 9; i++) {//check sides
-        	if ((aBaseMetaTileEntity.getBlockOffset(xDir + 1, i, zDir)!= GregTech_API.sBlockCasings4) || (aBaseMetaTileEntity.getMetaIDOffset(xDir + 1, i, zDir)!= 8)) {
-                return false;
-            }
-        }
-        for (int i = 1; i < 9; i++) {
-        	if ((aBaseMetaTileEntity.getBlockOffset(xDir - 1, i, zDir)!= GregTech_API.sBlockCasings4) || (aBaseMetaTileEntity.getMetaIDOffset(xDir - 1, i, zDir)!= 8)) {
-                return false;
-            }
-        }
-        for (int i = 1; i < 9; i++) {
-        	if ((aBaseMetaTileEntity.getBlockOffset(xDir, i, zDir + 1)!= GregTech_API.sBlockCasings4) || (aBaseMetaTileEntity.getMetaIDOffset(xDir, i, zDir + 1)!= 8)) {
-                return false;
-            }
-        }
-        for (int i = 1; i < 9; i++) {
-        	if ((aBaseMetaTileEntity.getBlockOffset(xDir, i, zDir - 1)!= GregTech_API.sBlockCasings4) || (aBaseMetaTileEntity.getMetaIDOffset(xDir, i, zDir - 1)!= 8)) {
-                return false;
-            }
-        }
-        
-        //bottom layer
-        for (int i = -2; i < 3; i++) {
-            for (int j = -2; j < 3; j++) {
-                if ((xDir + i != 0) || (zDir + j != 0)) {
-                    IGregTechTileEntity tTileEntity = aBaseMetaTileEntity.getIGregTechTileEntityOffset(xDir + i, 0, zDir + j);
-                    if ((!addMaintenanceToMachineList(tTileEntity, 11)) && (!addInputToMachineList(tTileEntity, 11)) && (!addOutputToMachineList(tTileEntity, 11)) && (!addEnergyInputToMachineList(tTileEntity, 11))) {
-                        if ((aBaseMetaTileEntity.getBlockOffset(xDir + i, 0, zDir + j) != EMT_CasingBlock.EMT_GT_BLOCKS[0]) || (aBaseMetaTileEntity.getMetaIDOffset(xDir + i, 0, zDir + j) != 7)) {
-                            return false;
-                        }
-                        casingAmount++;
-                    }
-                }
-            }
-        }
-        if (casingAmount < 19) return false;
-        return true;
-	}
-	
-
-	
-    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack){
-        boolean result= this.checkMachineFunction(aBaseMetaTileEntity,aStack);
-        if (!result) this.mTierCasing=0;
-        return result;
+        return false;
     }
 
     public int getMaxEfficiency(ItemStack aStack) {
@@ -281,5 +208,9 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_MultiBlockBase {
     public boolean explodesOnComponentBreak(ItemStack aStack) {
         return false;
     }
-    
+
+    @Override
+    public void construct(ItemStack itemStack, boolean b) {
+        buildPiece(STRUCTURE_PIECE_MAIN, itemStack, b, 2, 9, 0);
+    }
 }
