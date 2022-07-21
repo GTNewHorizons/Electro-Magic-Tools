@@ -113,7 +113,9 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
         tt.
             addMachineType("DE Fusion Crafter").
             addInfo("Controller Block for the DE Core Crafter").
-            addInfo("Upgraded overclocks reduce recipe time to 50%").
+            addInfo("Machine can be overclocked by using casings above the recipe tier:").
+            addInfo("Recipe time is divided by number of tiers above the recipe").
+            addInfo("Normal EU OC still applies !").
             addInfo("To see the structure, use a " + EnumChatFormatting.BLUE + "Tec" + EnumChatFormatting.DARK_BLUE + "Tech" + EnumChatFormatting.GRAY + " machine hologram on the Controller!").
             addSeparator().
             beginStructureBlock(5, 10, 5, false).
@@ -169,33 +171,20 @@ public class DE_Core_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE
 
     @Override
     public boolean checkRecipe(ItemStack aStack) {
-        FluidStack[] tFluids = getCompactedFluids();
         ItemStack[] tInputs = getCompactedInputs();
+        //FluidStack[] tFluids = getCompactedFluids(); unused for now
 
         if (tInputs.length > 0) {
             long tVoltage = getMaxInputVoltage();
             byte tTier = (byte) Math.max(1, GT_Utility.getTier(tVoltage));
-            GT_Recipe tRecipe = EMT_RecipeAdder.sFusionCraftingRecipes.findRecipe(getBaseMetaTileEntity(), false, gregtech.api.enums.GT_Values.V[tTier], tFluids, tInputs);
-            if ((tRecipe != null) && (this.mTierCasing >= tRecipe.mSpecialValue) && (tRecipe.isRecipeInputEqual(true, tFluids, tInputs))) {
+            GT_Recipe tRecipe = EMT_RecipeAdder.sFusionCraftingRecipes.findRecipe(getBaseMetaTileEntity(), false, gregtech.api.enums.GT_Values.V[tTier], null, tInputs);
+            if ((tRecipe != null) && (this.mTierCasing >= tRecipe.mSpecialValue) && (tRecipe.isRecipeInputEqual(true, null, tInputs))) {
+                calculateOverclockedNessMulti(tRecipe.mEUt, tRecipe.mDuration, 2, tVoltage);
+                if (this.mEUt > 0)
+                    this.mEUt = (-this.mEUt);
                 this.mEfficiency = (10000 - (getIdealStatus() - getRepairStatus()) * 1000);
                 this.mEfficiencyIncrease = 10000;
-
-                this.mEUt = tRecipe.mEUt;
-                if (tRecipe.mEUt <= 16) {
-                    this.mEUt = (tRecipe.mEUt * (1 << tTier - 1) * (1 << tTier - 1));
-                    this.mMaxProgresstime = (tRecipe.mDuration / (1 << tTier - 1));
-                } else {
-                    this.mMaxProgresstime = tRecipe.mDuration;
-                    while (this.mEUt <= gregtech.api.enums.GT_Values.V[(tTier - 1)]) {
-                        this.mEUt *= 4;
-                        this.mMaxProgresstime /= 2;
-                    }
-                }
-                if (this.mEUt > 0) {
-                    this.mEUt = (-this.mEUt);
-                }
-
-                this.mMaxProgresstime = mMaxProgresstime * 2 / (mTierCasing * 2);
+                this.mMaxProgresstime /= ((mTierCasing - tRecipe.mSpecialValue) + 1);
                 this.mMaxProgresstime = Math.max(1, this.mMaxProgresstime);
                 this.mOutputItems = new ItemStack[]{tRecipe.getOutput(0), tRecipe.getOutput(1)};
                 this.mOutputFluids = new FluidStack[]{tRecipe.getFluidOutput(0)};

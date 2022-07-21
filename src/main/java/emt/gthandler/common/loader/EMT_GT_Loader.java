@@ -1,9 +1,5 @@
 package emt.gthandler.common.loader;
 
-//import com.dreammaster.gthandler.CustomItemList;
-//import com.dreammaster.gtppHandler.GTPPRecipeLoader;
-//import com.dreammaster.item.ItemList;
-
 import cpw.mods.fml.common.Loader;
 import emt.gthandler.common.implementations.EssentiaHatch;
 import emt.gthandler.common.items.EMT_CasingBlock;
@@ -65,15 +61,15 @@ public class EMT_GT_Loader implements Runnable {
         DECC = new DE_Core_Crafter(5001, "DE Core Crafter", "DE Core Crafter").getStackForm(1L);
 
         GT_Values.RA.addAssemblylineRecipe(GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780), 144000, new Object[]{
-				GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780),
-				ItemList.Robot_Arm_LuV.get(2L),
-                ItemList.Electric_Motor_LuV.get(2L),
-                ItemList.Field_Generator_LuV.get(1L),
-                new Object[]{OrePrefixes.circuit.get(Materials.Master), 2},
-                ItemList.Casing_Coil_Naquadah.get(8L),
+            GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780),
+            ItemList.Robot_Arm_LuV.get(2L),
+            ItemList.Electric_Motor_LuV.get(2L),
+            ItemList.Field_Generator_LuV.get(1L),
+            new Object[]{OrePrefixes.circuit.get(Materials.Master), 2},
+            ItemList.Casing_Coil_Naquadah.get(8L),
         }, new FluidStack[]{
-                Materials.SolderingAlloy.getMolten(2304L),
-                Materials.Thaumium.getMolten(1440L),
+            Materials.SolderingAlloy.getMolten(2304L),
+            Materials.Thaumium.getMolten(1440L),
         }, DECC, 1500, 16384);
 
 
