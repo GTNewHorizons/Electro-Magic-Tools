@@ -30,7 +30,7 @@ public class EMT_GT_Block extends GT_Block_Casings_Abstract {
         this.setCreativeTab(EMT.TAB);
 
         // Taking one texture slot :P
-        Textures.BlockIcons.setCasingTexture((byte) 1, (byte) (0 + 64), TextureFactory.of(this, 7));
+        Textures.BlockIcons.setCasingTexture((byte) 1, (byte) (15 + 48), TextureFactory.of(this, 7));
     }
 
     @Override

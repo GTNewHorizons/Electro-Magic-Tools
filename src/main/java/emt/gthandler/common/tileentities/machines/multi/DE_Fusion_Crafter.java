@@ -29,7 +29,7 @@ import static gregtech.api.util.GT_StructureUtility.ofHatchAdder;
 
 
 public class DE_Fusion_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<DE_Fusion_Crafter> {
-    private static final int CASING_INDEX = 192;
+    private static final int CASING_INDEX = (1 << 7) + (15 + 48);
     private int mTierCasing = 0;
     private int mFusionTierCasing = 0;
     private int mCasing = 0;
