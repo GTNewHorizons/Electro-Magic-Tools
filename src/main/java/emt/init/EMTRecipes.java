@@ -5,6 +5,10 @@ import emt.EMT;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTCraftingAspects;
 import emt.util.EMTResearchAspects;
+import gregtech.api.GregTech_API;
+import gregtech.api.enums.Materials;
+import gregtech.api.enums.OrePrefixes;
+import gregtech.api.util.GT_OreDictUnificator;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeInputItemStack;
@@ -100,6 +104,8 @@ public class EMTRecipes {
     public static ShapedArcaneRecipe electricScribingTools;
     public static ShapedArcaneRecipe thaumiumWing;
     public static ShapedArcaneRecipe thaumiumWings;
+    public static ShapedArcaneRecipe researchCompleter;
+    public static ShapedArcaneRecipe magicalMachineCasing;
     public static CrucibleRecipe ignisGenerator;
     public static CrucibleRecipe auramGenerator;
     public static CrucibleRecipe arborGenerator;
@@ -361,6 +367,10 @@ public class EMTRecipes {
         thaumiumWing = addArcaneCraftingRecipe("Thaumium Reinforced Wings", new ItemStack(EMTItems.itemEMTItems, 1, 14), EMTCraftingAspects.thaumiumWing, "XYZ", "XYZ", "XYZ", 'X', new ItemStack(EMTItems.itemEMTItems, 1, 13), 'Y', new ItemStack(EMTItems.itemEMTItems, 1, 5), 'Z', IC2Items.getItem("plateiron"));
 
         thaumiumWings = addArcaneCraftingRecipe("Thaumium Reinforced Wings", new ItemStack(EMTItems.thaumiumWing), EMTCraftingAspects.thaumiumWing, "XX", 'X', new ItemStack(EMTItems.itemEMTItems, 1, 14));
+
+        //magicalMachineCasing = addArcaneCraftingRecipe("ResearchCompleter", new ItemStack(GregTech_API.sBlockCasings8, 1, 6), EMTCraftingAspects.magicalMachineCasing, "XYX", "XZX", "XYX", 'X', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Thaumium, 1), 'Y', new ItemStack(ConfigItems.itemResource, 1, 14) , 'Z', GT_OreDictUnificator.get(OrePrefixes.frameGt, Materials.Thaumium, 1));
+
+        //researchCompleter = addArcaneCraftingRecipe("ResearchCompleter", new ItemStack(GregTech_API.sBlockMachines, 1, 13001), EMTCraftingAspects.researchCompleter, "XYX", "YZY", "XAX", 'X', GT_OreDictUnificator.get(OrePrefixes.circuit.get(Materials.Good), 1L), 'Y', new ItemStack(ConfigBlocks.blockCosmeticOpaque, 1, 2), 'Z', new ItemStack(GregTech_API.sBlockCasings8, 1, 6), 'A', new ItemStack(ConfigBlocks.blockStoneDevice, 1, 5));
 
         /** Crucible Recipes **/
 

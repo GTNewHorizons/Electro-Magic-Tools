@@ -391,12 +391,10 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
         return new ModelSpecialArmor(1, 0);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-        try {
-            list.add(StatCollector.translateToLocal("ic2.item.tooltip.PowerTier") + " " + tier);
-        } catch (NullPointerException e) {
-        }
+        list.add(StatCollector.translateToLocal("ic2.item.tooltip.PowerTier") + " " + getTier(new ItemStack(this)));
     }
 
     public boolean useJetpack(EntityPlayer player, boolean hoverMode, ItemStack stack) {

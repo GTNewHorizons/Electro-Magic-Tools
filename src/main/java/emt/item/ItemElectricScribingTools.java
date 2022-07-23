@@ -3,11 +3,14 @@ package emt.item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
+import emt.util.EMTTextHelper;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import thaumcraft.api.IScribeTools;
 import thaumcraft.common.items.ItemInkwell;
 
@@ -21,6 +24,12 @@ public class ItemElectricScribingTools extends ItemInkwell implements IElectricI
         this.setCreativeTab(EMT.TAB);
         this.setMaxDamage(400);
         this.setMaxStackSize(1);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+        list.add(StatCollector.translateToLocal("ic2.item.tooltip.PowerTier") + " " + getTier(new ItemStack(this)));
     }
 
     @Override
