@@ -34,8 +34,8 @@ public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
         this.setMaxStackSize(1);
         this.setCreativeTab(EMT.TAB);
         // this.maxCharge = 20000000; //REALLY?
-        this.genDay = 65536;
-        this.genNight = 4096;
+        this.genDay = 2048;
+        this.genNight = 128;
         maxCharge = 20000000;
         visDiscount = 7;
         tier = 4;
@@ -77,7 +77,7 @@ public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
         }
 
         if (worldObj.canBlockSeeTheSky((int) player.posX, (int) player.posY + 1, (int) player.posZ) && !worldObj.isRaining()) {
-            double enerj = (worldObj.isDaytime() ? (double) genDay : (double) genNight) / 12000D;
+            double enerj = worldObj.isDaytime() ? (double) genDay : (double) genNight;
 
             for (int i = 0; i < player.inventory.armorInventory.length; i++) {
                 if (enerj > 0) {
