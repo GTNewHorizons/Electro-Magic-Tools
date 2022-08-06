@@ -7,6 +7,7 @@ import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Recipe;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.HashSet;
 
@@ -20,6 +21,15 @@ public class EMT_RecipeAdder {
     public static void addFusionCraftingRecipe(ItemStack[] inputs, ItemStack output, int aDuration, int aEUt, int aTier) {
         sFusionCraftingRecipes.addRecipe(true, inputs, new ItemStack[]{output}, null, null, null, aDuration, aEUt, aTier);
     }
+
+    public static void addFusionCraftingRecipe(ItemStack[] inputs, FluidStack[] fluidinputs, ItemStack output, FluidStack[] fluidoutputs, int aDuration, int aEUt, int aTier) {
+        sFusionCraftingRecipes.addRecipe(true, inputs, new ItemStack[]{output}, null, fluidinputs, fluidoutputs, aDuration, aEUt, aTier);
+    }
+
+    public static void addFusionCraftingRecipe(ItemStack[] inputs, FluidStack[] fluidinputs, ItemStack output, FluidStack fluidoutput, int aDuration, int aEUt, int aTier) {
+        sFusionCraftingRecipes.addRecipe(true, inputs, new ItemStack[]{output}, null, fluidinputs, new FluidStack[]{fluidoutput}, aDuration, aEUt, aTier);
+    }
+
 
     public static void Run() {
 

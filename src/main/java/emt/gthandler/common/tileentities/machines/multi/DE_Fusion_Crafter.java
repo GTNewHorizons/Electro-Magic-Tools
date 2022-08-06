@@ -127,11 +127,12 @@ public class DE_Fusion_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<
             addOtherStructurePart("Tiered Fusion Casing", "Rings (5x5 hollow) at layer 4 and 7").
             addStructureInfo("Bloody Ichorium for tier 1, Draconium for tier 2, etc").
             addStructureInfo("To use tier 3 + you have to use fusion casing MK II").
-            addMaintenanceHatch("Any bottom casing", 1).
             addInputBus("Any bottom casing", 1).
-            addOutputBus("Any bottom casing", 1).
             addInputHatch("Any bottom casing", 1).
+            addOutputBus("Any bottom casing", 1).
+            addOutputHatch("Any bottom casing", 1).
             addEnergyHatch("Any bottom casing", 1).
+            addMaintenanceHatch("Any bottom casing", 1).
             toolTipFinisher(EMT.NAME);
         return tt;
     }
@@ -173,12 +174,12 @@ public class DE_Fusion_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<
     @Override
     public boolean checkRecipe(ItemStack aStack) {
         ItemStack[] tInputs = getCompactedInputs();
-        //FluidStack[] tFluids = getCompactedFluids(); unused for now
+        FluidStack[] tFluids = getCompactedFluids();
 
         if (tInputs.length > 0) {
             long tVoltage = getMaxInputVoltage();
             byte tTier = (byte) Math.max(1, GT_Utility.getTier(tVoltage));
-            GT_Recipe tRecipe = EMT_RecipeAdder.sFusionCraftingRecipes.findRecipe(getBaseMetaTileEntity(), false, gregtech.api.enums.GT_Values.V[tTier], null, tInputs);
+            GT_Recipe tRecipe = EMT_RecipeAdder.sFusionCraftingRecipes.findRecipe(getBaseMetaTileEntity(), false, gregtech.api.enums.GT_Values.V[tTier], tFluids, tInputs);
             if ((tRecipe != null) && (this.mTierCasing >= tRecipe.mSpecialValue) && (tRecipe.isRecipeInputEqual(true, null, tInputs))) {
                 calculateOverclockedNessMulti(tRecipe.mEUt, tRecipe.mDuration, 2, tVoltage);
                 if (this.mEUt > 0)
