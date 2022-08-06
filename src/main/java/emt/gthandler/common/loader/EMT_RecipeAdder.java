@@ -18,16 +18,16 @@ import static gregtech.api.enums.GT_Values.RES_PATH_GUI;
 public class EMT_RecipeAdder {
     public static final GT_Recipe.GT_Recipe_Map sFusionCraftingRecipes = new GT_Recipe.GT_Recipe_Map(new HashSet<>(4), "emt.recipe.fusioncrafting", "Draconic Evolution Fusion Crafter", null, RES_PATH_GUI + "basicmachines/Default", 6, 1, 1, 0, 1, "Tier Casing: ", 1, E, false, false);
 
+    public static void addFusionCraftingRecipe(ItemStack[] inputs, FluidStack[] fluidinputs, ItemStack[] outputs, FluidStack[] fluidoutputs, int aDuration, int aEUt, int aTier) {
+        sFusionCraftingRecipes.addRecipe(true, inputs, outputs, null, fluidinputs, fluidoutputs, aDuration, aEUt, aTier);
+    }
+
     public static void addFusionCraftingRecipe(ItemStack[] inputs, ItemStack output, int aDuration, int aEUt, int aTier) {
-        sFusionCraftingRecipes.addRecipe(true, inputs, new ItemStack[]{output}, null, null, null, aDuration, aEUt, aTier);
+        addFusionCraftingRecipe(inputs, null, new ItemStack[] { output }, null, aDuration, aEUt, aTier);
     }
 
-    public static void addFusionCraftingRecipe(ItemStack[] inputs, FluidStack[] fluidinputs, ItemStack output, FluidStack[] fluidoutputs, int aDuration, int aEUt, int aTier) {
-        sFusionCraftingRecipes.addRecipe(true, inputs, new ItemStack[]{output}, null, fluidinputs, fluidoutputs, aDuration, aEUt, aTier);
-    }
-
-    public static void addFusionCraftingRecipe(ItemStack[] inputs, FluidStack[] fluidinputs, ItemStack output, FluidStack fluidoutput, int aDuration, int aEUt, int aTier) {
-        sFusionCraftingRecipes.addRecipe(true, inputs, new ItemStack[]{output}, null, fluidinputs, new FluidStack[]{fluidoutput}, aDuration, aEUt, aTier);
+    public static void addFusionCraftingRecipe(ItemStack[] inputs, FluidStack fluidinput, ItemStack output, FluidStack fluidoutput, int aDuration, int aEUt, int aTier) {
+        addFusionCraftingRecipe(inputs, new FluidStack[] { fluidinput }, new ItemStack[] { output }, new FluidStack[] { fluidoutput }, aDuration, aEUt, aTier);
     }
 
 
