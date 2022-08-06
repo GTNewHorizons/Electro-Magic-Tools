@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
+import static gregtech.api.enums.GT_Values.V;
 import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.util.GT_StructureUtility.ofHatchAdder;
 
@@ -179,7 +180,7 @@ public class DE_Fusion_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<
         if (tInputs.length > 0) {
             long tVoltage = getMaxInputVoltage();
             byte tTier = (byte) Math.max(1, GT_Utility.getTier(tVoltage));
-            GT_Recipe tRecipe = EMT_RecipeAdder.sFusionCraftingRecipes.findRecipe(getBaseMetaTileEntity(), false, gregtech.api.enums.GT_Values.V[tTier], tFluids, tInputs);
+            GT_Recipe tRecipe = EMT_RecipeAdder.sFusionCraftingRecipes.findRecipe(getBaseMetaTileEntity(), false, V[tTier], tFluids, tInputs);
             if ((tRecipe != null) && (this.mTierCasing >= tRecipe.mSpecialValue) && (tRecipe.isRecipeInputEqual(true, null, tInputs))) {
                 calculateOverclockedNessMulti(tRecipe.mEUt, tRecipe.mDuration, 2, tVoltage);
                 if (this.mEUt > 0)
