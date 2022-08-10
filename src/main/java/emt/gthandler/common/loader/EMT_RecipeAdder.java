@@ -25,12 +25,16 @@ public class EMT_RecipeAdder {
         sFusionCraftingRecipes.addRecipe(true, inputs, outputs, null, fluidinputs, fluidoutputs, aDuration, aEUt, aTier);
     }
 
+    public static void addFusionCraftingRecipeNonOptimized(ItemStack[] inputs, FluidStack[] fluidinputs, ItemStack[] outputs, FluidStack[] fluidoutputs, int aDuration, int aEUt, int aTier) {
+        sFusionCraftingRecipes.addRecipe(false, inputs, outputs, null, fluidinputs, fluidoutputs, aDuration, aEUt, aTier);
+    }
     public static void addFusionCraftingRecipe(ItemStack[] inputs, ItemStack output, int aDuration, int aEUt, int aTier) {
         addFusionCraftingRecipe(inputs, null, new ItemStack[] { output }, null, aDuration, aEUt, aTier);
     }
 
-    public static void addFusionCraftingRecipe(ItemStack[] inputs, FluidStack fluidinput, ItemStack output, FluidStack fluidoutput, int aDuration, int aEUt, int aTier) {
-        addFusionCraftingRecipe(inputs, new FluidStack[] { fluidinput }, new ItemStack[] { output }, new FluidStack[] { fluidoutput }, aDuration, aEUt, aTier);
+    //Use this if you don't want your recipes quantity to be splitted
+    public static void addFusionCraftingRecipeNonOptimized(ItemStack[] inputs, FluidStack fluidinput, ItemStack output, FluidStack fluidoutput, int aDuration, int aEUt, int aTier) {
+        addFusionCraftingRecipeNonOptimized(inputs, new FluidStack[] { fluidinput }, new ItemStack[] { output }, new FluidStack[] { fluidoutput }, aDuration, aEUt, aTier);
     }
 
 
@@ -97,23 +101,23 @@ public class EMT_RecipeAdder {
         //Dragon Blood
         if(Loader.isModLoaded("miscutils")) {
 
-            addFusionCraftingRecipe(
+            addFusionCraftingRecipeNonOptimized(
                 new ItemStack[]{
                     new ItemStack(Blocks.dragon_egg, 0),
                     GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 64)},
-                Materials.Neutronium.getMolten(144),
+                Materials.Radon.getPlasma(144),
                 null,
                 new FluidStack(FluidRegistry.getFluid("molten.dragonblood"), 288),
-                1600, 1966080, 3);
+                4200, 1966080, 3);
 
-            addFusionCraftingRecipe(
+            addFusionCraftingRecipeNonOptimized(
                 new ItemStack[]{
                     GT_ModHandler.getModItem("witchery", "infinityegg", 0),
-                    GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 32)},
-                Materials.Infinity.getMolten(72),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 64)},
+                Materials.Radon.getPlasma(72),
                 null,
-                new FluidStack(FluidRegistry.getFluid("molten.dragonblood"), 576),
-                1200, 7864320, 4);
+                new FluidStack(FluidRegistry.getFluid("molten.dragonblood"), 432),
+                3600, 1966080, 3);
         }
     }
 
