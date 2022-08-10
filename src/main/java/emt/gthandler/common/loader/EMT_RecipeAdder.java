@@ -6,7 +6,10 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Recipe;
+import javafx.scene.paint.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.HashSet;
@@ -91,7 +94,24 @@ public class EMT_RecipeAdder {
             GT_ModHandler.getModItem("DraconicEvolution", "draconiumEnergyCore", 1, 1),
             2000, 122880, 3);
 
+        //Dragon Blood
+        addFusionCraftingRecipe(
+            new ItemStack[]{
+                new ItemStack(Blocks.dragon_egg, 0),
+                GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 64)},
+            Materials.Neutronium.getMolten(144),
+            null,
+            new FluidStack(FluidRegistry.getFluid("molten.dragonblood"), 288),
+            1600, 1966080, 3);
 
+        addFusionCraftingRecipe(
+            new ItemStack[]{
+                GT_ModHandler.getModItem("witchery", "infinityegg", 0),
+                GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 32)},
+            Materials.Infinity.getMolten(72),
+            null,
+            new FluidStack(FluidRegistry.getFluid("molten.dragonblood"), 576),
+            1200, 7864320, 4);
     }
 
 }
