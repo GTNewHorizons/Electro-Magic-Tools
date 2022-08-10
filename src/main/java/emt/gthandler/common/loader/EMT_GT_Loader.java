@@ -43,8 +43,9 @@ public class EMT_GT_Loader implements Runnable {
         LEG = new EMT_Large_Essentia_Gen(aIDoffset + TIERS + 1, "Large Essentia Generator", "Large Essentia Generator").getStackForm(1L);
 
         //Dragonblood recipe for magics haters
-        GT_Values.RA.addMixerRecipe(new ItemStack[]{new ItemStack(Blocks.dragon_egg, 1), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 32L)}, new FluidStack[]{Materials.Infinity.getMolten(288)}, new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 8L)}, new FluidStack[]{new FluidStack(FluidRegistry.getFluid("molten.dragonblood"), 288)}, 1000, 7864320);
-
+        if(Loader.isModLoaded("miscutils")) {
+            GT_Values.RA.addMixerRecipe(new ItemStack[]{new ItemStack(Blocks.dragon_egg, 1), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 32L)}, new FluidStack[]{Materials.Infinity.getMolten(288)}, new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 8L)}, new FluidStack[]{new FluidStack(FluidRegistry.getFluid("molten.dragonblood"), 288)}, 1000, 7864320);
+        }
         //Casing blocks
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.frameGt, Materials.Iridium, 1L), GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Osmiridium, 4L)}, Materials.SolderingAlloy.getMolten(576L), new ItemStack(EMT_CasingBlock.EMT_GT_BLOCKS[0], 1, 2), 100, (int) (GT_Values.V[5] - (GT_Values.V[5] / 10)));
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.frameGt, Materials.Indium, 1L), GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Tungsten, 4L)}, Materials.SolderingAlloy.getMolten(576L), new ItemStack(EMT_CasingBlock.EMT_GT_BLOCKS[0], 1, 3), 100, (int) (GT_Values.V[5] - (GT_Values.V[5] / 10)));
