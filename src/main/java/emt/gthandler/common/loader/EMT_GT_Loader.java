@@ -37,6 +37,7 @@ public class EMT_GT_Loader implements Runnable {
     @Override
     public void run() {
 		
+		/* check if indalloy is loaded */
 		Fluid solderIndalloy = FluidRegistry.getFluid("molten.indalloy140") != null ? FluidRegistry.getFluid("molten.indalloy140") : FluidRegistry.getFluid("molten.solderingalloy");
 
 
@@ -70,7 +71,7 @@ public class EMT_GT_Loader implements Runnable {
 			GT_Values.RA.addAssemblylineRecipe(new ItemStack(EMT_CasingBlock.EMT_GT_BLOCKS[0], 1, 8), 144000, new Object[]{
 				GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10783),
 				new ItemStack(EMT_CasingBlock.EMT_GT_BLOCKS[0], 1, 8),
-				GT_OreDictUnificator.get(OrePrefixes.plateDense, MaterialsBotania.GaiaSpirit, 8L),
+				GT_OreDictUnificator.get(OrePrefixes.plateDense, MaterialsBotania.GaiaSpirit, 1L),
 				ItemList.Casing_Coil_AwakenedDraconium.get(8L),
 				ItemList.Electric_Motor_UHV.get(8L),
 				ItemList.Robot_Arm_UHV.get(4L),
@@ -83,7 +84,7 @@ public class EMT_GT_Loader implements Runnable {
 				new FluidStack(solderIndalloy, 2880),
 				Materials.Void.getMolten(2880L),
 				Materials.DraconiumAwakened.getMolten(1440),
-			}, DECC, 1500, 2_000_000);
+			}, DECC, 1500, 8_000_000);
 		}
 		else{  /* keep old recipe to avoid dependency*/
 			GT_Values.RA.addAssemblylineRecipe(GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780), 144000, new Object[]{
