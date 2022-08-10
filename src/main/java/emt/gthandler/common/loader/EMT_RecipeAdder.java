@@ -1,12 +1,15 @@
 package emt.gthandler.common.loader;
 
+import cpw.mods.fml.common.Loader;
 import emt.init.EMTItems;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Recipe;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.HashSet;
@@ -22,12 +25,16 @@ public class EMT_RecipeAdder {
         sFusionCraftingRecipes.addRecipe(true, inputs, outputs, null, fluidinputs, fluidoutputs, aDuration, aEUt, aTier);
     }
 
+    public static void addFusionCraftingRecipeNonOptimized(ItemStack[] inputs, FluidStack[] fluidinputs, ItemStack[] outputs, FluidStack[] fluidoutputs, int aDuration, int aEUt, int aTier) {
+        sFusionCraftingRecipes.addRecipe(false, inputs, outputs, null, fluidinputs, fluidoutputs, aDuration, aEUt, aTier);
+    }
     public static void addFusionCraftingRecipe(ItemStack[] inputs, ItemStack output, int aDuration, int aEUt, int aTier) {
         addFusionCraftingRecipe(inputs, null, new ItemStack[] { output }, null, aDuration, aEUt, aTier);
     }
 
-    public static void addFusionCraftingRecipe(ItemStack[] inputs, FluidStack fluidinput, ItemStack output, FluidStack fluidoutput, int aDuration, int aEUt, int aTier) {
-        addFusionCraftingRecipe(inputs, new FluidStack[] { fluidinput }, new ItemStack[] { output }, new FluidStack[] { fluidoutput }, aDuration, aEUt, aTier);
+    //Use this if you don't want your recipes quantity to be splitted
+    public static void addFusionCraftingRecipeNonOptimized(ItemStack[] inputs, FluidStack fluidinput, ItemStack output, FluidStack fluidoutput, int aDuration, int aEUt, int aTier) {
+        addFusionCraftingRecipeNonOptimized(inputs, new FluidStack[] { fluidinput }, new ItemStack[] { output }, new FluidStack[] { fluidoutput }, aDuration, aEUt, aTier);
     }
 
 
@@ -91,7 +98,27 @@ public class EMT_RecipeAdder {
             GT_ModHandler.getModItem("DraconicEvolution", "draconiumEnergyCore", 1, 1),
             2000, 122880, 3);
 
+        //Dragon Blood
+        if(Loader.isModLoaded("miscutils")) {
 
+            addFusionCraftingRecipeNonOptimized(
+                new ItemStack[]{
+                    new ItemStack(Blocks.dragon_egg, 0),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 64)},
+                Materials.Radon.getPlasma(144),
+                null,
+                new FluidStack(FluidRegistry.getFluid("molten.dragonblood"), 288),
+                4200, 1966080, 3);
+
+            addFusionCraftingRecipeNonOptimized(
+                new ItemStack[]{
+                    GT_ModHandler.getModItem("witchery", "infinityegg", 0),
+                    GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 64)},
+                Materials.Radon.getPlasma(72),
+                null,
+                new FluidStack(FluidRegistry.getFluid("molten.dragonblood"), 432),
+                3600, 1966080, 3);
+        }
     }
 
 }

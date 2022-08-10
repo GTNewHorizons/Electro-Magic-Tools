@@ -13,6 +13,7 @@ import gregtech.api.enums.MaterialsBotania;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -47,7 +48,10 @@ public class EMT_GT_Loader implements Runnable {
 
         LEG = new EMT_Large_Essentia_Gen(aIDoffset + TIERS + 1, "Large Essentia Generator", "Large Essentia Generator").getStackForm(1L);
 
-
+        //Dragonblood recipe for magics haters
+        if(Loader.isModLoaded("miscutils")) {
+            GT_Values.RA.addMixerRecipe(new ItemStack[]{new ItemStack(Blocks.dragon_egg, 1), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 64L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.DraconiumAwakened, 64L)}, new FluidStack[]{Materials.Radon.getPlasma(144)}, new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 8L)}, new FluidStack[]{new FluidStack(FluidRegistry.getFluid("molten.dragonblood"), 288)}, 14000, 1966080);
+        }
         //Casing blocks
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.frameGt, Materials.Iridium, 1L), GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Osmiridium, 4L)}, Materials.SolderingAlloy.getMolten(576L), new ItemStack(EMT_CasingBlock.EMT_GT_BLOCKS[0], 1, 2), 100, (int) (GT_Values.V[5] - (GT_Values.V[5] / 10)));
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{GT_OreDictUnificator.get(OrePrefixes.frameGt, Materials.Indium, 1L), GT_OreDictUnificator.get(OrePrefixes.stickLong, Materials.Tungsten, 4L)}, Materials.SolderingAlloy.getMolten(576L), new ItemStack(EMT_CasingBlock.EMT_GT_BLOCKS[0], 1, 3), 100, (int) (GT_Values.V[5] - (GT_Values.V[5] / 10)));
