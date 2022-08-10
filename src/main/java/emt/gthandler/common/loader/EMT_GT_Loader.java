@@ -9,11 +9,14 @@ import emt.tile.GT_MetaTileEntity_ResearchCompleter;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
+import gregtech.api.enums.MaterialsBotania;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.common.config.ConfigBlocks;
@@ -33,6 +36,9 @@ public class EMT_GT_Loader implements Runnable {
 
     @Override
     public void run() {
+		
+		Fluid solderIndalloy = FluidRegistry.getFluid("molten.indalloy140") != null ? FluidRegistry.getFluid("molten.indalloy140") : FluidRegistry.getFluid("molten.solderingalloy");
+
 
         for (int i = 0; i < TIERS; i++) {
             EHatch[i] = new EssentiaHatch(aIDoffset + i, "Essentia Hatch " + GT_Values.VN[i], "Essentia Hatch " + GT_Values.VN[i], i).getStackForm(1L);
@@ -57,21 +63,41 @@ public class EMT_GT_Loader implements Runnable {
         GT_Values.RA.addAssemblerRecipe(new ItemStack[]{new ItemStack(EMT_CasingBlock.EMT_GT_BLOCKS[0], 1, 11), GT_OreDictUnificator.get(OrePrefixes.plateDense, Materials.Infinity, 6L), GT_ModHandler.getModItem("DraconicEvolution", "chaoticCore", 4, 0)}, Materials.Void.getMolten(18432L), new ItemStack(EMT_CasingBlock.EMT_GT_BLOCKS[0], 1, 12), 12000, 31457280);//uiv, use the multi
 
         EMT_RecipeAdder.Run();
-
-        DECC = new DE_Fusion_Crafter(5001, "de_fusion_crafter", "Draconic Evolution Fusion Crafter").getStackForm(1L);
-
-        GT_Values.RA.addAssemblylineRecipe(GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780), 144000, new Object[]{
-            GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780),
-            ItemList.Robot_Arm_LuV.get(2L),
-            ItemList.Electric_Motor_LuV.get(2L),
-            ItemList.Field_Generator_LuV.get(1L),
-            new Object[]{OrePrefixes.circuit.get(Materials.Master), 2},
-            ItemList.Casing_Coil_Naquadah.get(8L),
-        }, new FluidStack[]{
-            Materials.SolderingAlloy.getMolten(2304L),
-            Materials.Thaumium.getMolten(1440L),
-        }, DECC, 1500, 16384);
-
+		
+		DECC = new DE_Fusion_Crafter(5001, "de_fusion_crafter", "Draconic Evolution Fusion Crafter").getStackForm(1L);
+		
+		if (Loader.isModLoaded("AWWayofTime")){
+			GT_Values.RA.addAssemblylineRecipe(new ItemStack(EMT_CasingBlock.EMT_GT_BLOCKS[0], 1, 8), 144000, new Object[]{
+				GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10783),
+				new ItemStack(EMT_CasingBlock.EMT_GT_BLOCKS[0], 1, 8),
+				GT_OreDictUnificator.get(OrePrefixes.plateDense, MaterialsBotania.GaiaSpirit, 8L),
+				ItemList.Casing_Coil_AwakenedDraconium.get(8L),
+				ItemList.Electric_Motor_UHV.get(8L),
+				ItemList.Robot_Arm_UHV.get(4L),
+				new Object[]{OrePrefixes.circuit.get(Materials.Infinite), 4},
+				ItemList.Gravistar.get(4, new Object(){}),
+				GT_ModHandler.getModItem("Thaumcraft", "ItemEldritchObject", 1, 3),
+				GT_ModHandler.getModItem("AWWayofTime", "bloodMagicBaseItems", 8, 29),
+				GT_ModHandler.getModItem("AWWayofTime", "bloodMagicBaseItems", 8, 28),
+			}, new FluidStack[]{
+				new FluidStack(solderIndalloy, 2880),
+				Materials.Void.getMolten(2880L),
+				Materials.DraconiumAwakened.getMolten(1440),
+			}, DECC, 1500, 2_000_000);
+		}
+		else{  /* keep old recipe to avoid dependency*/
+			GT_Values.RA.addAssemblylineRecipe(GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780), 144000, new Object[]{
+				GT_ModHandler.getModItem("gregtech", "gt.blockmachines", 1, 10780),
+				ItemList.Robot_Arm_LuV.get(2L),
+				ItemList.Electric_Motor_LuV.get(2L),
+				ItemList.Field_Generator_LuV.get(1L),
+				new Object[]{OrePrefixes.circuit.get(Materials.Master), 2},
+				ItemList.Casing_Coil_Naquadah.get(8L),
+			}, new FluidStack[]{
+				Materials.SolderingAlloy.getMolten(2304L),
+				Materials.Thaumium.getMolten(1440L),
+			}, DECC, 1500, 16384);
+		}
 
         for (int i = 0; i < ItemList.HATCHES_INPUT.length; i++) {
             GT_Values.RA.addAssemblerRecipe(new ItemStack[]{ItemList.HATCHES_INPUT[i].get(1L), new ItemStack(ConfigBlocks.blockTube, 1, 4)}, Materials.Thaumium.getMolten(288L), EHatch[i], 100, (int) (GT_Values.V[i] - (GT_Values.V[i] / 10)));
