@@ -181,7 +181,7 @@ public class DE_Fusion_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<
             long tVoltage = getMaxInputVoltage();
             byte tTier = (byte) Math.max(1, GT_Utility.getTier(tVoltage));
             GT_Recipe tRecipe = EMT_RecipeAdder.sFusionCraftingRecipes.findRecipe(getBaseMetaTileEntity(), false, V[tTier], tFluids, tInputs);
-            if ((tRecipe != null) && (this.mTierCasing >= tRecipe.mSpecialValue) && (tRecipe.isRecipeInputEqual(true, null, tInputs))) {
+            if ((tRecipe != null) && (this.mTierCasing >= tRecipe.mSpecialValue) && (tRecipe.isRecipeInputEqual(true, tFluids, tInputs))) {
                 calculateOverclockedNessMulti(tRecipe.mEUt, tRecipe.mDuration, 2, tVoltage);
                 if (this.mEUt > 0)
                     this.mEUt = (-this.mEUt);
