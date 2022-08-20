@@ -14,11 +14,8 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.*;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
@@ -111,11 +108,11 @@ public class ItemMaterials extends Item {
     public void addInformation(ItemStack stack, EntityPlayer player, List result, boolean advanced) {
         switch (stack.getItemDamage()) {
             case 16:
-                result.add("Schematics can be found in Pluto Dungeons");
+                result.add(EnumChatFormatting.GOLD + "Schematics can be found in Pluto Dungeons");
                 break;
         }
     }
-    
+
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ri) {
         this.icon[0] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/clusteruranium");
