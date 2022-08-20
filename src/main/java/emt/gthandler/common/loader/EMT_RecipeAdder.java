@@ -5,6 +5,8 @@ import static gregtech.api.enums.GT_Values.RES_PATH_GUI;
 
 import cpw.mods.fml.common.Loader;
 import emt.init.EMTItems;
+import gregtech.api.enums.GT_Values;
+import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_ModHandler;
@@ -22,8 +24,8 @@ public class EMT_RecipeAdder {
             "emt.recipe.fusioncrafting",
             "Draconic Evolution Fusion Crafter",
             null,
-            RES_PATH_GUI + "basicmachines/Default",
-            6,
+            RES_PATH_GUI + "basicmachines/FusionCrafter",
+            9,
             1,
             1,
             0,
@@ -86,55 +88,81 @@ public class EMT_RecipeAdder {
 
         // CORES
 
-        addFusionCraftingRecipe(
+        addFusionCraftingRecipeNonOptimized(
                 new ItemStack[] {
                     GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Osmiridium, 4),
                     GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Ichorium, 1),
-                    GT_OreDictUnificator.get(OrePrefixes.gem, Materials.EnderEye, 1),
+                    ItemList.QuantumEye.get(1L),
                     new ItemStack(EMTItems.itemEMTItems, 0, 16)
                 },
+                Materials.Sunnarium.getMolten(1440),
                 GT_ModHandler.getModItem("DraconicEvolution", "draconicCore", 1, 0),
+                GT_Values.NF,
                 400,
-                30720,
+                500000,
                 1);
 
-        addFusionCraftingRecipe(
+        addFusionCraftingRecipeNonOptimized(
                 new ItemStack[] {
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Draconium, 6),
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Neutronium, 2),
+                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Draconium, 8),
+                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Neutronium, 4),
                     GT_ModHandler.getModItem("DraconicEvolution", "draconicCore", 4, 0),
-                    GT_OreDictUnificator.get(OrePrefixes.gem, Materials.NetherStar, 1),
-                    new ItemStack(EMTItems.itemEMTItems, 0, 17)
+                    ItemList.QuantumStar.get(1L),
+                    new ItemStack(EMTItems.itemEMTItems, 0, 17),
                 },
+                Materials.Neutronium.getMolten(1440),
                 GT_ModHandler.getModItem("DraconicEvolution", "wyvernCore", 1, 0),
+                GT_Values.NF,
                 800,
-                65536,
+                2000000,
                 2);
-
-        addFusionCraftingRecipe(
-                new ItemStack[] {
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.DraconiumAwakened, 8),
+        if (Loader.isModLoaded("supersolarpanel")) {
+            addFusionCraftingRecipeNonOptimized(
+                new ItemStack[]{
+                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.DraconiumAwakened, 12),
                     GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Draconium, 4),
                     GT_ModHandler.getModItem("DraconicEvolution", "wyvernCore", 4, 0),
-                    GT_ModHandler.getModItem("dreamcraft", "ManyullynCrystal", 1, 0),
+                    GT_ModHandler.getModItem("supersolarpanel", "enderquantumcomponent", 1, 0),
                     new ItemStack(EMTItems.itemEMTItems, 0, 18)
                 },
+                Materials.Infinity.getMolten(1440),
                 GT_ModHandler.getModItem("DraconicEvolution", "awakenedCore", 1, 0),
+                GT_Values.NF,
                 1600,
-                122880,
+                8000000,
                 3);
+        }
+        else
+        {
+            addFusionCraftingRecipeNonOptimized(
+            new ItemStack[]{
+                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.DraconiumAwakened, 12),
+                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Draconium, 4),
+                GT_ModHandler.getModItem("DraconicEvolution", "wyvernCore", 4, 0),
+                GT_ModHandler.getModItem("dreamcraft", "item.ManyullynCrystal", 1, 0),
+                new ItemStack(EMTItems.itemEMTItems, 0, 18)
+            },
+            Materials.Infinity.getMolten(1440),
+            GT_ModHandler.getModItem("DraconicEvolution", "awakenedCore", 1, 0),
+            GT_Values.NF,
+            1600,
+            8000000,
+            3);
+        }
 
-        addFusionCraftingRecipe(
+        addFusionCraftingRecipeNonOptimized(
                 new ItemStack[] {
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BlackPlutonium, 12),
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.DraconiumAwakened, 6),
+                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.DraconiumAwakened, 16),
+                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BlackPlutonium, 4),
                     GT_ModHandler.getModItem("DraconicEvolution", "awakenedCore", 4, 0),
-                    GT_ModHandler.getModItem("DraconicEvolution", "chaosShard", 1, 0),
+                    GT_ModHandler.getModItem("DraconicEvolution", "chaosFragment", 2, 2),
                     new ItemStack(EMTItems.itemEMTItems, 0, 19)
                 },
+                Materials.SpaceTime.getMolten(1440),
                 GT_ModHandler.getModItem("DraconicEvolution", "chaoticCore", 1, 0),
+                GT_Values.NF,
                 3200,
-                500000,
+                24000000,
                 4);
 
         // ENERGY CORES
@@ -142,14 +170,14 @@ public class EMT_RecipeAdder {
         addFusionCraftingRecipe(
                 new ItemStack[] {
                     GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Draconium, 8),
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.RedstoneAlloy, 4),
+                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.StellarAlloy, 4),
                     GT_ModHandler.getModItem("AdvancedSolarPanel", "asp_crafting_items", 4, 1),
                     GT_ModHandler.getModItem("DraconicEvolution", "draconicCore", 1, 0),
                     new ItemStack(EMTItems.itemEMTItems, 0, 17)
                 },
                 GT_ModHandler.getModItem("DraconicEvolution", "draconiumEnergyCore", 1, 0),
                 1000,
-                65536,
+                500000,
                 2);
 
         addFusionCraftingRecipe(
@@ -162,7 +190,7 @@ public class EMT_RecipeAdder {
                 },
                 GT_ModHandler.getModItem("DraconicEvolution", "draconiumEnergyCore", 1, 1),
                 2000,
-                122880,
+                2000000,
                 3);
 
         // Dragon Blood
