@@ -107,6 +107,15 @@ public class ItemMaterials extends Item {
         return "item." + EMT.MOD_ID + "." + name;
     }
 
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer player, List result, boolean advanced) {
+        switch (stack.getItemDamage()) {
+            case 16:
+                result.add("Schematics can be found in Pluto Dungeons");
+                break;
+        }
+    }
+    
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ri) {
         this.icon[0] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/clusteruranium");
