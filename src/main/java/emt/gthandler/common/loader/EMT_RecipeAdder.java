@@ -116,13 +116,13 @@ public class EMT_RecipeAdder {
                 800,
                 2000000,
                 2);
-
-        addFusionCraftingRecipeNonOptimized(
-                new ItemStack[] {
+        if (Loader.isModLoaded("supersolarpanel")) {
+            addFusionCraftingRecipeNonOptimized(
+                new ItemStack[]{
                     GT_OreDictUnificator.get(OrePrefixes.plate, Materials.DraconiumAwakened, 12),
                     GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Draconium, 4),
                     GT_ModHandler.getModItem("DraconicEvolution", "wyvernCore", 4, 0),
-                    GT_ModHandler.getModItem("dreamcraft", "ManyullynCrystal", 1, 0),
+                    GT_ModHandler.getModItem("supersolarpanel", "enderquantumcomponent", 1, 0),
                     new ItemStack(EMTItems.itemEMTItems, 0, 18)
                 },
                 Materials.Infinity.getMolten(1440),
@@ -131,13 +131,31 @@ public class EMT_RecipeAdder {
                 1600,
                 8000000,
                 3);
+        }
+        else
+        {
+            addFusionCraftingRecipeNonOptimized(
+            new ItemStack[]{
+                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.DraconiumAwakened, 12),
+                GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Draconium, 4),
+                GT_ModHandler.getModItem("DraconicEvolution", "wyvernCore", 4, 0),
+                GT_ModHandler.getModItem("dreamcraft", "item.ManyullynCrystal", 1, 0),
+                new ItemStack(EMTItems.itemEMTItems, 0, 18)
+            },
+            Materials.Infinity.getMolten(1440),
+            GT_ModHandler.getModItem("DraconicEvolution", "awakenedCore", 1, 0),
+            GT_Values.NF,
+            1600,
+            8000000,
+            3);
+        }
 
         addFusionCraftingRecipeNonOptimized(
                 new ItemStack[] {
-                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.DraconiumAwakened, 12),
+                    GT_OreDictUnificator.get(OrePrefixes.plate, Materials.DraconiumAwakened, 16),
                     GT_OreDictUnificator.get(OrePrefixes.plate, Materials.BlackPlutonium, 4),
                     GT_ModHandler.getModItem("DraconicEvolution", "awakenedCore", 4, 0),
-                    GT_ModHandler.getModItem("DraconicEvolution", "chaosShard", 1, 0),
+                    GT_ModHandler.getModItem("DraconicEvolution", "chaosFragment", 2, 2),
                     new ItemStack(EMTItems.itemEMTItems, 0, 19)
                 },
                 Materials.SpaceTime.getMolten(1440),
