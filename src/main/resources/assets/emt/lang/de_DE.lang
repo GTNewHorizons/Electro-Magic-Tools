@@ -41,6 +41,7 @@ tooltip.EMT.output.double.nether=wenn es im Nether steht
 tooltip.EMT.output.double.lava=wenn mit Ignis Centivis befüllt
 tooltip.EMT.output.double.half.height=höhere Leistung in Höhen (x1 bei y=5, x3 bei y=220)
 tooltip.EMT.output.double.half.low=höhere Leistung in Tiefen (x1 bei y=220, x3 bei y=5)
+tooltip.EMT.draconicSchematic=Diese Schematik kann man in Pluto Dungeons finden
 
 #=============Entity Names=============
 entity.EMT.laser.name=Laser
