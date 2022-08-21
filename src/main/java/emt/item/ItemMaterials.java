@@ -108,7 +108,7 @@ public class ItemMaterials extends Item {
     public void addInformation(ItemStack stack, EntityPlayer player, List result, boolean advanced) {
         switch (stack.getItemDamage()) {
             case 16:
-                result.add(EnumChatFormatting.GOLD + "Schematics can be found in Pluto Dungeons");
+                result.add(EnumChatFormatting.GOLD + StatCollector.translateToLocal("tooltip.EMT.draconicSchematic"));
                 break;
         }
     }
