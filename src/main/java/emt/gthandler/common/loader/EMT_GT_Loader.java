@@ -25,7 +25,7 @@ import thaumcraft.common.config.ConfigItems;
 
 public class EMT_GT_Loader implements Runnable {
 
-    public static final int TIERS = GT_Values.VN.length;
+    public static final int TIERS = GT_Values.VN.length - 1;
     public static int aIDoffset = 13000 - TIERS - 1;
     public static ItemStack[] EHatch = new ItemStack[TIERS];
     public static ItemStack LEG;
@@ -35,7 +35,7 @@ public class EMT_GT_Loader implements Runnable {
     @Override
     public void run() {
 
-        for (int i = 0; i < TIERS - 1; i++) {
+        for (int i = 0; i < TIERS; i++) {
             EHatch[i] = new EssentiaHatch(
                             aIDoffset + i, "Essentia Hatch " + GT_Values.VN[i], "Essentia Hatch " + GT_Values.VN[i], i)
                     .getStackForm(1L);
