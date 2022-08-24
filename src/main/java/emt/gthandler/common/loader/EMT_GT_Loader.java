@@ -35,7 +35,7 @@ public class EMT_GT_Loader implements Runnable {
     @Override
     public void run() {
 
-        for (int i = 0; i < TIERS; i++) {
+        for (int i = 0; i < TIERS - 1; i++) {
             EHatch[i] = new EssentiaHatch(
                             aIDoffset + i, "Essentia Hatch " + GT_Values.VN[i], "Essentia Hatch " + GT_Values.VN[i], i)
                     .getStackForm(1L);
