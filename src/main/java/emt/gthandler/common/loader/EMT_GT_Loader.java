@@ -26,7 +26,7 @@ import thaumcraft.common.config.ConfigItems;
 public class EMT_GT_Loader implements Runnable {
 
     public static final int TIERS = GT_Values.VN.length - 1;
-    public static int aIDoffset = 13000 - TIERS - 1;
+    public static int aIDoffset = 13000 - GT_Values.VN.length - 1;
     public static ItemStack[] EHatch = new ItemStack[TIERS];
     public static ItemStack LEG;
     public static ItemStack DECC;
@@ -41,7 +41,8 @@ public class EMT_GT_Loader implements Runnable {
                     .getStackForm(1L);
         }
 
-        LEG = new EMT_Large_Essentia_Gen(aIDoffset + TIERS + 1, "Large Essentia Generator", "Large Essentia Generator")
+        LEG = new EMT_Large_Essentia_Gen(
+                        aIDoffset + GT_Values.VN.length + 1, "Large Essentia Generator", "Large Essentia Generator")
                 .getStackForm(1L);
 
         // Dragonblood recipe for magics haters
@@ -200,7 +201,7 @@ public class EMT_GT_Loader implements Runnable {
         }
 
         ResearchMultiblock = new GT_MetaTileEntity_ResearchCompleter(
-                        aIDoffset + TIERS + 2, "Research Completer", "Research Completer")
+                        aIDoffset + GT_Values.VN.length + 2, "Research Completer", "Research Completer")
                 .getStackForm(1L);
     }
 
