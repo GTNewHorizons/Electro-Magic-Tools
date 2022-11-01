@@ -1,6 +1,7 @@
 package emt.item.block;
 
 import static emt.util.EMTTextHelper.localize;
+import static gregtech.api.util.GT_Utility.formatNumbers;
 
 import emt.EMT;
 import emt.block.BlockBaseContainer;
@@ -52,121 +53,121 @@ public class ItemBlockSolars extends ItemBlock {
             if (instance == 0) {
                 switch (itemstack.getItemDamage()) {
                     case 0: {
-                        list.add(EMTConfigHandler.compressedSolarOutput + localize("tooltip.EMT.euPerTick"));
+                        list.add(formatNumbers(EMTConfigHandler.compressedSolarOutput) + localize("tooltip.EMT.euPerTick"));
                         break;
                     }
                     case 1: {
-                        list.add(EMTConfigHandler.doubleCompressedSolarOutput + localize("tooltip.EMT.euPerTick"));
+                        list.add(formatNumbers(EMTConfigHandler.doubleCompressedSolarOutput) + localize("tooltip.EMT.euPerTick"));
                         break;
                     }
                     case 2: {
-                        list.add(EMTConfigHandler.tripleCompressedSolarOutput + localize("tooltip.EMT.euPerTick"));
+                        list.add(formatNumbers(EMTConfigHandler.tripleCompressedSolarOutput) + localize("tooltip.EMT.euPerTick"));
                         break;
                     }
                     case 3: { // aqua
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.compressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * EMTConfigHandler.compressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.underwater"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (3F * EMTConfigHandler.compressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(3F * EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.raining"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (6F * EMTConfigHandler.compressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(6F * EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.thunder"));
                         break;
                     }
                     case 4: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.doubleCompressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.doubleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * EMTConfigHandler.doubleCompressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * EMTConfigHandler.doubleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.underwater"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (3F * EMTConfigHandler.doubleCompressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(3F * EMTConfigHandler.doubleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.raining"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (6F * EMTConfigHandler.doubleCompressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(6F * EMTConfigHandler.doubleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.thunder"));
                         break;
                     }
                     case 5: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.tripleCompressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.tripleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * EMTConfigHandler.tripleCompressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * EMTConfigHandler.tripleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.underwater"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (3F * EMTConfigHandler.tripleCompressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(3F * EMTConfigHandler.tripleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.raining"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (6F * EMTConfigHandler.tripleCompressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(6F * EMTConfigHandler.tripleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.thunder"));
                         break;
                     }
 
                     case 6: { // dark
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (0.75F * EMTConfigHandler.compressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(0.75F * EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.day"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * EMTConfigHandler.compressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.night"));
                         break;
                     }
                     case 7: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (0.75F * EMTConfigHandler.doubleCompressedSolarOutput)
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(0.75F * EMTConfigHandler.doubleCompressedSolarOutput)
                                 + " " + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.day"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * EMTConfigHandler.doubleCompressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * EMTConfigHandler.doubleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.night"));
                         break;
                     }
                     case 8: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (0.75F * EMTConfigHandler.tripleCompressedSolarOutput)
+                                + EMTTextHelper.LIGHT_GRAY +formatNumbers (0.75F * EMTConfigHandler.tripleCompressedSolarOutput)
                                 + " " + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.day"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * EMTConfigHandler.tripleCompressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * EMTConfigHandler.tripleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.night"));
                         break;
                     }
                     case 9: { // ordo
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * EMTConfigHandler.compressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.day"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (0.75F * EMTConfigHandler.compressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(0.75F * EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.night"));
                         break;
                     }
                     case 10: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * EMTConfigHandler.doubleCompressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * EMTConfigHandler.doubleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.day"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (0.75F * EMTConfigHandler.doubleCompressedSolarOutput)
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(0.75F * EMTConfigHandler.doubleCompressedSolarOutput)
                                 + " " + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.night"));
                         break;
                     }
 
                     case 11: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * EMTConfigHandler.tripleCompressedSolarOutput) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * EMTConfigHandler.tripleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.day"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (0.75F * EMTConfigHandler.tripleCompressedSolarOutput)
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(0.75F * EMTConfigHandler.tripleCompressedSolarOutput)
                                 + " " + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.night"));
                         break;
                     }
                     case 12: { // fire
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.compressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.triple") + " "
@@ -178,7 +179,7 @@ public class ItemBlockSolars extends ItemBlock {
                     }
                     case 13: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.doubleCompressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.doubleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.triple") + " "
@@ -190,7 +191,7 @@ public class ItemBlockSolars extends ItemBlock {
                     }
                     case 14: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.tripleCompressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.tripleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.triple") + " "
@@ -202,7 +203,7 @@ public class ItemBlockSolars extends ItemBlock {
                     }
                     case 15: { // aer
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.compressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.double.half.height"));
@@ -217,7 +218,7 @@ public class ItemBlockSolars extends ItemBlock {
                 switch (itemstack.getItemDamage()) {
                     case 0: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.doubleCompressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.doubleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.double.half.height"));
@@ -225,7 +226,7 @@ public class ItemBlockSolars extends ItemBlock {
                     }
                     case 1: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.tripleCompressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.tripleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.double.half.height"));
@@ -233,7 +234,7 @@ public class ItemBlockSolars extends ItemBlock {
                     }
                     case 2: { // terra
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.compressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.compressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.double.half.low"));
@@ -241,7 +242,7 @@ public class ItemBlockSolars extends ItemBlock {
                     }
                     case 3: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.doubleCompressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.doubleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.double.half.low"));
@@ -249,7 +250,7 @@ public class ItemBlockSolars extends ItemBlock {
                     }
                     case 4: {
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + EMTConfigHandler.tripleCompressedSolarOutput + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(EMTConfigHandler.tripleCompressedSolarOutput) + " "
                                 + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.double.half.low"));
@@ -264,48 +265,48 @@ public class ItemBlockSolars extends ItemBlock {
                 switch (te.aspect) {
                     case 1:
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * te.output) + " " + localize("tooltip.EMT.euPerTick")
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * te.output) + " " + localize("tooltip.EMT.euPerTick")
                                 + " " + localize("tooltip.EMT.day"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (0.75F * te.output) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(0.75F * te.output) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.night"));
                         break;
                     case 2:
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (0.75F * te.output) + " "
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(0.75F * te.output) + " "
                                 + localize("tooltip.EMT.euPerTick") + " " + localize("tooltip.EMT.day"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * te.output) + " " + localize("tooltip.EMT.euPerTick")
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * te.output) + " " + localize("tooltip.EMT.euPerTick")
                                 + " " + localize("tooltip.EMT.night"));
                         break;
                     case 3:
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + te.output + " " + localize("tooltip.EMT.euPerTick"));
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(te.output) + " " + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.double.half.height"));
                         break;
                     case 4:
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + te.output + " " + localize("tooltip.EMT.euPerTick"));
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(te.output) + " " + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.double.half.low"));
                         break;
                     case 5:
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + te.output + " " + localize("tooltip.EMT.euPerTick"));
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(te.output) + " " + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (2F * te.output) + " " + localize("tooltip.EMT.euPerTick")
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(2F * te.output) + " " + localize("tooltip.EMT.euPerTick")
                                 + " " + localize("tooltip.EMT.underwater"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (3F * te.output) + " " + localize("tooltip.EMT.euPerTick")
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(3F * te.output) + " " + localize("tooltip.EMT.euPerTick")
                                 + " " + localize("tooltip.EMT.raining"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + (6F * te.output) + " " + localize("tooltip.EMT.euPerTick")
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(6F * te.output) + " " + localize("tooltip.EMT.euPerTick")
                                 + " " + localize("tooltip.EMT.thunder"));
                         break;
                     case 6:
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + te.output + " " + localize("tooltip.EMT.euPerTick"));
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(te.output) + " " + localize("tooltip.EMT.euPerTick"));
                         list.add(EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect") + ": "
                                 + EMTTextHelper.LIGHT_GRAY + localize("tooltip.EMT.output.triple") + " "
                                 + localize("tooltip.EMT.output.double.lava"));
@@ -315,12 +316,12 @@ public class ItemBlockSolars extends ItemBlock {
                         break;
                     default:
                         list.add(EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions") + ": "
-                                + EMTTextHelper.LIGHT_GRAY + te.output + " " + localize("tooltip.EMT.euPerTick"));
+                                + EMTTextHelper.LIGHT_GRAY + formatNumbers(te.output) + " " + localize("tooltip.EMT.euPerTick"));
                         break;
                 }
             }
             list.add(EMTTextHelper.BRIGHT_BLUE + StatCollector.translateToLocal("emt.OutputMax") + " "
-                    + EMTTextHelper.LIGHT_GRAY + te.calculateMaxVoltAmp()[0] + "EU/t @ " + te.calculateMaxVoltAmp()[1]
+                    + EMTTextHelper.LIGHT_GRAY + formatNumbers(te.calculateMaxVoltAmp()[0]) + "EU/t @ " + formatNumbers(te.calculateMaxVoltAmp()[1])
                     + "A");
         } else list.add(StatCollector.translateToLocal("emt.PressShift"));
     }
