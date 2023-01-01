@@ -4,6 +4,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
+import emt.init.EMTItems;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTTextHelper;
 import ic2.api.item.ElectricItem;
@@ -29,6 +30,7 @@ import thaumcraft.api.IRunicArmor;
 import thaumcraft.api.IVisDiscountGear;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.items.armor.Hover;
 
 public class ItemElectricBootsTraveller extends ItemArmor
         implements IRunicArmor, IElectricItem, IVisDiscountGear, IMetalArmor, ISpecialArmor {
@@ -37,7 +39,8 @@ public class ItemElectricBootsTraveller extends ItemArmor
     public int energyPerDamage = 1000;
     public int visDiscount = 2;
     public float speedBonus = 0.055F;
-    public float jumpBonus = 0.3F;
+    // constant from Thaumcraft's EventHandlerEntity#playerJumps for basic Traveller Boots
+    public float jumpBonus = 0.2750000059604645F;
     public double transferLimit = 100;
 
     public ItemElectricBootsTraveller(ArmorMaterial material, int par3, int par4) {
@@ -117,19 +120,27 @@ public class ItemElectricBootsTraveller extends ItemArmor
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        if ((!player.capabilities.isFlying) && (player.moveForward > 0.0F)) {
-            if ((player.worldObj.isRemote) && (!player.isSneaking())) {
-                if (!Thaumcraft.instance.entityEventHandler.prevStep.containsKey(
-                        Integer.valueOf(player.getEntityId()))) {
-                    Thaumcraft.instance.entityEventHandler.prevStep.put(
-                            Integer.valueOf(player.getEntityId()), Float.valueOf(player.stepHeight));
+        if (!player.capabilities.isFlying && player.moveForward > 0.0F) {
+            if (player.worldObj.isRemote && !player.isSneaking()) {
+                if (!Thaumcraft.instance.entityEventHandler.prevStep.containsKey(player.getEntityId())) {
+                    Thaumcraft.instance.entityEventHandler.prevStep.put(player.getEntityId(), player.stepHeight);
                 }
                 player.stepHeight = 1.0F;
             }
 
-            if (((player.onGround || player.capabilities.isFlying) && player.moveForward > 0F)) {
-                player.moveFlying(0F, 1F, speedBonus);
-                player.jumpMovementFactor = jumpBonus;
+            if(player.onGround) {
+                float bonus = speedBonus;
+                if(player.isInWater()) {
+                    bonus /= 4.0F;
+                }
+
+                player.moveFlying(0.0F, 1.0F, bonus);
+            } else if(Hover.getHover(player.getEntityId())) {
+                // Base ItemBootsTraveller jumpBonus equals to jumpBonus of Electric Boots,
+                // so any other boots factor can be calculated via proportion method
+                player.jumpMovementFactor = 0.03F / ((ItemElectricBootsTraveller) EMTItems.electricBootsTraveller).jumpBonus * jumpBonus;
+            } else {
+                player.jumpMovementFactor = 0.05F / ((ItemElectricBootsTraveller) EMTItems.electricBootsTraveller).jumpBonus * jumpBonus;
             }
         }
     }
