@@ -128,19 +128,21 @@ public class ItemElectricBootsTraveller extends ItemArmor
                 player.stepHeight = 1.0F;
             }
 
-            if(player.onGround) {
+            if (player.onGround) {
                 float bonus = speedBonus;
-                if(player.isInWater()) {
+                if (player.isInWater()) {
                     bonus /= 4.0F;
                 }
 
                 player.moveFlying(0.0F, 1.0F, bonus);
-            } else if(Hover.getHover(player.getEntityId())) {
+            } else if (Hover.getHover(player.getEntityId())) {
                 // Base ItemBootsTraveller jumpBonus equals to jumpBonus of Electric Boots,
                 // so any other boots factor can be calculated via proportion method
-                player.jumpMovementFactor = 0.03F / ((ItemElectricBootsTraveller) EMTItems.electricBootsTraveller).jumpBonus * jumpBonus;
+                player.jumpMovementFactor =
+                        0.03F / ((ItemElectricBootsTraveller) EMTItems.electricBootsTraveller).jumpBonus * jumpBonus;
             } else {
-                player.jumpMovementFactor = 0.05F / ((ItemElectricBootsTraveller) EMTItems.electricBootsTraveller).jumpBonus * jumpBonus;
+                player.jumpMovementFactor =
+                        0.05F / ((ItemElectricBootsTraveller) EMTItems.electricBootsTraveller).jumpBonus * jumpBonus;
             }
         }
     }
