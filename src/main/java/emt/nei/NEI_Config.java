@@ -3,7 +3,6 @@ package emt.nei;
 import codechicken.nei.api.IConfigureNEI;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import emt.EMT;
-import emt.gthandler.common.loader.EMT_RecipeAdder;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class NEI_Config implements IConfigureNEI {
@@ -13,7 +12,6 @@ public class NEI_Config implements IConfigureNEI {
     @Override
     public void loadConfig() {
         NEI_Config.isAdded = false;
-        new FusionCraftingHandler(EMT_RecipeAdder.sFusionCraftingRecipes);
         NEI_Config.isAdded = true;
     }
 
@@ -28,7 +26,7 @@ public class NEI_Config implements IConfigureNEI {
     }
 
     public static void Init() {
-        sendHandler("emt.nei.FusionCraftingHandler", "gregtech:gt.blockmachines:5001");
+        sendHandler("emt.recipe.fusioncrafting", "gregtech:gt.blockmachines:5001");
         sendCatalyst("emt.recipe.fusioncrafting", "gregtech:gt.blockmachines:5001");
     }
 

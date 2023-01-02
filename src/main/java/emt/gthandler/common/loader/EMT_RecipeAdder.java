@@ -35,7 +35,7 @@ public class EMT_RecipeAdder {
                     1,
                     E,
                     false,
-                    false)
+                    true)
             .setSlotOverlay(false, false, EMT_UITextures.OVERLAY_SLOT_FUSION_CRAFTING);
 
     public static void addFusionCraftingRecipe(
