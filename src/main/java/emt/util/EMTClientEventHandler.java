@@ -21,7 +21,7 @@ public class EMTClientEventHandler {
 
     @SubscribeEvent
     public void clientTick(ClientTickEvent e) {
-        if (EMTKeys.keyUnequip.getIsKeyPressed()) {
+        if (EMTKeys.keyUnequip.isPressed()) {
             EMT.INSTANCE.sendToServer(new PacketEMTKeys());
         }
     }
