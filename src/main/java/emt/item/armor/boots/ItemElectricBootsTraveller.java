@@ -136,6 +136,10 @@ public class ItemElectricBootsTraveller extends ItemArmor
                     bonus /= 4.0F;
                 }
 
+                if (player.isSneaking()) {
+                    bonus /= 2.0F;
+                }
+
                 player.moveFlying(0.0F, 1.0F, bonus);
             } else if (Hover.getHover(player.getEntityId())) {
                 // Base ItemBootsTraveller jumpBonus equals to jumpBonus of Electric Boots,
