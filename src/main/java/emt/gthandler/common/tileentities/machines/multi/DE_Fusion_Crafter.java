@@ -11,6 +11,7 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 
 import org.apache.commons.lang3.tuple.Pair;
@@ -138,10 +139,9 @@ public class DE_Fusion_Crafter extends GT_MetaTileEntity_EnhancedMultiBlockBase<
         return tt;
     }
 
-    @Override
-    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex,
-            boolean aActive, boolean aRedstone) {
-        if (aSide == aFacing) {
+    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, ForgeDirection side, ForgeDirection facing,
+            int colorIndex, boolean aActive, boolean aRedstone) {
+        if (side == facing) {
             if (aActive) return new ITexture[] { TextureFactory.of(MACHINE_CASING_MAGIC),
                     TextureFactory.builder().addIcon(OVERLAY_TELEPORTER_ACTIVE).extFacing().build(),
                     TextureFactory.builder().addIcon(OVERLAY_TELEPORTER_ACTIVE_GLOW).extFacing().glow().build() };

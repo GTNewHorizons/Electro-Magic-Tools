@@ -8,10 +8,6 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.items.wands.ItemWandCasting;
-
 import com.gtnewhorizons.modularui.api.ModularUITextures;
 import com.gtnewhorizons.modularui.api.forge.InvWrapper;
 import com.gtnewhorizons.modularui.api.screen.ITileWithModularUI;
@@ -27,6 +23,9 @@ import emt.util.EMTConfigHandler;
 import emt.util.EMTTextHelper;
 import ic2.api.energy.tile.IEnergySink;
 import ic2.api.tile.IWrenchable;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class TileEntityIndustrialWandRecharge extends TileEntityEMT
         implements IInventory, IWrenchable, IEnergySink, ITileWithModularUI {

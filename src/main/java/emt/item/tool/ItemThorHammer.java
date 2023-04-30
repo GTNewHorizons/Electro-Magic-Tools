@@ -16,11 +16,11 @@ import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-import thaumcraft.api.IRepairable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import emt.util.EMTTextHelper;
+import thaumcraft.api.IRepairable;
 
 public class ItemThorHammer extends ItemSword implements IRepairable {
 

@@ -14,9 +14,6 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.IFluidHandler;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.visnet.VisNetHandler;
-
 import com.gtnewhorizons.modularui.api.ModularUITextures;
 import com.gtnewhorizons.modularui.api.drawable.Text;
 import com.gtnewhorizons.modularui.api.screen.ITileWithModularUI;
@@ -39,6 +36,8 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.interfaces.tileentity.IHasWorldObjectAndCoords;
 import gregtech.api.net.GT_Packet_Block_Event;
 import ic2.api.tile.IWrenchable;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.visnet.VisNetHandler;
 
 public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IWrenchable, IHasWorldObjectAndCoords,
         IEnergyConnected, IBasicEnergyContainer, ITileWithModularUI {
@@ -389,7 +388,7 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
 
         if (isUniversalEnergyStored(getOutputVoltage() * getOutputAmperage())) {
             long tEU = IEnergyConnected.Util.emitEnergyToNetwork(getOutputVoltage(), getOutputAmperage(), this);
-            drainEnergyUnits((byte) 0, getOutputVoltage(), tEU);
+            drainEnergyUnits(ForgeDirection.DOWN, getOutputVoltage(), tEU);
         }
     }
 
@@ -486,7 +485,7 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public boolean drainEnergyUnits(byte aSide, long aVoltage, long aAmperage) {
+    public boolean drainEnergyUnits(ForgeDirection side, long aVoltage, long aAmperage) {
         return decreaseStoredEnergyUnits(
                 aVoltage * aAmperage,
                 this.energySource.getEnergyStored() > aVoltage * aAmperage);
@@ -528,17 +527,17 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public long injectEnergyUnits(byte aSide, long aVoltage, long aAmperage) {
+    public long injectEnergyUnits(ForgeDirection side, long aVoltage, long aAmperage) {
         return 0L;
     }
 
     @Override
-    public boolean inputEnergyFrom(byte aSide) {
+    public boolean inputEnergyFrom(ForgeDirection side) {
         return false;
     }
 
     @Override
-    public boolean outputsEnergyTo(byte aSide) {
+    public boolean outputsEnergyTo(ForgeDirection side) {
         return true;
     }
 
@@ -592,22 +591,22 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public TileEntity getTileEntityAtSide(byte aSide) {
-        if ((aSide < 0) || (aSide >= 6)) {
+    public TileEntity getTileEntityAtSide(ForgeDirection side) {
+        if (side == ForgeDirection.UNKNOWN) {
             return null;
         }
-        int tX = getOffsetX(aSide, 1);
-        int tY = getOffsetY(aSide, 1);
-        int tZ = getOffsetZ(aSide, 1);
+        int tX = getOffsetX(side, 1);
+        int tY = getOffsetY(side, 1);
+        int tZ = getOffsetZ(side, 1);
         return this.worldObj.getTileEntity(tX, tY, tZ);
     }
 
     @Override
-    public TileEntity getTileEntityAtSideAndDistance(byte aSide, int aDistance) {
+    public TileEntity getTileEntityAtSideAndDistance(ForgeDirection side, int aDistance) {
         if (aDistance == 1) {
-            return getTileEntityAtSide(aSide);
+            return getTileEntityAtSide(side);
         }
-        return getTileEntity(getOffsetX(aSide, aDistance), getOffsetY(aSide, aDistance), getOffsetZ(aSide, aDistance));
+        return getTileEntity(getOffsetX(side, aDistance), getOffsetY(side, aDistance), getOffsetZ(side, aDistance));
     }
 
     @Override
@@ -621,12 +620,12 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public IInventory getIInventoryAtSide(byte aSide) {
+    public IInventory getIInventoryAtSide(ForgeDirection side) {
         return null;
     }
 
     @Override
-    public IInventory getIInventoryAtSideAndDistance(byte aSide, int aDistance) {
+    public IInventory getIInventoryAtSideAndDistance(ForgeDirection side, int aDistance) {
         return null;
     }
 
@@ -641,12 +640,12 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public IFluidHandler getITankContainerAtSide(byte aSide) {
+    public IFluidHandler getITankContainerAtSide(ForgeDirection side) {
         return null;
     }
 
     @Override
-    public IFluidHandler getITankContainerAtSideAndDistance(byte aSide, int aDistance) {
+    public IFluidHandler getITankContainerAtSideAndDistance(ForgeDirection side, int aDistance) {
         return null;
     }
 
@@ -665,8 +664,8 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public IGregTechTileEntity getIGregTechTileEntityAtSide(byte aSide) {
-        TileEntity tTileEntity = getTileEntityAtSide(aSide);
+    public IGregTechTileEntity getIGregTechTileEntityAtSide(ForgeDirection side) {
+        TileEntity tTileEntity = getTileEntityAtSide(side);
         if ((tTileEntity instanceof IGregTechTileEntity)) {
             return (IGregTechTileEntity) tTileEntity;
         }
@@ -674,8 +673,8 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public IGregTechTileEntity getIGregTechTileEntityAtSideAndDistance(byte aSide, int aDistance) {
-        TileEntity tTileEntity = getTileEntityAtSideAndDistance(aSide, aDistance);
+    public IGregTechTileEntity getIGregTechTileEntityAtSideAndDistance(ForgeDirection side, int aDistance) {
+        TileEntity tTileEntity = getTileEntityAtSideAndDistance(side, aDistance);
         if ((tTileEntity instanceof IGregTechTileEntity)) {
             return (IGregTechTileEntity) tTileEntity;
         }
@@ -693,22 +692,22 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public Block getBlockAtSide(byte aSide) {
-        if ((aSide < 0) || (aSide >= 6)) {
+    public Block getBlockAtSide(ForgeDirection side) {
+        if (side == ForgeDirection.UNKNOWN) {
             return null;
         }
-        int tX = getOffsetX(aSide, 1);
-        int tY = getOffsetY(aSide, 1);
-        int tZ = getOffsetZ(aSide, 1);
+        int tX = getOffsetX(side, 1);
+        int tY = getOffsetY(side, 1);
+        int tZ = getOffsetZ(side, 1);
         return this.worldObj.getBlock(tX, tY, tZ);
     }
 
     @Override
-    public Block getBlockAtSideAndDistance(byte aSide, int aDistance) {
+    public Block getBlockAtSideAndDistance(ForgeDirection side, int aDistance) {
         if (aDistance == 1) {
-            return getBlockAtSide(aSide);
+            return getBlockAtSide(side);
         }
-        return getBlock(getOffsetX(aSide, aDistance), getOffsetY(aSide, aDistance), getOffsetZ(aSide, aDistance));
+        return getBlock(getOffsetX(side, aDistance), getOffsetY(side, aDistance), getOffsetZ(side, aDistance));
     }
 
     @Override
@@ -722,19 +721,19 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public byte getMetaIDAtSide(byte aSide) {
-        int tX = getOffsetX(aSide, 1);
-        int tY = getOffsetY(aSide, 1);
-        int tZ = getOffsetZ(aSide, 1);
+    public byte getMetaIDAtSide(ForgeDirection side) {
+        int tX = getOffsetX(side, 1);
+        int tY = getOffsetY(side, 1);
+        int tZ = getOffsetZ(side, 1);
         return (byte) this.worldObj.getBlockMetadata(tX, tY, tZ);
     }
 
     @Override
-    public byte getMetaIDAtSideAndDistance(byte aSide, int aDistance) {
+    public byte getMetaIDAtSideAndDistance(ForgeDirection side, int aDistance) {
         if (aDistance == 1) {
-            return getMetaIDAtSide(aSide);
+            return getMetaIDAtSide(side);
         }
-        return getMetaID(getOffsetX(aSide, aDistance), getOffsetY(aSide, aDistance), getOffsetZ(aSide, aDistance));
+        return getMetaID(getOffsetX(side, aDistance), getOffsetY(side, aDistance), getOffsetZ(side, aDistance));
     }
 
     @Override
@@ -748,12 +747,12 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public byte getLightLevelAtSide(byte aSide) {
+    public byte getLightLevelAtSide(ForgeDirection side) {
         return 0;
     }
 
     @Override
-    public byte getLightLevelAtSideAndDistance(byte aSide, int aDistance) {
+    public byte getLightLevelAtSideAndDistance(ForgeDirection side, int aDistance) {
         return 0;
     }
 
@@ -768,12 +767,12 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public boolean getOpacityAtSide(byte aSide) {
+    public boolean getOpacityAtSide(ForgeDirection side) {
         return false;
     }
 
     @Override
-    public boolean getOpacityAtSideAndDistance(byte aSide, int aDistance) {
+    public boolean getOpacityAtSideAndDistance(ForgeDirection side, int aDistance) {
         return false;
     }
 
@@ -794,12 +793,12 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public boolean getSkyAtSide(byte aSide) {
+    public boolean getSkyAtSide(ForgeDirection side) {
         return false;
     }
 
     @Override
-    public boolean getSkyAtSideAndDistance(byte aSide, int aDistance) {
+    public boolean getSkyAtSideAndDistance(ForgeDirection side, int aDistance) {
         return false;
     }
 
@@ -814,13 +813,13 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public boolean getAirAtSide(byte aSide) {
-        return getAirAtSideAndDistance(aSide, 1);
+    public boolean getAirAtSide(ForgeDirection side) {
+        return getAirAtSideAndDistance(side, 1);
     }
 
     @Override
-    public boolean getAirAtSideAndDistance(byte aSide, int aDistance) {
-        return getAir(getOffsetX(aSide, aDistance), getOffsetY(aSide, aDistance), getOffsetZ(aSide, aDistance));
+    public boolean getAirAtSideAndDistance(ForgeDirection side, int aDistance) {
+        return getAir(getOffsetX(side, aDistance), getOffsetY(side, aDistance), getOffsetZ(side, aDistance));
     }
 
     @Override
@@ -834,18 +833,18 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public int getOffsetX(byte aSide, int aMultiplier) {
-        return this.xCoord + ForgeDirection.getOrientation(aSide).offsetX * aMultiplier;
+    public int getOffsetX(ForgeDirection side, int aMultiplier) {
+        return this.xCoord + side.offsetX * aMultiplier;
     }
 
     @Override
-    public short getOffsetY(byte aSide, int aMultiplier) {
-        return (short) (this.yCoord + ForgeDirection.getOrientation(aSide).offsetY * aMultiplier);
+    public short getOffsetY(ForgeDirection side, int aMultiplier) {
+        return (short) (this.yCoord + side.offsetY * aMultiplier);
     }
 
     @Override
-    public int getOffsetZ(byte aSide, int aMultiplier) {
-        return this.zCoord + ForgeDirection.getOrientation(aSide).offsetZ * aMultiplier;
+    public int getOffsetZ(ForgeDirection side, int aMultiplier) {
+        return this.zCoord + side.offsetZ * aMultiplier;
     }
 
     @Override
@@ -876,12 +875,12 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     @Override
-    public boolean outputsEnergyTo(byte b, boolean b1) {
+    public boolean outputsEnergyTo(ForgeDirection b, boolean b1) {
         return true;
     }
 
     @Override
-    public boolean inputEnergyFrom(byte b, boolean b1) {
+    public boolean inputEnergyFrom(ForgeDirection b, boolean b1) {
         return false;
     }
 

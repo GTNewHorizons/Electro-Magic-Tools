@@ -10,11 +10,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
-import thaumcraft.common.blocks.BlockAiry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import emt.tile.TileEntityPortableNode;
+import thaumcraft.common.blocks.BlockAiry;
 
 public class BlockPortableNode extends BlockAiry {
 

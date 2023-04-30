@@ -23,14 +23,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.ForgeEventFactory;
 
-import thaumcraft.common.Thaumcraft;
-import thaumcraft.common.entities.EntityFollowingItem;
-import thaumcraft.common.lib.utils.BlockUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import emt.util.EMTConfigHandler;
 import ic2.api.item.ElectricItem;
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.entities.EntityFollowingItem;
+import thaumcraft.common.lib.utils.BlockUtils;
 
 public class ItemRockbreakerDrill extends ItemThaumiumDrill {
 

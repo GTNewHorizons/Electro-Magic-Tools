@@ -8,8 +8,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.oredict.OreDictionary;
 
-import thaumcraft.common.config.ConfigItems;
-
 import com.gtnewhorizons.modularui.api.ModularUITextures;
 import com.gtnewhorizons.modularui.api.forge.InvWrapper;
 import com.gtnewhorizons.modularui.api.screen.ITileWithModularUI;
@@ -24,6 +22,7 @@ import emt.util.EMTConfigHandler;
 import emt.util.EMTTextHelper;
 import gregtech.api.gui.modularui.GT_UITextures;
 import ic2.api.tile.IWrenchable;
+import thaumcraft.common.config.ConfigItems;
 
 public class TileEntityEtherealMacerator extends TileEntityEMT
         implements ISidedInventory, IWrenchable, ITileWithModularUI {

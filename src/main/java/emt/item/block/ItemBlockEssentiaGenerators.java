@@ -10,11 +10,11 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.input.Keyboard;
 
-import thaumcraft.api.aspects.Aspect;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTEssentiasOutputs;
 import emt.util.EMTTextHelper;
 import gregtech.api.enums.GT_Values;
+import thaumcraft.api.aspects.Aspect;
 
 public class ItemBlockEssentiaGenerators extends ItemBlock {
 

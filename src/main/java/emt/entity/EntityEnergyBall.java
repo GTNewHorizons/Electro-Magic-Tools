@@ -14,11 +14,11 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 
-import thaumcraft.common.Thaumcraft;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
+import thaumcraft.common.Thaumcraft;
 
 public class EntityEnergyBall extends Entity implements IProjectile, IEntityAdditionalSpawnData {
 

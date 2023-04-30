@@ -4,8 +4,6 @@ import static thaumcraft.api.ThaumcraftApi.registerObjectTag;
 
 import net.minecraft.block.Block;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
 import cpw.mods.fml.common.registry.GameRegistry;
 import emt.block.*;
 import emt.item.block.ItemBlockElectricCloud;
@@ -14,6 +12,8 @@ import emt.item.block.ItemBlockMachines;
 import emt.item.block.ItemBlockSolars;
 import emt.tile.solar.Solars;
 import ic2.api.item.IC2Items;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 
 public class EMTBlocks {
 

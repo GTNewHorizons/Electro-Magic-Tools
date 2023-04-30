@@ -8,13 +8,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
-import thaumcraft.api.IScribeTools;
-import thaumcraft.common.items.ItemInkwell;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
+import thaumcraft.api.IScribeTools;
+import thaumcraft.common.items.ItemInkwell;
 
 public class ItemElectricScribingTools extends ItemInkwell implements IElectricItem, IScribeTools {
 

@@ -2,13 +2,13 @@ package emt.tile;
 
 import net.minecraft.tileentity.TileEntity;
 
-import thaumcraft.client.fx.ParticleEngine;
-import thaumcraft.client.fx.particles.FXWisp;
-import thaumcraft.common.Thaumcraft;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import thaumcraft.client.fx.ParticleEngine;
+import thaumcraft.client.fx.particles.FXWisp;
+import thaumcraft.common.Thaumcraft;
 
 public class TileElectricCloud extends TileEntity {
 

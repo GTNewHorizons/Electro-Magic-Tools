@@ -8,11 +8,11 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import emt.entity.EntityShield;
+import ic2.core.IC2;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import emt.entity.EntityShield;
-import ic2.core.IC2;
 
 public class ItemShieldFocus extends ItemBaseFocus {
 

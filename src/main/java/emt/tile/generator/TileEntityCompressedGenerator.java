@@ -1,8 +1,8 @@
 package emt.tile.generator;
 
-import thaumcraft.api.aspects.Aspect;
 import emt.tile.DefinitelyNotAIC2Source;
 import emt.util.EMTConfigHandler;
+import thaumcraft.api.aspects.Aspect;
 
 public abstract class TileEntityCompressedGenerator extends TileEntityBaseGenerator {
 

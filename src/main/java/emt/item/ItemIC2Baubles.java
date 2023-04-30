@@ -11,7 +11,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-import thaumcraft.api.IRunicArmor;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cpw.mods.fml.relauncher.Side;
@@ -20,6 +19,7 @@ import emt.EMT;
 import emt.util.EMTConfigHandler;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
+import thaumcraft.api.IRunicArmor;
 
 public class ItemIC2Baubles extends ItemBase implements IBauble, IRunicArmor {
 

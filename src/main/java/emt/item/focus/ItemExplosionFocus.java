@@ -5,11 +5,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import emt.entity.EntityLaser;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import emt.entity.EntityLaser;
 
 public class ItemExplosionFocus extends ItemBaseFocus {
 

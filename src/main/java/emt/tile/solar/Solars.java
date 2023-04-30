@@ -8,11 +8,11 @@ import javax.annotation.Nullable;
 
 import net.minecraft.item.ItemStack;
 
-import thaumcraft.api.aspects.Aspect;
 import emt.init.EMTBlocks;
 import emt.util.EMTConfigHandler;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.Materials;
+import thaumcraft.api.aspects.Aspect;
 
 // Solar Factory
 public enum Solars {

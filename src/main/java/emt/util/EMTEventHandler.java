@@ -12,8 +12,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-import thaumcraft.common.config.ConfigBlocks;
-import thaumcraft.common.entities.monster.EntityTaintChicken;
 import baubles.api.BaublesApi;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -24,6 +22,8 @@ import emt.init.EMTBlocks;
 import emt.init.EMTItems;
 import emt.item.armor.wings.ItemFeatherWing;
 import ic2.api.item.ElectricItem;
+import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.entities.monster.EntityTaintChicken;
 
 public class EMTEventHandler {
 

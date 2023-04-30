@@ -18,11 +18,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 
-import thaumcraft.api.IRunicArmor;
-import thaumcraft.api.IVisDiscountGear;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.common.Thaumcraft;
-import thaumcraft.common.items.armor.Hover;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,6 +28,11 @@ import emt.util.EMTTextHelper;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import ic2.api.item.IMetalArmor;
+import thaumcraft.api.IRunicArmor;
+import thaumcraft.api.IVisDiscountGear;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.items.armor.Hover;
 
 public class ItemElectricBootsTraveller extends ItemArmor
         implements IRunicArmor, IElectricItem, IVisDiscountGear, IMetalArmor, ISpecialArmor {

@@ -6,7 +6,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.OreDictionary;
 
-import thaumcraft.api.ThaumcraftApi;
 import cpw.mods.fml.common.registry.GameRegistry;
 import emt.EMT;
 import emt.item.ItemElectricScribingTools;
@@ -39,6 +38,7 @@ import emt.item.tool.omnitool.ItemOmnitoolDiamond;
 import emt.item.tool.omnitool.ItemOmnitoolIron;
 import emt.item.tool.omnitool.ItemOmnitoolThaumium;
 import ic2.core.init.InternalName;
+import thaumcraft.api.ThaumcraftApi;
 
 public class EMTItems {
 

@@ -12,12 +12,12 @@ import net.minecraft.world.World;
 
 import org.lwjgl.input.Keyboard;
 
-import thaumcraft.api.IRepairable;
-import thaumcraft.common.entities.projectile.EntityAlumentum;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import emt.util.EMTTextHelper;
+import thaumcraft.api.IRepairable;
+import thaumcraft.common.entities.projectile.EntityAlumentum;
 
 public class ItemThorHammerBroken extends ItemSword implements IRepairable {
 

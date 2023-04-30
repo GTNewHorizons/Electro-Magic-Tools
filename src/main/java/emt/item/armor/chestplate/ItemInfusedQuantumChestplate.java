@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 
-import thaumcraft.api.IRunicArmor;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -37,6 +36,7 @@ import ic2.core.audio.PositionSpec;
 import ic2.core.init.InternalName;
 import ic2.core.item.armor.ItemArmorElectric;
 import ic2.core.util.StackUtil;
+import thaumcraft.api.IRunicArmor;
 
 public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements IRunicArmor {
 

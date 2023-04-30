@@ -10,15 +10,15 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import thaumcraft.common.lib.network.PacketHandler;
-import thaumcraft.common.lib.network.fx.PacketFXBlockBubble;
-import thaumcraft.common.lib.utils.BlockUtils;
-import thaumcraft.common.lib.utils.Utils;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import ic2.api.item.ElectricItem;
+import thaumcraft.common.lib.network.PacketHandler;
+import thaumcraft.common.lib.network.fx.PacketFXBlockBubble;
+import thaumcraft.common.lib.utils.BlockUtils;
+import thaumcraft.common.lib.utils.Utils;
 
 public class ItemStreamChainsaw extends ItemThaumiumChainsaw {
 

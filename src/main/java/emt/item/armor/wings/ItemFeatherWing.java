@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import thaumcraft.api.IRunicArmor;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
@@ -19,6 +18,7 @@ import emt.util.EMTConfigHandler;
 import ic2.api.item.ElectricItem;
 import ic2.core.IC2;
 import ic2.core.util.StackUtil;
+import thaumcraft.api.IRunicArmor;
 
 public class ItemFeatherWing extends ItemArmor implements IRunicArmor {
 

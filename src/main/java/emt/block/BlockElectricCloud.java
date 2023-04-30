@@ -10,12 +10,12 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import thaumcraft.client.fx.ParticleEngine;
-import thaumcraft.client.fx.particles.FXSparkle;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import emt.tile.TileElectricCloud;
+import thaumcraft.client.fx.ParticleEngine;
+import thaumcraft.client.fx.particles.FXSparkle;
 
 public class BlockElectricCloud extends BlockBase {
 

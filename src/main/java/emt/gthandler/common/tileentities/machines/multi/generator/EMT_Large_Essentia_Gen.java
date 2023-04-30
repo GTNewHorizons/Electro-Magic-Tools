@@ -7,10 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.visnet.VisNetHandler;
-import thaumcraft.common.config.ConfigBlocks;
 import emt.gthandler.common.implementations.EssentiaHatch;
 import emt.gthandler.common.items.EMT_CasingBlock;
 import emt.util.EMTEssentiasOutputs;
@@ -23,6 +19,10 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_MultiBlockBase;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.objects.XSTR;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.visnet.VisNetHandler;
+import thaumcraft.common.config.ConfigBlocks;
 
 public class EMT_Large_Essentia_Gen extends GT_MetaTileEntity_MultiBlockBase {
 
@@ -63,9 +63,9 @@ public class EMT_Large_Essentia_Gen extends GT_MetaTileEntity_MultiBlockBase {
     }
 
     @Override
-    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex,
-            boolean aActive, boolean aRedstone) {
-        if (aSide == aFacing) {
+    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, ForgeDirection side, ForgeDirection facing,
+            int colorIndex, boolean aActive, boolean aRedstone) {
+        if (side == facing) {
             return new ITexture[] { Textures.BlockIcons.getCasingTextureForId(CASING_INDEX),
                     new GT_RenderedTexture(
                             aActive ? Textures.BlockIcons.OVERLAY_FRONT_DISTILLATION_TOWER_ACTIVE
@@ -177,8 +177,8 @@ public class EMT_Large_Essentia_Gen extends GT_MetaTileEntity_MultiBlockBase {
     @Override
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack arg1) {
 
-        final int xDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetX * 3;
-        final int zDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetZ * 3;
+        final int xDir = aBaseMetaTileEntity.getBackFacing().offsetX * 3;
+        final int zDir = aBaseMetaTileEntity.getBackFacing().offsetZ * 3;
 
         for (int x = -3; x <= 3; x++) {
             for (int z = -3; z <= 3; z++) {

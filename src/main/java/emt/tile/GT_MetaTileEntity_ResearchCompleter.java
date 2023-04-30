@@ -11,17 +11,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.research.ResearchCategories;
-import thaumcraft.api.research.ResearchItem;
-import thaumcraft.common.Thaumcraft;
-import thaumcraft.common.config.ConfigBlocks;
-import thaumcraft.common.config.ConfigItems;
-import thaumcraft.common.lib.research.ResearchManager;
-import thaumcraft.common.lib.research.ResearchNoteData;
-import thaumcraft.common.tiles.TileNode;
-
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
@@ -37,6 +26,16 @@ import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_EnhancedMul
 import gregtech.api.render.TextureFactory;
 import gregtech.api.util.GT_Multiblock_Tooltip_Builder;
 import gregtech.api.util.GT_Utility;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.research.ResearchCategories;
+import thaumcraft.api.research.ResearchItem;
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.config.ConfigItems;
+import thaumcraft.common.lib.research.ResearchManager;
+import thaumcraft.common.lib.research.ResearchNoteData;
+import thaumcraft.common.tiles.TileNode;
 
 public class GT_MetaTileEntity_ResearchCompleter
         extends GT_MetaTileEntity_EnhancedMultiBlockBase<GT_MetaTileEntity_ResearchCompleter> {
@@ -132,9 +131,9 @@ public class GT_MetaTileEntity_ResearchCompleter
     public void onPostTick(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
         if (aBaseMetaTileEntity.isClientSide()) {
             if (aBaseMetaTileEntity.isActive()) {
-                int xDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetX;
-                int yDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetY;
-                int zDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetZ;
+                int xDir = aBaseMetaTileEntity.getBackFacing().offsetX;
+                int yDir = aBaseMetaTileEntity.getBackFacing().offsetY;
+                int zDir = aBaseMetaTileEntity.getBackFacing().offsetZ;
                 double xCoord = aBaseMetaTileEntity.getXCoord() + 0.5;
                 double yCoord = aBaseMetaTileEntity.getYCoord() + 0.5;
                 double zCoord = aBaseMetaTileEntity.getZCoord() + 0.5;
@@ -167,9 +166,9 @@ public class GT_MetaTileEntity_ResearchCompleter
         syncTimer--;
 
         IGregTechTileEntity aBaseMetaTileEntity = this.getBaseMetaTileEntity();
-        int xDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetX;
-        int yDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetY;
-        int zDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetZ;
+        int xDir = aBaseMetaTileEntity.getBackFacing().offsetX;
+        int yDir = aBaseMetaTileEntity.getBackFacing().offsetY;
+        int zDir = aBaseMetaTileEntity.getBackFacing().offsetZ;
         int i = 1;
 
         // Loop through node spaces and drain them from front to back
@@ -331,9 +330,9 @@ public class GT_MetaTileEntity_ResearchCompleter
     }
 
     @Override
-    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex,
-            boolean aActive, boolean aRedstone) {
-        if (aSide == aFacing) {
+    public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, ForgeDirection side, ForgeDirection facing,
+            int ColorIndex, boolean aActive, boolean aRedstone) {
+        if (side == facing) {
             if (aActive) return new ITexture[] { Textures.BlockIcons.getCasingTextureForId(CASING_INDEX),
                     TextureFactory.builder().addIcon(OVERLAY_FRONT_RESEARCH_COMPLETER_ACTIVE).extFacing().build(),
                     TextureFactory.builder().addIcon(OVERLAY_FRONT_RESEARCH_COMPLETER_ACTIVE_GLOW).extFacing().glow()

@@ -16,15 +16,15 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 
-import thaumcraft.api.IRunicArmor;
-import thaumcraft.api.IWarpingGear;
-import thaumcraft.api.ThaumcraftApiHelper;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import emt.util.EMTTextHelper;
+import thaumcraft.api.IRunicArmor;
+import thaumcraft.api.IWarpingGear;
+import thaumcraft.api.ThaumcraftApiHelper;
 
 public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRunicArmor {
 

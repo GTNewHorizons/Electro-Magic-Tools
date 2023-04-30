@@ -12,9 +12,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 
-import thaumcraft.api.aspects.Aspect;
 import emt.util.EMTEssentiasOutputs;
 import emt.util.EMTTextHelper;
+import thaumcraft.api.aspects.Aspect;
 
 public class CommandOutputs extends CommandBase {
 

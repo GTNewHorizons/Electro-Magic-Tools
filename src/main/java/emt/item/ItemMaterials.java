@@ -18,11 +18,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 
-import thaumcraft.common.config.Config;
-import thaumcraft.common.lib.utils.InventoryUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
+import thaumcraft.common.config.Config;
+import thaumcraft.common.lib.utils.InventoryUtils;
 
 public class ItemMaterials extends Item {
 

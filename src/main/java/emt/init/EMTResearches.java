@@ -3,13 +3,13 @@ package emt.init;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import thaumcraft.api.research.ResearchCategories;
-import thaumcraft.api.research.ResearchPage;
 import emt.EMT;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTResearchAspects;
 import emt.util.EMTResearchItem;
 import ic2.api.item.IC2Items;
+import thaumcraft.api.research.ResearchCategories;
+import thaumcraft.api.research.ResearchPage;
 
 public class EMTResearches {
 

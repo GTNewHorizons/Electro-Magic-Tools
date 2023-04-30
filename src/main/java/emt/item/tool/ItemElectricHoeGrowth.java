@@ -13,15 +13,15 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-import thaumcraft.common.Thaumcraft;
-import thaumcraft.common.blocks.BlockCustomPlant;
-import thaumcraft.common.config.ConfigBlocks;
-import thaumcraft.common.lib.utils.Utils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.blocks.BlockCustomPlant;
+import thaumcraft.common.config.ConfigBlocks;
+import thaumcraft.common.lib.utils.Utils;
 
 public class ItemElectricHoeGrowth extends ItemHoe implements IElectricItem {
 
