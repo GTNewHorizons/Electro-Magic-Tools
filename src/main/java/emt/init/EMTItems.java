@@ -58,6 +58,7 @@ public class EMTItems {
     public static Item christmasFocus;
     public static Item shieldFocus;
     public static Item energyBallFocus;
+    public static Item maintenanceFocus;
     public static Item electricGoggles;
     public static Item streamChainsaw;
     public static Item rockbreakerDrill;
@@ -197,5 +198,8 @@ public class EMTItems {
 
         energyBallFocus = new ItemEnergyBallFocus();
         GameRegistry.registerItem(energyBallFocus, "EnergyBallFocus");
+
+        maintenanceFocus = new ItemMaintenanceFocus();
+        GameRegistry.registerItem(maintenanceFocus, "MaintenanceFocus");
     }
 }

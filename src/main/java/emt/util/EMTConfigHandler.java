@@ -107,6 +107,7 @@ public class EMTConfigHandler {
     public static boolean christmasFocusResearch;
     public static boolean energyBallFocusResearch;
     public static boolean shieldFocusResearch;
+    public static boolean maintenanceFocusResearch;
     public static boolean shieldBlockResearch;
     public static boolean potentiaGeneratorResearch;
     public static boolean ignisGeneratorResearch;
@@ -390,6 +391,8 @@ public class EMTConfigHandler {
         christmasFocusResearch = config.get(RESEARCH, "Kris-tmas Focus", false).getBoolean(christmasFocusResearch);
         energyBallFocusResearch = config.get(RESEARCH, "EnergyBall Focus", false).getBoolean(christmasFocusResearch);
         shieldFocusResearch = config.get(RESEARCH, "Shield Focus", false).getBoolean(shieldFocusResearch);
+        maintenanceFocusResearch = config.get(RESEARCH, "Maintenance Focus", false)
+                .getBoolean(maintenanceFocusResearch);
         shieldBlockResearch = config.get(RESEARCH, "Shield Block", false).getBoolean(shieldBlockResearch);
         potentiaGeneratorResearch = config.get(RESEARCH, "Potentia Generator", false)
                 .getBoolean(potentiaGeneratorResearch);

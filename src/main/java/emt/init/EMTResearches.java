@@ -648,6 +648,17 @@ public class EMTResearches {
                             .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.chargeFocus));
         }
 
+        if (!EMTConfigHandler.maintenanceFocusResearch) {
+            new EMTResearchItem(
+                    "Wand Focus: Maintenance",
+                    EMTResearchAspects.maintenanceFocus,
+                    7,
+                    4,
+                    4,
+                    new ItemStack(EMTItems.maintenanceFocus)).setParents("Wand Focus: Charging").setConcealed()
+                            .registerResearchItem()
+                            .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.maintenanceFocus));
+        }
         if (!EMTConfigHandler.wandChargeFocusResearch) {
             new EMTResearchItem(
                     "Wand Focus: Wand Charging",

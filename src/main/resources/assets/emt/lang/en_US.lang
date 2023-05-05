@@ -106,6 +106,7 @@ item.EMT.focus.christmas.name=Wand Focus: Kris-tmas
 item.EMT.focus.shield.name=Wand Focus: Shield
 item.EMT.focus.charge.name=Wand Focus: Charging
 item.EMT.focus.chargeWand.name=Wand Focus: Wand Charging
+item.EMT.focus.maintenance.name=Wand Focus: Maintenance
 item.EMT.focus.electricCloud.name=Electric Cloud
 item.EMT.focus.energyBall.name=Energy Ball Focus
 
@@ -250,6 +251,10 @@ emt.text.Kris-tmas Focus=Merry Christmas!<BR><BR>You have found a novel use for 
 emt.rsname.Shield Focus=Shield Focus
 emt.tag.Shield Focus=S.H.I.E.L.D.
 emt.text.Shield Focus=With some experimentation with the Portable Hole, you have found out more about the transportation of objects to alternate dimensions. You believe you can reverse these effects to summon a swath of blocks from a dimension full of matter to shield you from any oncoming disaster. Caution is to be taken when using this focus, as when bringing these blocks into our dimension, it will transpose any blocks in the way into the dimension it came from, never to return again. You will also be unable to move while this shield is in existence.
+
+emt.rsname.Wand Focus: Maintenance=Maintenance Focus
+emt.tag.Want Focus: Maintenance=Who needs a toolbox when you got Magic
+emt.text.Wand Focus: Maintenance=Finally, after hours of getting the recipe just a little bit off and causing at least 3 clean room explosions you've finally figured out how to use vis on the inner workings of your maintenance hatches with the maintenance focus. Using vis to clean out and repair any damages incurred for the extended use of the machines you no longer need to carry a fully stocked tool box with you!
 
 emt.rsname.Potentia Generator=Potentia Generator
 emt.tag.Potentia Generator=Harnessing the power-producing potential of Essentia

@@ -26,6 +26,7 @@ import emt.EMT;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTCraftingAspects;
 import emt.util.EMTResearchAspects;
+import gregtech.api.enums.ItemList;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeInputItemStack;
@@ -67,6 +68,7 @@ public class EMTRecipes {
     public static InfusionRecipe thaumicNanoHelmet;
     public static InfusionRecipe explosionFocus;
     public static InfusionRecipe shieldFocus;
+    public static InfusionRecipe maintenanceFocus;
     public static InfusionRecipe potentiaGenerator;
     public static InfusionRecipe streamChainsaw;
     public static InfusionRecipe rockbreakerDrill;
@@ -533,6 +535,18 @@ public class EMTRecipes {
                         IC2Items.getItem("reinforcedStone"), IC2Items.getItem("reinforcedGlass"),
                         new ItemStack(Blocks.soul_sand), new ItemStack(Blocks.obsidian),
                         new ItemStack(Blocks.obsidian) });
+
+        maintenanceFocus = addInfusionCraftingRecipe(
+                "Wand Focus: Maintenance",
+                new ItemStack(EMTItems.maintenanceFocus),
+                6,
+                EMTCraftingAspects.maintenanceFocus,
+                new ItemStack(EMTItems.chargeFocus),
+                new ItemStack[] { new ItemStack(ConfigItems.itemShard, 1, 5),
+                        new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 3),
+                        new ItemStack(EMTItems.itemEMTItems, 1, 9), new ItemStack(ConfigItems.itemShard, 1, 2),
+                        new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 0),
+                        ItemList.Duct_Tape.get(1) });
 
         potentiaGenerator = addInfusionCraftingRecipe(
                 "Potentia Generator",
