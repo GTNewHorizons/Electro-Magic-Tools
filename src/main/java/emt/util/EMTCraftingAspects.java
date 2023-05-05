@@ -83,8 +83,8 @@ public class EMTCraftingAspects {
             .add(Aspect.MECHANISM, 32);
     public static AspectList wandChargeFocus = new AspectList().add(Aspect.ENERGY, 48).add(Aspect.AURA, 32)
             .add(Aspect.EXCHANGE, 48).add(Aspect.GREED, 64);
-    public static AspectList maintenanceFocus = new AspectList().add(Aspect.CLOTH, 64).add(Aspect.CRAFT, 32)
-            .add(Aspect.TOOL, 32).add(Aspect.MAGIC, 32).add(Aspect.MECHANISM, 32).add(Aspect.ENERGY, 16);
+    public static AspectList maintenanceFocus = new AspectList().add(Aspect.CRAFT, 32).add(Aspect.EXCHANGE, 48)
+            .add(Aspect.TOOL, 64).add(Aspect.MAGIC, 64).add(Aspect.MECHANISM, 32).add(Aspect.ENERGY, 32);
     public static AspectList inventoryChargingRing = new AspectList().add(Aspect.ENERGY, 64).add(Aspect.CRYSTAL, 32)
             .add(Aspect.MAGIC, 48);
     public static AspectList armorChargingRing = new AspectList().add(Aspect.ENERGY, 64).add(Aspect.ARMOR, 32)

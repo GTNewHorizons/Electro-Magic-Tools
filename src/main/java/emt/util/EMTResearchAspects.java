@@ -26,7 +26,7 @@ public class EMTResearchAspects {
     public static AspectList shieldFocusResearch = new AspectList().add(Aspect.ARMOR, 5).add(Aspect.AIR, 2)
             .add(Aspect.CRYSTAL, 3).add(Aspect.TRAP, 2);
     public static AspectList maintenanceFocus = new AspectList().add(Aspect.MECHANISM, 5).add(Aspect.FIRE, 3)
-            .add(Aspect.ORDER, 3).add(Aspect.ENERGY, 5);
+            .add(Aspect.ORDER, 3).add(Aspect.ENERGY, 5).add(Aspect.MAGIC, 5).add(Aspect.TOOL, 5);
     public static AspectList electricGogglesResearch = new AspectList().add(Aspect.ARMOR, 8).add(Aspect.ENERGY, 5)
             .add(Aspect.SENSES, 6);
     public static AspectList potentiaGeneratorResearch = new AspectList().add(Aspect.ENERGY, 4).add(Aspect.EXCHANGE, 4)
