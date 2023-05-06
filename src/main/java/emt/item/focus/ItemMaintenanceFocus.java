@@ -2,6 +2,7 @@ package emt.item.focus;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -9,6 +10,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.items.wands.ItemWandCasting;
+import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch_Maintenance;
 
@@ -50,11 +52,12 @@ public class ItemMaintenanceFocus extends ItemBaseFocus {
         if (!world.isRemote) {
             if (!player.isSneaking()) {
                 return itemStack;
-            } else if (world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ) instanceof BaseMetaTileEntity) {
-                if (((BaseMetaTileEntity) world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ))
-                        .getMetaTileEntity() instanceof GT_MetaTileEntity_Hatch_Maintenance) {
-                    GT_MetaTileEntity_Hatch_Maintenance hatch = (GT_MetaTileEntity_Hatch_Maintenance) ((BaseMetaTileEntity) world
-                            .getTileEntity(mop.blockX, mop.blockY, mop.blockZ)).getMetaTileEntity();
+            }
+            TileEntity hatchCandidateTile = world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ);
+            if (hatchCandidateTile instanceof BaseMetaTileEntity) {
+                IMetaTileEntity hatchCandidateMetaTile = ((BaseMetaTileEntity) hatchCandidateTile).getMetaTileEntity();
+                if (hatchCandidateMetaTile instanceof GT_MetaTileEntity_Hatch_Maintenance) {
+                    GT_MetaTileEntity_Hatch_Maintenance hatch = (GT_MetaTileEntity_Hatch_Maintenance) hatchCandidateMetaTile;
                     if (player.capabilities.isCreativeMode
                             || wand.consumeAllVis(itemStack, player, getVisCost(itemStack), true, true)) {
                         hatch.mCrowbar = true;
