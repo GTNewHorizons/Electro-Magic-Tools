@@ -48,7 +48,9 @@ public class ItemMaintenanceFocus extends ItemBaseFocus {
         ItemWandCasting wand = (ItemWandCasting) itemStack.getItem();
 
         if (!world.isRemote) {
-            if (player.isSneaking()) {
+            if (!player.isSneaking()) {
+                return itemStack;
+            } else if (world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ) instanceof BaseMetaTileEntity) {
                 if (((BaseMetaTileEntity) world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ))
                         .getMetaTileEntity() instanceof GT_MetaTileEntity_Hatch_Maintenance) {
                     GT_MetaTileEntity_Hatch_Maintenance hatch = (GT_MetaTileEntity_Hatch_Maintenance) ((BaseMetaTileEntity) world
@@ -65,7 +67,6 @@ public class ItemMaintenanceFocus extends ItemBaseFocus {
                 }
             }
         }
-
         player.swingItem();
         return itemStack;
     }
