@@ -41,9 +41,8 @@ public class EMT_Large_Essentia_Gen extends GT_MetaTileEntity_MultiBlockBase {
 
     @Override
     public String[] getDescription() {
-        return new String[] { "Does not work, please don't use",
-                             "Marked for deprecation", 
-                "Added by EMT", "Made by bartimaeusnek", "Terminated by Alastor"};
+        return new String[] { "Does not work, please don't use", "Marked for deprecation", "Added by EMT",
+                "Made by bartimaeusnek", "Terminated by Alastor" };
     }
 
     public int getCurrentEfficiency(ItemStack itemStack) {
