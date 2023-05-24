@@ -41,20 +41,9 @@ public class EMT_Large_Essentia_Gen extends GT_MetaTileEntity_MultiBlockBase {
 
     @Override
     public String[] getDescription() {
-        return new String[] { "Controller Block for the Large Essentia Generator.",
-                "Produces energy from magical essentia decay.", "Size(WxHxD): 7x4x7, Controller (Bottom, Center)",
-                "Top-Middle 5x1x5 layer are Muffler Hatches", "Middle 5x2x5 layer are Essentia Diffusion Cells",
-                "Everything from here on goes either in the bottom or on the sides", "1x Fluid Input Hatch",
-                "1x Essentia Input Hatch", "1x Dynamo Hatches", "1x Maintenance Hatch",
-                "The outer hull is made out of Magic Containing Casings",
-                "Produces 20x more than the singleblock generator per essentia",
-                "Causes magical and serious conventional pollution",
-                "Needs 1L Lubricant per second or will cause way more conventional pollution",
-                "Needs 10 " + EMTTextHelper.LIGHT_BLUE
-                        + "Aqua"
-                        + EMTTextHelper.LIGHT_GRAY
-                        + " cVis per second or will cause way more magical pollution",
-                "Added by EMT", "Made by bartimaeusnek" };
+        return new String[] { "Does not work, please don't use",
+                             "Marked for deprecation", 
+                "Added by EMT", "Made by bartimaeusnek", "Terminated by Alastor"};
     }
 
     public int getCurrentEfficiency(ItemStack itemStack) {
