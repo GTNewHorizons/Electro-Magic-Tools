@@ -39,15 +39,15 @@ public class EMT_GT_Loader implements Runnable {
         for (int i = 0; i < TIERS; i++) {
             EHatch[i] = new EssentiaHatch(
                     aIDoffset + i,
-                    "Essentia Hatch " + GT_Values.VN[i],
-                    "Essentia Hatch " + GT_Values.VN[i],
+                    "Essentia Hatch" + GT_Values.VN[i] + " - Marked for Deprecation",
+                    "Essentia Hatch " + GT_Values.VN[i] + " - Marked for Deprecation",
                     i).getStackForm(1L);
         }
 
         LEG = new EMT_Large_Essentia_Gen(
                 aIDoffset + GT_Values.VN.length + 1,
-                "Large Essentia Generator",
-                "Large Essentia Generator").getStackForm(1L);
+                "Large Essentia Generator - Marked for Deprecation",
+                "Large Essentia Generator - Marked for Deprecation").getStackForm(1L);
 
         // Dragonblood recipe for magics haters
         if (Loader.isModLoaded("miscutils")) {
