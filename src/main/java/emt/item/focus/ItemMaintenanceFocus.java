@@ -46,6 +46,7 @@ public class ItemMaintenanceFocus extends ItemBaseFocus {
     @Override
     public ItemStack onFocusRightClick(ItemStack itemStack, World world, EntityPlayer player,
             MovingObjectPosition mop) {
+        if (mop == null) return itemStack;
 
         ItemWandCasting wand = (ItemWandCasting) itemStack.getItem();
 
