@@ -1,6 +1,6 @@
 package emt.item.tool.chainsaw;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 
 import net.minecraft.block.Block;

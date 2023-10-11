@@ -24,7 +24,12 @@ import emt.network.PacketEMTKeys;
 import emt.network.PacketNodeInfo;
 import emt.proxy.CommonProxy;
 import emt.tile.solar.Solars;
-import emt.util.*;
+import emt.util.EMTClientEventHandler;
+import emt.util.EMTConfigHandler;
+import emt.util.EMTCreativeTab;
+import emt.util.EMTDungeonChestGenerator;
+import emt.util.EMTEssentiasOutputs;
+import emt.util.EMTEventHandler;
 
 @Mod(
         modid = EMT.MOD_ID,

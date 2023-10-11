@@ -5,7 +5,12 @@ import static thaumcraft.api.ThaumcraftApi.registerObjectTag;
 import net.minecraft.block.Block;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import emt.block.*;
+import emt.block.BlockElectricCloud;
+import emt.block.BlockEssentiaGenerators;
+import emt.block.BlockMachines;
+import emt.block.BlockPortableNode;
+import emt.block.BlockShield;
+import emt.block.BlockSolars;
 import emt.item.block.ItemBlockElectricCloud;
 import emt.item.block.ItemBlockEssentiaGenerators;
 import emt.item.block.ItemBlockMachines;
