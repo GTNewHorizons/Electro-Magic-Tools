@@ -21,7 +21,6 @@ import com.gtnewhorizons.modularui.api.UIInfos;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
-import emt.gthandler.common.implementations.automation.EssentiaFiller;
 import emt.tile.TileEntityEtherealMacerator;
 import emt.tile.TileEntityIndustrialWandRecharge;
 import ic2.api.item.IC2Items;
@@ -73,8 +72,6 @@ public class BlockMachines extends BlockBaseContainer {
             return new TileEntityIndustrialWandRecharge();
         } else if (meta == 1) {
             return new TileEntityEtherealMacerator();
-        } else if (meta == 2) {
-            return new EssentiaFiller();
         }
         return super.createTileEntity(world, meta);
     }

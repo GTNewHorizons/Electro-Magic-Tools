@@ -10,10 +10,8 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 import cpw.mods.fml.common.Loader;
-import emt.gthandler.common.implementations.EssentiaHatch;
 import emt.gthandler.common.items.EMT_CasingBlock;
 import emt.gthandler.common.tileentities.machines.multi.DE_Fusion_Crafter;
-import emt.gthandler.common.tileentities.machines.multi.generator.EMT_Large_Essentia_Gen;
 import emt.tile.GT_MetaTileEntity_ResearchCompleter;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.ItemList;
@@ -29,25 +27,11 @@ public class EMT_GT_Loader implements Runnable {
     public static final int TIERS = GT_Values.VN.length - 1;
     public static int aIDoffset = 13000 - GT_Values.VN.length - 1;
     public static ItemStack[] EHatch = new ItemStack[TIERS];
-    public static ItemStack LEG;
     public static ItemStack DECC;
     public static ItemStack ResearchMultiblock;
 
     @Override
     public void run() {
-
-        for (int i = 0; i < TIERS; i++) {
-            EHatch[i] = new EssentiaHatch(
-                    aIDoffset + i,
-                    "Essentia Hatch" + GT_Values.VN[i] + " - Marked for Deprecation",
-                    "Essentia Hatch " + GT_Values.VN[i] + " - Marked for Deprecation",
-                    i).getStackForm(1L);
-        }
-
-        LEG = new EMT_Large_Essentia_Gen(
-                aIDoffset + GT_Values.VN.length + 1,
-                "Large Essentia Generator - Marked for Deprecation",
-                "Large Essentia Generator - Marked for Deprecation").getStackForm(1L);
 
         // Dragonblood recipe for magics haters
         if (Loader.isModLoaded("miscutils")) {

@@ -1,7 +1,6 @@
 package emt.init;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import emt.gthandler.common.implementations.automation.EssentiaFiller;
 import emt.tile.TileElectricCloud;
 import emt.tile.TileEntityEtherealMacerator;
 import emt.tile.TileEntityIndustrialWandRecharge;
@@ -28,7 +27,6 @@ public class EMTTiles {
         // Machinery
         GameRegistry.registerTileEntity(TileEntityIndustrialWandRecharge.class, "tileentityindustrialwandrecharge");
         GameRegistry.registerTileEntity(TileEntityEtherealMacerator.class, "tileentityetherealmacerator");
-        GameRegistry.registerTileEntity(EssentiaFiller.class, "EssentiaFillerTE");
 
         // Solars
         // legacy support
