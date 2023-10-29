@@ -44,7 +44,6 @@ tooltip.EMT.output.double.nether=when located in the Nether
 tooltip.EMT.output.double.lava=when fed with Ignis Centivis
 tooltip.EMT.output.double.half.height=Higher output at heights (x1 at y = 5, x3 at y=220)
 tooltip.EMT.output.double.half.low=Higher output at depths (x1 at y = 220, x3 at y=5)
-tooltip.EMT.draconicSchematic=This Schematic can be found in Pluto Dungeons
 
 #=============Entity Names=============
 entity.EMT.laser.name=Laser
@@ -69,10 +68,10 @@ item.EMT.denseIronSheet.name=Dense Iron Sheet
 item.EMT.taintedFeather.name=Tainted Feather
 item.EMT.thaumiumWing.name=Thaumium Reinforced Wing
 item.EMT.uumatterDrop.name=Crystallized UU-Matter Drop
-item.EMT.draconicSchematic.name=Draconic Core Schematic
-item.EMT.wyvernSchematic.name=Wyvern Core Schematic
-item.EMT.awakenedSchematic.name=Awakened Core Schematic
-item.EMT.chaoticSchematic.name=Chaotic Core Schematic
+item.EMT.draconicSchematic.name=[DEPRECATED] Draconic Core Schematic
+item.EMT.wyvernSchematic.name=[DEPRECATED] Wyvern Core Schematic
+item.EMT.awakenedSchematic.name=[DEPRECATED] Awakened Core Schematic
+item.EMT.chaoticSchematic.name=[DEPRECATED] Chaotic Core Schematic
 item.EMT.bauble.euMaker.armor.name=Armor Charging Ring
 item.EMT.bauble.euMaker.inventory.name=Inventory Charging Ring
 item.EMT.bauble.oneRing.name=The One Ring
@@ -179,20 +178,6 @@ tile.EMT.Quintuple_Compressed_Terra_Solar.name=Quintuple Compressed Terra Solar
 tile.EMT.Sextuple_Compressed_Terra_Solar.name=Sextuple Compressed Terra Solar
 tile.EMT.Septuple_Compressed_Terra_Solar.name=Septuple Compressed Terra Solar
 tile.EMT.Octuple_Compressed_Terra_Solar.name=Octuple Compressed Terra Solar
-
-#===============Gregtech Compat===============
-EMT_GTBLOCK_CASEING.0.name=Magic Containing Casing - Marked for deprecation
-EMT_GTBLOCK_CASEING.1.name=Essentia Diffusion Cell - Marked for deprecation
-EMT_GTBLOCK_CASEING.2.name=Iridium Ruridit Framebox
-EMT_GTBLOCK_CASEING.3.name=Indium Tungsten Framebox
-EMT_GTBLOCK_CASEING.4.name=Raw Magic Containing Casing
-EMT_GTBLOCK_CASEING.5.name=Raw Essentia Diffusion Cell - Marked for deprecation
-EMT_GTBLOCK_CASEING.7.name=Naquadah Alloy Fusion Casing
-EMT_GTBLOCK_CASEING.8.name=Bloody Ichorium Fusion Casing
-EMT_GTBLOCK_CASEING.9.name=Draconium Fusion Casing
-EMT_GTBLOCK_CASEING.10.name=Wyvern Fusion Casing
-EMT_GTBLOCK_CASEING.11.name=Awakened Draconium Fusion Casing
-EMT_GTBLOCK_CASEING.12.name=Chaotic Fusion Casing
 
 #=============Thaumonomicon Texts=============
 emt.rsname.Electric Magic Tools=Electric Magic Tools

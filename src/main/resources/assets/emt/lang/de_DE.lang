@@ -41,7 +41,6 @@ tooltip.EMT.output.double.nether=wenn es im Nether steht
 tooltip.EMT.output.double.lava=wenn mit Ignis Centivis befüllt
 tooltip.EMT.output.double.half.height=höhere Leistung in Höhen (x1 bei y=5, x3 bei y=220)
 tooltip.EMT.output.double.half.low=höhere Leistung in Tiefen (x1 bei y=220, x3 bei y=5)
-tooltip.EMT.draconicSchematic=Diesen Bauplan kann man in Pluto Dungeons finden
 
 #=============Entity Names=============
 entity.EMT.laser.name=Laser
@@ -135,14 +134,6 @@ tile.EMT.solar2.tripleair.name=Luft Infundierte Dreifach Verdichte Solarzelle
 tile.EMT.solar2.earth.name=Erde Infundierte Verdichte Solarzelle
 tile.EMT.solar2.doubleearth.name=Erde Infundierte Doppelt Verdichte Solarzelle
 tile.EMT.solar2.tripleearth.name=Erde Infundierte Dreifach Verdichte Solarzelle
-
-#===============Gregtech Compat===============
-EMT_GTBLOCK_CASEING.0.name=Magie Zurückhaltender Strahlenschutz
-EMT_GTBLOCK_CASEING.1.name=Essenz Diffusions Zelle
-EMT_GTBLOCK_CASEING.2.name=Iridium Osmiridium Bewehrungskorb
-EMT_GTBLOCK_CASEING.3.name=Indium Tungsten Bewehrungskorb
-EMT_GTBLOCK_CASEING.4.name=Halb-Fertiger Magie Zurückhaltender Strahlenschutz
-EMT_GTBLOCK_CASEING.5.name=Halb-Fertige Essenz Diffusions Zelle
 
 
 #=============Thaumonomicon Texts=============

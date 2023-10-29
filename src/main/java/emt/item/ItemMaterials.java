@@ -17,7 +17,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
-import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -115,7 +114,10 @@ public class ItemMaterials extends Item {
     public void addInformation(ItemStack stack, EntityPlayer player, List result, boolean advanced) {
         switch (stack.getItemDamage()) {
             case 16:
-                result.add(EnumChatFormatting.GOLD + StatCollector.translateToLocal("tooltip.EMT.draconicSchematic"));
+            case 17:
+            case 18:
+            case 19:
+                result.add(EnumChatFormatting.RED + "[DEPRECATED] Please put in the crafting table to get back!");
                 break;
         }
     }
