@@ -8,12 +8,12 @@ public class Registry {
 
     private static final EMT_GT_Loader gtloader = new EMT_GT_Loader();
 
-    public static void registerPreInit() {}
-
-    public static void registerInit() {
+    public static void registerPreInit() {
         EMTBlocks.registerBlocks();
         EMTItems.registerItems();
-        EMTTiles.registerTileEntities();
+        EMTTiles.registerTileEntities();}
+
+    public static void registerInit() {
         gtloader.run();
         EMTRecipes.registerEarlyRecipes();
     }
