@@ -11,7 +11,8 @@ public class Registry {
     public static void registerPreInit() {
         EMTBlocks.registerBlocks();
         EMTItems.registerItems();
-        EMTTiles.registerTileEntities();}
+        EMTTiles.registerTileEntities();
+    }
 
     public static void registerInit() {
         gtloader.run();
