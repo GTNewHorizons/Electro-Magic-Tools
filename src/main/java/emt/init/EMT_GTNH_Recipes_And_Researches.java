@@ -45,30 +45,6 @@ public class EMT_GTNH_Recipes_And_Researches implements Runnable {
     @Override
     public void run() {
 
-        // ItemStack glue =new ItemStack(EMTItems.itemEMTItems,1,8);
-        // HashSet<ShapelessRecipes> recipesHashSet = new HashSet<>();
-        // recipesHashSet.add(new ShapelessRecipes(glue,
-        // Arrays.asList(GT_ModHandler.getModItem("TConstruct","materials",1,36),GT_ModHandler.getModItem("TConstruct","materials",1,36))));
-        // recipesHashSet.add(new ShapelessRecipes(glue,
-        // Collections.singletonList(GT_ModHandler.getModItem("TConstruct", "materials", 2, 36))));
-        // for ( ShapelessRecipes sr : recipesHashSet)
-        // CraftingManager.getInstance().getRecipeList().add(sr);
-        //
-        // //Rubber ball recipes
-        //
-        // GT_Values.RA.addAlloySmelterRecipe(Materials.RubberTreeSap.getDust(4),ItemList.Shape_Mold_Ball.get(0),new
-        // ItemStack(EMTItems.itemEMTItems,1,10),200,16);
-        // GT_Values.RA.addAssemblerRecipe(new ItemStack[]{new ItemStack(Items.paper,12),new
-        // ItemStack(EMTItems.itemEMTItems,1,10)},Materials.Glue.getMolten(6912),new
-        // ItemStack(EMTItems.itemEMTItems,1,9),600,30);
-        //
-        // GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Ball.get(0),Materials.Rubber.getMolten(576),new
-        // ItemStack(EMTItems.itemEMTItems,1,10),100,30);
-        // GT_Values.RA.addPulveriserRecipe(new ItemStack(EMTItems.itemEMTItems,1,10),new
-        // ItemStack[]{Materials.Rubber.getDust(4)},null,300,2);
-        // GT_Values.RA.addFormingPressRecipe(Materials.Rubber.getPlates(4),ItemList.Shape_Mold_Ball.get(0),new
-        // ItemStack(EMTItems.itemEMTItems,1,10),100,30);
-
         EMTResearches.addResearchTab();
         runArcaneRecipes();
         runResreaches();
