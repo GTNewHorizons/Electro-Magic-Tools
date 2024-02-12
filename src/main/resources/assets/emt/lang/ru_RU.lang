@@ -99,6 +99,7 @@ item.EMT.focus.christmas.name=Набалдашник: Рождество
 item.EMT.focus.shield.name=Набалдашник: Щит
 item.EMT.focus.charge.name=Набалдашник: Зарядка
 item.EMT.focus.chargeWand.name=Набалдашник: Зарядка жезла
+item.EMT.focus.maintenance.name=Набалдашник: Обслуживание
 item.EMT.focus.electricCloud.name=Электризованное облако
 item.EMT.focus.energyBall.name=Набалдашник: Наэлектризованное облако
 
@@ -118,31 +119,67 @@ tile.EMT.machine.essentiafiller.name=Эфирный наполнитель
 tile.EMT.solar.compressed.name=Сжатая солнечная панель
 tile.EMT.solar.doublecompressed.name=Дважды сжатая солнечная панель
 tile.EMT.solar.triplecompressed.name=Трижды сжатая солнечная панель
+tile.EMT.Quadruple_Compressed_Solar.name=Четырежды сжатая солнечная панель
+tile.EMT.Quintuple_Compressed_Solar.name=Пятикратно сжатая солнечная панель
+tile.EMT.Sextuple_Compressed_Solar.name=Шестикратно сжатая солнечная панель
+tile.EMT.Septuple_Compressed_Solar.name=Семикратно сжатая солнечная панель
+tile.EMT.Octuple_Compressed_Solar.name=Восьмикратная сжатая солнечная панель
 tile.EMT.solar.water.name=Наполненная водой, сжатая солнечная панель
 tile.EMT.solar.doublewater.name=Наполненная водой, дважды сжатая солнечная панель
 tile.EMT.solar.triplewater.name=Наполненная водой, трижды сжатая солнечная панель
+tile.EMT.Quadruple_Compressed_Aqua_Solar.name=Наполненная водой, четырежды сжатая солнечная панель
+tile.EMT.Quintuple_Compressed_Aqua_Solar.name=Наполненная водой, пятикратно сжатая солнечная панель
+tile.EMT.Sextuple_Compressed_Aqua_Solar.name=Наполненная водой, шестикратно сжатая солнечная панель
+tile.EMT.Septuple_Compressed_Aqua_Solar.name=Наполненная водой, семикратно сжатая солнечная панель
+tile.EMT.Octuple_Compressed_Aqua_Solar.name=Наполненная водой, восьмикратная сжатая солнечная панель
 tile.EMT.solar.dark.name=Наполненная энтропией, сжатая солнечная панель
 tile.EMT.solar.doubledark.name=Наполненная энтропией, дважды сжатая солнечная панель
 tile.EMT.solar.tripledark.name=Наполненная энтропией, трижды сжатая солнечная панель
+tile.EMT.Quadruple_Compressed_Perditio_Solar.name=Наполненная энтропией, четырежды сжатая солнечная панель
+tile.EMT.Quintuple_Compressed_Perditio_Solar.name=Наполненная энтропией, пятикратно сжатая солнечная панель
+tile.EMT.Sextuple_Compressed_Perditio_Solar.name=Наполненная энтропией, шестикратно сжатая солнечная панель
+tile.EMT.Septuple_Compressed_Perditio_Solar.name=Наполненная энтропией, семикратно сжатая солнечная панель
+tile.EMT.Octuple_Compressed_Perditio_Solar.name=Наполненная энтропией, восьмикратная сжатая солнечная панель
 tile.EMT.solar.order.name=Наполненная порядком, сжатая солнечная панель
 tile.EMT.solar.doubleorder.name=Наполненная порядком, дважды сжатая солнечная панель
 tile.EMT.solar.tripleorder.name=Наполненная порядком, трижды сжатая солнечная панель
+tile.EMT.Quadruple_Compressed_Ordo_Solar.name=Наполненная порядком, четырежды сжатая солнечная панель
+tile.EMT.Quintuple_Compressed_Ordo_Solar.name=Наполненная порядком, пятикратно сжатая солнечная панель
+tile.EMT.Sextuple_Compressed_Ordo_Solar.name=Наполненная порядком, шестикратно сжатая солнечная панель
+tile.EMT.Septuple_Compressed_Ordo_Solar.name=Наполненная порядком, семикратно сжатая солнечная панель
+tile.EMT.Octuple_Compressed_Ordo_Solar.name=Наполненная порядком, восьмикратная сжатая солнечная панель
 tile.EMT.solar.fire.name=Наполненная огнём, сжатая солнечная панель
 tile.EMT.solar.doublefire.name=Наполненная огнём, дважды сжатая солнечная панель
 tile.EMT.solar.triplefire.name=Наполненная огнём, трижды сжатая солнечная панель
+tile.EMT.Quadruple_Compressed_Ignis_Solar.name=Наполненная огнём, четырежды сжатая солнечная панель
+tile.EMT.Quintuple_Compressed_Ignis_Solar.name=Наполненная огнём, пятикратно сжатая солнечная панель
+tile.EMT.Sextuple_Compressed_Ignis_Solar.name=Наполненная огнём, шестикратно сжатая солнечная панель
+tile.EMT.Septuple_Compressed_Ignis_Solar.name=Наполненная огнём, семикратно сжатая солнечная панель
+tile.EMT.Octuple_Compressed_Ignis_Solar.name=Наполненная огнём, восьмикратная сжатая солнечная панель
 tile.EMT.solar.air.name=Наполненная воздухом, сжатая солнечная панель
 tile.EMT.solar2.doubleair.name=Наполненная воздухом, дважды сжатая солнечная панель
 tile.EMT.solar2.tripleair.name=Наполненная воздухом, трижды сжатая солнечная панель
+tile.EMT.Quadruple_Compressed_Aer_Solar.name=Наполненная воздухом, четырежды сжатая солнечная панель
+tile.EMT.Quintuple_Compressed_Aer_Solar.name=Наполненная воздухом, пятикратно сжатая солнечная панель
+tile.EMT.Sextuple_Compressed_Aer_Solar.name=Наполненная воздухом, шестикратно сжатая солнечная панель
+tile.EMT.Septuple_Compressed_Aer_Solar.name=Наполненная воздухом, семикратно сжатая солнечная панель
+tile.EMT.Octuple_Compressed_Aer_Solar.name=Наполненная воздухом, восьмикратная сжатая солнечная панель
 tile.EMT.solar2.earth.name=Наполненная землёй, сжатая солнечная панель
 tile.EMT.solar2.doubleearth.name=Наполненная землёй, дважды сжатая солнечная панель
 tile.EMT.solar2.tripleearth.name=Наполненная землёй, трижды сжатая солнечная панель
+tile.EMT.Quadruple_Compressed_Terra_Solar.name=Наполненная землёй, четырежды сжатая солнечная панель
+tile.EMT.Quintuple_Compressed_Terra_Solar.name=Наполненная землёй, пятикратно сжатая солнечная панель
+tile.EMT.Sextuple_Compressed_Terra_Solar.name=Наполненная землёй, шестикратно сжатая солнечная панель
+tile.EMT.Septuple_Compressed_Terra_Solar.name=Наполненная землёй, семикратно сжатая солнечная панель
+tile.EMT.Octuple_Compressed_Terra_Solar.name=Наполненная землёй, восьмикратная сжатая солнечная панель
+
 
 #=============Thaumonomicon=============
 emt.rsname.Electric Magic Tools=Electric Magic Tools
 emt.tag.Electric Magic Tools=Кто сказал что магия и технология не дружат вместе?
 emt.text.Electric Magic Tools=Кто сказал, что магия не может дружить с технологией? Наши исследователи сотрудничали с лучшими магами школы тауматургов, чтобы приподнести Вам эффективность магии, в сочетании с удобством электроинструментов.
 
-emt.rsname.Energy Ball Focus=Набалдашник: энерго-шар
+emt.rsname.Energy Ball Focus=Набалдашник: Наэлектризованное облако
 emt.tag.Energy Ball Focus=Не игрушка
 emt.text.Energy Ball Focus=Для использования этого наболдашника необходимо надеть аккумуляторный ранец или нано/квантовую кирасу. Для создания одного шара необходимо 5120EU. Крайне не рекомендуется использовать в замкнутом пространстве!
 
@@ -194,6 +231,10 @@ emt.text.Kris-tmas Focus=С Рождеством!<BR><BR>Вы обнаружил
 emt.rsname.Shield Focus=Набалдашник: Щит
 emt.tag.Shield Focus=З.А.Щ.И.Т.А.
 emt.text.Shield Focus=После некоторых экспериментов с червоточиной, Вы узнали больше о транспортировке объектов в альтернативные измерения. Вы верите, что Вы сможете обратить эти эффекты, чтобы призвать ряд блоков из измерения, сделанного из материи, которые будут защищать Вас от любой беды. Будьте внимательны, используя этот набалдашник, так как когда эти блоки появятся в нашем измерении, они будут переносить любые встречные блоки в своё измерение, которые никогда не вернуться. Вы также не сможете двигаться, во время существования этого щита.
+
+emt.rsname.Wand Focus: Maintenance=Таумическое обслуживание
+emt.tag.Wand Focus: Maintenance=Кому нужен ящик с инструментами, когда у вас есть магия?
+emt.text.Wand Focus: Maintenance=После интенсивного изучения предположительно механической природы вашего аппарата вы, наконец, сделали это, вы обнаружили метод, позволяющий использовать Вис в ремонте. <BR> Что представляют собой несколько взорванных чистых помещений на фоне явного прогресса? Теперь вы можете избавиться от этих подлых обыденных инструментов...
 
 emt.rsname.Potentia Generator=Potentia генератор
 emt.tag.Potentia Generator=Освоение производящего потенциала эссенции
@@ -370,3 +411,7 @@ emt.text.Quantum Wings=После исследования всех возмож
 emt.rsname.Infused Quantum Armor=Наполненный квантовый нагрудник.
 emt.tag.Infused Quantum Armor=Последний шаг...
 emt.text.Infused Quantum Armor=Вам было нечего делать, и Вы решили заняться хоть чем-то полезным. Вам в голову пришла идея создания брони, на которую можно нацепить крылья или ранец, чтобы быть защищёнными в полёте. Возмите в руку крылья или ранец, и присядьте чтобы надеть их на броню. Чтобы снять их, зажмите Shift + "Снять"(Смотрите в настройках).
+
+emt.rsname.ResearchCompleter=Автоматизированное исследование
+emt.tag.ResearchCompleter=Больше никакого спама
+emt.text.ResearchCompleter=Поначалу это было весело, но вы решили, что пришло время найти лучший способ провести все эти исследования. Смешав технологию и магию, вы создали мультиблок, который может самостоятельно завершить исследовательскую заметку.<BR><BR>Для работы ему необходимо, чтобы узлы были размещены в центре конструкции, и он будет медленно разрушать их во время работы. Стабилизаторы узлов не являются обязательными, но рекомендуются для удержания большого количества узлов близко друг к другу, не разрушая друг друга.
