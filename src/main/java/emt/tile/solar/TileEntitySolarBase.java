@@ -15,6 +15,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.IFluidHandler;
 
 import com.gtnewhorizons.modularui.api.ModularUITextures;
+import com.gtnewhorizons.modularui.api.NumberFormatMUI;
 import com.gtnewhorizons.modularui.api.drawable.Text;
 import com.gtnewhorizons.modularui.api.screen.ITileWithModularUI;
 import com.gtnewhorizons.modularui.api.screen.ModularWindow;
@@ -28,7 +29,6 @@ import emt.client.gui.EMT_UITextures;
 import emt.init.EMTBlocks;
 import emt.tile.DefinitelyNotAIC2Source;
 import emt.tile.TileEntityEMT;
-import emt.util.EMTTextHelper;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.interfaces.tileentity.IBasicEnergyContainer;
 import gregtech.api.interfaces.tileentity.IEnergyConnected;
@@ -67,6 +67,8 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     public byte aspect = 0;
     protected boolean side;
     private int instance, meta;
+
+    protected static NumberFormatMUI numberFormat = new NumberFormatMUI();
 
     public TileEntitySolarBase(double output, Aspect aspect, String guiname, int instance, int meta) {
         this.tick = 10;
@@ -903,16 +905,20 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
                                 .setProgress(() -> generating > 9 ? 1f : 0f).setSynced(false, false).setPos(9, 43)
                                 .setSize(11, 11))
                 .widget(
-                        TextWidget.dynamicString(
-                                () -> StatCollector.translateToLocal("emt.Storage") + EMTTextHelper
-                                        .formatNumber(storage) + "/" + EMTTextHelper.formatNumber(maxstorage) + "EU")
-                                .setSynced(false).setDefaultColor(0).setPos(36, 22))
+                        new TextWidget().setStringSupplier(
+                                () -> StatCollector.translateToLocal("emt.Storage") + " "
+                                        + numberFormat.formatWithSuffix(storage)
+                                        + "/"
+                                        + numberFormat.formatWithSuffix(maxstorage)
+                                        + " EU")
+                                .setDefaultColor(0).setPos(36, 22))
                 .widget(new FakeSyncWidget.LongSyncer(() -> storage, val -> storage = val))
                 .widget(
-                        TextWidget
-                                .dynamicString(
-                                        () -> StatCollector.translateToLocal("emt.Generating") + generating + " EU/t")
-                                .setSynced(false).setDefaultColor(0).setPos(36, 35))
+                        new TextWidget().setStringSupplier(
+                                () -> StatCollector.translateToLocal("emt.Generating") + " "
+                                        + numberFormat.formatWithSuffix((long) generating)
+                                        + " EU/t")
+                                .setDefaultColor(0).setPos(36, 35))
                 .widget(new FakeSyncWidget.DoubleSyncer(() -> generating, val -> generating = val));
 
         return builder.build();
