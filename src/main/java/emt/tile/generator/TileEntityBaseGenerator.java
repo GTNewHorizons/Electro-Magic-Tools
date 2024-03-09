@@ -14,6 +14,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.IFluidHandler;
 
 import com.gtnewhorizons.modularui.api.ModularUITextures;
+import com.gtnewhorizons.modularui.api.NumberFormatMUI;
 import com.gtnewhorizons.modularui.api.drawable.Text;
 import com.gtnewhorizons.modularui.api.screen.ITileWithModularUI;
 import com.gtnewhorizons.modularui.api.screen.ModularWindow;
@@ -28,7 +29,6 @@ import emt.tile.DefinitelyNotAIC2Source;
 import emt.tile.TileEntityEMT;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTEssentiasOutputs;
-import emt.util.EMTTextHelper;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.interfaces.tileentity.IBasicEnergyContainer;
 import gregtech.api.interfaces.tileentity.IEnergyConnected;
@@ -63,6 +63,8 @@ public class TileEntityBaseGenerator extends TileEntityEMT implements IInventory
     public boolean dead = true;
     public byte color;
     private boolean side;
+
+    protected static final NumberFormatMUI numberFormat = new NumberFormatMUI();
 
     public TileEntityBaseGenerator(int aspect) {
         this();
@@ -890,33 +892,35 @@ public class TileEntityBaseGenerator extends TileEntityEMT implements IInventory
                                 .setProgress(() -> (float) fuel / this.maxfuel).setSynced(false, false).setPos(9, 43)
                                 .setSize(25, 11))
                 .widget(
-                        TextWidget
-                                .dynamicString(
-                                        () -> StatCollector.translateToLocal("emt.Storage")
-                                                + EMTTextHelper.formatNumber(storage)
-                                                + "/"
-                                                + EMTTextHelper.formatNumber(maxstorage)
-                                                + "EU")
-                                .setSynced(false).setDefaultColor(0).setPos(36, 22))
+                        new TextWidget().setStringSupplier(
+                                () -> StatCollector.translateToLocal("emt.Storage") + " "
+                                        + numberFormat.formatWithSuffix(storage)
+                                        + "/"
+                                        + numberFormat.formatWithSuffix(maxstorage)
+                                        + " EU")
+                                .setDefaultColor(0).setPos(36, 22))
                 .widget(new FakeSyncWidget.IntegerSyncer(() -> storage, val -> storage = val))
                 .widget(
-                        TextWidget.dynamicString(
-                                () -> StatCollector.translateToLocal("emt.Generating")
-                                        + (isActive ? generating / 20 / 20 : 0)
+                        new TextWidget().setStringSupplier(
+                                () -> StatCollector.translateToLocal("emt.Generating") + " "
+                                        + numberFormat.formatWithSuffix(isActive ? (long) (generating / 20 / 20) : 0)
                                         + " EU/t")
-                                .setSynced(false).setDefaultColor(0).setPos(36, 35))
+                                .setDefaultColor(0).setPos(36, 35))
                 .widget(new FakeSyncWidget.DoubleSyncer(() -> generating, val -> generating = val))
                 .widget(new FakeSyncWidget.BooleanSyncer(() -> isActive, val -> isActive = val))
                 .widget(
-                        TextWidget.dynamicString(() -> StatCollector.translateToLocal("emt.Fuel") + ": " + fuel)
-                                .setSynced(false).setDefaultColor(0).setPos(36, 48))
+                        new TextWidget()
+                                .setStringSupplier(
+                                        () -> StatCollector.translateToLocal("emt.Fuel") + ": "
+                                                + numberFormat.formatWithSuffix(fuel))
+                                .setDefaultColor(0).setPos(36, 48))
                 .widget(new FakeSyncWidget.ByteSyncer(() -> fuel, val -> fuel = val))
                 .widget(
-                        TextWidget
-                                .dynamicString(
-                                        () -> StatCollector.translateToLocal("emt.remaining_second")
-                                                + ((fuel * 20 * 20) - tick) / 20)
-                                .setSynced(false).setDefaultColor(0).setPos(36, 63))
+                        new TextWidget()
+                                .setStringSupplier(
+                                        () -> StatCollector.translateToLocal("emt.remaining_second") + " "
+                                                + numberFormat.format(((fuel * 20 * 20) - tick) / 20))
+                                .setDefaultColor(0).setPos(36, 63))
                 .widget(new FakeSyncWidget.IntegerSyncer(() -> tick, val -> tick = val));
 
         return builder.build();
