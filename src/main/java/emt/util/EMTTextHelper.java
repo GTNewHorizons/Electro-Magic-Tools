@@ -42,16 +42,4 @@ public class EMTTextHelper {
     public static String localize(String key) {
         return StatCollector.translateToLocal(key);
     }
-
-    public static String formatNumber(long number) {
-        if (number < 10_000) {
-            return String.valueOf(number);
-        } else if (number < 10_000_000) {
-            return (number / 1000) + "k";
-        } else if (number < 1_000_000_000) {
-            return (number / 1_000_000) + "M";
-        } else {
-            return (number / 1_000_000_000) + "G";
-        }
-    }
 }
