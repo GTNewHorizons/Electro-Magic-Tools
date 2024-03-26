@@ -21,7 +21,7 @@ import ic2.core.util.Keyboard;
 
 public class ItemQuantumGoggles extends ItemNanoGoggles {
 
-    private static final Map<Integer, Integer> potionCost = new HashMap();
+    private static final Map<Integer, Integer> potionCost = new HashMap<>();
 
     public ItemQuantumGoggles(ArmorMaterial material, int renderIndex, int armorType) {
         super(material, renderIndex, armorType);
@@ -67,13 +67,14 @@ public class ItemQuantumGoggles extends ItemNanoGoggles {
             Field f;
             f = Keyboard.class.getDeclaredField("playerKeys");
             f.setAccessible(true);
-            Map<EntityPlayer, Set<Enum>> playerKeys = (Map<EntityPlayer, Set<Enum>>) f.get(IC2.keyboard);
+            @SuppressWarnings("unchecked")
+            Map<EntityPlayer, Set<Enum<?>>> playerKeys = (Map<EntityPlayer, Set<Enum<?>>>) f.get(IC2.keyboard);
 
-            Enum hub = null;
-            Set<Enum> set = playerKeys.get(player);
+            Enum<?> hub = null;
+            Set<Enum<?>> set = playerKeys.get(player);
 
             if (set != null) {
-                for (Enum e : set) {
+                for (Enum<?> e : set) {
                     if (e.ordinal() == 6) {
                         hub = e;
                     }

@@ -107,7 +107,7 @@ public class CommandOutputs extends CommandBase {
     }
 
     @Override
-    public List addTabCompletionOptions(ICommandSender command, String[] stringArray) {
+    public List<String> addTabCompletionOptions(ICommandSender command, String[] stringArray) {
         return null;
     }
 

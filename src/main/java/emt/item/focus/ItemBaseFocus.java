@@ -103,8 +103,10 @@ public abstract class ItemBaseFocus extends ItemFocusBasic {
         return 5;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer player, @SuppressWarnings("rawtypes") List list,
+            boolean par4) {
         AspectList cost = getVisCost(stack);
         if (cost != null && cost.size() > 0) {
             list.add(StatCollector.translateToLocal(isVisCostPerTick() ? "item.Focus.cost2" : "item.Focus.cost1"));

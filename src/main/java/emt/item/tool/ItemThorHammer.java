@@ -87,7 +87,7 @@ public class ItemThorHammer extends ItemSword implements IRepairable {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List<String> list, boolean par4) {
         list.add(EMTTextHelper.localize("tooltip.EMT.hammer.broken.The Hammer of Thor"));
     }
 }

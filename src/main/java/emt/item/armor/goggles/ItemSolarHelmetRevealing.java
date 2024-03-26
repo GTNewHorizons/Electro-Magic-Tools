@@ -18,7 +18,7 @@ import ic2.api.item.IElectricItem;
 
 public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
 
-    private static final Map potionCost = new HashMap();
+    private static final Map<Integer, Integer> potionCost = new HashMap<>();
     /*
      * private int ticker; private int generating; private boolean sunIsUp; private boolean skyIsVisible; private
      * boolean noSunWorld; private boolean dampPlace;
@@ -26,7 +26,6 @@ public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
     private int genDay;
     private int genNight;
 
-    @SuppressWarnings("unchecked")
     public ItemSolarHelmetRevealing(ArmorMaterial material, int par3, int par4) {
         super(material, par3, par4);
         this.setMaxDamage(27);

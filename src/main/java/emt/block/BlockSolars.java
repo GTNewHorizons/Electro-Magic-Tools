@@ -105,7 +105,7 @@ public class BlockSolars extends BlockBaseContainer {
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item id, CreativeTabs tab, List list) {
+    public void getSubBlocks(Item id, CreativeTabs tab, List<ItemStack> list) {
         for (int meta = 0; meta < countOfMetas; meta++) {
             list.add(new ItemStack(id, 1, meta));
         }

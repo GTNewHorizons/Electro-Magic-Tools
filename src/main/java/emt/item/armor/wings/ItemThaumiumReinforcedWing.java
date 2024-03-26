@@ -49,9 +49,8 @@ public class ItemThaumiumReinforcedWing extends ItemFeatherWing implements IVisD
         return EMT.TEXTURE_PATH + ":textures/models/thaumiumwing.png";
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List<String> list, boolean par4) {
         list.add(EMTTextHelper.PURPLE + EMTTextHelper.localize("tooltip.EMT.visDiscount") + ": " + visDiscount + "%");
     }
 

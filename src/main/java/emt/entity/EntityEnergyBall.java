@@ -99,7 +99,7 @@ public class EntityEnergyBall extends Entity implements IProjectile, IEntityAddi
             }
 
             /** Generating Coords for every Entity **/
-            ArrayList<Entity> entities = new ArrayList();
+            ArrayList<Entity> entities = new ArrayList<>();
 
             int chunkSize = ((RADIUS - 1) >> 4) + 2;
 

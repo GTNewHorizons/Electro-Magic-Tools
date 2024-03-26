@@ -51,7 +51,7 @@ public class BlockEssentiaGenerators extends BlockBaseContainer {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item id, CreativeTabs tab, List list) {
+    public void getSubBlocks(Item id, CreativeTabs tab, List<ItemStack> list) {
         list.add(new ItemStack(id, 1, 0));
         list.add(new ItemStack(id, 1, 1));
         list.add(new ItemStack(id, 1, 2));

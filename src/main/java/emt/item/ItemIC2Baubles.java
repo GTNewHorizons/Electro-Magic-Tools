@@ -67,7 +67,7 @@ public class ItemIC2Baubles extends ItemBase implements IBauble, IRunicArmor {
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List list) {
+    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List<ItemStack> list) {
         list.add(new ItemStack(this, 1, 0));
         list.add(new ItemStack(this, 1, 1));
     }

@@ -57,7 +57,7 @@ public class ItemThorHammerBroken extends ItemSword implements IRepairable {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List list, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer entityPlayer, List<String> list, boolean par4) {
         list.add(EMTTextHelper.localize("tooltip.EMT.hammer.broken.thor"));
         list.add(EMTTextHelper.localize("tooltip.EMT.hammer.broken.danger"));
         if (!Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {

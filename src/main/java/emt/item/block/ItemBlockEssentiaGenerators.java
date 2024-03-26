@@ -61,7 +61,7 @@ public class ItemBlockEssentiaGenerators extends ItemBlock {
     }
 
     @Override
-    public void addInformation(ItemStack is, EntityPlayer player, List list, boolean flag) {
+    public void addInformation(ItemStack is, EntityPlayer player, List<String> list, boolean flag) {
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
             switch (is.getItemDamage()) {
                 case 0:

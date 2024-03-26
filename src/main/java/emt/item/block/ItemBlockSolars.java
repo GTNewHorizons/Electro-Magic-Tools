@@ -51,7 +51,8 @@ public class ItemBlockSolars extends ItemBlock {
     }
 
     @Override
-    public void addInformation(ItemStack itemstack, EntityPlayer player, List list, boolean advancedItemTooltips) {
+    public void addInformation(ItemStack itemstack, EntityPlayer player, List<String> list,
+            boolean advancedItemTooltips) {
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
             TileEntitySolarBase te = Solars.getTileEntitySolarBase(instance, itemstack.getItemDamage());
             if (instance == 0) {

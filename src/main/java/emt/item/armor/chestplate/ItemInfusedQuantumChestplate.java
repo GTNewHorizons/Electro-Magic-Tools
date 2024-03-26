@@ -410,7 +410,8 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
 
     @SuppressWarnings("unchecked")
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer player, @SuppressWarnings("rawtypes") List list,
+            boolean par4) {
         list.add(StatCollector.translateToLocal("ic2.item.tooltip.PowerTier") + " " + getTier(new ItemStack(this)));
     }
 

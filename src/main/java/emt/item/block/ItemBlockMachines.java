@@ -46,7 +46,8 @@ public class ItemBlockMachines extends ItemBlock {
     }
 
     @Override
-    public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List p_77624_3_, boolean p_77624_4_) {
+    public void addInformation(ItemStack p_77624_1_, EntityPlayer p_77624_2_, List<String> p_77624_3_,
+            boolean p_77624_4_) {
         switch (p_77624_1_.getItemDamage()) {
             case 2: {
                 p_77624_3_.add("Connects between Essentia Hatches and the Pipe Network");

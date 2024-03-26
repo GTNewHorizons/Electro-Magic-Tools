@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.Locale;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -126,7 +125,7 @@ public class ItemRockbreakerDrill extends ItemThaumiumDrill {
                     }
                     int fortune = EnchantmentHelper.getFortuneModifier(entityLiving);
                     world.setBlockToAir(x + xx, y + yy, z + zz);
-                    ArrayList ret = bl.getDrops(world, x + xx, y + yy, z + zz, md, fortune);
+                    ArrayList<ItemStack> ret = bl.getDrops(world, x + xx, y + yy, z + zz, md, fortune);
                     boolean creative = false;
                     if ((entityLiving instanceof EntityPlayer)
                             && ((EntityPlayer) entityLiving).capabilities.isCreativeMode) {
@@ -136,7 +135,7 @@ public class ItemRockbreakerDrill extends ItemThaumiumDrill {
                         continue;
                     }
                     ItemStack is;
-                    for (Iterator i$ = ret.iterator(); i$.hasNext(); world.spawnEntityInWorld(
+                    for (Iterator<ItemStack> i$ = ret.iterator(); i$.hasNext(); world.spawnEntityInWorld(
                             new EntityFollowingItem(
                                     world,
                                     (double) x + (double) xx + 0.5D,
@@ -145,7 +144,7 @@ public class ItemRockbreakerDrill extends ItemThaumiumDrill {
                                     is,
                                     entityLiving,
                                     3))) {
-                        is = (ItemStack) i$.next();
+                        is = i$.next();
                     }
                 }
             }

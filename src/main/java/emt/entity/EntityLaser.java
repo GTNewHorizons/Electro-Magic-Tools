@@ -165,7 +165,7 @@ public class EntityLaser extends Entity implements IThrowableEntity, IProjectile
             }
 
             Entity entity = null;
-            List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(
+            List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(
                     this,
                     this.boundingBox.addCoord(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
             double d0 = 0.0D;
@@ -173,7 +173,7 @@ public class EntityLaser extends Entity implements IThrowableEntity, IProjectile
             float down;
 
             for (l = 0; l < list.size(); ++l) {
-                Entity entity1 = (Entity) list.get(l);
+                Entity entity1 = list.get(l);
 
                 if (entity1.canBeCollidedWith() && (entity1 != this.shootingEntity || this.ticksInAir >= 5)) {
                     down = 0.3F;

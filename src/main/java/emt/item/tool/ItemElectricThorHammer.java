@@ -44,9 +44,8 @@ public class ItemElectricThorHammer extends ItemSword implements IElectricItem {
         this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":hammer/electricthorhammer");
     }
 
-    @SuppressWarnings("unchecked")
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List itemList) {
+    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List<ItemStack> itemList) {
         ItemStack itemStack = new ItemStack(this, 1);
         if (getChargedItem(itemStack) == this) {
             ItemStack charged = new ItemStack(this, 1);
@@ -66,9 +65,8 @@ public class ItemElectricThorHammer extends ItemSword implements IElectricItem {
         return false;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> list, boolean par4) {
         list.add(StatCollector.translateToLocal("ic2.item.tooltip.PowerTier") + " " + getTier(new ItemStack(this)));
         list.add(
                 EMTTextHelper.localize("tooltip.EMT.hammer.electric")

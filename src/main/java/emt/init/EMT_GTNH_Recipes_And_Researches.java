@@ -192,7 +192,7 @@ public class EMT_GTNH_Recipes_And_Researches implements Runnable {
                                         return false;
                         } else if (itemReplacement instanceof Collection) {
                             boolean hit = false;
-                            for (Object o : (Collection) itemReplacement) {
+                            for (Object o : (Collection<?>) itemReplacement) {
                                 if (GT_Utility.areStacksEqual((ItemStack) o, slot, true)
                                         || GT_Utility.areUnificationsEqual((ItemStack) o, slot, true)
                                         || (((ItemStack) o).getItem().equals(slot.getItem())

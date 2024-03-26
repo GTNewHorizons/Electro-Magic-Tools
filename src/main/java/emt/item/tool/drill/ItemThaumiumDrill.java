@@ -47,7 +47,7 @@ public class ItemThaumiumDrill extends ItemPickaxe implements IElectricItem {
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List itemList) {
+    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List<ItemStack> itemList) {
         ItemStack itemStack = new ItemStack(this, 1);
         if (getChargedItem(itemStack) == this) {
             ItemStack charged = new ItemStack(this, 1);
@@ -115,9 +115,8 @@ public class ItemThaumiumDrill extends ItemPickaxe implements IElectricItem {
         return EMTConfigHandler.enchanting;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List list, boolean par4) {
+    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List<String> list, boolean par4) {
         list.add(StatCollector.translateToLocal("ic2.item.tooltip.PowerTier") + " " + getTier(new ItemStack(this)));
     }
 

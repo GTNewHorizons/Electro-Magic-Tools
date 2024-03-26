@@ -111,7 +111,7 @@ public class ItemMaterials extends Item {
     }
 
     @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, List result, boolean advanced) {
+    public void addInformation(ItemStack stack, EntityPlayer player, List<String> result, boolean advanced) {
         switch (stack.getItemDamage()) {
             case 16:
             case 17:
@@ -152,7 +152,7 @@ public class ItemMaterials extends Item {
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List list) {
+    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List<ItemStack> list) {
         for (int i = 1; i <= 19; i++) {
             list.add(new ItemStack(this, 1, i));
         }
