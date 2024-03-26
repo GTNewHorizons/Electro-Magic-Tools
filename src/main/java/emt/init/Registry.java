@@ -10,7 +10,7 @@ public class Registry {
     public static boolean enableGTCompat;
 
     public static void registerPreInit() {
-        enableGTCompat = Loader.isModLoaded("gregtech");
+        enableGTCompat = Loader.isModLoaded("gregtech") && !Loader.isModLoaded("gregapi");
         EMTBlocks.registerBlocks();
         EMTItems.registerItems();
         EMTTiles.registerTileEntities();
