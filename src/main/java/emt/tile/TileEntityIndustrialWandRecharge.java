@@ -152,9 +152,9 @@ public class TileEntityIndustrialWandRecharge extends TileEntityEMT
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound p_145839_1_) {
-        super.readFromNBT(p_145839_1_);
-        NBTTagList nbttaglist = p_145839_1_.getTagList("Items", 10);
+    public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
+        NBTTagList nbttaglist = compound.getTagList("Items", 10);
         this.ItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < nbttaglist.tagCount(); ++i) {
@@ -167,13 +167,13 @@ public class TileEntityIndustrialWandRecharge extends TileEntityEMT
         }
 
         if (this.energyStored == 0) {
-            this.energyStored = p_145839_1_.getDouble("Energy");
+            this.energyStored = compound.getDouble("Energy");
         }
     }
 
     @Override
-    public void writeToNBT(NBTTagCompound p_145841_1_) {
-        super.writeToNBT(p_145841_1_);
+    public void writeToNBT(NBTTagCompound compound) {
+        super.writeToNBT(compound);
         NBTTagList nbttaglist = new NBTTagList();
 
         for (int i = 0; i < this.ItemStacks.length; ++i) {
@@ -185,8 +185,8 @@ public class TileEntityIndustrialWandRecharge extends TileEntityEMT
             }
         }
 
-        p_145841_1_.setTag("Items", nbttaglist);
-        p_145841_1_.setDouble("Energy", this.energyStored);
+        compound.setTag("Items", nbttaglist);
+        compound.setDouble("Energy", this.energyStored);
     }
 
     @Override
