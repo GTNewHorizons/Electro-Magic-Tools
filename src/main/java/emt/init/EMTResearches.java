@@ -229,7 +229,7 @@ public class EMTResearches {
             }
         }
 
-        if (!EMTConfigHandler.potentiaGeneratorResearch) {
+        if (Registry.enableGTCompat && !EMTConfigHandler.potentiaGeneratorResearch) {
             new EMTResearchItem(
                     "Potentia Generator",
                     EMTResearchAspects.potentiaGeneratorResearch,
@@ -239,9 +239,7 @@ public class EMTResearches {
                     new ItemStack(EMTBlocks.essentiaGens, 1, 0)).setParents("Electric Magic Tools").setConcealed()
                             .registerResearchItem()
                             .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.potentiaGenerator));
-        }
 
-        if (!EMTConfigHandler.potentiaGeneratorResearch) {
             if (!EMTConfigHandler.ignisGeneratorResearch) {
                 new EMTResearchItem(
                         "Ignis Generator",
@@ -253,9 +251,7 @@ public class EMTResearches {
                                 .setConcealed().registerResearchItem()
                                 .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.ignisGenerator));
             }
-        }
 
-        if (!EMTConfigHandler.potentiaGeneratorResearch) {
             if (!EMTConfigHandler.auramGeneratorResearch) {
                 new EMTResearchItem(
                         "Auram Generator",
@@ -267,9 +263,7 @@ public class EMTResearches {
                                 .setConcealed().registerResearchItem()
                                 .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.auramGenerator));
             }
-        }
 
-        if (!EMTConfigHandler.potentiaGeneratorResearch) {
             if (!EMTConfigHandler.arborGeneratorResearch) {
                 new EMTResearchItem(
                         "Arbor Generator",
@@ -281,9 +275,7 @@ public class EMTResearches {
                                 .setConcealed().registerResearchItem()
                                 .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.arborGenerator));
             }
-        }
 
-        if (!EMTConfigHandler.potentiaGeneratorResearch) {
             if (!EMTConfigHandler.lucrumGeneratorResearch) {
                 new EMTResearchItem(
                         "Lucrum Generator",
@@ -295,9 +287,7 @@ public class EMTResearches {
                                 .setConcealed().registerResearchItem()
                                 .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.lucrumGenerator));
             }
-        }
 
-        if (!EMTConfigHandler.potentiaGeneratorResearch) {
             if (!EMTConfigHandler.aerGeneratorResearch) {
                 new EMTResearchItem(
                         "Aer Generator",
@@ -308,23 +298,20 @@ public class EMTResearches {
                         new ItemStack(EMTBlocks.essentiaGens, 1, 4)).setSecondary().setParents("Potentia Generator")
                                 .setConcealed().registerResearchItem()
                                 .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.aerGenerator));
+
+                if (!EMTConfigHandler.wandChargingSationResearch) {
+                    new EMTResearchItem(
+                            "Industrial Wand Charging Station",
+                            EMTResearchAspects.wandCharger,
+                            -4,
+                            2,
+                            3,
+                            new ItemStack(EMTBlocks.emtMachines, 1, 0)).setParents("Potentia Generator")
+                                    .registerResearchItem()
+                                    .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.wandRecharger));
+                }
             }
         }
-
-        if (!EMTConfigHandler.potentiaGeneratorResearch) {
-            if (!EMTConfigHandler.wandChargingSationResearch) {
-                new EMTResearchItem(
-                        "Industrial Wand Charging Station",
-                        EMTResearchAspects.wandCharger,
-                        -4,
-                        2,
-                        3,
-                        new ItemStack(EMTBlocks.emtMachines, 1, 0)).setParents("Potentia Generator")
-                                .registerResearchItem()
-                                .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.wandRecharger));
-            }
-        }
-
         if (!EMTConfigHandler.thaumiumChainsawResearch) {
             if (!EMTConfigHandler.streamChainsawResearch) {
                 new EMTResearchItem(
@@ -388,7 +375,7 @@ public class EMTResearches {
             }
         }
 
-        if (!EMTConfigHandler.compressedSolarsResearch) {
+        if (Registry.enableGTCompat && !EMTConfigHandler.compressedSolarsResearch) {
             new EMTResearchItem(
                     "Compressed Solars",
                     EMTResearchAspects.compressedSolars,
@@ -401,9 +388,6 @@ public class EMTResearches {
                                     new ResearchPage(EMTRecipes.compressedSolar),
                                     new ResearchPage(EMTRecipes.doubleCompressedSolar),
                                     new ResearchPage(EMTRecipes.tripleCompressedSolar));
-        }
-
-        if (!EMTConfigHandler.compressedSolarsResearch) {
             if (!EMTConfigHandler.solarHelmetResearch) {
                 new EMTResearchItem(
                         "Solar Helmet of Revealing",
@@ -416,7 +400,6 @@ public class EMTResearches {
                                 .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.solarHelmetRevealing));
             }
         }
-
         if (!EMTConfigHandler.electricBootsResearch) {
             new EMTResearchItem(
                     "Electric Boots of the Traveller",
@@ -483,7 +466,7 @@ public class EMTResearches {
                             .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.etheralProcessor));
         }
 
-        if (!EMTConfigHandler.compressedSolarsResearch) {
+        if (Registry.enableGTCompat && !EMTConfigHandler.compressedSolarsResearch) {
             if (!EMTConfigHandler.waterSolarsResearch) {
                 new EMTResearchItem(
                         "Water Infused Solar Panels",
@@ -498,9 +481,7 @@ public class EMTResearches {
                                         new ResearchPage(EMTRecipes.doubleWaterSolar),
                                         new ResearchPage(EMTRecipes.tripleWaterSolar));
             }
-        }
 
-        if (!EMTConfigHandler.compressedSolarsResearch) {
             if (!EMTConfigHandler.darkSolarsResearch) {
                 new EMTResearchItem(
                         "Entropy Infused Solar Panels",
@@ -515,9 +496,7 @@ public class EMTResearches {
                                         new ResearchPage(EMTRecipes.doubleDarkSolar),
                                         new ResearchPage(EMTRecipes.tripleDarkSolar));
             }
-        }
 
-        if (!EMTConfigHandler.compressedSolarsResearch) {
             if (!EMTConfigHandler.orderSolarsResearch) {
                 new EMTResearchItem(
                         "Order Infused Solar Panels",
@@ -532,9 +511,7 @@ public class EMTResearches {
                                         new ResearchPage(EMTRecipes.doubleOrderSolar),
                                         new ResearchPage(EMTRecipes.tripleOrderSolar));
             }
-        }
 
-        if (!EMTConfigHandler.compressedSolarsResearch) {
             if (!EMTConfigHandler.fireSolarsResearch) {
                 new EMTResearchItem(
                         "Fire Infused Solar Panels",
@@ -549,9 +526,7 @@ public class EMTResearches {
                                         new ResearchPage(EMTRecipes.doubleFireSolar),
                                         new ResearchPage(EMTRecipes.tripleFireSolar));
             }
-        }
 
-        if (!EMTConfigHandler.compressedSolarsResearch) {
             if (!EMTConfigHandler.airSolarsResearch) {
                 new EMTResearchItem(
                         "Air Infused Solar Panels",
@@ -566,9 +541,7 @@ public class EMTResearches {
                                         new ResearchPage(EMTRecipes.doubleAirSolar),
                                         new ResearchPage(EMTRecipes.tripleAirSolar));
             }
-        }
 
-        if (!EMTConfigHandler.compressedSolarsResearch) {
             if (!EMTConfigHandler.earthSolarsResearch) {
                 new EMTResearchItem(
                         "Earth Infused Solar Panels",
@@ -648,7 +621,7 @@ public class EMTResearches {
                             .setPages(new ResearchPage(""), new ResearchPage(EMTRecipes.chargeFocus));
         }
 
-        if (!EMTConfigHandler.maintenanceFocusResearch) {
+        if (Registry.enableGTCompat && !EMTConfigHandler.maintenanceFocusResearch) {
             new EMTResearchItem(
                     "Wand Focus: Maintenance",
                     EMTResearchAspects.maintenanceFocus,

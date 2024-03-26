@@ -9,6 +9,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.gtnewhorizons.modularui.api.ModularUITextures;
+import com.gtnewhorizons.modularui.api.drawable.UITexture;
 import com.gtnewhorizons.modularui.api.forge.InvWrapper;
 import com.gtnewhorizons.modularui.api.screen.ITileWithModularUI;
 import com.gtnewhorizons.modularui.api.screen.ModularWindow;
@@ -20,13 +21,13 @@ import com.gtnewhorizons.modularui.common.widget.TextWidget;
 import emt.init.EMTBlocks;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTTextHelper;
-import gregtech.api.gui.modularui.GT_UITextures;
 import ic2.api.tile.IWrenchable;
 import thaumcraft.common.config.ConfigItems;
 
 public class TileEntityEtherealMacerator extends TileEntityEMT
         implements ISidedInventory, IWrenchable, ITileWithModularUI {
 
+    private static final UITexture PROGRESSBAR_MACERATE = UITexture.fullImage("gregtech", "gui/progressbar/macerate");
     private static final int[] slots_top = new int[] { 0 };
     private static final int[] slots_bottom = new int[] { 2, 1 };
     private static final int[] slots_sides = new int[] { 1 };
@@ -306,7 +307,7 @@ public class TileEntityEtherealMacerator extends TileEntityEMT
                                 .setPos(115, 25))
                 .widget(new SlotWidget(invWrapper, 1).setAccess(true, false).setPos(115, 52))
                 .widget(
-                        new ProgressBar().setTexture(GT_UITextures.PROGRESSBAR_MACERATE, 20)
+                        new ProgressBar().setTexture(PROGRESSBAR_MACERATE, 20)
                                 .setProgress(() -> (float) cookTime / maceratingSpeed).setPos(81, 36).setSize(20, 18))
                 .widget(new TextWidget(EMTTextHelper.localize("gui.EMT.etherealMacerator.title")).setPos(6, 6));
 

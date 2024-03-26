@@ -7,9 +7,6 @@ import java.util.List;
 
 import net.minecraftforge.common.config.Configuration;
 
-import emt.gthandler.common.loader.EMT_GT_Loader;
-import gregtech.api.enums.GT_Values;
-
 /**
  * TODO: Need to rewrite...
  **/
@@ -55,6 +52,7 @@ public class EMTConfigHandler {
     public static double quantumBootsMaxDrop;
 
     public static double EssentiaGeneratorStorage;
+    public static int aIDoffset;
 
     /**
      * Essentias
@@ -235,14 +233,11 @@ public class EMTConfigHandler {
                 "This is the number you have to modify if you want to change the size of the "
                         + "internal buffer of the Essentia Generator")
                 .getDouble(EssentiaGeneratorStorage);
-        EMT_GT_Loader.aIDoffset = config
-                .get(
-                        VALUES,
-                        "aID offset for Gregetch Machinery",
-                        (13000 - GT_Values.VN.length - 1),
-                        "This Mod will use " + Integer.toString(GT_Values.VN.length + 1)
-                                + " IDs, do not change if you dont know what you are doing!")
-                .getInt(13000 - GT_Values.VN.length - 1);
+        aIDoffset = config.get(
+                VALUES,
+                "aID offset for Gregetch Machinery",
+                12983,
+                "This Mod will use 17 IDs, do not change if you dont know what you are doing!").getInt();
 
         wandChargerConsumption = config
                 .get(

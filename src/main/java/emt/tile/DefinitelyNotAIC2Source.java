@@ -3,7 +3,6 @@ package emt.tile;
 import net.minecraft.tileentity.TileEntity;
 
 import cpw.mods.fml.common.FMLCommonHandler;
-import gregtech.api.enums.GT_Values;
 
 public class DefinitelyNotAIC2Source {
 
@@ -14,7 +13,7 @@ public class DefinitelyNotAIC2Source {
     protected long energyStored;
 
     public DefinitelyNotAIC2Source(TileEntity parent1, long capacity1, int tier1) {
-        long power = GT_Values.V[tier1];
+        long power = 8L << (2 * tier1);
         this.parent = parent1;
         this.capacity = capacity1 < power ? power : capacity1;
         this.tier = (byte) tier1;

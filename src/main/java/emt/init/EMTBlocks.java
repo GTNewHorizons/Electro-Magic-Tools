@@ -10,11 +10,9 @@ import emt.block.BlockEssentiaGenerators;
 import emt.block.BlockMachines;
 import emt.block.BlockPortableNode;
 import emt.block.BlockShield;
-import emt.block.BlockSolars;
 import emt.item.block.ItemBlockElectricCloud;
 import emt.item.block.ItemBlockEssentiaGenerators;
 import emt.item.block.ItemBlockMachines;
-import emt.item.block.ItemBlockSolars;
 import emt.tile.solar.Solars;
 import ic2.api.item.IC2Items;
 import thaumcraft.api.aspects.Aspect;
@@ -24,7 +22,7 @@ public class EMTBlocks {
 
     public static Block portableNode, essentiaGens, shield, emtMachines, electricCloud;
 
-    public static Block[] solars = new Block[Solars.getCountOfInstances()];
+    public static Block[] solars = new Block[0];
 
     public static void registerBlocks() {
         portableNode = new BlockPortableNode("portablenode");
@@ -33,22 +31,17 @@ public class EMTBlocks {
         shield = new BlockShield("shield");
         GameRegistry.registerBlock(shield, "ShieldBlock");
 
-        for (int i = 0; i < solars.length; i++) {
-            if (i == 0) {
-                solars[i] = new BlockSolars("solar", Solars.getCountOfMetas(i), i);
-                GameRegistry.registerBlock(solars[i], ItemBlockSolars.class, "EMTSolars");
-            } else {
-                solars[i] = new BlockSolars("solar" + (i + 1), Solars.getCountOfMetas(i), i);
-                GameRegistry.registerBlock(solars[i], ItemBlockSolars.class, "EMTSolars" + (i + 1));
-            }
+        if (Registry.enableGTCompat) {
+            solars = Solars.registerBlocks();
         }
 
         emtMachines = new BlockMachines("machine");
         GameRegistry.registerBlock(emtMachines, ItemBlockMachines.class, "EMTMachines");
 
-        essentiaGens = new BlockEssentiaGenerators("essentia");
-        GameRegistry.registerBlock(essentiaGens, ItemBlockEssentiaGenerators.class, "EssentiaGenerators");
-
+        if (Registry.enableGTCompat) {
+            essentiaGens = new BlockEssentiaGenerators("essentia");
+            GameRegistry.registerBlock(essentiaGens, ItemBlockEssentiaGenerators.class, "EssentiaGenerators");
+        }
         electricCloud = new BlockElectricCloud("electricCloud");
         GameRegistry.registerBlock(electricCloud, ItemBlockElectricCloud.class, "electricCloud");
     }

@@ -1,32 +1,40 @@
 package emt.init;
 
+import cpw.mods.fml.common.Loader;
 import emt.gthandler.common.loader.EMT_GT_Loader;
 import emt.tile.solar.Solars;
 import emt.util.EMTEssentiasOutputs;
 
 public class Registry {
 
-    private static final EMT_GT_Loader gtloader = new EMT_GT_Loader();
+    public static boolean enableGTCompat;
 
     public static void registerPreInit() {
+        enableGTCompat = Loader.isModLoaded("gregtech");
         EMTBlocks.registerBlocks();
         EMTItems.registerItems();
         EMTTiles.registerTileEntities();
     }
 
     public static void registerInit() {
-        gtloader.run();
+        if (enableGTCompat) {
+            EMT_GT_Loader.run();
+        }
         EMTRecipes.registerEarlyRecipes();
     }
 
     public static void registerLate() {
         EMTEssentiasOutputs.addOutputs();
         EMTBlocks.addAspects();
-        gtloader.runlate();
+        if (enableGTCompat) {
+            EMT_GT_Loader.runlate();
+        }
         EMTRecipes.registerLateRecipes();
         // new EMT_GTNH_Recipes_And_Researches().run();
         EMTRecipes.registerUUMInfusionRecipes();
         EMTResearches.register();
-        Solars.registerReverseRecipes();
+        if (enableGTCompat) {
+            Solars.registerReverseRecipes();
+        }
     }
 }

@@ -22,7 +22,7 @@ import thaumcraft.common.lib.utils.Utils;
 
 public class ItemStreamChainsaw extends ItemThaumiumChainsaw {
 
-    public static ArrayList oreDictLogs = new ArrayList();
+    public static ArrayList<?> oreDictLogs = new ArrayList<>();
     boolean alternateServer;
     boolean alternateClient;
 

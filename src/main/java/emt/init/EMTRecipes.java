@@ -17,7 +17,6 @@ import emt.EMT;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTCraftingAspects;
 import emt.util.EMTResearchAspects;
-import gregtech.api.enums.ItemList;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeInputItemStack;
@@ -536,18 +535,19 @@ public class EMTRecipes {
                         new ItemStack(Blocks.soul_sand), new ItemStack(Blocks.obsidian),
                         new ItemStack(Blocks.obsidian) });
 
-        maintenanceFocus = addInfusionCraftingRecipe(
-                "Wand Focus: Maintenance",
-                new ItemStack(EMTItems.maintenanceFocus),
-                6,
-                EMTCraftingAspects.maintenanceFocus,
-                new ItemStack(EMTItems.chargeFocus),
-                new ItemStack[] { new ItemStack(ConfigItems.itemShard, 1, 5),
-                        new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 3),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 9), new ItemStack(ConfigItems.itemShard, 1, 2),
-                        new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 0),
-                        ItemList.Duct_Tape.get(1) });
-
+        if (Registry.enableGTCompat) {
+            maintenanceFocus = addInfusionCraftingRecipe(
+                    "Wand Focus: Maintenance",
+                    new ItemStack(EMTItems.maintenanceFocus),
+                    6,
+                    EMTCraftingAspects.maintenanceFocus,
+                    new ItemStack(EMTItems.chargeFocus),
+                    new ItemStack[] { new ItemStack(ConfigItems.itemShard, 1, 5),
+                            new ItemStack(ConfigItems.itemShard, 1, 4), new ItemStack(ConfigItems.itemShard, 1, 3),
+                            new ItemStack(EMTItems.itemEMTItems, 1, 9), new ItemStack(ConfigItems.itemShard, 1, 2),
+                            new ItemStack(ConfigItems.itemShard, 1, 1), new ItemStack(ConfigItems.itemShard, 1, 0),
+                            new ItemStack(GameRegistry.findItem("gregtech", "gt.metaitem.01"), 1, 32764) });
+        }
         potentiaGenerator = addInfusionCraftingRecipe(
                 "Potentia Generator",
                 new ItemStack(EMTBlocks.essentiaGens, 1, 0),
@@ -616,16 +616,20 @@ public class EMTRecipes {
                         new ItemStack(Blocks.diamond_block), new ItemStack(ConfigItems.itemShard, 1, 5),
                         new ItemStack(ConfigBlocks.blockJar) });
 
-        solarHelmetRevealing = addInfusionCraftingRecipe(
-                "Solar Helmet of Revealing",
-                getChargedItem(EMTItems.solarHelmetRevealing, 10),
-                5,
-                EMTCraftingAspects.solarHelmetRevealing,
-                new ItemStack(EMTItems.quantumThaumicHelmet, 1, OreDictionary.WILDCARD_VALUE),
-                new ItemStack[] { new ItemStack(EMTBlocks.solars[0], 1, 1), IC2Items.getItem("glassFiberCableItem"),
-                        new ItemStack(IC2Items.getItem("lapotronCrystal").getItem(), 1, OreDictionary.WILDCARD_VALUE),
-                        new ItemStack(ConfigItems.itemShard, 1, 4) });
-
+        if (Registry.enableGTCompat) {
+            solarHelmetRevealing = addInfusionCraftingRecipe(
+                    "Solar Helmet of Revealing",
+                    getChargedItem(EMTItems.solarHelmetRevealing, 10),
+                    5,
+                    EMTCraftingAspects.solarHelmetRevealing,
+                    new ItemStack(EMTItems.quantumThaumicHelmet, 1, OreDictionary.WILDCARD_VALUE),
+                    new ItemStack[] { new ItemStack(EMTBlocks.solars[0], 1, 1), IC2Items.getItem("glassFiberCableItem"),
+                            new ItemStack(
+                                    IC2Items.getItem("lapotronCrystal").getItem(),
+                                    1,
+                                    OreDictionary.WILDCARD_VALUE),
+                            new ItemStack(ConfigItems.itemShard, 1, 4) });
+        }
         electricBootsTravel = addInfusionCraftingRecipe(
                 "Electric Boots of the Traveller",
                 getChargedItem(EMTItems.electricBootsTraveller, 10),
@@ -669,17 +673,19 @@ public class EMTRecipes {
                         new ItemStack(Blocks.iron_block), new ItemStack(EMTItems.itemEMTItems, 1, 5),
                         new ItemStack(EMTItems.itemEMTItems, 1, 5) });
 
-        tripleCompressedSolar = addInfusionCraftingRecipe(
-                "Compressed Solars",
-                new ItemStack(EMTBlocks.solars[0], 1, 2),
-                2,
-                EMTCraftingAspects.compressedSolars,
-                new ItemStack(EMTBlocks.solars[0], 1, 1),
-                new ItemStack[] { new ItemStack(EMTBlocks.solars[0], 1, 1), new ItemStack(EMTBlocks.solars[0], 1, 1),
-                        new ItemStack(EMTBlocks.solars[0], 1, 1), new ItemStack(EMTBlocks.solars[0], 1, 1),
-                        new ItemStack(EMTBlocks.solars[0], 1, 1), new ItemStack(EMTBlocks.solars[0], 1, 1),
-                        new ItemStack(EMTBlocks.solars[0], 1, 1), new ItemStack(EMTBlocks.solars[0], 1, 1) });
-
+        if (Registry.enableGTCompat) {
+            tripleCompressedSolar = addInfusionCraftingRecipe(
+                    "Compressed Solars",
+                    new ItemStack(EMTBlocks.solars[0], 1, 2),
+                    2,
+                    EMTCraftingAspects.compressedSolars,
+                    new ItemStack(EMTBlocks.solars[0], 1, 1),
+                    new ItemStack[] { new ItemStack(EMTBlocks.solars[0], 1, 1),
+                            new ItemStack(EMTBlocks.solars[0], 1, 1), new ItemStack(EMTBlocks.solars[0], 1, 1),
+                            new ItemStack(EMTBlocks.solars[0], 1, 1), new ItemStack(EMTBlocks.solars[0], 1, 1),
+                            new ItemStack(EMTBlocks.solars[0], 1, 1), new ItemStack(EMTBlocks.solars[0], 1, 1),
+                            new ItemStack(EMTBlocks.solars[0], 1, 1) });
+        }
         electricHoeGrowth = addInfusionCraftingRecipe(
                 "Electric Hoe of Growth",
                 getChargedItem(EMTItems.electricHoeGrowth, 10),
@@ -867,26 +873,26 @@ public class EMTRecipes {
                 EMTCraftingAspects.tinyUraniumCrafting,
                 IC2Items.getItem("Uran238"));
 
-        compressedSolar = addArcaneCraftingRecipe(
-                "Compressed Solars",
-                new ItemStack(EMTBlocks.solars[0], 1, 0),
-                EMTCraftingAspects.compressedSolars,
-                "XXX",
-                "XXX",
-                "XXX",
-                'X',
-                IC2Items.getItem("solarPanel"));
-
-        doubleCompressedSolar = addArcaneCraftingRecipe(
-                "Compressed Solars",
-                new ItemStack(EMTBlocks.solars[0], 1, 1),
-                EMTCraftingAspects.compressedSolars,
-                "XXX",
-                "XXX",
-                "XXX",
-                'X',
-                new ItemStack(EMTBlocks.solars[0], 1, 0));
-
+        if (Registry.enableGTCompat) {
+            compressedSolar = addArcaneCraftingRecipe(
+                    "Compressed Solars",
+                    new ItemStack(EMTBlocks.solars[0], 1, 0),
+                    EMTCraftingAspects.compressedSolars,
+                    "XXX",
+                    "XXX",
+                    "XXX",
+                    'X',
+                    IC2Items.getItem("solarPanel"));
+            doubleCompressedSolar = addArcaneCraftingRecipe(
+                    "Compressed Solars",
+                    new ItemStack(EMTBlocks.solars[0], 1, 1),
+                    EMTCraftingAspects.compressedSolars,
+                    "XXX",
+                    "XXX",
+                    "XXX",
+                    'X',
+                    new ItemStack(EMTBlocks.solars[0], 1, 0));
+        }
         electricScribingTools = addArcaneCraftingRecipe(
                 "Electric Scribing Tools",
                 getChargedItem(EMTItems.electricScribingTools, 10),
@@ -935,139 +941,140 @@ public class EMTRecipes {
         // ItemStack(ConfigBlocks.blockCosmeticOpaque, 1, 2), 'Z', new ItemStack(GregTech_API.sBlockCasings8, 1, 6),
         // 'A', new ItemStack(ConfigBlocks.blockStoneDevice, 1, 5));
 
-        /** Crucible Recipes **/
-        ignisGenerator = addCrucibleRecipe(
-                "Ignis Generator",
-                new ItemStack(EMTBlocks.essentiaGens, 1, 1),
-                new ItemStack(EMTBlocks.essentiaGens, 1, 0),
-                EMTCraftingAspects.ignisGeneratorCrafting);
+        if (Registry.enableGTCompat) {
+            /** Crucible Recipes **/
+            ignisGenerator = addCrucibleRecipe(
+                    "Ignis Generator",
+                    new ItemStack(EMTBlocks.essentiaGens, 1, 1),
+                    new ItemStack(EMTBlocks.essentiaGens, 1, 0),
+                    EMTCraftingAspects.ignisGeneratorCrafting);
 
-        auramGenerator = addCrucibleRecipe(
-                "Auram Generator",
-                new ItemStack(EMTBlocks.essentiaGens, 1, 2),
-                new ItemStack(EMTBlocks.essentiaGens, 1, 0),
-                EMTCraftingAspects.auramGeneratorCrafting);
+            auramGenerator = addCrucibleRecipe(
+                    "Auram Generator",
+                    new ItemStack(EMTBlocks.essentiaGens, 1, 2),
+                    new ItemStack(EMTBlocks.essentiaGens, 1, 0),
+                    EMTCraftingAspects.auramGeneratorCrafting);
 
-        arborGenerator = addCrucibleRecipe(
-                "Arbor Generator",
-                new ItemStack(EMTBlocks.essentiaGens, 1, 3),
-                new ItemStack(EMTBlocks.essentiaGens, 1, 0),
-                EMTCraftingAspects.arborGeneratorCrafting);
+            arborGenerator = addCrucibleRecipe(
+                    "Arbor Generator",
+                    new ItemStack(EMTBlocks.essentiaGens, 1, 3),
+                    new ItemStack(EMTBlocks.essentiaGens, 1, 0),
+                    EMTCraftingAspects.arborGeneratorCrafting);
 
-        aerGenerator = addCrucibleRecipe(
-                "Aer Generator",
-                new ItemStack(EMTBlocks.essentiaGens, 1, 4),
-                new ItemStack(EMTBlocks.essentiaGens, 1, 0),
-                EMTCraftingAspects.aerGenerator);
+            aerGenerator = addCrucibleRecipe(
+                    "Aer Generator",
+                    new ItemStack(EMTBlocks.essentiaGens, 1, 4),
+                    new ItemStack(EMTBlocks.essentiaGens, 1, 0),
+                    EMTCraftingAspects.aerGenerator);
 
-        waterSolar = addCrucibleRecipe(
-                "Water Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 3),
-                new ItemStack(EMTBlocks.solars[0], 1, 0),
-                EMTCraftingAspects.waterSolars);
+            waterSolar = addCrucibleRecipe(
+                    "Water Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 3),
+                    new ItemStack(EMTBlocks.solars[0], 1, 0),
+                    EMTCraftingAspects.waterSolars);
 
-        doubleWaterSolar = addCrucibleRecipe(
-                "Water Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 4),
-                new ItemStack(EMTBlocks.solars[0], 1, 1),
-                EMTCraftingAspects.waterSolars);
+            doubleWaterSolar = addCrucibleRecipe(
+                    "Water Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 4),
+                    new ItemStack(EMTBlocks.solars[0], 1, 1),
+                    EMTCraftingAspects.waterSolars);
 
-        tripleWaterSolar = addCrucibleRecipe(
-                "Water Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 5),
-                new ItemStack(EMTBlocks.solars[0], 1, 2),
-                EMTCraftingAspects.waterSolars);
+            tripleWaterSolar = addCrucibleRecipe(
+                    "Water Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 5),
+                    new ItemStack(EMTBlocks.solars[0], 1, 2),
+                    EMTCraftingAspects.waterSolars);
 
-        darkSolar = addCrucibleRecipe(
-                "Entropy Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 6),
-                new ItemStack(EMTBlocks.solars[0], 1, 0),
-                EMTCraftingAspects.darkSolars);
+            darkSolar = addCrucibleRecipe(
+                    "Entropy Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 6),
+                    new ItemStack(EMTBlocks.solars[0], 1, 0),
+                    EMTCraftingAspects.darkSolars);
 
-        doubleDarkSolar = addCrucibleRecipe(
-                "Entropy Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 7),
-                new ItemStack(EMTBlocks.solars[0], 1, 1),
-                EMTCraftingAspects.darkSolars);
+            doubleDarkSolar = addCrucibleRecipe(
+                    "Entropy Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 7),
+                    new ItemStack(EMTBlocks.solars[0], 1, 1),
+                    EMTCraftingAspects.darkSolars);
 
-        tripleDarkSolar = addCrucibleRecipe(
-                "Entropy Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 8),
-                new ItemStack(EMTBlocks.solars[0], 1, 2),
-                EMTCraftingAspects.darkSolars);
+            tripleDarkSolar = addCrucibleRecipe(
+                    "Entropy Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 8),
+                    new ItemStack(EMTBlocks.solars[0], 1, 2),
+                    EMTCraftingAspects.darkSolars);
 
-        orderSolar = addCrucibleRecipe(
-                "Order Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 9),
-                new ItemStack(EMTBlocks.solars[0], 1, 0),
-                EMTCraftingAspects.orderSolars);
+            orderSolar = addCrucibleRecipe(
+                    "Order Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 9),
+                    new ItemStack(EMTBlocks.solars[0], 1, 0),
+                    EMTCraftingAspects.orderSolars);
 
-        doubleOrderSolar = addCrucibleRecipe(
-                "Order Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 10),
-                new ItemStack(EMTBlocks.solars[0], 1, 1),
-                EMTCraftingAspects.orderSolars);
+            doubleOrderSolar = addCrucibleRecipe(
+                    "Order Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 10),
+                    new ItemStack(EMTBlocks.solars[0], 1, 1),
+                    EMTCraftingAspects.orderSolars);
 
-        tripleOrderSolar = addCrucibleRecipe(
-                "Order Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 11),
-                new ItemStack(EMTBlocks.solars[0], 1, 2),
-                EMTCraftingAspects.orderSolars);
+            tripleOrderSolar = addCrucibleRecipe(
+                    "Order Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 11),
+                    new ItemStack(EMTBlocks.solars[0], 1, 2),
+                    EMTCraftingAspects.orderSolars);
 
-        fireSolar = addCrucibleRecipe(
-                "Fire Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 12),
-                new ItemStack(EMTBlocks.solars[0], 1, 0),
-                EMTCraftingAspects.fireSolars);
+            fireSolar = addCrucibleRecipe(
+                    "Fire Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 12),
+                    new ItemStack(EMTBlocks.solars[0], 1, 0),
+                    EMTCraftingAspects.fireSolars);
 
-        doubleFireSolar = addCrucibleRecipe(
-                "Fire Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 13),
-                new ItemStack(EMTBlocks.solars[0], 1, 1),
-                EMTCraftingAspects.fireSolars);
+            doubleFireSolar = addCrucibleRecipe(
+                    "Fire Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 13),
+                    new ItemStack(EMTBlocks.solars[0], 1, 1),
+                    EMTCraftingAspects.fireSolars);
 
-        tripleFireSolar = addCrucibleRecipe(
-                "Fire Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 14),
-                new ItemStack(EMTBlocks.solars[0], 1, 2),
-                EMTCraftingAspects.fireSolars);
+            tripleFireSolar = addCrucibleRecipe(
+                    "Fire Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 14),
+                    new ItemStack(EMTBlocks.solars[0], 1, 2),
+                    EMTCraftingAspects.fireSolars);
 
-        airSolar = addCrucibleRecipe(
-                "Air Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[0], 1, 15),
-                new ItemStack(EMTBlocks.solars[0], 1, 0),
-                EMTCraftingAspects.airSolars);
+            airSolar = addCrucibleRecipe(
+                    "Air Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[0], 1, 15),
+                    new ItemStack(EMTBlocks.solars[0], 1, 0),
+                    EMTCraftingAspects.airSolars);
 
-        doubleAirSolar = addCrucibleRecipe(
-                "Air Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[1], 1, 0),
-                new ItemStack(EMTBlocks.solars[0], 1, 1),
-                EMTCraftingAspects.airSolars);
+            doubleAirSolar = addCrucibleRecipe(
+                    "Air Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[1], 1, 0),
+                    new ItemStack(EMTBlocks.solars[0], 1, 1),
+                    EMTCraftingAspects.airSolars);
 
-        tripleAirSolar = addCrucibleRecipe(
-                "Air Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[1], 1, 1),
-                new ItemStack(EMTBlocks.solars[0], 1, 2),
-                EMTCraftingAspects.airSolars);
+            tripleAirSolar = addCrucibleRecipe(
+                    "Air Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[1], 1, 1),
+                    new ItemStack(EMTBlocks.solars[0], 1, 2),
+                    EMTCraftingAspects.airSolars);
 
-        earthSolar = addCrucibleRecipe(
-                "Earth Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[1], 1, 2),
-                new ItemStack(EMTBlocks.solars[0], 1, 0),
-                EMTCraftingAspects.earthSolars);
+            earthSolar = addCrucibleRecipe(
+                    "Earth Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[1], 1, 2),
+                    new ItemStack(EMTBlocks.solars[0], 1, 0),
+                    EMTCraftingAspects.earthSolars);
 
-        doubleEarthSolar = addCrucibleRecipe(
-                "Earth Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[1], 1, 3),
-                new ItemStack(EMTBlocks.solars[0], 1, 1),
-                EMTCraftingAspects.earthSolars);
+            doubleEarthSolar = addCrucibleRecipe(
+                    "Earth Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[1], 1, 3),
+                    new ItemStack(EMTBlocks.solars[0], 1, 1),
+                    EMTCraftingAspects.earthSolars);
 
-        tripleEarthSolar = addCrucibleRecipe(
-                "Earth Infused Solar Panels",
-                new ItemStack(EMTBlocks.solars[1], 1, 4),
-                new ItemStack(EMTBlocks.solars[0], 1, 2),
-                EMTCraftingAspects.earthSolars);
-
+            tripleEarthSolar = addCrucibleRecipe(
+                    "Earth Infused Solar Panels",
+                    new ItemStack(EMTBlocks.solars[1], 1, 4),
+                    new ItemStack(EMTBlocks.solars[0], 1, 2),
+                    EMTCraftingAspects.earthSolars);
+        }
         ItemStack itemStack = new ItemStack(ConfigItems.itemJarNode);
         ((ItemJarNode) itemStack.getItem()).setAspects(itemStack, new AspectList());
         portableNode = addCrucibleRecipe(

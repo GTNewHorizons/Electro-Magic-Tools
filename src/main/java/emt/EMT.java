@@ -46,12 +46,15 @@ public class EMT {
     public static final String CLIENT_PROXY = "emt.proxy.ClientProxy";
     public static final String COMMON_PROXY = "emt.proxy.CommonProxy";
     public static final String CHANNEL = "EMT";
-    public static final String DEPENDS = "required-after:Thaumcraft;" + "required-after:IC2;"
-            + "required-after:gregtech;"
-            + "after:Avaritia;"
-            + "after:MagicBees;"
-            + "after:ForbiddenMagic;"
-            + "after:dreamcraft;";
+    public static final String DEPENDS = """
+            required-after:Thaumcraft;\
+            required-after:IC2;\
+            required-after:modularui;\
+            after:gregtech;\
+            after:Avaritia;\
+            after:MagicBees;\
+            after:ForbiddenMagic;\
+            after:dreamcraft""";
     public static final CreativeTabs TAB = new EMTCreativeTab("EMT.creativeTab");
     public static final Logger LOGGER = LogManager.getLogger("Electro-Magic Tools");
     public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("EMT");
@@ -76,7 +79,9 @@ public class EMT {
         Registry.registerPreInit();
         EMTEssentiasOutputs.addPrimalOutputs();
         registerPackets();
-        Solars.populateCache();
+        if (Registry.enableGTCompat) {
+            Solars.populateCache();
+        }
     }
 
     @Mod.EventHandler
@@ -103,6 +108,8 @@ public class EMT {
 
     public void registerPackets() {
         INSTANCE.registerMessage(PacketEMTKeys.class, PacketEMTKeys.class, 0, Side.SERVER);
-        INSTANCE.registerMessage(PacketNodeInfo.class, PacketNodeInfo.class, 1, Side.CLIENT);
+        if (Registry.enableGTCompat) {
+            INSTANCE.registerMessage(PacketNodeInfo.class, PacketNodeInfo.class, 1, Side.CLIENT);
+        }
     }
 }

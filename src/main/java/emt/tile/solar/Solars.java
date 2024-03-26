@@ -8,9 +8,13 @@ import java.util.LinkedHashMap;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import emt.block.BlockSolars;
 import emt.init.EMTBlocks;
+import emt.item.block.ItemBlockSolars;
 import emt.util.EMTConfigHandler;
 import gregtech.api.enums.GT_Values;
 import gregtech.api.enums.Materials;
@@ -201,5 +205,19 @@ public enum Solars {
             if (s.id == id) return s;
         }
         return null;
+    }
+
+    public static Block[] registerBlocks() {
+        Block[] solars = new Block[getCountOfInstances()];
+        for (int i = 0; i < solars.length; i++) {
+            if (i == 0) {
+                solars[i] = new BlockSolars("solar", Solars.getCountOfMetas(i), i);
+                GameRegistry.registerBlock(solars[i], ItemBlockSolars.class, "EMTSolars");
+            } else {
+                solars[i] = new BlockSolars("solar" + (i + 1), Solars.getCountOfMetas(i), i);
+                GameRegistry.registerBlock(solars[i], ItemBlockSolars.class, "EMTSolars" + (i + 1));
+            }
+        }
+        return solars;
     }
 }

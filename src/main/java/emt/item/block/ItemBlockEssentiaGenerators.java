@@ -13,7 +13,6 @@ import org.lwjgl.input.Keyboard;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTEssentiasOutputs;
 import emt.util.EMTTextHelper;
-import gregtech.api.enums.GT_Values;
 import thaumcraft.api.aspects.Aspect;
 
 public class ItemBlockEssentiaGenerators extends ItemBlock {
@@ -57,7 +56,7 @@ public class ItemBlockEssentiaGenerators extends ItemBlock {
     }
 
     private long getOutputAmperage(double EU) {
-        return (long) (1L + (EU / 20.0D / 20.0D / GT_Values.V[2]));
+        return 1L + (long) (EU * 1.953125e-5); // EU/(20 * 20 * 128)
     }
 
     @Override
