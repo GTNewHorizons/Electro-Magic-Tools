@@ -89,7 +89,7 @@ public class RenderShield extends Render {
             glTranslated(x, y, z);
         }
 
-        glCallList(this.glCallList);
+        glCallList(glCallList);
 
         glPopMatrix();
         glPopAttrib();

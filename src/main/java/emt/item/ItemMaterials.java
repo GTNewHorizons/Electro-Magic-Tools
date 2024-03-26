@@ -170,8 +170,8 @@ public class ItemMaterials extends Item {
                     - player.yOffset;
             double playerZ = player.prevPosZ + ((player.posZ - player.prevPosZ) * f);
             Vec3 playerLoc = Vec3.createVectorHelper(playerX, playerY, playerZ);
-            float f3 = MathHelper.cos((-f2 * 0.01745329F) - 3.141593F);
-            float f4 = MathHelper.sin((-f2 * 0.01745329F) - 3.141593F);
+            float f3 = MathHelper.cos((-f2 * 0.01745329F) - (float) Math.PI);
+            float f4 = MathHelper.sin((-f2 * 0.01745329F) - (float) Math.PI);
             float f5 = -MathHelper.cos(-f1 * 0.01745329F);
             float f6 = MathHelper.sin(-f1 * 0.01745329F);
             float f7 = f4 * f5;

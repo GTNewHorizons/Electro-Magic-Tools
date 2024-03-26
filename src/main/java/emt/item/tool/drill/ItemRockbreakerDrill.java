@@ -192,7 +192,6 @@ public class ItemRockbreakerDrill extends ItemThaumiumDrill {
                         0.2F + world.rand.nextFloat() * 0.2F);
                 return super.onItemUse(stack, player, world, x, y, z, side, xOffset, xOffset, zOffset);
             }
-            Minecraft mc = Minecraft.getMinecraft();
             Thaumcraft.instance.renderEventHandler.startScan(player, x, y, z, System.currentTimeMillis() + 5000L, 1);
             player.swingItem();
             return super.onItemUse(stack, player, world, x, y, z, side, xOffset, yOffset, zOffset);

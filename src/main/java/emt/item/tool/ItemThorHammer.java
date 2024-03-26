@@ -46,8 +46,8 @@ public class ItemThorHammer extends ItemSword implements IRepairable {
         double d1 = (player.prevPosY + ((player.posY - player.prevPosY) * f) + 1.6200000000000001D) - player.yOffset;
         double d2 = player.prevPosZ + ((player.posZ - player.prevPosZ) * f);
         Vec3 vec3d = Vec3.createVectorHelper(d, d1, d2);
-        float f3 = MathHelper.cos((-f2 * 0.01745329F) - 3.141593F);
-        float f4 = MathHelper.sin((-f2 * 0.01745329F) - 3.141593F);
+        float f3 = MathHelper.cos((-f2 * 0.01745329F) - (float) Math.PI);
+        float f4 = MathHelper.sin((-f2 * 0.01745329F) - (float) Math.PI);
         float f5 = -MathHelper.cos(-f1 * 0.01745329F);
         float f6 = MathHelper.sin(-f1 * 0.01745329F);
         float f7 = f4 * f5;

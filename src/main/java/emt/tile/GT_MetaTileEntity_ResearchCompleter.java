@@ -26,6 +26,7 @@ import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_EnhancedMul
 import gregtech.api.render.TextureFactory;
 import gregtech.api.util.GT_Multiblock_Tooltip_Builder;
 import gregtech.api.util.GT_Utility;
+import gregtech.api.util.shutdown.ShutDownReasonRegistry;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.research.ResearchCategories;
@@ -209,7 +210,7 @@ public class GT_MetaTileEntity_ResearchCompleter
 
         if (syncTimer <= 0) sendClientAnimationUpdate(aBaseMetaTileEntity, lastNodeDistance, lastNodeColor);
 
-        if (requiredVis > 0) this.criticalStopMachine();
+        if (requiredVis > 0) this.stopMachine(ShutDownReasonRegistry.CRITICAL_NONE);
 
         return super.onRunningTick(aStack);
     }
@@ -248,7 +249,12 @@ public class GT_MetaTileEntity_ResearchCompleter
 
                     this.mEfficiency = 10000 - (this.getIdealStatus() - this.getRepairStatus()) * 1000;
                     this.mEfficiencyIncrease = 10000;
-                    this.calculateOverclockedNessMulti(RECIPE_EUT, RECIPE_LENGTH, 1, this.getMaxInputVoltage());
+                    this.calculateOverclockedNessMultiInternal(
+                            RECIPE_EUT,
+                            RECIPE_LENGTH,
+                            1,
+                            this.getMaxInputVoltage(),
+                            false);
                     if (this.mMaxProgresstime == 2147483646 && this.mEUt == 2147483646) {
                         return false;
                     }
@@ -257,7 +263,7 @@ public class GT_MetaTileEntity_ResearchCompleter
                     }
 
                     // Create a completed version of the note to output
-                    this.mOutputItems = new ItemStack[] { GT_Utility.copyAmount(1L, stack) };
+                    this.mOutputItems = new ItemStack[] { GT_Utility.copyAmount(1, stack) };
                     this.mOutputItems[0].stackTagCompound.setBoolean("complete", true);
                     this.mOutputItems[0].setItemDamage(64);
                     stack.stackSize -= 1;

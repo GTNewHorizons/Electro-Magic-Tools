@@ -24,9 +24,7 @@ import gregtech.api.util.GT_Utility;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.crafting.IArcaneRecipe;
-import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.research.ResearchItem;
 import thaumcraft.api.research.ResearchPage;
@@ -34,8 +32,6 @@ import thaumcraft.api.research.ResearchPage;
 public class EMT_GTNH_Recipes_And_Researches implements Runnable {
 
     private static LinkedHashMap<String, IArcaneRecipe> arcaneRecipeLinkedHashMap = new LinkedHashMap<>();
-    private static LinkedHashMap<String, InfusionRecipe> infusionRecipeLinkedHashMap = new LinkedHashMap<>();
-    private static LinkedHashMap<String, CrucibleRecipe> cruciblRecipeLinkedHashMap = new LinkedHashMap<>();
 
     private static AspectList getPrimals(int amount) {
         return new AspectList().add(ORDER, amount).add(ENTROPY, amount).add(AIR, amount).add(EARTH, amount)
@@ -50,10 +46,7 @@ public class EMT_GTNH_Recipes_And_Researches implements Runnable {
         runResreaches();
     }
 
-    private void runInfusionRecipes() {}
-
-    private void runKettleRecipes() {}
-
+    @SuppressWarnings("unchecked")
     private void runArcaneRecipes() {
         arcaneRecipeLinkedHashMap.put(
                 "DiamondChainsaw",
@@ -154,9 +147,7 @@ public class EMT_GTNH_Recipes_And_Researches implements Runnable {
                 throw new UnsupportedOperationException("The Recipe must fit in a 3x3 crafting field!");
             rowcolm = Arrays.copyOf(rowcolm, rows);
 
-            int k = 0;
             for (int j = i; j < recipe.length; j += 2) {
-                k++;
                 if (recipe[j] instanceof Character) translation.put((Character) recipe[j], recipe[j + 1]);
             }
         }
@@ -181,7 +172,7 @@ public class EMT_GTNH_Recipes_And_Researches implements Runnable {
                                     true))
                                 if (!OreDictionary.getOres((String) itemReplacement).contains(slot)) return false;
                         } else if (itemReplacement instanceof ItemStack) {
-                            if (!GT_Utility.isStackValid(itemReplacement)) {
+                            if (!GT_Utility.isStackValid((ItemStack) itemReplacement)) {
                                 return false;
                             }
                             if (!GT_Utility.areStacksEqual((ItemStack) itemReplacement, slot, true))
