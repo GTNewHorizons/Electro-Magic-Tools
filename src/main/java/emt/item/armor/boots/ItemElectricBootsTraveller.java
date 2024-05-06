@@ -18,6 +18,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.Optional.Interface;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -132,7 +133,7 @@ public class ItemElectricBootsTraveller extends ItemArmor
                 player.stepHeight = 1.0F;
             }
             float speedMod = (float) getSpeedModifier(itemStack);
-            if (player.onGround) {
+            if (player.onGround || player.isOnLadder() || player.capabilities.isFlying) {
                 float bonus = speedBonus;
                 if (player.isInWater()) {
                     bonus /= 4.0F;
@@ -142,7 +143,11 @@ public class ItemElectricBootsTraveller extends ItemArmor
                     bonus /= 2.0F;
                 }
                 bonus *= speedMod;
-                player.moveFlying(player.moveStrafing, player.moveForward, bonus);
+                if (EMT.isBootsActive) {
+                    applyOmniState(player, bonus, itemStack);
+                } else {
+                    player.moveFlying(0.0F, player.moveForward, bonus);
+                }
             } else if (Hover.getHover(player.getEntityId())) {
                 // Base ItemBootsTraveller jumpBonus equals to jumpBonus of Electric Boots,
                 // so any other boots factor can be calculated via proportion method
@@ -156,6 +161,15 @@ public class ItemElectricBootsTraveller extends ItemArmor
                         * jumpBonus
                         * speedMod;
             }
+        }
+    }
+
+    @Optional.Method(modid = "thaumicboots")
+    public void applyOmniState(EntityPlayer player, float bonus, ItemStack itemStack) {
+        if (player.moveStrafing != 0.0 && itemStack.stackTagCompound.getBoolean("omni")) {
+            player.moveFlying(player.moveStrafing, 0.0F, bonus);
+        } else if (player.moveForward != 0.0) {
+            player.moveFlying(0.0F, player.moveForward, bonus);
         }
     }
 

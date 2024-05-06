@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -65,12 +66,18 @@ public class EMT {
     @Mod.Instance("EMT")
     public static EMT instance;
 
+    public static boolean isBootsActive = false;
+    public static final String BOOTS = "thaumicboots";
+
     public boolean isSimulating() {
         return !FMLCommonHandler.instance().getEffectiveSide().isClient();
     }
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        if (Loader.isModLoaded(BOOTS)) {
+            isBootsActive = true;
+        }
         EMTConfigHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new EMTEventHandler());
         if (FMLCommonHandler.instance().getSide().isClient()) {
