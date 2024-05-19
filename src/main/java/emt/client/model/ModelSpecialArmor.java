@@ -12,6 +12,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ModelSpecialArmor extends ModelBiped {
 
+    private static ModelSpecialArmor instance;
+
     public ModelRenderer rightWing;
     public ModelRenderer leftWing;
     public ModelRenderer center;
@@ -30,41 +32,43 @@ public class ModelSpecialArmor extends ModelBiped {
     public ModelSpecialArmor(float scale, float offset, int type) {
         super(scale, offset, type == 1 ? 128 : 64, type == 0 ? 32 : type == 1 ? 96 : 64);
         this.type = type;
-        switch (this.type) {
-            case 1:
-                this.textureWidth = 128;
-                this.textureHeight = 96;
-                this.jetpack = new ModelRenderer(this, 16, 69);
-                this.jetpack.setTextureSize(64, 48);
-                this.jetpack.addBox(-4.0F, -12.0F, -2.0F, 8, 12 * 2, 4, scale * 2);
-                this.jetpack.setRotationPoint(0.0F, 0.0F + offset, 0.0F);
-                break;
 
-            case 2:
-                this.textureWidth = 64;
-                this.textureHeight = 64;
-                rightWing = new ModelRenderer(this, 24, 0 + 32);
-                rightWing.addBox(-11F, -1F, 0F, 11, 13, 1);
-                rightWing.setRotationPoint(-2F, 0F, 3F);
-                rightWing.setTextureSize(64, 32);
-                rightWing.mirror = false;
-                setRotation(rightWing, 0F, 0.1570796F, 0F);
+        this.textureWidth = 128;
+        this.textureHeight = 96;
+        this.jetpack = new ModelRenderer(this, 16, 69);
+        this.jetpack.setTextureSize(64, 48);
+        this.jetpack.addBox(-4.0F, -12.0F, -2.0F, 8, 12 * 2, 4, scale * 2);
+        this.jetpack.setRotationPoint(0.0F, 0.0F + offset, 0.0F);
 
-                leftWing = new ModelRenderer(this, 0, 0 + 32);
-                leftWing.addBox(0F, -1F, 0F, 11, 13, 1);
-                leftWing.setRotationPoint(2F, 0F, 3F);
-                leftWing.setTextureSize(64, 32);
-                leftWing.mirror = true;
-                setRotation(leftWing, 0F, -0.1570796F, 0F);
+        this.textureWidth = 64;
+        this.textureHeight = 64;
+        rightWing = new ModelRenderer(this, 24, 0 + 32);
+        rightWing.addBox(-11F, -1F, 0F, 11, 13, 1);
+        rightWing.setRotationPoint(-2F, 0F, 3F);
+        rightWing.setTextureSize(64, 32);
+        rightWing.mirror = false;
+        setRotation(rightWing, 0F, 0.1570796F, 0F);
 
-                center = new ModelRenderer(this, 0, 14 + 32);
-                center.addBox(0F, 0F, 1F, 8, 14, 1);
-                center.setRotationPoint(-4F, 0F, 3F);
-                center.setTextureSize(64, 32);
-                center.mirror = true;
-                setRotation(center, 0F, 0F, 0F);
-                break;
-        }
+        leftWing = new ModelRenderer(this, 0, 0 + 32);
+        leftWing.addBox(0F, -1F, 0F, 11, 13, 1);
+        leftWing.setRotationPoint(2F, 0F, 3F);
+        leftWing.setTextureSize(64, 32);
+        leftWing.mirror = true;
+        setRotation(leftWing, 0F, -0.1570796F, 0F);
+
+        center = new ModelRenderer(this, 0, 14 + 32);
+        center.addBox(0F, 0F, 1F, 8, 14, 1);
+        center.setRotationPoint(-4F, 0F, 3F);
+        center.setTextureSize(64, 32);
+        center.mirror = true;
+        setRotation(center, 0F, 0F, 0F);
+
+    }
+
+    public static ModelSpecialArmor getInstance(){
+        if (instance == null) instance = new ModelSpecialArmor();
+
+        return instance;
     }
 
     private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -96,6 +100,7 @@ public class ModelSpecialArmor extends ModelBiped {
                 this.center.render(scale);
                 this.leftWing.render(scale);
                 this.rightWing.render(scale);
+                break;
         }
     }
 
@@ -105,6 +110,9 @@ public class ModelSpecialArmor extends ModelBiped {
         if (this.isJumping) {
             this.rightWing.rotateAngleY = 0.5f;
             this.leftWing.rotateAngleY = -0.5f;
+        } else {
+            this.rightWing.rotateAngleY = 0.1570796F;
+            this.leftWing.rotateAngleY = -0.1570796F;
         }
 
         if (this.isSneak) {
@@ -113,12 +121,20 @@ public class ModelSpecialArmor extends ModelBiped {
                     this.jetpack.rotateAngleX = 0.5F;
                     break;
                 case 2:
-                    this.center.offsetY -= 0.1;
-                    this.rightWing.offsetY -= 0.1;
-                    this.leftWing.offsetY -= 0.1;
                     this.center.rotateAngleX = 0.5F;
                     this.rightWing.rotateAngleX = 0.5F;
                     this.leftWing.rotateAngleX = 0.5F;
+                    break;
+            }
+        } else {
+            switch (this.type) {
+                case 1:
+                    this.jetpack.rotateAngleX = 0F;
+                    break;
+                case 2:
+                    this.center.rotateAngleX = 0F;
+                    this.rightWing.rotateAngleX = 0F;
+                    this.leftWing.rotateAngleX = 0F;
                     break;
             }
         }

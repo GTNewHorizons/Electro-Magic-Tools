@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import emt.client.model.ModelWings;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -390,22 +391,24 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
     @Override
     @SideOnly(Side.CLIENT)
     public ModelBiped getArmorModel(EntityLivingBase entity, ItemStack stack, int armorSlot) {
-        try {
-            if (entity instanceof EntityPlayer) {
-                byte wing = stack.stackTagCompound.getByte("wing");
-                if (wing == JETPACK) {
-                    ModelSpecialArmor mbm = new ModelSpecialArmor(1, 1);
-                    return mbm;
-                } else if (wing != 0) {
-                    ModelSpecialArmor mbm = new ModelSpecialArmor(1, 2);
-                    mbm.isJumping = stack.stackTagCompound.getBoolean("isJumping");
-                    return mbm;
+        if (entity instanceof EntityPlayer && stack != null
+            && stack.stackTagCompound != null) {
+            byte wing = stack.stackTagCompound.getByte("wing");
+            if (wing == JETPACK) {
+                ModelSpecialArmor.getInstance().type = 1;
+            } else if (wing != 0) {
+                ModelSpecialArmor.getInstance().type = 2;
+                if (stack.stackTagCompound.hasKey("isJumping")){
+                    ModelSpecialArmor.getInstance().isJumping = stack.stackTagCompound.getBoolean("isJumping");
                 }
+            } else {
+                ModelSpecialArmor.getInstance().type = 0;
             }
-        } catch (NullPointerException e) {
-            new ModelSpecialArmor(1, 0);
+        } else {
+            ModelSpecialArmor.getInstance().type = 0;
         }
-        return new ModelSpecialArmor(1, 0);
+
+        return ModelSpecialArmor.getInstance();
     }
 
     @SuppressWarnings("unchecked")
