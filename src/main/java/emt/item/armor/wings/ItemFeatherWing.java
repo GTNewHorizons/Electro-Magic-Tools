@@ -51,8 +51,7 @@ public class ItemFeatherWing extends ItemArmor implements IRunicArmor {
     @Override
     @SideOnly(Side.CLIENT)
     public ModelBiped getArmorModel(EntityLivingBase entity, ItemStack stack, int armorSlot) {
-        if (entity instanceof EntityPlayer
-                && stack != null
+        if (entity instanceof EntityPlayer && stack != null
                 && stack.stackTagCompound != null
                 && stack.stackTagCompound.hasKey("isJumping")) {
             ModelWings.getInstance().isJumping = stack.stackTagCompound.getBoolean("isJumping");

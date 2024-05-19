@@ -65,7 +65,7 @@ public class ModelSpecialArmor extends ModelBiped {
 
     }
 
-    public static ModelSpecialArmor getInstance(){
+    public static ModelSpecialArmor getInstance() {
         if (instance == null) instance = new ModelSpecialArmor();
 
         return instance;
