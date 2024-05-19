@@ -23,8 +23,8 @@ import thaumcraft.api.IRunicArmor;
 public class ItemFeatherWing extends ItemArmor implements IRunicArmor {
 
     public int visDiscount = 0;
-    @SideOnly(Side.CLIENT)
-    private static final ModelWings MODEL_WINGS = new ModelWings();
+
+    private static ModelWings MODEL_WINGS = null;
 
     public ItemFeatherWing(ArmorMaterial material, int par3, int par4) {
         super(material, par3, par4);
@@ -53,6 +53,8 @@ public class ItemFeatherWing extends ItemArmor implements IRunicArmor {
     @Override
     @SideOnly(Side.CLIENT)
     public ModelBiped getArmorModel(EntityLivingBase entity, ItemStack stack, int armorSlot) {
+        if (MODEL_WINGS == null) MODEL_WINGS = new ModelWings();
+
         if (entity instanceof EntityPlayer && stack != null
                 && stack.stackTagCompound != null
                 && stack.stackTagCompound.hasKey("isJumping")) {
