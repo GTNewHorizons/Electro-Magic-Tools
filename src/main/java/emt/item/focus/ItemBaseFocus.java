@@ -103,17 +103,4 @@ public abstract class ItemBaseFocus extends ItemFocusBasic {
         return 5;
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public void addInformation(ItemStack stack, EntityPlayer player, @SuppressWarnings("rawtypes") List list,
-            boolean par4) {
-        AspectList cost = getVisCost(stack);
-        if (cost != null && cost.size() > 0) {
-            list.add(StatCollector.translateToLocal(isVisCostPerTick() ? "item.Focus.cost2" : "item.Focus.cost1"));
-            for (Aspect aspect : cost.getAspectsSorted()) {
-                float amount = cost.getAmount(aspect) / 100.0F;
-                list.add(" " + '\u00a7' + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + amount);
-            }
-        }
-    }
 }
