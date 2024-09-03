@@ -931,13 +931,13 @@ public class EMTRecipes {
 
         // magicalMachineCasing = addArcaneCraftingRecipe("ResearchCompleter", new
         // ItemStack(GregTech_API.sBlockCasings8, 1, 6), EMTCraftingAspects.magicalMachineCasing, "XYX", "XZX", "XYX",
-        // 'X', GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Thaumium, 1), 'Y', new
-        // ItemStack(ConfigItems.itemResource, 1, 14) , 'Z', GT_OreDictUnificator.get(OrePrefixes.frameGt,
+        // 'X', GTOreDictUnificator.get(OrePrefixes.plate, Materials.Thaumium, 1), 'Y', new
+        // ItemStack(ConfigItems.itemResource, 1, 14) , 'Z', GTOreDictUnificator.get(OrePrefixes.frameGt,
         // Materials.Thaumium, 1));
 
         // researchCompleter = addArcaneCraftingRecipe("ResearchCompleter", new ItemStack(GregTech_API.sBlockMachines,
         // 1, 13001), EMTCraftingAspects.researchCompleter, "XYX", "YZY", "XAX", 'X',
-        // GT_OreDictUnificator.get(OrePrefixes.circuit.get(Materials.Good), 1L), 'Y', new
+        // GTOreDictUnificator.get(OrePrefixes.circuit.get(Materials.Good), 1L), 'Y', new
         // ItemStack(ConfigBlocks.blockCosmeticOpaque, 1, 2), 'Z', new ItemStack(GregTech_API.sBlockCasings8, 1, 6),
         // 'A', new ItemStack(ConfigBlocks.blockStoneDevice, 1, 5));
 

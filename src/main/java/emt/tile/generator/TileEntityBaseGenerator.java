@@ -29,12 +29,12 @@ import emt.tile.DefinitelyNotAIC2Source;
 import emt.tile.TileEntityEMT;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTEssentiasOutputs;
-import gregtech.api.enums.GT_Values;
+import gregtech.api.enums.GTValues;
 import gregtech.api.interfaces.tileentity.IBasicEnergyContainer;
 import gregtech.api.interfaces.tileentity.IEnergyConnected;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.interfaces.tileentity.IHasWorldObjectAndCoords;
-import gregtech.api.net.GT_Packet_Block_Event;
+import gregtech.api.net.GTPacketBlockEvent;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -434,18 +434,18 @@ public class TileEntityBaseGenerator extends TileEntityEMT implements IInventory
 
     @Override
     public long getOutputAmperage() {
-        if (this.generating / 20.0D / 20.0D <= GT_Values.V[this.energySource.getSourceTier()]) {
+        if (this.generating / 20.0D / 20.0D <= GTValues.V[this.energySource.getSourceTier()]) {
             return 1L;
         }
-        if (this.generating / 20.0D / 20.0D % GT_Values.V[this.energySource.getSourceTier()] == 0.0D) {
-            return (long) (this.generating / 20.0D / 20.0D / GT_Values.V[this.energySource.getSourceTier()]);
+        if (this.generating / 20.0D / 20.0D % GTValues.V[this.energySource.getSourceTier()] == 0.0D) {
+            return (long) (this.generating / 20.0D / 20.0D / GTValues.V[this.energySource.getSourceTier()]);
         }
-        return (long) (1L + (this.generating / 20.0D / 20.0D / GT_Values.V[this.energySource.getSourceTier()]));
+        return (long) (1L + (this.generating / 20.0D / 20.0D / GTValues.V[this.energySource.getSourceTier()]));
     }
 
     @Override
     public long getOutputVoltage() {
-        return GT_Values.V[this.energySource.getSourceTier()];
+        return GTValues.V[this.energySource.getSourceTier()];
     }
 
     @Override
@@ -843,9 +843,9 @@ public class TileEntityBaseGenerator extends TileEntityEMT implements IInventory
 
     @Override
     public void sendBlockEvent(byte aID, byte aValue) {
-        GT_Values.NW.sendPacketToAllPlayersInRange(
+        GTValues.NW.sendPacketToAllPlayersInRange(
                 this.worldObj,
-                new GT_Packet_Block_Event(this.xCoord, (short) this.yCoord, this.zCoord, aID, aValue),
+                new GTPacketBlockEvent(this.xCoord, (short) this.yCoord, this.zCoord, aID, aValue),
                 this.xCoord,
                 this.zCoord);
     }

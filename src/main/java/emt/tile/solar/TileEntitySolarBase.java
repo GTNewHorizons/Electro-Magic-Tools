@@ -29,12 +29,12 @@ import emt.client.gui.EMT_UITextures;
 import emt.init.EMTBlocks;
 import emt.tile.DefinitelyNotAIC2Source;
 import emt.tile.TileEntityEMT;
-import gregtech.api.enums.GT_Values;
+import gregtech.api.enums.GTValues;
 import gregtech.api.interfaces.tileentity.IBasicEnergyContainer;
 import gregtech.api.interfaces.tileentity.IEnergyConnected;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.interfaces.tileentity.IHasWorldObjectAndCoords;
-import gregtech.api.net.GT_Packet_Block_Event;
+import gregtech.api.net.GTPacketBlockEvent;
 import ic2.api.tile.IWrenchable;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.visnet.VisNetHandler;
@@ -102,10 +102,10 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
     }
 
     private int getTierFromCapacity(long capacity) {
-        for (int i = 0; i < GT_Values.V.length; i++) {
-            if (capacity / 1000 < GT_Values.V[i]) return i;
+        for (int i = 0; i < GTValues.V.length; i++) {
+            if (capacity / 1000 < GTValues.V[i]) return i;
         }
-        return GT_Values.V.length - 1;
+        return GTValues.V.length - 1;
     }
 
     @Override
@@ -424,11 +424,11 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
         long[] voltAmp = new long[2];
         voltAmp[0] = getOutputVoltage();
         long generating = (long) Math.floor(output * getMaxMulti());
-        if (generating <= GT_Values.V[energySource.getSourceTier()]) {
+        if (generating <= GTValues.V[energySource.getSourceTier()]) {
             voltAmp[1] = 1L;
-        } else if (generating % GT_Values.V[energySource.getSourceTier()] == 0.0D) {
-            voltAmp[1] = (generating / GT_Values.V[energySource.getSourceTier()]);
-        } else voltAmp[1] = (1L + (generating / GT_Values.V[energySource.getSourceTier()]));
+        } else if (generating % GTValues.V[energySource.getSourceTier()] == 0.0D) {
+            voltAmp[1] = (generating / GTValues.V[energySource.getSourceTier()]);
+        } else voltAmp[1] = (1L + (generating / GTValues.V[energySource.getSourceTier()]));
         return voltAmp;
     }
 
@@ -437,28 +437,28 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
         return calculateMaxVoltAmp()[1];
         // long ret;
         // if (this.energySource.getSourceTier() <= 4) {
-        // if (this.generating <= GT_Values.V[this.energySource.getSourceTier() - 2]) {
+        // if (this.generating <= GTValues.V[this.energySource.getSourceTier() - 2]) {
         // ret = 1L;
         // }
-        // if (this.generating % GT_Values.V[this.energySource.getSourceTier() - 2] == 0.0D) {
-        // ret = (long) (this.generating / GT_Values.V[this.energySource.getSourceTier() - 2]);
+        // if (this.generating % GTValues.V[this.energySource.getSourceTier() - 2] == 0.0D) {
+        // ret = (long) (this.generating / GTValues.V[this.energySource.getSourceTier() - 2]);
         // } else
-        // ret = (long) (1L + (this.generating / GT_Values.V[this.energySource.getSourceTier() - 2]));
+        // ret = (long) (1L + (this.generating / GTValues.V[this.energySource.getSourceTier() - 2]));
         // } else {
-        // if (this.generating <= GT_Values.V[this.energySource.getSourceTier() - 1]) {
+        // if (this.generating <= GTValues.V[this.energySource.getSourceTier() - 1]) {
         // ret = 1L;
         // }
-        // if (this.generating % GT_Values.V[this.energySource.getSourceTier()] == 0.0D) {
-        // ret = (long) (this.generating / GT_Values.V[this.energySource.getSourceTier() - 1]);
+        // if (this.generating % GTValues.V[this.energySource.getSourceTier()] == 0.0D) {
+        // ret = (long) (this.generating / GTValues.V[this.energySource.getSourceTier() - 1]);
         // } else
-        // ret = (long) (1L + (this.generating / GT_Values.V[this.energySource.getSourceTier() - 1]));
+        // ret = (long) (1L + (this.generating / GTValues.V[this.energySource.getSourceTier() - 1]));
         // }
         // return ret;
     }
 
     @Override
     public long getOutputVoltage() {
-        return GT_Values.V[this.energySource.getSourceTier()];
+        return GTValues.V[this.energySource.getSourceTier()];
     }
 
     @Override
@@ -856,9 +856,9 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
 
     @Override
     public void sendBlockEvent(byte aID, byte aValue) {
-        GT_Values.NW.sendPacketToAllPlayersInRange(
+        GTValues.NW.sendPacketToAllPlayersInRange(
                 this.worldObj,
-                new GT_Packet_Block_Event(this.xCoord, (short) this.yCoord, this.zCoord, aID, aValue),
+                new GTPacketBlockEvent(this.xCoord, (short) this.yCoord, this.zCoord, aID, aValue),
                 this.xCoord,
                 this.zCoord);
     }

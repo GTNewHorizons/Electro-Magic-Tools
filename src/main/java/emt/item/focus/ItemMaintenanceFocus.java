@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.metatileentity.BaseMetaTileEntity;
-import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch_Maintenance;
+import gregtech.api.metatileentity.implementations.MTEHatchMaintenance;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.FocusUpgradeType;
@@ -57,8 +57,8 @@ public class ItemMaintenanceFocus extends ItemBaseFocus {
             TileEntity hatchCandidateTile = world.getTileEntity(mop.blockX, mop.blockY, mop.blockZ);
             if (hatchCandidateTile instanceof BaseMetaTileEntity) {
                 IMetaTileEntity hatchCandidateMetaTile = ((BaseMetaTileEntity) hatchCandidateTile).getMetaTileEntity();
-                if (hatchCandidateMetaTile instanceof GT_MetaTileEntity_Hatch_Maintenance) {
-                    GT_MetaTileEntity_Hatch_Maintenance hatch = (GT_MetaTileEntity_Hatch_Maintenance) hatchCandidateMetaTile;
+                if (hatchCandidateMetaTile instanceof MTEHatchMaintenance) {
+                    MTEHatchMaintenance hatch = (MTEHatchMaintenance) hatchCandidateMetaTile;
                     if (player.capabilities.isCreativeMode
                             || wand.consumeAllVis(itemStack, player, getVisCost(itemStack), true, true)) {
                         hatch.mCrowbar = true;

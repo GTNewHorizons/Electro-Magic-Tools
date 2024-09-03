@@ -1,7 +1,7 @@
 package emt.item.block;
 
 import static emt.util.EMTTextHelper.localize;
-import static gregtech.api.util.GT_Utility.formatNumbers;
+import static gregtech.api.util.GTUtility.formatNumbers;
 
 import java.io.StringReader;
 import java.util.List;

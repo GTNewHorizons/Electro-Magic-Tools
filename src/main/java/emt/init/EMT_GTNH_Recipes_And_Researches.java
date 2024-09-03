@@ -19,8 +19,8 @@ import emt.util.EMTResearchItem;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
-import gregtech.api.util.GT_OreDictUnificator;
-import gregtech.api.util.GT_Utility;
+import gregtech.api.util.GTOreDictUnificator;
+import gregtech.api.util.GTUtility;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.AspectList;
@@ -58,11 +58,11 @@ public class EMT_GTNH_Recipes_And_Researches implements Runnable {
                         "pmp",
                         "pbp",
                         's',
-                        GT_OreDictUnificator.get(OrePrefixes.screw, Materials.Diamond, 1),
+                        GTOreDictUnificator.get(OrePrefixes.screw, Materials.Diamond, 1),
                         'p',
-                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Diamond, 1),
+                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.Diamond, 1),
                         't',
-                        GT_OreDictUnificator.get(OrePrefixes.toolHeadChainsaw, Materials.Thaumium, 1),
+                        GTOreDictUnificator.get(OrePrefixes.toolHeadChainsaw, Materials.Thaumium, 1),
                         'b',
                         ItemList.Battery_RE_LV_Sodium.get(1),
                         'm',
@@ -77,9 +77,9 @@ public class EMT_GTNH_Recipes_And_Researches implements Runnable {
                         "pmp",
                         "ppp",
                         's',
-                        GT_OreDictUnificator.get(OrePrefixes.screw, Materials.Thaumium, 1),
+                        GTOreDictUnificator.get(OrePrefixes.screw, Materials.Thaumium, 1),
                         'p',
-                        GT_OreDictUnificator.get(OrePrefixes.plate, Materials.Thaumium, 1),
+                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.Thaumium, 1),
                         'b',
                         ItemList.Battery_RE_LV_Sodium.get(1),
                         'm',
@@ -166,17 +166,17 @@ public class EMT_GTNH_Recipes_And_Researches implements Runnable {
                         if (itemReplacement != null && slot == null) {
                             return false;
                         } else if (itemReplacement instanceof String) {
-                            if (!GT_Utility.areStacksEqual(
-                                    GT_OreDictUnificator.getFirstOre(itemReplacement, 1),
-                                    GT_OreDictUnificator.get(slot),
+                            if (!GTUtility.areStacksEqual(
+                                    GTOreDictUnificator.getFirstOre(itemReplacement, 1),
+                                    GTOreDictUnificator.get(slot),
                                     true))
                                 if (!OreDictionary.getOres((String) itemReplacement).contains(slot)) return false;
                         } else if (itemReplacement instanceof ItemStack) {
-                            if (!GT_Utility.isStackValid((ItemStack) itemReplacement)) {
+                            if (!GTUtility.isStackValid((ItemStack) itemReplacement)) {
                                 return false;
                             }
-                            if (!GT_Utility.areStacksEqual((ItemStack) itemReplacement, slot, true))
-                                if (!GT_Utility.areUnificationsEqual((ItemStack) itemReplacement, slot, true))
+                            if (!GTUtility.areStacksEqual((ItemStack) itemReplacement, slot, true))
+                                if (!GTUtility.areUnificationsEqual((ItemStack) itemReplacement, slot, true))
                                     if (!(((ItemStack) itemReplacement).getItem().equals(slot.getItem())
                                             && ((ItemStack) itemReplacement).getItemDamage()
                                                     == OreDictionary.WILDCARD_VALUE))
@@ -184,8 +184,8 @@ public class EMT_GTNH_Recipes_And_Researches implements Runnable {
                         } else if (itemReplacement instanceof Collection) {
                             boolean hit = false;
                             for (Object o : (Collection<?>) itemReplacement) {
-                                if (GT_Utility.areStacksEqual((ItemStack) o, slot, true)
-                                        || GT_Utility.areUnificationsEqual((ItemStack) o, slot, true)
+                                if (GTUtility.areStacksEqual((ItemStack) o, slot, true)
+                                        || GTUtility.areUnificationsEqual((ItemStack) o, slot, true)
                                         || (((ItemStack) o).getItem().equals(slot.getItem())
                                                 && ((ItemStack) itemReplacement).getItemDamage()
                                                         == OreDictionary.WILDCARD_VALUE))

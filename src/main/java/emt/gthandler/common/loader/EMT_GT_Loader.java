@@ -2,20 +2,20 @@ package emt.gthandler.common.loader;
 
 import static emt.command.CommandOutputs.mkbook;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
-import static gregtech.api.util.GT_RecipeBuilder.SECONDS;
+import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 import emt.tile.GT_MetaTileEntity_ResearchCompleter;
-import gregtech.api.enums.GT_Values;
+import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.MetaTileEntityIDs;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
-import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.GTOreDictUnificator;
 import thaumcraft.common.config.ConfigItems;
 
 public class EMT_GT_Loader {
@@ -29,10 +29,10 @@ public class EMT_GT_Loader {
     }
 
     public static void runlate() {
-        GT_Values.RA.stdBuilder()
+        GTValues.RA.stdBuilder()
                 .itemInputs(
                         new ItemStack(Items.book),
-                        GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Basic, 1L),
+                        GTOreDictUnificator.get(OrePrefixes.circuit, Materials.Basic, 1L),
                         new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE))
                 .itemOutputs(mkbook()).duration(6 * SECONDS).eut(TierEU.RECIPE_MV / 2).addTo(assemblerRecipes);
     }

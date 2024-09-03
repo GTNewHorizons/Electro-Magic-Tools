@@ -2,7 +2,7 @@ package emt.tile;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static gregtech.api.enums.Textures.BlockIcons.*;
-import static gregtech.api.util.GT_StructureUtility.ofHatchAdder;
+import static gregtech.api.util.GTStructureUtility.ofHatchAdder;
 
 import java.util.ArrayList;
 
@@ -17,15 +17,15 @@ import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import emt.EMT;
 import emt.network.PacketNodeInfo;
-import gregtech.api.GregTech_API;
+import gregtech.api.GregTechAPI;
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
-import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_EnhancedMultiBlockBase;
+import gregtech.api.metatileentity.implementations.MTEEnhancedMultiBlockBase;
 import gregtech.api.render.TextureFactory;
-import gregtech.api.util.GT_Multiblock_Tooltip_Builder;
-import gregtech.api.util.GT_Utility;
+import gregtech.api.util.GTUtility;
+import gregtech.api.util.MultiblockTooltipBuilder;
 import gregtech.api.util.shutdown.ShutDownReasonRegistry;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -39,7 +39,7 @@ import thaumcraft.common.lib.research.ResearchNoteData;
 import thaumcraft.common.tiles.TileNode;
 
 public class GT_MetaTileEntity_ResearchCompleter
-        extends GT_MetaTileEntity_EnhancedMultiBlockBase<GT_MetaTileEntity_ResearchCompleter> {
+        extends MTEEnhancedMultiBlockBase<GT_MetaTileEntity_ResearchCompleter> {
 
     private static final int CASING_INDEX = 184;
     private static final int MAX_LENGTH = 13;
@@ -84,7 +84,7 @@ public class GT_MetaTileEntity_ResearchCompleter
                                     1),
                             onElementPass(
                                     GT_MetaTileEntity_ResearchCompleter::onCasingFound,
-                                    ofBlock(GregTech_API.sBlockCasings8, 8))))
+                                    ofBlock(GregTechAPI.sBlockCasings8, 8))))
             .addElement(
                     'x',
                     ofChain( // Check for the end but otherwise treat as a skipped spot
@@ -239,7 +239,7 @@ public class GT_MetaTileEntity_ResearchCompleter
         ArrayList<ItemStack> tInputList = this.getStoredInputs();
 
         for (ItemStack stack : tInputList) {
-            if (GT_Utility.isStackValid(stack) && stack.stackSize > 0) {
+            if (GTUtility.isStackValid(stack) && stack.stackSize > 0) {
                 if (stack.getItem() == ConfigItems.itemResearchNotes
                         && !stack.stackTagCompound.getBoolean("complete")) {
                     ResearchNoteData noteData = ResearchManager.getData(stack);
@@ -263,7 +263,7 @@ public class GT_MetaTileEntity_ResearchCompleter
                     }
 
                     // Create a completed version of the note to output
-                    this.mOutputItems = new ItemStack[] { GT_Utility.copyAmount(1, stack) };
+                    this.mOutputItems = new ItemStack[] { GTUtility.copyAmount(1, stack) };
                     this.mOutputItems[0].stackTagCompound.setBoolean("complete", true);
                     this.mOutputItems[0].setItemDamage(64);
                     stack.stackSize -= 1;
@@ -357,8 +357,8 @@ public class GT_MetaTileEntity_ResearchCompleter
     }
 
     @Override
-    protected GT_Multiblock_Tooltip_Builder createTooltip() {
-        GT_Multiblock_Tooltip_Builder tt = new GT_Multiblock_Tooltip_Builder();
+    protected MultiblockTooltipBuilder createTooltip() {
+        MultiblockTooltipBuilder tt = new MultiblockTooltipBuilder();
         tt.addMachineType("Research Completer").addInfo("Controller block for the Research Completer")
                 .addInfo("Completes Thaumcraft research notes using EU and Thaumcraft nodes")
                 .addInfo("Place nodes in the center row").addSeparator()

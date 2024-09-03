@@ -1,7 +1,7 @@
 package emt.tile.solar;
 
 import static gregtech.api.recipe.RecipeMaps.chemicalBathRecipes;
-import static gregtech.api.util.GT_RecipeBuilder.SECONDS;
+import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 import static thaumcraft.api.aspects.Aspect.*;
 
 import java.util.LinkedHashMap;
@@ -16,7 +16,7 @@ import emt.block.BlockSolars;
 import emt.init.EMTBlocks;
 import emt.item.block.ItemBlockSolars;
 import emt.util.EMTConfigHandler;
-import gregtech.api.enums.GT_Values;
+import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.TierEU;
 import thaumcraft.api.aspects.Aspect;
@@ -140,7 +140,7 @@ public enum Solars {
     public static void registerReverseRecipes() {
         for (Solars s : Solars.values()) {
             if (s.aspect != null) {
-                GT_Values.RA.stdBuilder().itemInputs(new ItemStack(EMTBlocks.solars[s.instance], 1, s.meta))
+                GTValues.RA.stdBuilder().itemInputs(new ItemStack(EMTBlocks.solars[s.instance], 1, s.meta))
                         .fluidInputs(Materials.Chlorine.getGas(1000))
                         .itemOutputs(
                                 new ItemStack(
