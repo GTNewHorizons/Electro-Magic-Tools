@@ -1092,9 +1092,9 @@ public class EMTRecipes {
 
         /** IC2 Stuff related recipes **/
 
-        final boolean isDreamcraftLoaded = Loader.isModLoaded("dreamcraft");
+        final boolean isDreamcraftNotLoaded = !Loader.isModLoaded("dreamcraft");
 
-        if (isDreamcraftLoaded) {
+        if (isDreamcraftNotLoaded) {
             /* Ore Clusters Macerator Recipes */
             ItemStack ironClusterRecipe = IC2Items.getItem("smallIronDust").copy();
             ironClusterRecipe.stackSize = 22;
@@ -1158,7 +1158,7 @@ public class EMTRecipes {
                 'Z',
                 new ItemStack(Blocks.obsidian));
 
-        if (isDreamcraftLoaded) {
+        if (isDreamcraftNotLoaded) {
             Recipes.metalformerRolling.addRecipe(
                     new RecipeInputItemStack(new ItemStack(ConfigItems.itemResource, 1, 2)),
                     null,
