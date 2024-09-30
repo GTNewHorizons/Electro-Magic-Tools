@@ -107,6 +107,7 @@ public class ItemFeatherWing extends ItemArmor implements IRunicArmor {
 
         if (isJumping && !player.onGround && player.motionY < 0) {
             player.motionY *= f1;
+            player.fallDistance = 0;
         }
 
         if (player.isInWater() && !player.capabilities.isCreativeMode) {
@@ -124,6 +125,7 @@ public class ItemFeatherWing extends ItemArmor implements IRunicArmor {
 
         if (player.isSneaking() && !player.onGround && player.motionY < 0) {
             player.motionY *= 0.6;
+            player.fallDistance = 0;
         }
     }
 

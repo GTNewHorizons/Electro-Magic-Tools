@@ -534,6 +534,7 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
 
         if (isJumping && !player.onGround && player.motionY < 0) {
             player.motionY *= f1;
+            player.fallDistance = 0;
         }
 
         if (player.isInWater() && !player.capabilities.isCreativeMode) {
@@ -555,9 +556,6 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
 
         if (player.isSneaking() && !player.onGround && player.motionY < 0) {
             player.motionY *= 0.6;
-        }
-
-        if (player.fallDistance > 0.0F) {
             player.fallDistance = 0;
         }
     }
