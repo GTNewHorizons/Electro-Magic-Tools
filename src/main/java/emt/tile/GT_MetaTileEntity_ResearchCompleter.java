@@ -361,8 +361,8 @@ public class GT_MetaTileEntity_ResearchCompleter
         MultiblockTooltipBuilder tt = new MultiblockTooltipBuilder();
         tt.addMachineType("Research Completer")
                 .addInfo("Completes Thaumcraft research notes using EU and Thaumcraft nodes")
-                .addInfo("Place nodes in the center row")
-                .beginVariableStructureBlock(3, 3, 3, 3, 3, MAX_LENGTH, true).addController("Front center")
+                .addInfo("Place nodes in the center row").beginVariableStructureBlock(3, 3, 3, 3, 3, MAX_LENGTH, true)
+                .addController("Front center")
                 .addOtherStructurePart("Magical machine casing", "Top and bottom layers outside. 3 x L minimum")
                 .addOtherStructurePart("Warded glass", "Middle layer outside").addEnergyHatch("Any casing")
                 .addMaintenanceHatch("Any casing").addInputBus("Any casing").addOutputBus("Any casing")
