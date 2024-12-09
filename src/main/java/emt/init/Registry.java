@@ -17,9 +17,6 @@ public class Registry {
     }
 
     public static void registerInit() {
-        if (enableGTCompat) {
-            EMT_GT_Loader.run();
-        }
         EMTRecipes.registerEarlyRecipes();
     }
 

@@ -94,6 +94,4 @@ public class EMTResearchAspects {
     public static AspectList quantumWing = new AspectList().add(Aspect.FLIGHT, 5).add(Aspect.AIR, 5)
             .add(Aspect.MECHANISM, 8).add(Aspect.ENERGY, 4);
     public static AspectList aerGenerator = new AspectList().add(Aspect.EXCHANGE, 4).add(Aspect.AIR, 3);
-    public static AspectList researchCompleter = new AspectList().add(Aspect.MIND, 8).add(Aspect.MECHANISM, 5)
-            .add(Aspect.EXCHANGE, 5).add(Aspect.AURA, 4);
 }

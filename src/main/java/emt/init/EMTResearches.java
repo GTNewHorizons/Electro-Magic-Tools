@@ -54,10 +54,6 @@ public class EMTResearches {
                         new ResearchPage(EMTRecipes.cardboard),
                         new ResearchPage(EMTRecipes.featherWing),
                         new ResearchPage(EMTRecipes.featherWings));
-        // new EMTResearchItem("ResearchCompleter", EMTResearchAspects.researchCompleter, -4, -2, 0, new
-        // ItemStack(GregTech_API.sBlockMachines, 1, 13001)).setParents("Electric Magic
-        // Tools").setParentsHidden("WANDPED", "WARDEDARCANA").registerResearchItem().setPages(new ResearchPage(""), new
-        // ResearchPage(EMTRecipes.magicalMachineCasing), new ResearchPage(EMTRecipes.researchCompleter));
         /*************************************/
 
         /** Research that can be disabled **/

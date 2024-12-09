@@ -21,7 +21,6 @@ import emt.command.CommandOutputs;
 import emt.init.EMTEntities;
 import emt.init.Registry;
 import emt.network.PacketEMTKeys;
-import emt.network.PacketNodeInfo;
 import emt.proxy.CommonProxy;
 import emt.tile.solar.Solars;
 import emt.util.EMTClientEventHandler;
@@ -115,8 +114,5 @@ public class EMT {
 
     public void registerPackets() {
         INSTANCE.registerMessage(PacketEMTKeys.class, PacketEMTKeys.class, 0, Side.SERVER);
-        if (Registry.enableGTCompat) {
-            INSTANCE.registerMessage(PacketNodeInfo.class, PacketNodeInfo.class, 1, Side.CLIENT);
-        }
     }
 }

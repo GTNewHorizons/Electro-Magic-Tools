@@ -103,8 +103,6 @@ public class EMTRecipes {
     public static ShapedArcaneRecipe electricScribingTools;
     public static ShapedArcaneRecipe thaumiumWing;
     public static ShapedArcaneRecipe thaumiumWings;
-    public static ShapedArcaneRecipe researchCompleter;
-    public static ShapedArcaneRecipe magicalMachineCasing;
     public static CrucibleRecipe ignisGenerator;
     public static CrucibleRecipe auramGenerator;
     public static CrucibleRecipe arborGenerator;
@@ -929,18 +927,6 @@ public class EMTRecipes {
                 "XX",
                 'X',
                 new ItemStack(EMTItems.itemEMTItems, 1, 14));
-
-        // magicalMachineCasing = addArcaneCraftingRecipe("ResearchCompleter", new
-        // ItemStack(GregTech_API.sBlockCasings8, 1, 6), EMTCraftingAspects.magicalMachineCasing, "XYX", "XZX", "XYX",
-        // 'X', GTOreDictUnificator.get(OrePrefixes.plate, Materials.Thaumium, 1), 'Y', new
-        // ItemStack(ConfigItems.itemResource, 1, 14) , 'Z', GTOreDictUnificator.get(OrePrefixes.frameGt,
-        // Materials.Thaumium, 1));
-
-        // researchCompleter = addArcaneCraftingRecipe("ResearchCompleter", new ItemStack(GregTech_API.sBlockMachines,
-        // 1, 13001), EMTCraftingAspects.researchCompleter, "XYX", "YZY", "XAX", 'X',
-        // GTOreDictUnificator.get(OrePrefixes.circuit.get(Materials.Good), 1L), 'Y', new
-        // ItemStack(ConfigBlocks.blockCosmeticOpaque, 1, 2), 'Z', new ItemStack(GregTech_API.sBlockCasings8, 1, 6),
-        // 'A', new ItemStack(ConfigBlocks.blockStoneDevice, 1, 5));
 
         if (Registry.enableGTCompat) {
             /** Crucible Recipes **/
