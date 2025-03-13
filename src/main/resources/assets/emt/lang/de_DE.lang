@@ -13,9 +13,9 @@ gui.EMT.book.aspect.output.eu.title=Essentia Ausgabe Buch
 gui.EMT.book.aspect.output.essentia.eu=EU Leistung per Essentia
 gui.EMT.key.unequip=Ausziehen
 emt.Output=Ausgabe:
-emt.Storage=Speicher: 
+emt.Storage=Speicher:
 emt.PressShift=<Drücke SHIFT>
-emt.Generating=Erzeugt: 
+emt.Generating=Erzeugt:
 emt.Fuel=Brennstoff
 
 #=============Tooltips=============
@@ -100,6 +100,9 @@ item.EMT.focus.charge.name=Stab Fokus: Aufladung
 item.EMT.focus.chargeWand.name=Stab Fokus: Stabs Aufladung
 item.EMT.focus.electricCloud.name=Electrische Wolke
 item.EMT.focus.energyBall.name=Energie Ball Fokus
+item.EMT.focus.EU.cost.info=EU pro Zauber
+item.EMT.focus.EU.cost.once= %s §eEU§0
+item.EMT.focus.EU.cost.tick= %s §eEU/t§0
 
 #=============Block Names=============
 tile.EMT.electricCloud.name=Electrische Wolke
