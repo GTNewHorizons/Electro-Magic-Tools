@@ -56,7 +56,7 @@ public class ItemChargeFocus extends ItemBaseFocus {
             MovingObjectPosition movingobjectposition) {
         ItemWandCasting wand = (ItemWandCasting) itemstack.getItem();
         if (player.capabilities.isCreativeMode
-                || wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, true)) {
+                || wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, false)) {
             if (!world.isRemote) {
 
                 int energyLeft = (int) (EMTConfigHandler.chargeFocusProduction

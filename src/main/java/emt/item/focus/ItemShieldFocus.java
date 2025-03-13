@@ -50,7 +50,7 @@ public class ItemShieldFocus extends ItemBaseFocus {
             IC2.platform.removePotion(player, effect.getPotionID());
         }
         if (!player.capabilities.isCreativeMode
-                && !wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, true)) {
+                && !wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, false)) {
             player.stopUsingItem();
         }
     }

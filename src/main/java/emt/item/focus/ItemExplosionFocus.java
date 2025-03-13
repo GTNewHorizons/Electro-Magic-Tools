@@ -39,7 +39,7 @@ public class ItemExplosionFocus extends ItemBaseFocus {
             MovingObjectPosition movingobjectposition) {
         ItemWandCasting wand = (ItemWandCasting) itemstack.getItem();
         if (player.capabilities.isCreativeMode
-                || wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, true)) {
+                || wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, false)) {
             if (!world.isRemote) {
                 EntityLaser laser;
                 laser = new EntityLaser(world, player, 1);
