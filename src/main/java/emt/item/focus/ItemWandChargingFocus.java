@@ -56,23 +56,37 @@ public class ItemWandChargingFocus extends ItemBaseFocus {
 
         if (!player.worldObj.isRemote) {
             ItemWandCasting wandItem = (ItemWandCasting) itemstack.getItem();
+            if (wandIsFull(itemstack, wandItem)) {
+                return;
+            }
 
-            ItemStack armor = player.inventory.armorInventory[1];
-            if (armor != null) {
-                int cost = getCost(itemstack) / 4;
-                if ((ElectricItem.manager.use(armor, cost, player) && (ElectricItem.manager.use(armor, cost, player))
-                        && (ElectricItem.manager.use(armor, cost, player))
-                        && (ElectricItem.manager.use(armor, cost, player)))) {
-                    int amount = (int) (100 * Math.pow(1.1, getUpgradeLevel(itemstack, FocusUpgradeType.potency)));
-                    wandItem.addRealVis(itemstack, Aspect.ORDER, amount, true);
-                    wandItem.addRealVis(itemstack, Aspect.FIRE, amount, true);
-                    wandItem.addRealVis(itemstack, Aspect.ENTROPY, amount, true);
-                    wandItem.addRealVis(itemstack, Aspect.WATER, amount, true);
-                    wandItem.addRealVis(itemstack, Aspect.EARTH, amount, true);
-                    wandItem.addRealVis(itemstack, Aspect.AIR, amount, true);
+            int cost = getCost(itemstack) / 4;
+            for (ItemStack stack : player.inventory.armorInventory) {
+                if (stack == null || ElectricItem.manager.getCharge(stack) < cost) {
+                    return;
                 }
             }
+            for (ItemStack stack : player.inventory.armorInventory) {
+                ElectricItem.manager.use(stack, cost, player);
+            }
+            int amount = (int) (100 * Math.pow(1.1, getUpgradeLevel(itemstack, FocusUpgradeType.potency)));
+            wandItem.addRealVis(itemstack, Aspect.ORDER, amount, true);
+            wandItem.addRealVis(itemstack, Aspect.FIRE, amount, true);
+            wandItem.addRealVis(itemstack, Aspect.ENTROPY, amount, true);
+            wandItem.addRealVis(itemstack, Aspect.WATER, amount, true);
+            wandItem.addRealVis(itemstack, Aspect.EARTH, amount, true);
+            wandItem.addRealVis(itemstack, Aspect.AIR, amount, true);
         }
+    }
+
+    private boolean wandIsFull(ItemStack itemstack, ItemWandCasting wandItem) {
+        int size = wandItem.getMaxVis(itemstack);
+        for (Aspect a : Aspect.getPrimalAspects()) {
+            if (wandItem.getVis(itemstack, a) < size) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
