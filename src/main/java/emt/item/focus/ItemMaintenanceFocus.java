@@ -35,7 +35,7 @@ public class ItemMaintenanceFocus extends ItemBaseFocus {
 
     @Override
     public String getSortingHelper(ItemStack itemstack) {
-        return "MAINTENANCE";
+        return "MAINTENANCE" + super.getSortingHelper(itemstack);
     }
 
     @Override

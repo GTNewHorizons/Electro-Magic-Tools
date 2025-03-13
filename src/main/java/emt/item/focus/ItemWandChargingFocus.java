@@ -28,7 +28,7 @@ public class ItemWandChargingFocus extends ItemBaseFocus {
 
     @Override
     public String getSortingHelper(ItemStack itemstack) {
-        return "ELECTRICCHARGING";
+        return "ELECTRICCHARGING" + super.getSortingHelper(itemstack);
     }
 
     @Override

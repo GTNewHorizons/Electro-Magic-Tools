@@ -40,7 +40,7 @@ public class ItemChargeFocus extends ItemBaseFocus {
 
     @Override
     public String getSortingHelper(ItemStack itemstack) {
-        return "WANDCHARGING";
+        return "WANDCHARGING" + super.getSortingHelper(itemstack);
     }
 
     public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack focusstack, int rank) {

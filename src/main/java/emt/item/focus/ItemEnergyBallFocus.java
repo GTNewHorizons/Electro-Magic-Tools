@@ -22,7 +22,7 @@ public class ItemEnergyBallFocus extends ItemBaseFocus {
 
     @Override
     public String getSortingHelper(ItemStack itemstack) {
-        return "ENERGYBALL";
+        return "ENERGYBALL" + super.getSortingHelper(itemstack);
     }
 
     @Override

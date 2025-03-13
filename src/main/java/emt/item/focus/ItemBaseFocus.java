@@ -85,11 +85,6 @@ public abstract class ItemBaseFocus extends ItemFocusBasic {
     public void onPlayerStoppedUsingFocus(ItemStack itemstack, World world, EntityPlayer player, int count) {}
 
     @Override
-    public String getSortingHelper(ItemStack itemstack) {
-        return "00";
-    }
-
-    @Override
     public boolean onFocusBlockStartBreak(ItemStack itemstack, int x, int y, int z, EntityPlayer player) {
         return false;
     }

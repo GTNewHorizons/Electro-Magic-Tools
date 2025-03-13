@@ -30,7 +30,7 @@ public class ItemChristmasFocus extends ItemBaseFocus {
 
     @Override
     public String getSortingHelper(ItemStack itemstack) {
-        return "CHRISTMAS";
+        return "CHRISTMAS" + super.getSortingHelper(itemstack);
     }
 
     @Override

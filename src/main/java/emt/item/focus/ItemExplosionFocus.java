@@ -31,7 +31,7 @@ public class ItemExplosionFocus extends ItemBaseFocus {
 
     @Override
     public String getSortingHelper(ItemStack itemstack) {
-        return "EXPLOSION";
+        return "EXPLOSION" + super.getSortingHelper(itemstack);
     }
 
     @Override

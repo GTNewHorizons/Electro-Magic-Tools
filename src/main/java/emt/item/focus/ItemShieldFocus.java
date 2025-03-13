@@ -35,7 +35,7 @@ public class ItemShieldFocus extends ItemBaseFocus {
 
     @Override
     public String getSortingHelper(ItemStack itemstack) {
-        return "SHIELD";
+        return "SHIELD" + super.getSortingHelper(itemstack);
     }
 
     @Override
