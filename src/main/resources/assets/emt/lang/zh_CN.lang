@@ -103,8 +103,8 @@ item.EMT.focus.chargeWand.name=法杖核心:化魔
 item.EMT.focus.electricCloud.name=雷云之光
 item.EMT.focus.energyBall.name=法杖核心:能量球
 item.EMT.focus.EU.cost.info=EU/每次施法
-item.EMT.focus.EU.cost.once= %s §eEU§0
-item.EMT.focus.EU.cost.tick= %s §eEU/t§0
+item.EMT.focus.EU.cost.once= §r%s §eEU§0
+item.EMT.focus.EU.cost.tick= §r%s §eEU/t§0
 
 #=============Block Names=============
 tile.EMT.electricCloud.name=雷云之光

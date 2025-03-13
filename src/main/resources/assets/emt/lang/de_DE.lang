@@ -101,8 +101,8 @@ item.EMT.focus.chargeWand.name=Stab Fokus: Stabs Aufladung
 item.EMT.focus.electricCloud.name=Electrische Wolke
 item.EMT.focus.energyBall.name=Energie Ball Fokus
 item.EMT.focus.EU.cost.info=EU pro Zauber
-item.EMT.focus.EU.cost.once= %s §eEU§0
-item.EMT.focus.EU.cost.tick= %s §eEU/t§0
+item.EMT.focus.EU.cost.once= §r%s §eEU§0
+item.EMT.focus.EU.cost.tick= §r%s §eEU/t§0
 
 #=============Block Names=============
 tile.EMT.electricCloud.name=Electrische Wolke

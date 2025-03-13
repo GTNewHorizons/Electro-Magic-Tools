@@ -103,8 +103,8 @@ item.EMT.focus.maintenance.name=Набалдашник: Обслуживание
 item.EMT.focus.electricCloud.name=Электризованное облако
 item.EMT.focus.energyBall.name=Набалдашник: Наэлектризованное облако
 item.EMT.focus.EU.cost.info=EU за использование
-item.EMT.focus.EU.cost.once= %s §eEU§0
-item.EMT.focus.EU.cost.tick= %s §eEU/тик§0
+item.EMT.focus.EU.cost.once= §r%s §eEU§0
+item.EMT.focus.EU.cost.tick= §r%s §eEU/тик§0
 
 #=============Block Names=============
 tile.EMT.electricCloud.name=Наэлектризованное облако
