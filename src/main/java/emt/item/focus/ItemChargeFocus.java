@@ -1,10 +1,12 @@
 package emt.item.focus;
 
+import java.util.List;
 import java.util.Map.Entry;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 import emt.util.EMTConfigHandler;
@@ -35,7 +37,7 @@ public class ItemChargeFocus extends ItemBaseFocus {
         for (Entry<Aspect, Integer> e : visCost.aspects.entrySet()) actualCost.add(
                 e.getKey(),
                 (int) (e.getValue() * Math.pow(1.1, getUpgradeLevel(stack, FocusUpgradeType.potency))));
-        return visCost;
+        return actualCost;
     }
 
     @Override
@@ -47,10 +49,6 @@ public class ItemChargeFocus extends ItemBaseFocus {
         return new FocusUpgradeType[] { FocusUpgradeType.potency, FocusUpgradeType.frugal };
     }
 
-    public boolean canApplyUpgrade(ItemStack focusstack, EntityPlayer player, FocusUpgradeType type, int rank) {
-        return true;
-    }
-
     @Override
     public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer player,
             MovingObjectPosition movingobjectposition) {
@@ -59,8 +57,7 @@ public class ItemChargeFocus extends ItemBaseFocus {
                 || wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, false)) {
             if (!world.isRemote) {
 
-                int energyLeft = (int) (EMTConfigHandler.chargeFocusProduction
-                        * Math.pow(1.1, getUpgradeLevel(itemstack, FocusUpgradeType.potency)));
+                int energyLeft = getChargeRate(itemstack);
                 for (int i = 0; i < player.inventory.armorInventory.length; i++) {
                     if (energyLeft > 0) {
                         if ((player.inventory.armorInventory[i] != null)
@@ -88,5 +85,17 @@ public class ItemChargeFocus extends ItemBaseFocus {
             }
         }
         return itemstack;
+    }
+
+    private int getChargeRate(ItemStack itemstack) {
+        return (int) (EMTConfigHandler.chargeFocusProduction
+                * Math.pow(1.1, getUpgradeLevel(itemstack, FocusUpgradeType.potency)));
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+        list.add(StatCollector.translateToLocal("item.EMT.focus.EU.cost.info"));
+        list.add(StatCollector.translateToLocalFormatted("item.EMT.focus.EU.cost.once", getChargeRate(stack)));
+        super.addInformation(stack, player, list, par4);
     }
 }

@@ -45,7 +45,6 @@ public class ItemEnergyBallFocus extends ItemBaseFocus {
             return stack;
         }
 
-        // 10% discount per level of frugal
         int cost = getCost(stack);
         double val = ElectricItem.manager.discharge(armor, cost, 4, true, false, false);
 

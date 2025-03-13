@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class ItemChristmasFocus extends ItemBaseFocus {
@@ -31,6 +32,11 @@ public class ItemChristmasFocus extends ItemBaseFocus {
     @Override
     public String getSortingHelper(ItemStack itemstack) {
         return "CHRISTMAS" + super.getSortingHelper(itemstack);
+    }
+
+    @Override
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack focusstack, int rank) {
+        return new FocusUpgradeType[] { FocusUpgradeType.frugal };
     }
 
     @Override

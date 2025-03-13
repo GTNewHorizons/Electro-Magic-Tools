@@ -1,7 +1,5 @@
 package emt.item.focus;
 
-import java.util.LinkedList;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -12,6 +10,7 @@ import emt.entity.EntityShield;
 import ic2.core.IC2;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.items.wands.ItemWandCasting;
 
 public class ItemShieldFocus extends ItemBaseFocus {
@@ -39,6 +38,11 @@ public class ItemShieldFocus extends ItemBaseFocus {
     }
 
     @Override
+    public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack focusstack, int rank) {
+        return new FocusUpgradeType[] { FocusUpgradeType.frugal };
+    }
+
+    @Override
     public boolean isUseItem(ItemStack stack) {
         return true;
     }
@@ -46,7 +50,7 @@ public class ItemShieldFocus extends ItemBaseFocus {
     @Override
     public void onUsingFocusTick(ItemStack itemstack, EntityPlayer player, int count) {
         ItemWandCasting wand = (ItemWandCasting) itemstack.getItem();
-        for (PotionEffect effect : new LinkedList<PotionEffect>(player.getActivePotionEffects())) {
+        for (PotionEffect effect : player.getActivePotionEffects()) {
             IC2.platform.removePotion(player, effect.getPotionID());
         }
         if (!player.capabilities.isCreativeMode
@@ -61,7 +65,7 @@ public class ItemShieldFocus extends ItemBaseFocus {
         ItemWandCasting wand = (ItemWandCasting) itemstack.getItem();
         player.setItemInUse(itemstack, Integer.MAX_VALUE);
         if (!world.isRemote && (player.capabilities.isCreativeMode
-                || wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, true))) {
+                || wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, false))) {
             EntityShield shield = new EntityShield(world, player);
             world.spawnEntityInWorld(shield);
         }
