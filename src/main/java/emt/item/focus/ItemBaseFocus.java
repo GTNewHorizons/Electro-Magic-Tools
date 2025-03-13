@@ -67,10 +67,6 @@ public abstract class ItemBaseFocus extends ItemFocusBasic {
         return isVisCostPerTick(stack);
     }
 
-    public boolean isVisCostPerTick() {
-        return false;
-    }
-
     @Override
     public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer,
             MovingObjectPosition paramMovingObjectPosition) {
