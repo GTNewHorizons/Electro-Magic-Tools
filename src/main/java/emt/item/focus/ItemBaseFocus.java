@@ -89,9 +89,4 @@ public abstract class ItemBaseFocus extends ItemFocusBasic {
         return false;
     }
 
-    @Override
-    public int getItemEnchantability() {
-        return 5;
-    }
-
 }
