@@ -34,20 +34,6 @@ public abstract class ItemBaseFocus extends ItemFocusBasic {
         this.icon = ir.registerIcon(EMT.TEXTURE_PATH + ":" + "focus_" + textureName);
     }
 
-    boolean hasDepth() {
-        return false;
-    }
-
-    @Override
-    public int getFocusColor(ItemStack stack) {
-        return 0;
-    }
-
-    @Override
-    public boolean isItemTool(ItemStack par1ItemStack) {
-        return true;
-    }
-
     @Override
     public EnumRarity getRarity(ItemStack itemstack) {
         return EnumRarity.rare;
@@ -63,14 +49,10 @@ public abstract class ItemBaseFocus extends ItemFocusBasic {
         return new AspectList();
     }
 
-    public boolean isUseItem(ItemStack stack) {
-        return isVisCostPerTick(stack);
-    }
-
     @Override
     public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer,
             MovingObjectPosition paramMovingObjectPosition) {
-        if (isUseItem(paramItemStack)) paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
+        if (isVisCostPerTick(paramItemStack)) paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
         return paramItemStack;
     }
 
