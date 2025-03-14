@@ -43,7 +43,7 @@ public class ItemShieldFocus extends ItemBaseFocus {
     }
 
     @Override
-    public boolean isUseItem(ItemStack stack) {
+    public boolean isVisCostPerTick(ItemStack stack) {
         return true;
     }
 
