@@ -14,6 +14,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
@@ -24,6 +25,7 @@ import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import ic2.api.item.IMetalArmor;
 
+@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtech")
 public class ItemNanoWing extends ItemThaumiumReinforcedWing
         implements IElectricItem, ISpecialArmor, IMetalArmor, IHazardProtector {
 

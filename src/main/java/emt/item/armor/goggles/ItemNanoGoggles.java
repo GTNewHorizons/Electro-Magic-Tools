@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
@@ -13,6 +14,7 @@ import gregtech.api.hazards.Hazard;
 import gregtech.api.hazards.IHazardProtector;
 import ic2.api.item.IC2Items;
 
+@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtech")
 public class ItemNanoGoggles extends ItemElectricGoggles implements IHazardProtector {
 
     public ItemNanoGoggles(ArmorMaterial material, int renderIndex, int armorType) {

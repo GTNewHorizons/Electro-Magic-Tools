@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -40,6 +41,7 @@ import ic2.core.item.armor.ItemArmorElectric;
 import ic2.core.util.StackUtil;
 import thaumcraft.api.IRunicArmor;
 
+@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtech")
 public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements IRunicArmor, IHazardProtector {
 
     public static AudioSource audioSource;

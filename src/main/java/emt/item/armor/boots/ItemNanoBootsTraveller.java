@@ -4,6 +4,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
@@ -11,6 +12,7 @@ import emt.util.EMTConfigHandler;
 import gregtech.api.hazards.Hazard;
 import gregtech.api.hazards.IHazardProtector;
 
+@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtech")
 public class ItemNanoBootsTraveller extends ItemElectricBootsTraveller implements IHazardProtector {
 
     public ItemNanoBootsTraveller(ArmorMaterial material, int par3, int par4) {
