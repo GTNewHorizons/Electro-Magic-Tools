@@ -8,8 +8,10 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import emt.util.EMTConfigHandler;
+import gregtech.api.hazards.Hazard;
+import gregtech.api.hazards.IHazardProtector;
 
-public class ItemQuantumBootsTraveller extends ItemElectricBootsTraveller {
+public class ItemQuantumBootsTraveller extends ItemElectricBootsTraveller implements IHazardProtector {
 
     public ItemQuantumBootsTraveller(ArmorMaterial material, int par3, int par4) {
         super(material, par3, par4);
@@ -50,5 +52,10 @@ public class ItemQuantumBootsTraveller extends ItemElectricBootsTraveller {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
         return EMT.TEXTURE_PATH + ":textures/models/quantumbootstravel.png";
+    }
+
+    @Override
+    public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
+        return true;
     }
 }

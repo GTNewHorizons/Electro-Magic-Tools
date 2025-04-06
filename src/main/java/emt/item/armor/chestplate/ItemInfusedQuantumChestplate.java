@@ -28,6 +28,8 @@ import emt.EMT;
 import emt.client.model.ModelSpecialArmor;
 import emt.init.EMTItems;
 import emt.util.EMTConfigHandler;
+import gregtech.api.hazards.Hazard;
+import gregtech.api.hazards.IHazardProtector;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IC2Items;
 import ic2.core.IC2;
@@ -38,7 +40,7 @@ import ic2.core.item.armor.ItemArmorElectric;
 import ic2.core.util.StackUtil;
 import thaumcraft.api.IRunicArmor;
 
-public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements IRunicArmor {
+public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements IRunicArmor, IHazardProtector {
 
     public static AudioSource audioSource;
     protected static ArrayList<Integer> potionRemovalCost = new ArrayList<Integer>();
@@ -563,5 +565,10 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
     @Override
     public int getRunicCharge(ItemStack itemStack) {
         return 0;
+    }
+
+    @Override
+    public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
+        return true;
     }
 }

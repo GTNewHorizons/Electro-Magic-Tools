@@ -9,9 +9,11 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
+import gregtech.api.hazards.Hazard;
+import gregtech.api.hazards.IHazardProtector;
 import ic2.api.item.IC2Items;
 
-public class ItemNanoGoggles extends ItemElectricGoggles {
+public class ItemNanoGoggles extends ItemElectricGoggles implements IHazardProtector {
 
     public ItemNanoGoggles(ArmorMaterial material, int renderIndex, int armorType) {
         super(material, renderIndex, armorType);
@@ -49,5 +51,10 @@ public class ItemNanoGoggles extends ItemElectricGoggles {
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
         IC2Items.getItem("nightvisionGoggles").getItem().onArmorTick(world, player, itemStack);
+    }
+
+    @Override
+    public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
+        return true;
     }
 }
