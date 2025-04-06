@@ -57,6 +57,7 @@ public class ItemQuantumBootsTraveller extends ItemElectricBootsTraveller implem
     }
 
     @Override
+    @Optional.Method(modid = "gregtech")
     public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
         return true;
     }

@@ -570,6 +570,7 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
     }
 
     @Override
+    @Optional.Method(modid = "gregtech")
     public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
         return true;
     }

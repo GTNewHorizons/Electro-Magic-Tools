@@ -183,6 +183,7 @@ public class ItemNanoWing extends ItemThaumiumReinforcedWing
     }
 
     @Override
+    @Optional.Method(modid = "gregtech")
     public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
         return true;
     }
