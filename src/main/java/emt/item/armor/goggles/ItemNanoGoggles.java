@@ -14,7 +14,7 @@ import gregtech.api.hazards.Hazard;
 import gregtech.api.hazards.IHazardProtector;
 import ic2.api.item.IC2Items;
 
-@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtech")
+@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "dreamcraft")
 public class ItemNanoGoggles extends ItemElectricGoggles implements IHazardProtector {
 
     public ItemNanoGoggles(ArmorMaterial material, int renderIndex, int armorType) {
@@ -56,7 +56,7 @@ public class ItemNanoGoggles extends ItemElectricGoggles implements IHazardProte
     }
 
     @Override
-    @Optional.Method(modid = "gregtech")
+    @Optional.Method(modid = "dreamcraft")
     public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
         return true;
     }
