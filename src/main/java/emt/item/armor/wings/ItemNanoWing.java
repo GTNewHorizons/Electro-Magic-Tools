@@ -25,7 +25,7 @@ import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import ic2.api.item.IMetalArmor;
 
-@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtech")
+@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "dreamcraft")
 public class ItemNanoWing extends ItemThaumiumReinforcedWing
         implements IElectricItem, ISpecialArmor, IMetalArmor, IHazardProtector {
 
