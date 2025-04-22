@@ -12,7 +12,7 @@ import emt.util.EMTConfigHandler;
 import gregtech.api.hazards.Hazard;
 import gregtech.api.hazards.IHazardProtector;
 
-@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtechNH")
+@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtech_nh")
 public class ItemNanoBootsTraveller extends ItemElectricBootsTraveller implements IHazardProtector {
 
     public ItemNanoBootsTraveller(ArmorMaterial material, int par3, int par4) {
@@ -57,7 +57,7 @@ public class ItemNanoBootsTraveller extends ItemElectricBootsTraveller implement
     }
 
     @Override
-    @Optional.Method(modid = "gregtechNH")
+    @Optional.Method(modid = "gregtech_nh")
     public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
         return true;
     }
