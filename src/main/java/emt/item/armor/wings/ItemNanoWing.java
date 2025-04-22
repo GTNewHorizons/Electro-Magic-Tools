@@ -25,7 +25,7 @@ import ic2.api.item.ElectricItem;
 import ic2.api.item.IElectricItem;
 import ic2.api.item.IMetalArmor;
 
-@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtechNH")
+@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtech_nh")
 public class ItemNanoWing extends ItemThaumiumReinforcedWing
         implements IElectricItem, ISpecialArmor, IMetalArmor, IHazardProtector {
 
@@ -183,7 +183,7 @@ public class ItemNanoWing extends ItemThaumiumReinforcedWing
     }
 
     @Override
-    @Optional.Method(modid = "gregtechNH")
+    @Optional.Method(modid = "gregtech_nh")
     public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
         return true;
     }
