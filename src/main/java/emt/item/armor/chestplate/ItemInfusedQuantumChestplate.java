@@ -41,7 +41,7 @@ import ic2.core.item.armor.ItemArmorElectric;
 import ic2.core.util.StackUtil;
 import thaumcraft.api.IRunicArmor;
 
-@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "dreamcraft")
+@Optional.Interface(iface = "gregtech.api.hazards.IHazardProtector", modid = "gregtechNH")
 public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements IRunicArmor, IHazardProtector {
 
     public static AudioSource audioSource;
@@ -570,7 +570,7 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
     }
 
     @Override
-    @Optional.Method(modid = "dreamcraft")
+    @Optional.Method(modid = "gregtechNH")
     public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
         return true;
     }
