@@ -5,6 +5,7 @@ dependencies {
     api('com.github.GTNewHorizons:ModularUI:1.2.18:dev')
     api('com.github.GTNewHorizons:ThaumicBoots:1.4.6:dev') {
         exclude group: 'com.github.GTNewHorizons', module: 'Electro-Magic-Tools'
+        exclude module: 'Baubles'
     }
 
     api('net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev')
