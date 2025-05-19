@@ -66,7 +66,7 @@ public class ItemMaintenanceFocus extends ItemBaseFocus {
                         hatch.mHardHammer = true;
                         hatch.mSolderingTool = true;
                         hatch.mWrench = true;
-                        hatch.mSoftHammer = true;
+                        hatch.mSoftMallet = true;
                     }
                 }
             }
