@@ -54,7 +54,7 @@ public class ItemElectricBootsTraveller extends ItemArmor
         this.setMaxDamage(27);
         this.setMaxStackSize(1);
         this.setCreativeTab(EMT.TAB);
-        MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new EventHandler());
     }
 
     @SideOnly(Side.CLIENT)
@@ -188,17 +188,6 @@ public class ItemElectricBootsTraveller extends ItemArmor
         }
     }
 
-    @SubscribeEvent
-    public void onPlayerJump(LivingEvent.LivingJumpEvent event) {
-        if (event.entityLiving instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) event.entityLiving;
-            ItemStack boots = player.getCurrentArmor(0);
-            boolean hasArmor = boots != null && boots.getItem() == this;
-
-            if (hasArmor) player.motionY += jumpBonus * (float) getJumpModifier(boots);
-        }
-    }
-
     // make the boots worth upgrading
     public float getMaxHealthyDropDist() {
         return 20.0F;
@@ -206,36 +195,6 @@ public class ItemElectricBootsTraveller extends ItemArmor
 
     public float getMinimumDropDist() {
         return 4.0f;
-    }
-
-    @SubscribeEvent
-    public void onLivingFall(LivingFallEvent event) {
-        if ((EMT.instance.isSimulating()) && ((event.entity instanceof EntityLivingBase))) {
-            if (event.entity instanceof EntityPlayer) {
-                EntityPlayer entity = (EntityPlayer) event.entity;
-                if ((entity.inventory.armorInventory[0] != null)
-                        && (entity.inventory.armorInventory[0].getItem() instanceof ItemElectricBootsTraveller)) {
-                    ItemElectricBootsTraveller tUsedBoots = (ItemElectricBootsTraveller) entity.inventory.armorInventory[0]
-                            .getItem();
-                    ItemStack stack = entity.inventory.armorInventory[0];
-
-                    // Check if we dropped the minimum amount; To cover the jump-boost bonus without penalty
-                    if (tUsedBoots.getMinimumDropDist() > event.distance) {
-                        event.setCanceled(true);
-                    } else {
-                        float tEnergyDemand = tUsedBoots.energyPerDamage
-                                * (((event.distance > tUsedBoots.getMaxHealthyDropDist()) ? event.distance * 3
-                                        : event.distance) - 4.0F);
-                        if (tEnergyDemand <= ElectricItem.manager.getCharge(stack)) {
-                            // EMT.LOGGER.info( String.format("FD: %f DMG: %f EPD: %d HDD: %f", event.distance,
-                            // tEnergyDemand, tUsedBoots.energyPerDamage, tUsedBoots.getMaxHealthyDropDist() ));
-                            ElectricItem.manager.discharge(stack, tEnergyDemand, Integer.MAX_VALUE, true, false, false);
-                            event.setCanceled(true);
-                        }
-                    }
-                }
-            }
-        }
     }
 
     @Override
@@ -339,6 +298,50 @@ public class ItemElectricBootsTraveller extends ItemArmor
             return stack.stackTagCompound.getBoolean("inertiacanceling");
         }
         return false;
+    }
+
+    public class EventHandler{
+
+        @SubscribeEvent
+        public void onPlayerJump(LivingEvent.LivingJumpEvent event) {
+            if (event.entityLiving instanceof EntityPlayer) {
+                EntityPlayer player = (EntityPlayer) event.entityLiving;
+                ItemStack boots = player.getCurrentArmor(0);
+                boolean hasArmor = boots != null && boots.getItem() == ItemElectricBootsTraveller.this;
+
+                if (hasArmor) player.motionY += jumpBonus * (float) getJumpModifier(boots);
+            }
+        }
+
+        @SubscribeEvent
+        public void onLivingFall(LivingFallEvent event) {
+            if ((EMT.instance.isSimulating()) && ((event.entity instanceof EntityLivingBase))) {
+                if (event.entity instanceof EntityPlayer) {
+                    EntityPlayer entity = (EntityPlayer) event.entity;
+                    if ((entity.inventory.armorInventory[0] != null)
+                        && (entity.inventory.armorInventory[0].getItem() instanceof ItemElectricBootsTraveller)) {
+                        ItemElectricBootsTraveller tUsedBoots = (ItemElectricBootsTraveller) entity.inventory.armorInventory[0]
+                            .getItem();
+                        ItemStack stack = entity.inventory.armorInventory[0];
+
+                        // Check if we dropped the minimum amount; To cover the jump-boost bonus without penalty
+                        if (tUsedBoots.getMinimumDropDist() > event.distance) {
+                            event.setCanceled(true);
+                        } else {
+                            float tEnergyDemand = tUsedBoots.energyPerDamage
+                                * (((event.distance > tUsedBoots.getMaxHealthyDropDist()) ? event.distance * 3
+                                : event.distance) - 4.0F);
+                            if (tEnergyDemand <= ElectricItem.manager.getCharge(stack)) {
+                                // EMT.LOGGER.info( String.format("FD: %f DMG: %f EPD: %d HDD: %f", event.distance,
+                                // tEnergyDemand, tUsedBoots.energyPerDamage, tUsedBoots.getMaxHealthyDropDist() ));
+                                ElectricItem.manager.discharge(stack, tEnergyDemand, Integer.MAX_VALUE, true, false, false);
+                                event.setCanceled(true);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
