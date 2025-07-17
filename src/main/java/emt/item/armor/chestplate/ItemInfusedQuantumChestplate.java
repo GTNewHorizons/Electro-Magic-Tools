@@ -557,7 +557,8 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
         return true;
     }
 
-    public class EventHandler{
+    public class EventHandler {
+
         @SubscribeEvent
         public void onEntityLivingFallEvent(LivingFallEvent event) {
             if (IC2.platform.isSimulating() && (event.entity instanceof EntityLivingBase)) {

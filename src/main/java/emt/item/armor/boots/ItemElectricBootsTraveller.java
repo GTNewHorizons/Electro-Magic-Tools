@@ -300,7 +300,7 @@ public class ItemElectricBootsTraveller extends ItemArmor
         return false;
     }
 
-    public class EventHandler{
+    public class EventHandler {
 
         @SubscribeEvent
         public void onPlayerJump(LivingEvent.LivingJumpEvent event) {
@@ -319,9 +319,9 @@ public class ItemElectricBootsTraveller extends ItemArmor
                 if (event.entity instanceof EntityPlayer) {
                     EntityPlayer entity = (EntityPlayer) event.entity;
                     if ((entity.inventory.armorInventory[0] != null)
-                        && (entity.inventory.armorInventory[0].getItem() instanceof ItemElectricBootsTraveller)) {
+                            && (entity.inventory.armorInventory[0].getItem() instanceof ItemElectricBootsTraveller)) {
                         ItemElectricBootsTraveller tUsedBoots = (ItemElectricBootsTraveller) entity.inventory.armorInventory[0]
-                            .getItem();
+                                .getItem();
                         ItemStack stack = entity.inventory.armorInventory[0];
 
                         // Check if we dropped the minimum amount; To cover the jump-boost bonus without penalty
@@ -329,12 +329,13 @@ public class ItemElectricBootsTraveller extends ItemArmor
                             event.setCanceled(true);
                         } else {
                             float tEnergyDemand = tUsedBoots.energyPerDamage
-                                * (((event.distance > tUsedBoots.getMaxHealthyDropDist()) ? event.distance * 3
-                                : event.distance) - 4.0F);
+                                    * (((event.distance > tUsedBoots.getMaxHealthyDropDist()) ? event.distance * 3
+                                            : event.distance) - 4.0F);
                             if (tEnergyDemand <= ElectricItem.manager.getCharge(stack)) {
                                 // EMT.LOGGER.info( String.format("FD: %f DMG: %f EPD: %d HDD: %f", event.distance,
                                 // tEnergyDemand, tUsedBoots.energyPerDamage, tUsedBoots.getMaxHealthyDropDist() ));
-                                ElectricItem.manager.discharge(stack, tEnergyDemand, Integer.MAX_VALUE, true, false, false);
+                                ElectricItem.manager
+                                        .discharge(stack, tEnergyDemand, Integer.MAX_VALUE, true, false, false);
                                 event.setCanceled(true);
                             }
                         }
