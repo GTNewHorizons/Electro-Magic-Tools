@@ -34,7 +34,7 @@ import gregtech.api.interfaces.tileentity.IBasicEnergyContainer;
 import gregtech.api.interfaces.tileentity.IEnergyConnected;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.interfaces.tileentity.IHasWorldObjectAndCoords;
-import gregtech.api.net.GTPacketBlockEvent;
+import gregtech.common.data.GTBlockEventTracker;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -839,11 +839,7 @@ public class TileEntityBaseGenerator extends TileEntityEMT implements IInventory
 
     @Override
     public void sendBlockEvent(byte aID, byte aValue) {
-        GTValues.NW.sendPacketToAllPlayersInRange(
-                this.worldObj,
-                new GTPacketBlockEvent(this.xCoord, (short) this.yCoord, this.zCoord, aID, aValue),
-                this.xCoord,
-                this.zCoord);
+        GTBlockEventTracker.enqueue(worldObj, xCoord, yCoord, zCoord, aID, aValue);
     }
 
     @Override
