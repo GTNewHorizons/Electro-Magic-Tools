@@ -60,7 +60,7 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
 
     public ItemInfusedQuantumChestplate(InternalName internalName, int armorType) {
         super(internalName, InternalName.quantum, armorType, 20000000D, 18000.0D, 4);
-        MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new EventHandler());
         this.setCreativeTab(EMT.TAB);
     }
 
@@ -81,24 +81,6 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
 
     public String getItemStackDisplayName(ItemStack stack) {
         return (StatCollector.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
-    }
-
-    @SubscribeEvent
-    public void onEntityLivingFallEvent(LivingFallEvent event) {
-        if (IC2.platform.isSimulating() && (event.entity instanceof EntityLivingBase)) {
-            EntityLivingBase entity = (EntityLivingBase) event.entity;
-            ItemStack armor = entity.getEquipmentInSlot(1);
-
-            if ((armor != null) && (armor.getItem() == this)) {
-                int fallDamage = Math.max((int) event.distance - 10, 0);
-                double energyCost = getEnergyPerDamage() * fallDamage;
-
-                if (energyCost <= ElectricItem.manager.getCharge(armor)) {
-                    ElectricItem.manager.discharge(armor, energyCost, Integer.MAX_VALUE, true, false, false);
-                    event.setCanceled(true);
-                }
-            }
-        }
     }
 
     @Override
@@ -573,5 +555,25 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
     @Optional.Method(modid = "gregtech_nh")
     public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
         return true;
+    }
+
+    public class EventHandler{
+        @SubscribeEvent
+        public void onEntityLivingFallEvent(LivingFallEvent event) {
+            if (IC2.platform.isSimulating() && (event.entity instanceof EntityLivingBase)) {
+                EntityLivingBase entity = (EntityLivingBase) event.entity;
+                ItemStack armor = entity.getEquipmentInSlot(1);
+
+                if ((armor != null) && (armor.getItem() == ItemInfusedQuantumChestplate.this)) {
+                    int fallDamage = Math.max((int) event.distance - 10, 0);
+                    double energyCost = getEnergyPerDamage() * fallDamage;
+
+                    if (energyCost <= ElectricItem.manager.getCharge(armor)) {
+                        ElectricItem.manager.discharge(armor, energyCost, Integer.MAX_VALUE, true, false, false);
+                        event.setCanceled(true);
+                    }
+                }
+            }
+        }
     }
 }
