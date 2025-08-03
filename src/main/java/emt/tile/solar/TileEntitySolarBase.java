@@ -162,8 +162,7 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
             case AQUA: {
                 if (worldObj.isThundering()) return 6F;
                 else if (worldObj.isRaining()) return 3F;
-                else if (!worldObj.isThundering() && !worldObj.isRaining()
-                        && worldObj.getBlock(xCoord, yCoord + 1, zCoord).equals(Blocks.water))
+                else if (worldObj.getBlock(xCoord, yCoord + 1, zCoord).equals(Blocks.water))
                     return 2F;
                 else return 1F;
             }
