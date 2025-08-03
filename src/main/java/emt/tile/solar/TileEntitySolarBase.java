@@ -193,7 +193,7 @@ public class TileEntitySolarBase extends TileEntityEMT implements IInventory, IW
                     this.isActive = true;
                     if (side) {
                         this.generating = output * calc_multi();
-                        this.energySource.addEnergy(this.output * calc_multi());
+                        this.energySource.addEnergy(this.generating);
                     }
                 } else {
                     isActive = false;
