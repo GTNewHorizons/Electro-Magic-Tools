@@ -41,7 +41,8 @@ public class EMT {
     public static final String NAME = "Electro-Magic Tools";
     public static final String MOD_ID = "EMT";
     public static final String VERSION = EMTTags.VERSION;
-    public static final String TEXTURE_PATH = "emt";
+    public static final String RESOURCE_PATH = "emt";
+    public static final String TEXTURE_PATH = RESOURCE_PATH;
     public static final String GUI_FACTORY = "emt.client.gui.config.EMTGuiFactory";
     public static final String CLIENT_PROXY = "emt.proxy.ClientProxy";
     public static final String COMMON_PROXY = "emt.proxy.CommonProxy";
