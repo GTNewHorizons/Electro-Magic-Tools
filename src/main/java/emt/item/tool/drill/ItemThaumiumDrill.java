@@ -43,7 +43,7 @@ public class ItemThaumiumDrill extends ItemPickaxe implements IElectricItem {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":tools/drill_thaumium");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":tools/drill_thaumium");
     }
 
     @SideOnly(Side.CLIENT)

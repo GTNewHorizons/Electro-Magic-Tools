@@ -39,13 +39,13 @@ public class ItemFeatherWing extends ItemArmor implements IRunicArmor {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/wing_feather");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/wing_feather");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-        return EMT.TEXTURE_PATH + ":textures/models/featherwing.png";
+        return EMT.RESOURCE_PATH + ":textures/models/featherwing.png";
     }
 
     @Override

@@ -12,7 +12,7 @@ public class ItemBase extends Item {
     public ItemBase(String unlocName, String textureName) {
         super();
         setUnlocalizedName(EMT.MOD_ID + unlocName);
-        setTextureName(EMT.TEXTURE_PATH + ":" + textureName);
+        setTextureName(EMT.RESOURCE_PATH + ":" + textureName);
         setCreativeTab(EMT.TAB);
     }
 

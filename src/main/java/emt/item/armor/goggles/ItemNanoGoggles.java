@@ -32,12 +32,12 @@ public class ItemNanoGoggles extends ItemElectricGoggles implements IHazardProte
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/goggles_nano");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/goggles_nano");
     }
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-        return EMT.TEXTURE_PATH + ":textures/models/thaumicnanohelmet.png";
+        return EMT.RESOURCE_PATH + ":textures/models/thaumicnanohelmet.png";
     }
 
     @Override

@@ -36,27 +36,27 @@ public class BlockMachines extends BlockBaseContainer {
     public void registerBlockIcons(IIconRegister ir) {
         super.registerBlockIcons(ir);
 
-        this.blockIcon = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/top");
+        this.blockIcon = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/top");
 
-        iconSets[0].top = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/top");
-        iconSets[1].top = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/etherealmaceratortop");
-        iconSets[2].top = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/etherealmaceratortop");
+        iconSets[0].top = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/top");
+        iconSets[1].top = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/etherealmaceratortop");
+        iconSets[2].top = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/etherealmaceratortop");
 
-        iconSets[0].bottom = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/side");
-        iconSets[1].bottom = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/etherealmacerator");
-        iconSets[2].bottom = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/etherealmaceratortop");
+        iconSets[0].bottom = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/side");
+        iconSets[1].bottom = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/etherealmacerator");
+        iconSets[2].bottom = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/etherealmaceratortop");
 
-        iconSets[0].side = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/side");
-        iconSets[1].side = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/etherealmacerator");
-        iconSets[2].side = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/etherealmaceratortop");
+        iconSets[0].side = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/side");
+        iconSets[1].side = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/etherealmacerator");
+        iconSets[2].side = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/etherealmaceratortop");
 
-        iconSets[0].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/wandcharger");
-        iconSets[1].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/etherealmaceratorfront");
-        iconSets[2].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/etherealmaceratortop");
+        iconSets[0].frontOff = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/wandcharger");
+        iconSets[1].frontOff = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/etherealmaceratorfront");
+        iconSets[2].frontOff = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/etherealmaceratortop");
 
-        iconSets[0].frontOn = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/wandcharger");
-        iconSets[1].frontOn = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/etherealmaceratorfrontactive");
-        iconSets[2].frontOn = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/etherealmaceratortop");
+        iconSets[0].frontOn = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/wandcharger");
+        iconSets[1].frontOn = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/etherealmaceratorfrontactive");
+        iconSets[2].frontOn = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/etherealmaceratortop");
     }
 
     @SideOnly(Side.CLIENT)

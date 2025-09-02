@@ -41,7 +41,7 @@ public class ItemElectricThorHammer extends ItemSword implements IElectricItem {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":hammer/electricthorhammer");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":hammer/electricthorhammer");
     }
 
     @SideOnly(Side.CLIENT)

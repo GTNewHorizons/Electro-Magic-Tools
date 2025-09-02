@@ -19,9 +19,9 @@ public class EMTResearches {
     }
 
     public static void addResearchTab() {
-        ResourceLocation background = new ResourceLocation(EMT.TEXTURE_PATH, "textures/misc/background.png");
+        ResourceLocation background = new ResourceLocation(EMT.RESOURCE_PATH, "textures/misc/background.png");
         ResearchCategories
-                .registerCategory("EMT", new ResourceLocation(EMT.TEXTURE_PATH, "textures/misc/emt.png"), background);
+                .registerCategory("EMT", new ResourceLocation(EMT.RESOURCE_PATH, "textures/misc/emt.png"), background);
     }
 
     public static void addResearch() {
@@ -31,7 +31,7 @@ public class EMTResearches {
                 0,
                 0,
                 0,
-                new ResourceLocation(EMT.TEXTURE_PATH, "textures/misc/emt.png")).setRound().setAutoUnlock()
+                new ResourceLocation(EMT.RESOURCE_PATH, "textures/misc/emt.png")).setRound().setAutoUnlock()
                         .registerResearchItem().setPages(new ResearchPage(""));
         new EMTResearchItem("Diamond Chainsaw", 5, -6, 0, new ItemStack(EMTItems.diamondChainsaw)).setRound()
                 .setAutoUnlock().registerResearchItem()

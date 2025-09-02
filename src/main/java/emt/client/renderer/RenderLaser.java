@@ -14,7 +14,7 @@ import emt.entity.EntityLaser;
 public class RenderLaser extends Render {
 
     private static final ResourceLocation laserTexture = new ResourceLocation(
-            EMT.TEXTURE_PATH,
+            EMT.RESOURCE_PATH,
             "textures/models/lasermodel.png");
 
     @Override

@@ -67,11 +67,11 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        iconNONE = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/armor_quantum_chest");
-        iconJETPACK = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/armor_quantum_chest_jetpack");
-        iconTHAUMIUM = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/armor_quantum_chest_wing_t");
-        iconNANO = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/armor_quantum_chest_wing_n");
-        iconQUANTUM = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/armor_quantum_chest_wing_q");
+        iconNONE = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/armor_quantum_chest");
+        iconJETPACK = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/armor_quantum_chest_jetpack");
+        iconTHAUMIUM = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/armor_quantum_chest_wing_t");
+        iconNANO = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/armor_quantum_chest_wing_n");
+        iconQUANTUM = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/armor_quantum_chest_wing_q");
     }
 
     @Override
@@ -356,15 +356,15 @@ public class ItemInfusedQuantumChestplate extends ItemArmorElectric implements I
 
         switch (wing) {
             case JETPACK:
-                return EMT.TEXTURE_PATH + ":textures/models/quantum_jetpack.png";
+                return EMT.RESOURCE_PATH + ":textures/models/quantum_jetpack.png";
             case THAUMIUM:
-                return EMT.TEXTURE_PATH + ":textures/models/quantum_wings_t.png";
+                return EMT.RESOURCE_PATH + ":textures/models/quantum_wings_t.png";
             case NANO:
-                return EMT.TEXTURE_PATH + ":textures/models/quantum_wings_n.png";
+                return EMT.RESOURCE_PATH + ":textures/models/quantum_wings_n.png";
             case QUANTUM:
-                return EMT.TEXTURE_PATH + ":textures/models/quantum_wings_q.png";
+                return EMT.RESOURCE_PATH + ":textures/models/quantum_wings_q.png";
             default:
-                return EMT.TEXTURE_PATH + ":textures/models/quantum.png";
+                return EMT.RESOURCE_PATH + ":textures/models/quantum.png";
         }
     }
 

@@ -33,20 +33,20 @@ public class BlockEssentiaGenerators extends BlockBaseContainer {
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister ir) {
         super.registerBlockIcons(ir);
-        this.blockIcon = ir.registerIcon(EMT.TEXTURE_PATH + ":machines/top");
+        this.blockIcon = ir.registerIcon(EMT.RESOURCE_PATH + ":machines/top");
 
         for (int meta = 0; meta < subtypes; meta++) {
-            iconSets[meta].top = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/top");
-            iconSets[meta].bottom = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/top");
-            iconSets[meta].side = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/side");
+            iconSets[meta].top = ir.registerIcon(EMT.RESOURCE_PATH + ":essentiagenerator/top");
+            iconSets[meta].bottom = ir.registerIcon(EMT.RESOURCE_PATH + ":essentiagenerator/top");
+            iconSets[meta].side = ir.registerIcon(EMT.RESOURCE_PATH + ":essentiagenerator/side");
         }
 
-        iconSets[0].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/potentiafront");
-        iconSets[1].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/ignisfront");
-        iconSets[2].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/auramfront");
-        iconSets[3].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/arborfront");
-        iconSets[4].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/aerfront");
-        iconSets[5].frontOff = ir.registerIcon(EMT.TEXTURE_PATH + ":essentiagenerator/aerfront");
+        iconSets[0].frontOff = ir.registerIcon(EMT.RESOURCE_PATH + ":essentiagenerator/potentiafront");
+        iconSets[1].frontOff = ir.registerIcon(EMT.RESOURCE_PATH + ":essentiagenerator/ignisfront");
+        iconSets[2].frontOff = ir.registerIcon(EMT.RESOURCE_PATH + ":essentiagenerator/auramfront");
+        iconSets[3].frontOff = ir.registerIcon(EMT.RESOURCE_PATH + ":essentiagenerator/arborfront");
+        iconSets[4].frontOff = ir.registerIcon(EMT.RESOURCE_PATH + ":essentiagenerator/aerfront");
+        iconSets[5].frontOff = ir.registerIcon(EMT.RESOURCE_PATH + ":essentiagenerator/aerfront");
     }
 
     @Override

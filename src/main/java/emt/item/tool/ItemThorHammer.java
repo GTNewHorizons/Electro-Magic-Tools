@@ -33,7 +33,7 @@ public class ItemThorHammer extends ItemSword implements IRepairable {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":hammer/thorhammer");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":hammer/thorhammer");
     }
 
     @Override

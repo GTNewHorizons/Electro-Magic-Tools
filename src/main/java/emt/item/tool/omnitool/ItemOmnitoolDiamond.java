@@ -33,7 +33,7 @@ public class ItemOmnitoolDiamond extends ItemOmnitoolIron {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":tools/omnitool_diamond");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":tools/omnitool_diamond");
     }
 
     @Override

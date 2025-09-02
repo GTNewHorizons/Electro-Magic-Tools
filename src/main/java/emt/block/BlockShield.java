@@ -39,7 +39,7 @@ public class BlockShield extends Block {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister iconRegister) {
-        this.blockIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":shield");
+        this.blockIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":shield");
     }
 
     @Override

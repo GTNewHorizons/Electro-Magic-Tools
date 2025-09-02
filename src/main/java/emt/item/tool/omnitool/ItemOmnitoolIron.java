@@ -46,7 +46,7 @@ public class ItemOmnitoolIron extends ItemPickaxe implements IElectricItem {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":tools/omnitool_iron");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":tools/omnitool_iron");
     }
 
     @SideOnly(Side.CLIENT)

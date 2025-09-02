@@ -46,12 +46,12 @@ public class ItemElectricGoggles extends ItemArmor
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/goggles_electric");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/goggles_electric");
     }
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-        return EMT.TEXTURE_PATH + ":textures/models/electricgoggles.png";
+        return EMT.RESOURCE_PATH + ":textures/models/electricgoggles.png";
     }
 
     @Override

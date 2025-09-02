@@ -39,7 +39,7 @@ public class ItemElectricHoeGrowth extends ItemHoe implements IElectricItem {
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
-        this.icon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":tools/hoe_growth");
+        this.icon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":tools/hoe_growth");
     }
 
     @SideOnly(Side.CLIENT)

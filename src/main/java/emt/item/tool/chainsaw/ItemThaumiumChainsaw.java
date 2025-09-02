@@ -28,7 +28,7 @@ public class ItemThaumiumChainsaw extends ItemDiamondChainsaw {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":tools/chainsaw_thaumium");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":tools/chainsaw_thaumium");
     }
 
     @Override

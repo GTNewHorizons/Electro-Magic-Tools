@@ -33,13 +33,13 @@ public class ItemQuantumWing extends ItemNanoWing {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/wing_quantum");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/wing_quantum");
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-        return EMT.TEXTURE_PATH + ":textures/models/quantumwing.png";
+        return EMT.RESOURCE_PATH + ":textures/models/quantumwing.png";
     }
 
     @Override

@@ -72,7 +72,7 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ri) {
-        this.icon[0] = ri.registerIcon(EMT.TEXTURE_PATH + ":onering");
+        this.icon[0] = ri.registerIcon(EMT.RESOURCE_PATH + ":onering");
     }
 
     @SideOnly(Side.CLIENT)

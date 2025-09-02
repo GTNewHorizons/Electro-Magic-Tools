@@ -56,7 +56,7 @@ public class BlockElectricCloud extends BlockBase {
 
     @Override
     public void registerBlockIcons(IIconRegister ir) {
-        icon = ir.registerIcon(EMT.TEXTURE_PATH + ":empty");
+        icon = ir.registerIcon(EMT.RESOURCE_PATH + ":empty");
     }
 
     @Override

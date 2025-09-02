@@ -48,12 +48,12 @@ public class ItemNanoBootsTraveller extends ItemElectricBootsTraveller implement
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/boots_nano");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/boots_nano");
     }
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
-        return EMT.TEXTURE_PATH + ":textures/models/nanobootstravel.png";
+        return EMT.RESOURCE_PATH + ":textures/models/nanobootstravel.png";
     }
 
     @Override

@@ -124,26 +124,26 @@ public class ItemMaterials extends Item {
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ri) {
-        this.icon[0] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/clusteruranium");
-        this.icon[1] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/crushedamber");
-        this.icon[2] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/purifiedamber");
-        this.icon[3] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/crushedcinnabar");
-        this.icon[4] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/purifiedcinnabar");
-        this.icon[5] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/thaumiumplate");
-        this.icon[6] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/lightningsummoner");
-        this.icon[7] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/feathermesh");
-        this.icon[8] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/glue");
-        this.icon[9] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/ducttape");
-        this.icon[10] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/rubberball");
-        this.icon[11] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/cardboard");
-        this.icon[12] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/cardboardsheet");
-        this.icon[13] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/taintedfeather");
-        this.icon[14] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/thaumiumWing");
-        this.icon[15] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/uumatterdrop");
-        this.icon[16] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/draconicSchematic");
-        this.icon[17] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/wyvernSchematic");
-        this.icon[18] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/awakenedSchematic");
-        this.icon[19] = ri.registerIcon(EMT.TEXTURE_PATH + ":materials/chaoticSchematic");
+        this.icon[0] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/clusteruranium");
+        this.icon[1] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/crushedamber");
+        this.icon[2] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/purifiedamber");
+        this.icon[3] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/crushedcinnabar");
+        this.icon[4] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/purifiedcinnabar");
+        this.icon[5] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/thaumiumplate");
+        this.icon[6] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/lightningsummoner");
+        this.icon[7] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/feathermesh");
+        this.icon[8] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/glue");
+        this.icon[9] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/ducttape");
+        this.icon[10] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/rubberball");
+        this.icon[11] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/cardboard");
+        this.icon[12] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/cardboardsheet");
+        this.icon[13] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/taintedfeather");
+        this.icon[14] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/thaumiumWing");
+        this.icon[15] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/uumatterdrop");
+        this.icon[16] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/draconicSchematic");
+        this.icon[17] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/wyvernSchematic");
+        this.icon[18] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/awakenedSchematic");
+        this.icon[19] = ri.registerIcon(EMT.RESOURCE_PATH + ":materials/chaoticSchematic");
     }
 
     @SideOnly(Side.CLIENT)

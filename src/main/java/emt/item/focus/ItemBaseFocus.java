@@ -31,7 +31,7 @@ public abstract class ItemBaseFocus extends ItemFocusBasic {
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ir) {
-        this.icon = ir.registerIcon(EMT.TEXTURE_PATH + ":" + "focus_" + textureName);
+        this.icon = ir.registerIcon(EMT.RESOURCE_PATH + ":" + "focus_" + textureName);
     }
 
     @Override

@@ -60,7 +60,7 @@ public class BlockPortableNode extends BlockAiry {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister ri) {
-        texture = ri.registerIcon(EMT.TEXTURE_PATH + ":portablenode");
+        texture = ri.registerIcon(EMT.RESOURCE_PATH + ":portablenode");
     }
 
     @SideOnly(Side.CLIENT)

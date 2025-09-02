@@ -48,12 +48,12 @@ public class ItemSolarHelmetRevealing extends ItemQuantumGoggles {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":armor/goggles_solar");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/goggles_solar");
     }
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layerType) {
-        return EMT.TEXTURE_PATH + ":textures/models/solarrevealinghelmet.png";
+        return EMT.RESOURCE_PATH + ":textures/models/solarrevealinghelmet.png";
     }
 
     @Override

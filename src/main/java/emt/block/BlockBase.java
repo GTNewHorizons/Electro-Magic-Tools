@@ -14,7 +14,7 @@ public abstract class BlockBase extends Block {
         name = unlocName;
         setBlockName(EMT.MOD_ID + ".block." + unlocName);
         if (textureName != null) {
-            setBlockTextureName(EMT.TEXTURE_PATH + ":" + textureName);
+            setBlockTextureName(EMT.RESOURCE_PATH + ":" + textureName);
         }
         setCreativeTab(EMT.TAB);
         setStepSound(soundType);

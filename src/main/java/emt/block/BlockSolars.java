@@ -30,19 +30,19 @@ public class BlockSolars extends BlockBaseContainer {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister ir) {
-        IIcon solarTop = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/solartop");
-        IIcon doubleSolarTop = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/doublesolartop");
-        IIcon tripleSolarTop = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/triplesolartop");
+        IIcon solarTop = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/solartop");
+        IIcon doubleSolarTop = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/doublesolartop");
+        IIcon tripleSolarTop = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/triplesolartop");
 
-        IIcon bottom = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/bottom");
+        IIcon bottom = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/bottom");
 
-        IIcon side = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/side");
-        IIcon waterSide = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/water/waterside");
-        IIcon darkSide = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/dark/darkside");
-        IIcon orderSide = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/order/orderside");
-        IIcon fireSide = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/fire/fireside");
-        IIcon airSide = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/air/airside");
-        IIcon earthSide = ir.registerIcon(EMT.TEXTURE_PATH + ":solars/earth/earthside");
+        IIcon side = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/side");
+        IIcon waterSide = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/water/waterside");
+        IIcon darkSide = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/dark/darkside");
+        IIcon orderSide = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/order/orderside");
+        IIcon fireSide = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/fire/fireside");
+        IIcon airSide = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/air/airside");
+        IIcon earthSide = ir.registerIcon(EMT.RESOURCE_PATH + ":solars/earth/earthside");
 
         IIcon[] sides = { side, orderSide, darkSide, airSide, earthSide, waterSide, fireSide };
 

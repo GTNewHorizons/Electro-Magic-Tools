@@ -57,8 +57,8 @@ public class ItemIC2Baubles extends ItemBase implements IBauble, IRunicArmor {
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ri) {
-        this.icon[0] = ri.registerIcon(EMT.TEXTURE_PATH + ":armoreumaker");
-        this.icon[1] = ri.registerIcon(EMT.TEXTURE_PATH + ":inventoryeumaker");
+        this.icon[0] = ri.registerIcon(EMT.RESOURCE_PATH + ":armoreumaker");
+        this.icon[1] = ri.registerIcon(EMT.RESOURCE_PATH + ":inventoryeumaker");
     }
 
     @SideOnly(Side.CLIENT)

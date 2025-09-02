@@ -33,7 +33,7 @@ public class ItemOmnitoolThaumium extends ItemOmnitoolDiamond {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon(EMT.TEXTURE_PATH + ":tools/omnitool_thaumium");
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":tools/omnitool_thaumium");
     }
 
     @Override

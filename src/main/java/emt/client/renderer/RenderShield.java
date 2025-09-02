@@ -19,7 +19,7 @@ import emt.entity.EntityShield;
 public class RenderShield extends Render {
 
     private static final ResourceLocation shieldTexture = new ResourceLocation(
-            EMT.TEXTURE_PATH,
+            EMT.RESOURCE_PATH,
             "textures/models/shield.png");
     static int glCallList;
 
