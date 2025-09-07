@@ -20,7 +20,6 @@ import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import emt.EMT;
 import emt.init.EMTBlocks;
 import emt.init.EMTItems;
-import emt.item.armor.goggles.ItemElectricGoggles;
 import emt.item.armor.wings.ItemFeatherWing;
 import ic2.api.item.ElectricItem;
 import thaumcraft.common.config.ConfigBlocks;
@@ -44,34 +43,15 @@ public class EMTEventHandler {
      */
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent e) {
-        if (!(e.entityLiving instanceof EntityPlayer player)) {
+        if (!(e.entityLiving instanceof EntityPlayer) || e.source != DamageSource.fall) return;
+
+        ItemStack s = ((EntityPlayer) e.entityLiving).inventory.armorInventory[2];
+
+        if (s == null || !(s.getItem() instanceof ItemFeatherWing)) {
             return;
         }
 
-        if (e.source == DamageSource.fall) {
-            ItemStack chestplate = player.inventory.armorInventory[2];
-            if (chestplate != null && chestplate.getItem() instanceof ItemFeatherWing) {
-                e.ammount *= ((ItemFeatherWing) chestplate.getItem()).getFallDamageMult();
-            }
-        }
-
-        else if (e.source == DamageSource.anvil || e.source == DamageSource.fallingBlock) {
-            ItemStack helmet = player.getEquipmentInSlot(4); // 4 for Helmet
-
-            if (helmet != null && helmet.getItem() instanceof ItemElectricGoggles goggles) {
-                double energyRequired = e.ammount * goggles.getEnergyPerDamage();
-                double currentEnergy = ElectricItem.manager.getCharge(helmet);
-
-                if (currentEnergy >= energyRequired) {
-                    ElectricItem.manager.discharge(helmet, energyRequired, Integer.MAX_VALUE, true, false, false);
-                    e.setCanceled(true);
-                } else if (currentEnergy > 0) {
-                    float damageAbsorbed = (float) (currentEnergy / goggles.getEnergyPerDamage());
-                    ElectricItem.manager.discharge(helmet, currentEnergy, Integer.MAX_VALUE, true, false, false);
-                    e.ammount -= damageAbsorbed;
-                }
-            }
-        }
+        e.ammount *= ((ItemFeatherWing) s.getItem()).getFallDamageMult();
     }
 
     @SubscribeEvent

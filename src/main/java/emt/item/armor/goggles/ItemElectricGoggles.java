@@ -43,6 +43,9 @@ public class ItemElectricGoggles extends ItemArmor
         this.setCreativeTab(EMT.TAB);
     }
 
+    @Override
+    public void setDamage(ItemStack stack, int damage) {}
+
     @SideOnly(Side.CLIENT)
     @Override
     public void registerIcons(IIconRegister iconRegister) {
