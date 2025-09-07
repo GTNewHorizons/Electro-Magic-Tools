@@ -20,6 +20,7 @@ import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 import emt.EMT;
 import emt.init.EMTBlocks;
 import emt.init.EMTItems;
+import emt.item.armor.goggles.ItemElectricGoggles;
 import emt.item.armor.wings.ItemFeatherWing;
 import ic2.api.item.ElectricItem;
 import thaumcraft.common.config.ConfigBlocks;
@@ -27,17 +28,46 @@ import thaumcraft.common.entities.monster.EntityTaintChicken;
 
 public class EMTEventHandler {
 
+    /**
+     * Intercepts damage events for any living entity to apply custom effects for players wearing specific armor.
+     * This method is a central handler for armor-based damage mitigation that cannot be handled by the ISpecialArmor interface.
+     * <p>
+     * It triggers whenever an entity is about to be hurt and contains two primary logic blocks:
+     * 1.  Reduces fall damage for players wearing Feather Wings.
+     * 2.  Absorbs anvil/falling block damage for players wearing Electric Goggles, preventing the item from breaking due to a hardcoded vanilla mechanic.
+     *
+     * @param e The LivingHurtEvent, containing information about the damage source, amount, and the entity being hurt.
+     */
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent e) {
-        if (!(e.entityLiving instanceof EntityPlayer) || e.source != DamageSource.fall) return;
-
-        ItemStack s = ((EntityPlayer) e.entityLiving).inventory.armorInventory[2];
-
-        if (s == null || !(s.getItem() instanceof ItemFeatherWing)) {
+        if (!(e.entityLiving instanceof EntityPlayer player)) {
             return;
         }
 
-        e.ammount *= ((ItemFeatherWing) s.getItem()).getFallDamageMult();
+        if (e.source == DamageSource.fall) {
+            ItemStack chestplate = player.inventory.armorInventory[2];
+            if (chestplate != null && chestplate.getItem() instanceof ItemFeatherWing) {
+                e.ammount *= ((ItemFeatherWing) chestplate.getItem()).getFallDamageMult();
+            }
+        }
+
+        else if (e.source == DamageSource.anvil || e.source == DamageSource.fallingBlock) {
+            ItemStack helmet = player.getEquipmentInSlot(4); // 4 for Helmet
+
+            if (helmet != null && helmet.getItem() instanceof ItemElectricGoggles goggles) {
+                double energyRequired = e.ammount * goggles.getEnergyPerDamage();
+                double currentEnergy = ElectricItem.manager.getCharge(helmet);
+
+                if (currentEnergy >= energyRequired) {
+                    ElectricItem.manager.discharge(helmet, energyRequired, Integer.MAX_VALUE, true, false, false);
+                    e.setCanceled(true);
+                } else if (currentEnergy > 0) {
+                    float damageAbsorbed = (float) (currentEnergy / goggles.getEnergyPerDamage());
+                    ElectricItem.manager.discharge(helmet, currentEnergy, Integer.MAX_VALUE, true, false, false);
+                    e.ammount -= damageAbsorbed;
+                }
+            }
+        }
     }
 
     @SubscribeEvent
