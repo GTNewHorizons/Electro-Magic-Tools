@@ -43,8 +43,27 @@ public class ItemElectricGoggles extends ItemArmor
         this.setCreativeTab(EMT.TAB);
     }
 
+    /**
+     * Allow damage to be set to avoid breaking IC2 Energy bar or other features, while preventing the item from
+     * breaking.
+     *
+     * @param stack  the item stack
+     * @param damage the new damage value
+     */
     @Override
-    public void setDamage(ItemStack stack, int damage) {}
+    public void setDamage(ItemStack stack, int damage) {
+        int max = stack.getMaxDamage();
+
+        if (max > 0) {
+            if (damage >= max) {
+                damage = max - 1;
+            } else if (damage < 0) {
+                damage = 0;
+            }
+        }
+
+        super.setDamage(stack, damage);
+    }
 
     @SideOnly(Side.CLIENT)
     @Override
