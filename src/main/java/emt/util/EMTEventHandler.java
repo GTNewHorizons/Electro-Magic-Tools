@@ -28,18 +28,9 @@ import thaumcraft.common.entities.monster.EntityTaintChicken;
 public class EMTEventHandler {
 
     /**
-     * Intercepts damage events for any living entity to apply custom effects for players wearing specific armor. This
-     * method is a central handler for armor-based damage mitigation that cannot be handled by the ISpecialArmor
-     * interface.
-     * <p>
-     * It triggers whenever an entity is about to be hurt and contains two primary logic blocks:
-     * <ol>
-     * <li>Reduces fall damage for players wearing Feather Wings.</li>
-     * <li>Absorbs anvil/falling block damage for players wearing Electric Goggles, preventing the item from breaking
-     * due to a hardcoded vanilla mechanic.</li>
-     * </ol>
-     *
-     * @param e The LivingHurtEvent, containing information about the damage source, amount, and the entity being hurt.
+     * Intercept the onLivingHurt event so that we can mitigate fall damage with feather wings
+     * 
+     * @param e Entity that is being damaged
      */
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent e) {
