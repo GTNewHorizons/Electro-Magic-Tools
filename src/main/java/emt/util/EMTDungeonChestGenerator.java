@@ -17,13 +17,5 @@ public class EMTDungeonChestGenerator {
                             1,
                             EMTConfigHandler.chanceTaintedMjolnir));
         }
-        if (!EMTConfigHandler.oneRingSpawn) {
-            ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(
-                    new WeightedRandomChestContent(
-                            new ItemStack(EMTItems.onering),
-                            0,
-                            1,
-                            EMTConfigHandler.chanceOneRing));
-        }
     }
 }
