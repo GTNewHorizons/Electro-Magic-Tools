@@ -21,7 +21,7 @@ public class EMT_GT_Loader {
         GTValues.RA.stdBuilder()
                 .itemInputs(
                         new ItemStack(Items.book),
-                        GTOreDictUnificator.get(OrePrefixes.circuit, Materials.Basic, 1L),
+                        GTOreDictUnificator.get(OrePrefixes.circuit, Materials.LV, 1L),
                         new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE))
                 .itemOutputs(mkbook()).duration(6 * SECONDS).eut(TierEU.RECIPE_MV / 2).addTo(assemblerRecipes);
     }
