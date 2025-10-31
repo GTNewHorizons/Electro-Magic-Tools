@@ -24,7 +24,6 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
-import emt.init.EMTItems;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTTextHelper;
 import ic2.api.item.ElectricItem;
@@ -36,6 +35,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.items.armor.Hover;
 import thaumicboots.api.IBoots;
+import thaumicboots.mixins.early.minecraft.EntityLivingBaseAccessor;
 
 @Interface(iface = "thaumicboots.api.IBoots", modid = "thaumicboots")
 public class ItemElectricBootsTraveller extends ItemArmor
@@ -46,7 +46,8 @@ public class ItemElectricBootsTraveller extends ItemArmor
     public int visDiscount = 2;
     public float speedBonus = 0.055F;
     // constant from Thaumcraft's EventHandlerEntity#playerJumps for basic Traveller Boots
-    public float jumpBonus = 0.2750000059604645F;
+    public static final float BASE_JUMP_BONUS = 0.2750000059604645F;
+    public float jumpBonus = BASE_JUMP_BONUS;
     public double transferLimit = 100;
 
     public ItemElectricBootsTraveller(ArmorMaterial material, int par3, int par4) {
@@ -165,15 +166,9 @@ public class ItemElectricBootsTraveller extends ItemArmor
             } else if (Hover.getHover(player.getEntityId())) {
                 // Base ItemBootsTraveller jumpBonus equals to jumpBonus of Electric Boots,
                 // so any other boots factor can be calculated via proportion method
-                player.jumpMovementFactor = 0.03F
-                        / ((ItemElectricBootsTraveller) EMTItems.electricBootsTraveller).jumpBonus
-                        * jumpBonus
-                        * speedMod;
+                player.jumpMovementFactor = (0.03F / BASE_JUMP_BONUS * jumpBonus - 0.02F) * speedMod + 0.02F;
             } else {
-                player.jumpMovementFactor = 0.05F
-                        / ((ItemElectricBootsTraveller) EMTItems.electricBootsTraveller).jumpBonus
-                        * jumpBonus
-                        * speedMod;
+                player.jumpMovementFactor = (0.05F / BASE_JUMP_BONUS * jumpBonus - 0.02F) * speedMod + 0.02F;
             }
         }
     }
@@ -183,8 +178,15 @@ public class ItemElectricBootsTraveller extends ItemArmor
         if (player.moveForward != 0.0) {
             player.moveFlying(0.0F, player.moveForward, bonus);
         }
-        if (player.moveStrafing != 0.0 && getOmniState(itemStack)) {
-            player.moveFlying(player.moveStrafing, 0.0F, bonus);
+        if (getOmniState(itemStack)) {
+            if (player.moveStrafing != 0.0) player.moveFlying(player.moveStrafing, 0.0F, bonus);
+            boolean jumping = ((EntityLivingBaseAccessor) player).getIsJumping();
+            boolean sneaking = player.isSneaking();
+            if (sneaking && !jumping && !player.onGround) {
+                player.motionY -= bonus;
+            } else if (jumping && !sneaking) {
+                player.motionY += bonus;
+            }
         }
     }
 
