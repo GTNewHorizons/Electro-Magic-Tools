@@ -190,7 +190,7 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
             }
             if (corruption >= 150 && corruption < 8000 && random.nextInt(150) == 0) {
                 ((EntityPlayer) player)
-                    .addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "Your arms feel heavy"));
+                        .addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "Your arms feel heavy"));
                 player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 800, 4, false));
                 player.addPotionEffect(new PotionEffect(Potion.weakness.id, 800, 4, false));
             }
