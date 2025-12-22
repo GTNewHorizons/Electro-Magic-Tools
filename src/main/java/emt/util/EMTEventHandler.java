@@ -1,18 +1,14 @@
 package emt.util;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-import baubles.api.BaublesApi;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
@@ -29,7 +25,7 @@ public class EMTEventHandler {
 
     /**
      * Intercept the onLivingHurt event so that we can mitigate fall damage with feather wings
-     * 
+     *
      * @param e Entity that is being damaged
      */
     @SubscribeEvent
@@ -79,21 +75,6 @@ public class EMTEventHandler {
         if (event.modID.equals(EMT.MOD_ID)) {
             EMTConfigHandler.syncConfig();
             EMT.LOGGER.info("Refreshing configuration file.");
-        }
-    }
-
-    @SubscribeEvent
-    public void onSetEntityAttack(LivingSetAttackTargetEvent e) {
-        if (e.entityLiving instanceof EntityLiving && e.target instanceof EntityPlayer) {
-            IInventory inventory = BaublesApi.getBaubles((EntityPlayer) e.target);
-
-            for (int i = 0; i < inventory.getSizeInventory(); i++) {
-                ItemStack stack = inventory.getStackInSlot(i);
-
-                if (stack != null && stack.getItem() == EMTItems.onering) {
-                    ((EntityLiving) e.entityLiving).setAttackTarget(null);
-                }
-            }
         }
     }
 
