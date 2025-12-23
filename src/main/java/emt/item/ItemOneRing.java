@@ -147,7 +147,7 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
         if (!player.worldObj.isRemote) {
             // EMT.LOGGER.info( String.format( "Total Corruption: %d ItemWarpLevel: %d", corruption, getItemWarpLevel(
             // stack, false ) ));
-            if (random.nextInt(60) == 0) {
+            if (random.nextInt(55) == 0) {
                 player.addPotionEffect(new PotionEffect(Potion.invisibility.id, 2000, 4, false));
                 player.addPotionEffect(new PotionEffect(Potion.resistance.id, 2000, 4, false));
 
@@ -175,7 +175,7 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
                 if (random.nextBoolean()) player.addPotionEffect(new PotionEffect(Potion.blindness.id, 500, 4, false));
                 else player.addPotionEffect(new PotionEffect(Potion.confusion.id, 500, 4, false));
             }
-            if (corruption > 30 && random.nextInt(75) == 0) {
+            if (corruption > 30 && random.nextInt(90) == 0) {
                 ((EntityPlayer) player)
                         .addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "The Ring falters"));
                 player.removePotionEffect(14);
@@ -191,8 +191,8 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
             if (corruption >= 150 && corruption < 8000 && random.nextInt(150) == 0) {
                 ((EntityPlayer) player)
                         .addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "Your arms feel heavy"));
-                player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 800, 4, false));
-                player.addPotionEffect(new PotionEffect(Potion.weakness.id, 800, 4, false));
+                player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 600, 4, false));
+                player.addPotionEffect(new PotionEffect(Potion.weakness.id, 600, 4, false));
             }
             if (corruption >= 700 && corruption < 8000 && random.nextInt(150) == 0) {
                 player.removePotionEffect(11);
