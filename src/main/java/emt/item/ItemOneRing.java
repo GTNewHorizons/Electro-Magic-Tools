@@ -150,7 +150,17 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
             if (random.nextInt(55) == 0) {
                 player.addPotionEffect(new PotionEffect(Potion.invisibility.id, 2000, 4, false));
                 player.addPotionEffect(new PotionEffect(Potion.resistance.id, 2000, 4, false));
-
+                player.addPotionEffect(new PotionEffect(Potion.hunger.id, 2000, 0, false));
+                if (corruption > 3000) {
+                    player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 2000, 1, false));
+                    player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 2000, 1, false));
+                }
+                if (corruption > 1000) {
+                    player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 2000, 1, false));
+                }
+                if (corruption > 6000) {
+                    player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 2000, 1, false));
+                }
             }
             if (corruption == 0) {
                 player.addPotionEffect(new PotionEffect(Potion.invisibility.id, 2000, 4, false));
@@ -168,7 +178,7 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
                                         + "increase, and strange things will start happening."));
             }
             // First effect should become active after ~1 Minute
-            if (corruption > 60 && corruption < 300 && random.nextInt(100) == 0) {
+            if (corruption > 60 && corruption < 400 && random.nextInt(100) == 0) {
                 ((EntityPlayer) player)
                         .addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "The Ring somehow feels heavy"));
                 player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 200, 3, false));
@@ -180,7 +190,11 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
                         .addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "The Ring falters"));
                 player.removePotionEffect(14);
                 player.removePotionEffect(11);
-                player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 800, 2, false));
+                player.removePotionEffect(5);
+                player.removePotionEffect(1);
+                player.removePotionEffect(8);
+                player.removePotionEffect(3);
+                player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 400, 3, false));
                 /*
                  * Wtf? Remove ForgeData tag? There are more mods using this tag than just emt! ((EntityPlayer)
                  * player).writeToNBT(tag); tag.removeTag( NBT_TAG_FORGE_DATA ); ((EntityPlayer)
@@ -197,7 +211,7 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
             if (corruption >= 700 && corruption < 8000 && random.nextInt(150) == 0) {
                 player.removePotionEffect(11);
                 player.motionY += 2d;
-            } else if (corruption >= 1500 && random.nextInt(800) == 0) {
+            } else if (corruption >= 1000 && random.nextInt(500) == 0) {
                 player.removePotionEffect(11);
                 player.addPotionEffect(new PotionEffect(Potion.wither.id, 100, 4, false));
             }
@@ -208,15 +222,17 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
                     ((EntityPlayer) player).addChatMessage(
                             new ChatComponentText(EMTTextHelper.PURPLE + "The Ring suddenly starts to glow purple"));
                 }
-                if (random.nextInt(150) == 0) { // randomly every 2.5 minutes
-                    ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 30, true); // adds 30 temp warp
+                if (random.nextInt(300) == 0) { // randomly every 5 minutes
+                    ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 15, true); // adds 15 temp warp
                     ((EntityPlayer) player).addChatMessage(
                             new ChatComponentText(EMTTextHelper.PURPLE + "Your body suddenly starts to glow purple"));
                 }
                 if (corruption >= 180) { // if you wear it for 3 minutes
                     if (random.nextInt(100) == 0) {
-                        ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 30 + random.nextInt(70), true); // adds
-                                                                                                                   // 30-100
+                        ((EntityPlayer) player)
+                                .addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "The Ring corrupts"));
+                        ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 10 + random.nextInt(20), true); // adds
+                                                                                                                   // 10-30
                                                                                                                    // temp
                                                                                                                    // warp,
                                                                                                                    // but
@@ -252,7 +268,10 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
     public void onUnequipped(ItemStack stack, EntityLivingBase player) {
         player.removePotionEffect(14);
         player.removePotionEffect(11);
-
+        player.removePotionEffect(5);
+        player.removePotionEffect(1);
+        player.removePotionEffect(8);
+        player.removePotionEffect(3);
         /*
          * Wtf? Remove ForgeData tag? There are more mods using this tag than just emt! ((EntityPlayer)
          * player).writeToNBT(tag); tag.removeTag( NBT_TAG_FORGE_DATA ); ((EntityPlayer) player).readFromNBT(tag);
