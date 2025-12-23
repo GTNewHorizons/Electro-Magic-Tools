@@ -185,7 +185,7 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
                 if (random.nextBoolean()) player.addPotionEffect(new PotionEffect(Potion.blindness.id, 500, 4, false));
                 else player.addPotionEffect(new PotionEffect(Potion.confusion.id, 500, 4, false));
             }
-            if (corruption > 30 && random.nextInt(90) == 0) {
+            if (corruption > 30 && random.nextInt(80) == 0) {
                 ((EntityPlayer) player)
                         .addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "The Ring falters"));
                 player.removePotionEffect(14);
@@ -222,13 +222,13 @@ public class ItemOneRing extends ItemBase implements IBauble, IWarpingGear, IRun
                     ((EntityPlayer) player).addChatMessage(
                             new ChatComponentText(EMTTextHelper.PURPLE + "The Ring suddenly starts to glow purple"));
                 }
-                if (random.nextInt(300) == 0) { // randomly every 5 minutes
+                if (random.nextInt(300) == 2) { // randomly every 5 minutes
                     ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 15, true); // adds 15 temp warp
                     ((EntityPlayer) player).addChatMessage(
                             new ChatComponentText(EMTTextHelper.PURPLE + "Your body suddenly starts to glow purple"));
                 }
                 if (corruption >= 180) { // if you wear it for 3 minutes
-                    if (random.nextInt(100) == 0) {
+                    if (random.nextInt(290) == 1) {
                         ((EntityPlayer) player)
                                 .addChatMessage(new ChatComponentText(EMTTextHelper.PURPLE + "The Ring corrupts"));
                         ThaumcraftApiHelper.addWarpToPlayer((EntityPlayer) player, 10 + random.nextInt(20), true); // adds
