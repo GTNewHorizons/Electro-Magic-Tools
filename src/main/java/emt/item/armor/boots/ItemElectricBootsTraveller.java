@@ -126,22 +126,21 @@ public class ItemElectricBootsTraveller extends ItemArmor
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
-        if (getIntertialState(itemStack) && player.moveForward == 0
+        if (getInertiaState(itemStack) && player.moveForward == 0
                 && player.moveStrafing == 0
                 && player.capabilities.isFlying) {
             player.motionX *= 0.5;
             player.motionZ *= 0.5;
         }
-        boolean omniMode = false;
         if (EMT.isBootsActive) {
-            omniMode = isOmniEnabled(itemStack);
+            boolean omniMode = getOmniState(itemStack);
             if ((player.moveForward == 0F && player.moveStrafing == 0F && omniMode)
                     || (player.moveForward <= 0F && !omniMode)) {
                 return;
             }
         }
         if (player.moveForward != 0.0F || player.moveStrafing != 0.0F) {
-            if (player.worldObj.isRemote && !player.isSneaking()) {
+            if (player.worldObj.isRemote && !player.isSneaking() && getStepAssistState(itemStack)) {
                 if (!Thaumcraft.instance.entityEventHandler.prevStep.containsKey(player.getEntityId())) {
                     Thaumcraft.instance.entityEventHandler.prevStep.put(player.getEntityId(), player.stepHeight);
                 }
@@ -216,20 +215,12 @@ public class ItemElectricBootsTraveller extends ItemArmor
 
     @Override
     public int getItemEnchantability() {
-        if (EMTConfigHandler.enchanting == false) {
-            return 0;
-        } else {
-            return 4;
-        }
+        return EMTConfigHandler.enchanting ? 4 : 0;
     }
 
     @Override
     public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
-        if (EMTConfigHandler.enchanting == false) {
-            return false;
-        } else {
-            return true;
-        }
+        return EMTConfigHandler.enchanting;
     }
 
     public int getEnergyPerDamage() {
@@ -289,13 +280,20 @@ public class ItemElectricBootsTraveller extends ItemArmor
     }
 
     public boolean getOmniState(ItemStack stack) {
-        if (stack.stackTagCompound != null) {
+        if (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("omni")) {
             return stack.stackTagCompound.getBoolean("omni");
         }
-        return false;
+        return true;
     }
 
-    public boolean getIntertialState(ItemStack stack) {
+    public boolean getStepAssistState(ItemStack stack) {
+        if (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("step")) {
+            return stack.stackTagCompound.getBoolean("step");
+        }
+        return true;
+    }
+
+    public boolean getInertiaState(ItemStack stack) {
         if (stack.stackTagCompound != null) {
             return stack.stackTagCompound.getBoolean("inertiacanceling");
         }
