@@ -1,7 +1,7 @@
 package emt.item.block;
 
-import static com.gtnewhorizon.gtnhlib.util.numberformatting.NumberFormatUtil.formatNumber;
 import static emt.util.EMTTextHelper.localize;
+import static gregtech.api.util.GTUtility.formatNumbers;
 
 import java.io.StringReader;
 import java.util.List;
@@ -59,19 +59,19 @@ public class ItemBlockSolars extends ItemBlock {
                 switch (itemstack.getItemDamage()) {
                     case 0: {
                         list.add(
-                                formatNumber(EMTConfigHandler.compressedSolarOutput)
+                                formatNumbers(EMTConfigHandler.compressedSolarOutput)
                                         + localize("tooltip.EMT.euPerTick"));
                         break;
                     }
                     case 1: {
                         list.add(
-                                formatNumber(EMTConfigHandler.doubleCompressedSolarOutput)
+                                formatNumbers(EMTConfigHandler.doubleCompressedSolarOutput)
                                         + localize("tooltip.EMT.euPerTick"));
                         break;
                     }
                     case 2: {
                         list.add(
-                                formatNumber(EMTConfigHandler.tripleCompressedSolarOutput)
+                                formatNumbers(EMTConfigHandler.tripleCompressedSolarOutput)
                                         + localize("tooltip.EMT.euPerTick"));
                         break;
                     }
@@ -80,14 +80,14 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(2F * EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -96,7 +96,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(3F * EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(3F * EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -105,7 +105,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(6F * EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(6F * EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -117,14 +117,14 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(2F * EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -133,7 +133,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(3F * EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(3F * EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -142,7 +142,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(6F * EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(6F * EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -154,14 +154,14 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(2F * EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -170,7 +170,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(3F * EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(3F * EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -179,7 +179,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(6F * EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(6F * EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -192,7 +192,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(0.75F * EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(0.75F * EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -201,7 +201,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(2F * EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -213,7 +213,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(0.75F * EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(0.75F * EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -222,7 +222,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(2F * EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -234,7 +234,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(0.75F * EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(0.75F * EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -243,7 +243,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(2F * EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -255,7 +255,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(2F * EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -264,7 +264,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(0.75F * EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(0.75F * EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -276,7 +276,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(2F * EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -285,7 +285,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(0.75F * EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(0.75F * EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -298,7 +298,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(2F * EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -307,7 +307,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(0.75F * EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(0.75F * EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -319,7 +319,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -343,7 +343,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -367,7 +367,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -391,7 +391,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -413,7 +413,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -428,7 +428,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -443,7 +443,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.compressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.compressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -458,7 +458,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.doubleCompressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.doubleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -473,7 +473,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(EMTConfigHandler.tripleCompressedSolarOutput)
+                                        + formatNumbers(EMTConfigHandler.tripleCompressedSolarOutput)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -495,7 +495,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * te.output)
+                                        + formatNumbers(2F * te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -504,7 +504,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(0.75F * te.output)
+                                        + formatNumbers(0.75F * te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -515,7 +515,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(0.75F * te.output)
+                                        + formatNumbers(0.75F * te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -524,7 +524,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * te.output)
+                                        + formatNumbers(2F * te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -535,7 +535,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(te.output)
+                                        + formatNumbers(te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -549,7 +549,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(te.output)
+                                        + formatNumbers(te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -563,14 +563,14 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(te.output)
+                                        + formatNumbers(te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(2F * te.output)
+                                        + formatNumbers(2F * te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -579,7 +579,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(3F * te.output)
+                                        + formatNumbers(3F * te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -588,7 +588,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_GREEN + localize("tooltip.EMT.specialEffect")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(6F * te.output)
+                                        + formatNumbers(6F * te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick")
                                         + " "
@@ -599,7 +599,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(te.output)
+                                        + formatNumbers(te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         list.add(
@@ -622,7 +622,7 @@ public class ItemBlockSolars extends ItemBlock {
                                 EMTTextHelper.BRIGHT_BLUE + localize("tooltip.EMT.normalConditions")
                                         + ": "
                                         + EMTTextHelper.LIGHT_GRAY
-                                        + formatNumber(te.output)
+                                        + formatNumbers(te.output)
                                         + " "
                                         + localize("tooltip.EMT.euPerTick"));
                         break;
@@ -632,9 +632,9 @@ public class ItemBlockSolars extends ItemBlock {
                     EMTTextHelper.BRIGHT_BLUE + StatCollector.translateToLocal("emt.OutputMax")
                             + " "
                             + EMTTextHelper.LIGHT_GRAY
-                            + formatNumber(te.calculateMaxVoltAmp()[0])
+                            + formatNumbers(te.calculateMaxVoltAmp()[0])
                             + "EU/t @ "
-                            + formatNumber(te.calculateMaxVoltAmp()[1])
+                            + formatNumbers(te.calculateMaxVoltAmp()[1])
                             + "A");
         } else list.add(StatCollector.translateToLocal("emt.PressShift"));
     }
