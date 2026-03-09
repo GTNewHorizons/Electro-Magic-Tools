@@ -248,28 +248,6 @@ public class EMTRecipes {
                     'X',
                     OreDictionary.getOres("itemRubber").get(i));
         }
-
-        /** Smelting Recipes **/
-        GameRegistry.addSmelting(
-                new ItemStack(EMTItems.itemEMTItems, 1, 1),
-                new ItemStack(ConfigItems.itemResource, 1, 6),
-                0.0F);
-        GameRegistry.addSmelting(
-                new ItemStack(EMTItems.itemEMTItems, 1, 2),
-                new ItemStack(ConfigItems.itemResource, 1, 6),
-                0.0F);
-        GameRegistry.addSmelting(
-                new ItemStack(EMTItems.itemEMTItems, 1, 3),
-                new ItemStack(ConfigItems.itemResource, 1, 3),
-                0.0F);
-        GameRegistry.addSmelting(
-                new ItemStack(EMTItems.itemEMTItems, 1, 4),
-                new ItemStack(ConfigItems.itemResource, 1, 3),
-                0.0F);
-        GameRegistry.addSmelting(
-                new ItemStack(EMTItems.itemEMTItems, 1, 10),
-                new ItemStack(EMTItems.itemEMTItems, 2, 8),
-                0.0F);
     }
 
     private static void registerShaplessRecipes() {}
