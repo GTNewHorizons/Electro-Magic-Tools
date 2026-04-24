@@ -23,12 +23,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import emt.tile.TileEntityEtherealMacerator;
 import emt.tile.TileEntityIndustrialWandRecharge;
-import ic2.api.item.IC2Items;
 
 public class BlockMachines extends BlockBaseContainer {
 
     public BlockMachines(String name) {
         super(name, Material.iron, soundTypeMetal, 3, 4.0F);
+        setHarvestLevel("wrench", 1);
+    }
+
+    @Override
+    public boolean canHarvestBlock(EntityPlayer player, int meta) {
+        return true;
     }
 
     @Override
@@ -90,7 +95,7 @@ public class BlockMachines extends BlockBaseContainer {
 
     @Override
     public Item getItemDropped(int meta, Random random, int fortune) {
-        return IC2Items.getItem("machine").getItem();
+        return Item.getItemFromBlock(this);
     }
 
     @Override

@@ -76,7 +76,7 @@ public abstract class BlockBaseContainer extends BlockContainer {
             return set.bottom;
         } else if (side == 1) {
             return set.top;
-        } else if (side != tile.facing) {
+        } else if (tile == null || side != tile.facing) {
             return set.side;
         } else if (tile.isOn) {
             if (set.frontOn != null) {
