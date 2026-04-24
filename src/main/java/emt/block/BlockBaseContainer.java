@@ -3,6 +3,7 @@ package emt.block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -40,6 +41,7 @@ public abstract class BlockBaseContainer extends BlockContainer {
         this.setCreativeTab(EMT.TAB);
         this.setStepSound(soundType);
         this.setHardness(hardness);
+        setHarvestLevel("wrench", 1);
 
         this.countOfMetas = countOfMetas;
         this.instance = curInstance;
@@ -141,6 +143,11 @@ public abstract class BlockBaseContainer extends BlockContainer {
                 tile.facing = 4;
                 break;
         }
+    }
+
+    @Override
+    public boolean canHarvestBlock(EntityPlayer player, int meta) {
+        return true;
     }
 
     @Override

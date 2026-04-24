@@ -28,12 +28,6 @@ public class BlockMachines extends BlockBaseContainer {
 
     public BlockMachines(String name) {
         super(name, Material.iron, soundTypeMetal, 3, 4.0F);
-        setHarvestLevel("wrench", 1);
-    }
-
-    @Override
-    public boolean canHarvestBlock(EntityPlayer player, int meta) {
-        return true;
     }
 
     @Override
