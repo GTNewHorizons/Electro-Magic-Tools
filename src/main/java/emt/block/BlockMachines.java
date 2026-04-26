@@ -23,7 +23,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import emt.EMT;
 import emt.tile.TileEntityEtherealMacerator;
 import emt.tile.TileEntityIndustrialWandRecharge;
-import ic2.api.item.IC2Items;
 
 public class BlockMachines extends BlockBaseContainer {
 
@@ -90,7 +89,7 @@ public class BlockMachines extends BlockBaseContainer {
 
     @Override
     public Item getItemDropped(int meta, Random random, int fortune) {
-        return IC2Items.getItem("machine").getItem();
+        return Item.getItemFromBlock(this);
     }
 
     @Override
