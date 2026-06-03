@@ -58,6 +58,6 @@ public class ItemNanoGoggles extends ItemElectricGoggles implements IHazardProte
     @Override
     @Optional.Method(modid = "gregtech_nh")
     public boolean protectsAgainst(ItemStack itemStack, Hazard hazard) {
-        return true;
+        return Hazard.STANDARD_HAZARDS.contains(hazard);
     }
 }
