@@ -1,0 +1,348 @@
+package emt.item.armor.boots;
+
+import java.util.List;
+
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
+import net.minecraftforge.common.ISpecialArmor;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
+
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.common.Optional.Interface;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import emt.EMT;
+import emt.util.EMTConfigHandler;
+import emt.util.EMTTextHelper;
+import ic2.api.item.ElectricItem;
+import ic2.api.item.IElectricItem;
+import ic2.api.item.IMetalArmor;
+import thaumcraft.api.IRunicArmor;
+import thaumcraft.api.IVisDiscountGear;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.items.armor.Hover;
+import thaumicboots.api.IBoots;
+import thaumicboots.mixins.early.minecraft.EntityLivingBaseAccessor;
+
+@Interface(iface = "thaumicboots.api.IBoots", modid = "thaumicboots")
+public class ItemElectricBootsTraveller extends ItemArmor
+        implements IRunicArmor, IElectricItem, IVisDiscountGear, IMetalArmor, ISpecialArmor, IBoots {
+
+    public int maxCharge = 100000;
+    public int energyPerDamage = 1000;
+    public int visDiscount = 2;
+    public float speedBonus = 0.055F;
+    // constant from Thaumcraft's EventHandlerEntity#playerJumps for basic Traveller Boots
+    public static final float BASE_JUMP_BONUS = 0.2750000059604645F;
+    public float jumpBonus = BASE_JUMP_BONUS;
+    public double transferLimit = 100;
+
+    public ItemElectricBootsTraveller(ArmorMaterial material, int par3, int par4) {
+        super(material, par3, par4);
+        this.setMaxDamage(27);
+        this.setMaxStackSize(1);
+        this.setCreativeTab(EMT.TAB);
+        MinecraftForge.EVENT_BUS.register(new EventHandler());
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item item, CreativeTabs par2CreativeTabs, List<ItemStack> itemList) {
+        ItemStack itemStack = new ItemStack(this, 1);
+        if (getChargedItem(itemStack) == this) {
+            ItemStack charged = new ItemStack(this, 1);
+            ElectricItem.manager.charge(charged, 2147483647, 2147483647, true, false);
+            itemList.add(charged);
+        }
+        if (getEmptyItem(itemStack) == this) {
+            itemList.add(new ItemStack(this, 1, getMaxDamage()));
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void registerIcons(IIconRegister iconRegister) {
+        this.itemIcon = iconRegister.registerIcon(EMT.RESOURCE_PATH + ":armor/boots_electric");
+    }
+
+    @Override
+    public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage,
+            int slot) {
+        if (source.isUnblockable()) {
+            return new net.minecraftforge.common.ISpecialArmor.ArmorProperties(0, 0.0D, 0);
+        } else {
+            double absorptionRatio = getBaseAbsorptionRatio() * getDamageAbsorptionRatio();
+            int energyPerDamage = getEnergyPerDamage();
+            double damageLimit = energyPerDamage <= 0 ? 0
+                    : (25 * ElectricItem.manager.getCharge(armor)) / energyPerDamage;
+            return new net.minecraftforge.common.ISpecialArmor.ArmorProperties(0, absorptionRatio, (int) damageLimit);
+        }
+    }
+
+    @Override
+    public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot) {
+        if (ElectricItem.manager.getCharge(armor) >= getEnergyPerDamage()) {
+            return (int) Math.round(20D * getBaseAbsorptionRatio() * getDamageAbsorptionRatio());
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
+        ElectricItem.manager.discharge(stack, damage * getEnergyPerDamage(), 0x7fffffff, true, false, false);
+    }
+
+    public double getDamageAbsorptionRatio() {
+        return 0.5D;
+    }
+
+    private double getBaseAbsorptionRatio() {
+        return 0.15D;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, EntityPlayer par2EntityPlayer, List<String> list, boolean par4) {
+        list.add(StatCollector.translateToLocal("ic2.item.tooltip.PowerTier") + " " + getTier(new ItemStack(this)));
+        list.add(EMTTextHelper.PURPLE + EMTTextHelper.localize("tooltip.EMT.visDiscount") + ": " + visDiscount + "%");
+    }
+
+    @Override
+    public int getVisDiscount(ItemStack stack, EntityPlayer player, Aspect aspect) {
+        return visDiscount;
+    }
+
+    @Override
+    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) {
+        if (getInertiaState(itemStack) && player.moveForward == 0
+                && player.moveStrafing == 0
+                && player.capabilities.isFlying) {
+            player.motionX *= 0.5;
+            player.motionZ *= 0.5;
+        }
+        if (EMT.isBootsActive) {
+            boolean omniMode = getOmniState(itemStack);
+            if ((player.moveForward == 0F && player.moveStrafing == 0F && omniMode)
+                    || (player.moveForward <= 0F && !omniMode)) {
+                return;
+            }
+        }
+        if (player.moveForward != 0.0F || player.moveStrafing != 0.0F) {
+            if (player.worldObj.isRemote && !player.isSneaking() && getStepAssistState(itemStack)) {
+                if (!Thaumcraft.instance.entityEventHandler.prevStep.containsKey(player.getEntityId())) {
+                    Thaumcraft.instance.entityEventHandler.prevStep.put(player.getEntityId(), player.stepHeight);
+                }
+                player.stepHeight = 1.0F;
+            }
+            float speedMod = (float) getSpeedModifier(itemStack);
+            if (player.onGround || player.isOnLadder() || player.capabilities.isFlying) {
+                float bonus = speedBonus;
+                if (player.isInWater()) {
+                    bonus /= 4.0F;
+                }
+
+                if (player.isSneaking()) {
+                    bonus /= 2.0F;
+                }
+                bonus *= speedMod;
+                if (EMT.isBootsActive) {
+                    applyOmniState(player, bonus, itemStack);
+                } else if (player.moveForward > 0.0) {
+                    player.moveFlying(0.0F, player.moveForward, bonus);
+                }
+            } else if (Hover.getHover(player.getEntityId())) {
+                // Base ItemBootsTraveller jumpBonus equals to jumpBonus of Electric Boots,
+                // so any other boots factor can be calculated via proportion method
+                player.jumpMovementFactor = (0.03F / BASE_JUMP_BONUS * jumpBonus - 0.02F) * speedMod + 0.02F;
+            } else {
+                player.jumpMovementFactor = (0.05F / BASE_JUMP_BONUS * jumpBonus - 0.02F) * speedMod + 0.02F;
+            }
+        }
+    }
+
+    @Optional.Method(modid = "thaumicboots")
+    public void applyOmniState(EntityPlayer player, float bonus, ItemStack itemStack) {
+        if (player.moveForward != 0.0) {
+            player.moveFlying(0.0F, player.moveForward, bonus);
+        }
+        if (getOmniState(itemStack)) {
+            if (player.moveStrafing != 0.0) player.moveFlying(player.moveStrafing, 0.0F, bonus);
+            boolean jumping = ((EntityLivingBaseAccessor) player).getIsJumping();
+            boolean sneaking = player.isSneaking();
+            if (sneaking && !jumping && !player.onGround) {
+                player.motionY -= bonus;
+            } else if (jumping && !sneaking) {
+                player.motionY += bonus;
+            }
+        }
+    }
+
+    // make the boots worth upgrading
+    public float getMaxHealthyDropDist() {
+        return 20.0F;
+    }
+
+    public float getMinimumDropDist() {
+        return 4.0f;
+    }
+
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
+        return EMT.RESOURCE_PATH + ":textures/models/electricboots.png";
+    }
+
+    @Override
+    public boolean isMetalArmor(ItemStack itemstack, EntityPlayer player) {
+        return true;
+    }
+
+    @Override
+    public boolean isRepairable() {
+        return false;
+    }
+
+    @Override
+    public int getItemEnchantability() {
+        return EMTConfigHandler.enchanting ? 4 : 0;
+    }
+
+    @Override
+    public boolean isBookEnchantable(ItemStack itemstack1, ItemStack itemstack2) {
+        return EMTConfigHandler.enchanting;
+    }
+
+    public int getEnergyPerDamage() {
+        return energyPerDamage;
+    }
+
+    /* IC2 API METHODS */
+
+    @Override
+    public boolean canProvideEnergy(ItemStack itemStack) {
+        return false;
+    }
+
+    @Override
+    public double getMaxCharge(ItemStack itemStack) {
+        return maxCharge;
+    }
+
+    @Override
+    public int getTier(ItemStack itemStack) {
+        return 2;
+    }
+
+    @Override
+    public double getTransferLimit(ItemStack itemStack) {
+        return transferLimit;
+    }
+
+    @Override
+    public Item getChargedItem(ItemStack itemStack) {
+        return this;
+    }
+
+    @Override
+    public Item getEmptyItem(ItemStack itemStack) {
+        return this;
+    }
+
+    @Override
+    public int getRunicCharge(ItemStack itemStack) {
+        return 0;
+    }
+
+    // Avoid NSM Exception when ThaumicBoots is not present.
+    public double getSpeedModifier(ItemStack stack) {
+        if (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("speed")) {
+            return stack.stackTagCompound.getDouble("speed");
+        }
+        return 1.0;
+    }
+
+    public double getJumpModifier(ItemStack stack) {
+        if (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("jump")) {
+            return stack.stackTagCompound.getDouble("jump");
+        }
+        return 1.0;
+    }
+
+    public boolean getOmniState(ItemStack stack) {
+        if (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("omni")) {
+            return stack.stackTagCompound.getBoolean("omni");
+        }
+        return true;
+    }
+
+    public boolean getStepAssistState(ItemStack stack) {
+        if (stack.stackTagCompound != null && stack.stackTagCompound.hasKey("step")) {
+            return stack.stackTagCompound.getBoolean("step");
+        }
+        return true;
+    }
+
+    public boolean getInertiaState(ItemStack stack) {
+        if (stack.stackTagCompound != null) {
+            return stack.stackTagCompound.getBoolean("inertiacanceling");
+        }
+        return false;
+    }
+
+    public class EventHandler {
+
+        @SubscribeEvent
+        public void onPlayerJump(LivingEvent.LivingJumpEvent event) {
+            if (event.entityLiving instanceof EntityPlayer) {
+                EntityPlayer player = (EntityPlayer) event.entityLiving;
+                ItemStack boots = player.getCurrentArmor(0);
+                boolean hasArmor = boots != null && boots.getItem() == ItemElectricBootsTraveller.this;
+
+                if (hasArmor) player.motionY += jumpBonus * (float) getJumpModifier(boots);
+            }
+        }
+
+        @SubscribeEvent
+        public void onLivingFall(LivingFallEvent event) {
+            if ((EMT.instance.isSimulating()) && ((event.entity instanceof EntityLivingBase))) {
+                if (event.entity instanceof EntityPlayer) {
+                    EntityPlayer entity = (EntityPlayer) event.entity;
+                    if ((entity.inventory.armorInventory[0] != null)
+                            && (entity.inventory.armorInventory[0].getItem() instanceof ItemElectricBootsTraveller)) {
+                        ItemElectricBootsTraveller tUsedBoots = (ItemElectricBootsTraveller) entity.inventory.armorInventory[0]
+                                .getItem();
+                        ItemStack stack = entity.inventory.armorInventory[0];
+
+                        // Check if we dropped the minimum amount; To cover the jump-boost bonus without penalty
+                        if (tUsedBoots.getMinimumDropDist() > event.distance) {
+                            event.setCanceled(true);
+                        } else {
+                            float tEnergyDemand = tUsedBoots.energyPerDamage
+                                    * (((event.distance > tUsedBoots.getMaxHealthyDropDist()) ? event.distance * 3
+                                            : event.distance) - 4.0F);
+                            if (tEnergyDemand <= ElectricItem.manager.getCharge(stack)) {
+                                // EMT.LOGGER.info( String.format("FD: %f DMG: %f EPD: %d HDD: %f", event.distance,
+                                // tEnergyDemand, tUsedBoots.energyPerDamage, tUsedBoots.getMaxHealthyDropDist() ));
+                                ElectricItem.manager
+                                        .discharge(stack, tEnergyDemand, Integer.MAX_VALUE, true, false, false);
+                                event.setCanceled(true);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,34 @@
+﻿{
+  "maintenance.MaintenanceWandFocus": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "MaintenanceWandFocus",
+        "stream": false,
+        "licensing": {
+          "author_name": "Kynake",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "license_name": "Attribution-ShareAlike 4.0",
+          "original_sound_urls": [
+            "https://freesound.org/people/tgerginov/sounds/671175/",
+            "https://opengameart.org/content/68-workshop-sounds"
+          ],
+          "original_sound_names": [
+            "671175__tgerginov__magic.wav",
+            "workshop - ratchet2.wav"
+          ],
+          "original_author_urls": [
+            "https://freesound.org/people/tgerginov/",
+            "https://opengameart.org/users/bart"
+          ],
+          "original_author_names": [
+            "tgerginov",
+            "bart"
+          ],
+          "original_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "original_license_name": "CC0 1.0 Universal"
+        }
+      }
+    ]
+  }
+}
