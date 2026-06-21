@@ -30,5 +30,8 @@ public class EMT_GT_Loader {
                 .itemOutputs(mkbook()).duration(6 * SECONDS).eut(TierEU.RECIPE_MV / 2).addTo(assemblerRecipes);
 
         registerObjectTag(ItemList.ReinforcedGlass.get(1L), new AspectList().add(Aspect.METAL, 2).add(Aspect.COLD, 2));
+        registerObjectTag(
+                ItemList.FenceIron.get(1L),
+                new AspectList().add(Aspect.ENERGY, 1).add(Aspect.METAL, 2).add(Aspect.WEATHER, 1));
     }
 }
