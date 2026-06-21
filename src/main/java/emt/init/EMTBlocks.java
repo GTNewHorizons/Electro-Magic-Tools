@@ -47,7 +47,6 @@ public class EMTBlocks {
     }
 
     public static void addAspects() {
-        registerObjectTag(IC2Items.getItem("rubberTrampoline"), new AspectList().add(Aspect.AIR, 5));
         registerObjectTag(
                 IC2Items.getItem("reinforcedGlass"),
                 new AspectList().add(Aspect.METAL, 2).add(Aspect.COLD, 2));
