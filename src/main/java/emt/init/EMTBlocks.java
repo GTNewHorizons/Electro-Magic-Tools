@@ -14,7 +14,6 @@ import emt.item.block.ItemBlockElectricCloud;
 import emt.item.block.ItemBlockEssentiaGenerators;
 import emt.item.block.ItemBlockMachines;
 import emt.tile.solar.Solars;
-import gregtech.api.enums.ItemList;
 import ic2.api.item.IC2Items;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -49,9 +48,6 @@ public class EMTBlocks {
 
     public static void addAspects() {
         registerObjectTag(IC2Items.getItem("rubberTrampoline"), new AspectList().add(Aspect.AIR, 5));
-        registerObjectTag(
-                ItemList.FenceIron.get(1L),
-                new AspectList().add(Aspect.ENERGY, 1).add(Aspect.METAL, 2).add(Aspect.WEATHER, 1));
         registerObjectTag(
                 IC2Items.getItem("reinforcedGlass"),
                 new AspectList().add(Aspect.METAL, 2).add(Aspect.COLD, 2));
