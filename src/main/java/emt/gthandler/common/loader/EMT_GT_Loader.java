@@ -33,5 +33,6 @@ public class EMT_GT_Loader {
                 ItemList.FenceIron.get(1L),
                 new AspectList().add(Aspect.ENERGY, 1).add(Aspect.METAL, 2).add(Aspect.WEATHER, 1));
         registerObjectTag(ItemList.PadBouncy.get(1L), new AspectList().add(Aspect.AIR, 5));
+        registerObjectTag(ItemList.PadSticky.get(1L), new AspectList().add(Aspect.TRAP, 5).add(Aspect.SLIME, 2));
     }
 }
