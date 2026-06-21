@@ -52,7 +52,6 @@ public class EMTBlocks {
         registerObjectTag(
                 ItemList.FenceIron.get(1L),
                 new AspectList().add(Aspect.ENERGY, 1).add(Aspect.METAL, 2).add(Aspect.WEATHER, 1));
-        registerObjectTag(ItemList.ReinforcedGlass.get(1L), new AspectList().add(Aspect.METAL, 2).add(Aspect.COLD, 2));
         registerObjectTag(IC2Items.getItem("scaffold"), new AspectList().add(Aspect.TREE, 4));
         registerObjectTag(IC2Items.getItem("ironScaffold"), new AspectList().add(Aspect.METAL, 4));
         registerObjectTag(
