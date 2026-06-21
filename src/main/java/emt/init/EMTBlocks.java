@@ -50,7 +50,7 @@ public class EMTBlocks {
     public static void addAspects() {
         registerObjectTag(IC2Items.getItem("rubberTrampoline"), new AspectList().add(Aspect.AIR, 5));
         registerObjectTag(
-                IC2Items.getItem("ironFence"),
+                ItemList.FenceIron.get(1L),
                 new AspectList().add(Aspect.ENERGY, 1).add(Aspect.METAL, 2).add(Aspect.WEATHER, 1));
         registerObjectTag(ItemList.ReinforcedGlass.get(1L), new AspectList().add(Aspect.METAL, 2).add(Aspect.COLD, 2));
         registerObjectTag(IC2Items.getItem("scaffold"), new AspectList().add(Aspect.TREE, 4));
