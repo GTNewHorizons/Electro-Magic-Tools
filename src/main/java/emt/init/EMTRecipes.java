@@ -501,7 +501,7 @@ public class EMTRecipes {
                         new ItemStack(Items.arrow), new ItemStack(Items.gunpowder),
                         new ItemStack(Items.firework_charge), new ItemStack(ConfigItems.itemResource, 1, 1) });
 
-        shieldFocus = addInfusionCraftingRecipe(
+        if (!Registry.enableGTCompat) shieldFocus = addInfusionCraftingRecipe(
                 "Shield Focus",
                 new ItemStack(EMTItems.shieldFocus),
                 4,
@@ -547,7 +547,7 @@ public class EMTRecipes {
                         new ItemStack(IC2Items.getItem("lapotronCrystal").getItem(), 1, OreDictionary.WILDCARD_VALUE),
                         IC2Items.getItem("iridiumPlate"), IC2Items.getItem("overclockerUpgrade") });
 
-        rockbreakerDrill = addInfusionCraftingRecipe(
+        if (!Registry.enableGTCompat) rockbreakerDrill = addInfusionCraftingRecipe(
                 "Drill of the Rockbreaker",
                 getChargedItem(EMTItems.rockbreakerDrill, 10),
                 6,
