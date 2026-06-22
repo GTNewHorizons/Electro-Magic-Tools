@@ -18,7 +18,6 @@ import emt.EMT;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTCraftingAspects;
 import emt.util.EMTResearchAspects;
-import gregtech.api.enums.ItemList;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeInputItemStack;
@@ -502,14 +501,14 @@ public class EMTRecipes {
                         new ItemStack(Items.arrow), new ItemStack(Items.gunpowder),
                         new ItemStack(Items.firework_charge), new ItemStack(ConfigItems.itemResource, 1, 1) });
 
-        shieldFocus = addInfusionCraftingRecipe(
+        if (!Registry.enableGTCompat) shieldFocus = addInfusionCraftingRecipe(
                 "Shield Focus",
                 new ItemStack(EMTItems.shieldFocus),
                 4,
                 EMTCraftingAspects.shieldFocusCrafting,
                 new ItemStack(ConfigItems.itemFocusPortableHole, 1),
-                new ItemStack[] { IC2Items.getItem("reinforcedStone"), ItemList.ReinforcedGlass.get(1L),
-                        IC2Items.getItem("reinforcedStone"), ItemList.ReinforcedGlass.get(1L),
+                new ItemStack[] { IC2Items.getItem("reinforcedStone"), IC2Items.getItem("reinforcedGlass"),
+                        IC2Items.getItem("reinforcedStone"), IC2Items.getItem("reinforcedGlass"),
                         new ItemStack(Blocks.soul_sand), new ItemStack(Blocks.obsidian),
                         new ItemStack(Blocks.obsidian) });
 
@@ -548,7 +547,7 @@ public class EMTRecipes {
                         new ItemStack(IC2Items.getItem("lapotronCrystal").getItem(), 1, OreDictionary.WILDCARD_VALUE),
                         IC2Items.getItem("iridiumPlate"), IC2Items.getItem("overclockerUpgrade") });
 
-        rockbreakerDrill = addInfusionCraftingRecipe(
+        if (!Registry.enableGTCompat) rockbreakerDrill = addInfusionCraftingRecipe(
                 "Drill of the Rockbreaker",
                 getChargedItem(EMTItems.rockbreakerDrill, 10),
                 6,
