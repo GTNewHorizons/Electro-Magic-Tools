@@ -15,12 +15,10 @@ import net.minecraftforge.oredict.OreDictionary;
 import emt.init.EMTItems;
 import emt.init.EMTRecipes;
 import emt.util.EMTCraftingAspects;
+import gregtech.api.enums.Circuits;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
-import gregtech.api.enums.Materials;
-import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
-import gregtech.api.util.GTOreDictUnificator;
 import ic2.api.item.IC2Items;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -32,7 +30,7 @@ public class EMT_GT_Loader {
         GTValues.RA.stdBuilder()
                 .itemInputs(
                         new ItemStack(Items.book),
-                        GTOreDictUnificator.get(OrePrefixes.circuit, Materials.LV, 1L),
+                        Circuits.LV.get(1),
                         new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE))
                 .itemOutputs(mkbook()).duration(6 * SECONDS).eut(TierEU.RECIPE_MV / 2).addTo(assemblerRecipes);
 

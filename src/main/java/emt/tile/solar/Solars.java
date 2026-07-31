@@ -17,8 +17,9 @@ import emt.init.EMTBlocks;
 import emt.item.block.ItemBlockSolars;
 import emt.util.EMTConfigHandler;
 import gregtech.api.enums.GTValues;
-import gregtech.api.enums.Materials;
 import gregtech.api.enums.TierEU;
+import gregtech.api.enums.materials.Materials;
+import gregtech.api.material.MaterialUtils;
 import thaumcraft.api.aspects.Aspect;
 
 // Solar Factory
@@ -143,7 +144,7 @@ public enum Solars {
         for (Solars s : Solars.VALUES) {
             if (s.aspect != null) {
                 GTValues.RA.stdBuilder().itemInputs(new ItemStack(EMTBlocks.solars[s.instance], 1, s.meta))
-                        .fluidInputs(Materials.Chlorine.getGas(1000))
+                        .fluidInputs(MaterialUtils.gas(Materials.Chlorine, 1000))
                         .itemOutputs(
                                 new ItemStack(
                                         EMTBlocks.solars[getBaseSolar(s.output).instance],
