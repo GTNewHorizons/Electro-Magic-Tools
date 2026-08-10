@@ -111,6 +111,8 @@ public enum Solars {
     Octuple_Compressed_Ignis(EMTConfigHandler.octupleCompressedSolarOutput, FIRE, 4, 2,
             "Octuple_Compressed_Ignis_Solar"),;
 
+    public static final Solars[] VALUES = values();
+
     private static final LinkedHashMap<Long, Solars> cachemap = new LinkedHashMap<>();
     final int instance, meta;
     final Aspect aspect;
@@ -131,14 +133,14 @@ public enum Solars {
 
     @Nullable
     private static Solars getBaseSolar(double output) {
-        for (Solars s : Solars.values()) {
+        for (Solars s : Solars.VALUES) {
             if (s.output == output && s.aspect == null) return s;
         }
         return null;
     }
 
     public static void registerReverseRecipes() {
-        for (Solars s : Solars.values()) {
+        for (Solars s : Solars.VALUES) {
             if (s.aspect != null) {
                 GTValues.RA.stdBuilder().itemInputs(new ItemStack(EMTBlocks.solars[s.instance], 1, s.meta))
                         .fluidInputs(Materials.Chlorine.getGas(1000))
@@ -153,14 +155,14 @@ public enum Solars {
     }
 
     public static void populateCache() {
-        for (Solars s : Solars.values()) {
+        for (Solars s : Solars.VALUES) {
             cachemap.put(s.id, s);
         }
     }
 
     public static int getCountOfInstances() {
         int ret = 0;
-        for (Solars s : Solars.values()) {
+        for (Solars s : Solars.VALUES) {
             ret = Math.max(s.instance, ret);
         }
         return ret + 1;
@@ -168,7 +170,7 @@ public enum Solars {
 
     public static int getCountOfMetas(int instance) {
         int ret = 0;
-        for (Solars s : Solars.values()) {
+        for (Solars s : Solars.VALUES) {
             if (s.instance == instance) {
                 ret = Math.max(s.meta, ret);
             }
@@ -200,7 +202,7 @@ public enum Solars {
         final long id = (long) instance << 4 | meta;
         Solars cached = cachemap.get(id);
         if (cached != null) return cached;
-        for (Solars s : Solars.values()) {
+        for (Solars s : Solars.VALUES) {
             cachemap.put(s.id, s);
             if (s.id == id) return s;
         }
