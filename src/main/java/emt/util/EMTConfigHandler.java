@@ -20,6 +20,10 @@ public class EMTConfigHandler {
     public static final String RESEARCH = "Research";
     public static final String VALUES = "Numeric Values";
     public static final String OUTPUTS = "Essentia Generator Outputs";
+
+    private static final String IGNORED_UNDER_GTNH = "Ignored when GTNH (dreamcraft) is installed: "
+            + "dungeon loot is controlled by config/TooMuchLoot/loot/dungeonChest.xml in GTNH.";
+
     public static Configuration config;
     public static int etherealProcessorBaseSpeed;
     public static int etherealProcessorBonus;
@@ -187,19 +191,25 @@ public class EMTConfigHandler {
                 "Disable smoke effect for boots",
                 false,
                 "This effect only appears when the player isn't on the ground").getBoolean(smoke);
-        oneRingSpawn = config
-                .get(RANDOM, "Disable One Ring in dungeon chests", true, "There is a recipe to get this item.")
-                .getBoolean(oneRingSpawn);
+        oneRingSpawn = config.get(
+                RANDOM,
+                "Disable One Ring in dungeon chests",
+                true,
+                "There is a recipe to get this item. " + IGNORED_UNDER_GTNH).getBoolean(oneRingSpawn);
         chanceTaintedMjolnir = config.get(
                 RANDOM,
                 "Tainted Mjolnir spawning change",
                 25,
-                "If you have a lot of mods adding dungeon loot, you should definetely increase this").getInt();
+                "If you have a lot of mods adding dungeon loot, you should definetely increase this. "
+                        + IGNORED_UNDER_GTNH)
+                .getInt();
         chanceOneRing = config.get(
                 RANDOM,
                 "One Ring spawning chance",
                 15,
-                "If you have a lot of mods adding dungeon loot, you should definetely increase this").getInt();
+                "If you have a lot of mods adding dungeon loot, you should definetely increase this. "
+                        + IGNORED_UNDER_GTNH)
+                .getInt();
         removeAmberAndCinnabarMacerating = config
                 .get(
                         RANDOM,
