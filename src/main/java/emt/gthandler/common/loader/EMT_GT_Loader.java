@@ -12,19 +12,33 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
+import com.ruling_0.materiallib.api.Material;
+import com.ruling_0.materiallib.api.MaterialLibAPI;
+
 import emt.init.EMTItems;
 import emt.init.EMTRecipes;
 import emt.util.EMTCraftingAspects;
 import gregtech.api.enums.Circuits;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
+import gregtech.api.enums.StoneType;
 import gregtech.api.enums.TierEU;
+import gregtech.api.enums.materials.OreShapes;
+import gregtech.api.enums.materials.Shapes;
 import ic2.api.item.IC2Items;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.config.ConfigItems;
 
 public class EMT_GT_Loader {
+
+    public static ItemStack stoneOre(Material material, int amount) {
+        return MaterialLibAPI.getStack(material, OreShapes.ore, OreShapes.variantOf(StoneType.Stone.name()), amount);
+    }
+
+    public static ItemStack crushedOre(Material material, int amount) {
+        return MaterialLibAPI.getStack(material, Shapes.crushed, amount);
+    }
 
     public static void runlate() {
         GTValues.RA.stdBuilder()
