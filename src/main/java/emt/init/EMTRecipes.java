@@ -131,6 +131,12 @@ public class EMTRecipes {
     public static CrucibleRecipe uuMCrystal;
     public static IRecipe thaumiumPlate;
 
+    /// The thaumium plate EMT's recipes consume: MaterialLib's under GregTech compatibility, else EMT's own.
+    private static ItemStack thaumiumPlate() {
+        return Registry.enableGTCompat ? EMT_GT_Loader.plate(Materials.Thaumium, 1)
+                : new ItemStack(EMTItems.itemEMTItems, 1, 5);
+    }
+
     private static void registerShapedRecipes() {
 
         /** Crafting Recipes **/
@@ -433,9 +439,8 @@ public class EMTRecipes {
                 5,
                 EMTCraftingAspects.thaumiumDrillCrafting,
                 new ItemStack(IC2Items.getItem("diamondDrill").getItem(), 1, OreDictionary.WILDCARD_VALUE),
-                new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.diamond),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), IC2Items.getItem("denseplateiron") });
+                new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.diamond), thaumiumPlate(),
+                        thaumiumPlate(), thaumiumPlate(), IC2Items.getItem("denseplateiron") });
 
         thaumiumChainsaw = addInfusionCraftingRecipe(
                 "Thaumium Chainsaw",
@@ -443,9 +448,8 @@ public class EMTRecipes {
                 5,
                 EMTCraftingAspects.thaumiumChainsawCrafting,
                 new ItemStack(EMTItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE),
-                new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.diamond),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), IC2Items.getItem("denseplateiron") });
+                new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.diamond), thaumiumPlate(),
+                        thaumiumPlate(), thaumiumPlate(), IC2Items.getItem("denseplateiron") });
 
         thaumicQuantumHelmet = addInfusionCraftingRecipe(
                 "Quantum Goggles of Revealing",
@@ -455,8 +459,8 @@ public class EMTRecipes {
                 new ItemStack(EMTItems.nanoThaumicHelmet, 1, OreDictionary.WILDCARD_VALUE),
                 new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.milk_bucket),
                         new ItemStack(IC2Items.getItem("quantumHelmet").getItem(), 1, OreDictionary.WILDCARD_VALUE),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        IC2Items.getItem("iridiumPlate"), IC2Items.getItem("advancedCircuit") });
+                        thaumiumPlate(), thaumiumPlate(), IC2Items.getItem("iridiumPlate"),
+                        IC2Items.getItem("advancedCircuit") });
 
         thaumicNanoHelmet = addInfusionCraftingRecipe(
                 "Nanosuit Goggles of Revealing",
@@ -466,8 +470,8 @@ public class EMTRecipes {
                 new ItemStack(EMTItems.electricGoggles, 1, OreDictionary.WILDCARD_VALUE),
                 new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.gold_ingot),
                         new ItemStack(IC2Items.getItem("nanoHelmet").getItem(), 1, OreDictionary.WILDCARD_VALUE),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        IC2Items.getItem("carbonPlate"), IC2Items.getItem("electronicCircuit") });
+                        thaumiumPlate(), thaumiumPlate(), IC2Items.getItem("carbonPlate"),
+                        IC2Items.getItem("electronicCircuit") });
 
         thaumiumOmnitool = addInfusionCraftingRecipe(
                 "Thaumium Omnitool",
@@ -476,8 +480,7 @@ public class EMTRecipes {
                 EMTCraftingAspects.thaumiumOmnitoolCrafting,
                 new ItemStack(EMTItems.thaumiumChainsaw, 1, OreDictionary.WILDCARD_VALUE),
                 new ItemStack[] { new ItemStack(EMTItems.thaumiumDrill, 1, OreDictionary.WILDCARD_VALUE),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), IC2Items.getItem("carbonPlate"),
+                        thaumiumPlate(), thaumiumPlate(), thaumiumPlate(), IC2Items.getItem("carbonPlate"),
                         IC2Items.getItem("plateobsidian") });
 
         diamondOmnitoolToThaumium = addInfusionCraftingRecipe(
@@ -649,8 +652,7 @@ public class EMTRecipes {
                 new ItemStack[] { IC2Items.getItem("electroFurnace"),
                         new ItemStack(ConfigBlocks.blockMetalDevice, 1, 9), new ItemStack(Blocks.end_stone),
                         new ItemStack(Blocks.end_stone), new ItemStack(Blocks.iron_block),
-                        new ItemStack(Blocks.iron_block), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5) });
+                        new ItemStack(Blocks.iron_block), thaumiumPlate(), thaumiumPlate() });
 
         if (Registry.enableGTCompat) {
             tripleCompressedSolar = addInfusionCraftingRecipe(
@@ -683,9 +685,8 @@ public class EMTRecipes {
                 4,
                 EMTCraftingAspects.chargeFocus,
                 new ItemStack(IC2Items.getItem("advBattery").getItem(), 1, OreDictionary.WILDCARD_VALUE),
-                new ItemStack[] { IC2Items.getItem("generator"), IC2Items.getItem("batBox"),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE),
+                new ItemStack[] { IC2Items.getItem("generator"), IC2Items.getItem("batBox"), thaumiumPlate(),
+                        thaumiumPlate(), new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE),
                         new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE) });
 
         wandChargeFocus = addInfusionCraftingRecipe(
@@ -896,7 +897,7 @@ public class EMTRecipes {
                 'X',
                 new ItemStack(EMTItems.itemEMTItems, 1, 13),
                 'Y',
-                new ItemStack(EMTItems.itemEMTItems, 1, 5),
+                thaumiumPlate(),
                 'Z',
                 IC2Items.getItem("plateiron"));
 

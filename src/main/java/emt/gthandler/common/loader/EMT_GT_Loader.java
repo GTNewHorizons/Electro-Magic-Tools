@@ -40,6 +40,10 @@ public class EMT_GT_Loader {
         return MaterialLibAPI.getStack(material, Shapes.crushed, amount);
     }
 
+    public static ItemStack plate(Material material, int amount) {
+        return MaterialLibAPI.getStack(material, Shapes.plate, amount);
+    }
+
     public static void runlate() {
         GTValues.RA.stdBuilder()
                 .itemInputs(
