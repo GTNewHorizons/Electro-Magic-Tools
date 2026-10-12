@@ -15,9 +15,11 @@ import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import emt.EMT;
+import emt.gthandler.common.loader.EMT_GT_Loader;
 import emt.util.EMTConfigHandler;
 import emt.util.EMTCraftingAspects;
 import emt.util.EMTResearchAspects;
+import gregtech.api.enums.materials.Materials;
 import ic2.api.item.IC2Items;
 import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeInputItemStack;
@@ -128,6 +130,12 @@ public class EMTRecipes {
     public static CrucibleRecipe portableNode;
     public static CrucibleRecipe uuMCrystal;
     public static IRecipe thaumiumPlate;
+
+    /// The thaumium plate EMT's recipes consume: MaterialLib's under GregTech compatibility, else EMT's own.
+    private static ItemStack thaumiumPlate() {
+        return Registry.enableGTCompat ? EMT_GT_Loader.plate(Materials.Thaumium, 1)
+                : new ItemStack(EMTItems.itemEMTItems, 1, 5);
+    }
 
     private static void registerShapedRecipes() {
 
@@ -303,8 +311,8 @@ public class EMTRecipes {
                 new ItemStack(Items.iron_ingot),
                 new ItemStack[] { uuMCell, uuMCell, uuMCell });
 
-        ItemStack ironOre = new ItemStack(Blocks.iron_ore).copy();
-        ironOre.stackSize = 16;
+        ItemStack ironOre = Registry.enableGTCompat ? EMT_GT_Loader.stoneOre(Materials.Iron, 16)
+                : new ItemStack(Blocks.iron_ore, 16);
         stoneBricksToIronOre = addInfusionCraftingRecipe(
                 "UU-Matter Infusion",
                 ironOre,
@@ -316,8 +324,8 @@ public class EMTRecipes {
         /**
          * ItemStack copperOre = Items.getItem("copperOre").copy(); BUGGED IN 1.6 IF IC2 OREGEN IS DISABLED
          **/
-        ItemStack copperOre = IC2Items.getItem("crushedCopperOre").copy();
-        copperOre.stackSize = 32;
+        ItemStack copperOre = Registry.enableGTCompat ? EMT_GT_Loader.crushedOre(Materials.Copper, 32)
+                : withSize(IC2Items.getItem("crushedCopperOre"), 32);
         arcaneStoneToCopperOre = addInfusionCraftingRecipe(
                 "UU-Matter Infusion",
                 copperOre,
@@ -329,8 +337,8 @@ public class EMTRecipes {
         /**
          * ItemStack tinOre = Items.getItem("tinOre").copy(); BUGGED IN 1.6 IF IC2 OREGEN IS DISABLED
          **/
-        ItemStack tinOre = IC2Items.getItem("crushedTinOre").copy();
-        tinOre.stackSize = 32;
+        ItemStack tinOre = Registry.enableGTCompat ? EMT_GT_Loader.crushedOre(Materials.Tin, 32)
+                : withSize(IC2Items.getItem("crushedTinOre"), 32);
         arcaneStoneBricksToTinOre = addInfusionCraftingRecipe(
                 "UU-Matter Infusion",
                 tinOre,
@@ -342,8 +350,8 @@ public class EMTRecipes {
         /**
          * ItemStack leadOre = Items.getItem("leadOre").copy(); BUGGED IN 1.6 IF IC2 OREGEN IS DISABLED
          **/
-        ItemStack leadOre = IC2Items.getItem("crushedLeadOre").copy();
-        leadOre.stackSize = 32;
+        ItemStack leadOre = Registry.enableGTCompat ? EMT_GT_Loader.crushedOre(Materials.Lead, 32)
+                : withSize(IC2Items.getItem("crushedLeadOre"), 32);
         amberBlockToLeadOre = addInfusionCraftingRecipe(
                 "UU-Matter Infusion",
                 leadOre,
@@ -352,8 +360,8 @@ public class EMTRecipes {
                 new ItemStack(ConfigBlocks.blockCosmeticOpaque, 1, 0),
                 new ItemStack[] { uuMCell, uuMCell });
 
-        ItemStack uraniumOre = IC2Items.getItem("uraniumOre").copy();
-        uraniumOre.stackSize = 8;
+        ItemStack uraniumOre = Registry.enableGTCompat ? EMT_GT_Loader.stoneOre(Materials.Uranium, 8)
+                : withSize(IC2Items.getItem("uraniumOre"), 8);
         amberBricksToUraniumOre = addInfusionCraftingRecipe(
                 "UU-Matter Infusion",
                 uraniumOre,
@@ -431,9 +439,8 @@ public class EMTRecipes {
                 5,
                 EMTCraftingAspects.thaumiumDrillCrafting,
                 new ItemStack(IC2Items.getItem("diamondDrill").getItem(), 1, OreDictionary.WILDCARD_VALUE),
-                new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.diamond),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), IC2Items.getItem("denseplateiron") });
+                new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.diamond), thaumiumPlate(),
+                        thaumiumPlate(), thaumiumPlate(), IC2Items.getItem("denseplateiron") });
 
         thaumiumChainsaw = addInfusionCraftingRecipe(
                 "Thaumium Chainsaw",
@@ -441,9 +448,8 @@ public class EMTRecipes {
                 5,
                 EMTCraftingAspects.thaumiumChainsawCrafting,
                 new ItemStack(EMTItems.diamondChainsaw, 1, OreDictionary.WILDCARD_VALUE),
-                new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.diamond),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), IC2Items.getItem("denseplateiron") });
+                new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.diamond), thaumiumPlate(),
+                        thaumiumPlate(), thaumiumPlate(), IC2Items.getItem("denseplateiron") });
 
         thaumicQuantumHelmet = addInfusionCraftingRecipe(
                 "Quantum Goggles of Revealing",
@@ -453,8 +459,8 @@ public class EMTRecipes {
                 new ItemStack(EMTItems.nanoThaumicHelmet, 1, OreDictionary.WILDCARD_VALUE),
                 new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.milk_bucket),
                         new ItemStack(IC2Items.getItem("quantumHelmet").getItem(), 1, OreDictionary.WILDCARD_VALUE),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        IC2Items.getItem("iridiumPlate"), IC2Items.getItem("advancedCircuit") });
+                        thaumiumPlate(), thaumiumPlate(), IC2Items.getItem("iridiumPlate"),
+                        IC2Items.getItem("advancedCircuit") });
 
         thaumicNanoHelmet = addInfusionCraftingRecipe(
                 "Nanosuit Goggles of Revealing",
@@ -464,8 +470,8 @@ public class EMTRecipes {
                 new ItemStack(EMTItems.electricGoggles, 1, OreDictionary.WILDCARD_VALUE),
                 new ItemStack[] { new ItemStack(Items.diamond), new ItemStack(Items.gold_ingot),
                         new ItemStack(IC2Items.getItem("nanoHelmet").getItem(), 1, OreDictionary.WILDCARD_VALUE),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        IC2Items.getItem("carbonPlate"), IC2Items.getItem("electronicCircuit") });
+                        thaumiumPlate(), thaumiumPlate(), IC2Items.getItem("carbonPlate"),
+                        IC2Items.getItem("electronicCircuit") });
 
         thaumiumOmnitool = addInfusionCraftingRecipe(
                 "Thaumium Omnitool",
@@ -474,8 +480,7 @@ public class EMTRecipes {
                 EMTCraftingAspects.thaumiumOmnitoolCrafting,
                 new ItemStack(EMTItems.thaumiumChainsaw, 1, OreDictionary.WILDCARD_VALUE),
                 new ItemStack[] { new ItemStack(EMTItems.thaumiumDrill, 1, OreDictionary.WILDCARD_VALUE),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), IC2Items.getItem("carbonPlate"),
+                        thaumiumPlate(), thaumiumPlate(), thaumiumPlate(), IC2Items.getItem("carbonPlate"),
                         IC2Items.getItem("plateobsidian") });
 
         diamondOmnitoolToThaumium = addInfusionCraftingRecipe(
@@ -647,8 +652,7 @@ public class EMTRecipes {
                 new ItemStack[] { IC2Items.getItem("electroFurnace"),
                         new ItemStack(ConfigBlocks.blockMetalDevice, 1, 9), new ItemStack(Blocks.end_stone),
                         new ItemStack(Blocks.end_stone), new ItemStack(Blocks.iron_block),
-                        new ItemStack(Blocks.iron_block), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5) });
+                        new ItemStack(Blocks.iron_block), thaumiumPlate(), thaumiumPlate() });
 
         if (Registry.enableGTCompat) {
             tripleCompressedSolar = addInfusionCraftingRecipe(
@@ -681,9 +685,8 @@ public class EMTRecipes {
                 4,
                 EMTCraftingAspects.chargeFocus,
                 new ItemStack(IC2Items.getItem("advBattery").getItem(), 1, OreDictionary.WILDCARD_VALUE),
-                new ItemStack[] { IC2Items.getItem("generator"), IC2Items.getItem("batBox"),
-                        new ItemStack(EMTItems.itemEMTItems, 1, 5), new ItemStack(EMTItems.itemEMTItems, 1, 5),
-                        new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE),
+                new ItemStack[] { IC2Items.getItem("generator"), IC2Items.getItem("batBox"), thaumiumPlate(),
+                        thaumiumPlate(), new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE),
                         new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE) });
 
         wandChargeFocus = addInfusionCraftingRecipe(
@@ -894,7 +897,7 @@ public class EMTRecipes {
                 'X',
                 new ItemStack(EMTItems.itemEMTItems, 1, 13),
                 'Y',
-                new ItemStack(EMTItems.itemEMTItems, 1, 5),
+                thaumiumPlate(),
                 'Z',
                 IC2Items.getItem("plateiron"));
 
@@ -1195,5 +1198,11 @@ public class EMTRecipes {
                     IC2Items.getItem("smallTinDust"),
                     new ItemStack(ConfigItems.itemResource, 1, 3));
         }
+    }
+
+    private static ItemStack withSize(ItemStack stack, int size) {
+        ItemStack copy = stack.copy();
+        copy.stackSize = size;
+        return copy;
     }
 }
