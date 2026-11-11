@@ -331,12 +331,23 @@ public class ItemElectricBootsTraveller extends ItemArmor
                             float tEnergyDemand = tUsedBoots.energyPerDamage
                                     * (((event.distance > tUsedBoots.getMaxHealthyDropDist()) ? event.distance * 3
                                             : event.distance) - 4.0F);
-                            if (tEnergyDemand <= ElectricItem.manager.getCharge(stack)) {
-                                // EMT.LOGGER.info( String.format("FD: %f DMG: %f EPD: %d HDD: %f", event.distance,
-                                // tEnergyDemand, tUsedBoots.energyPerDamage, tUsedBoots.getMaxHealthyDropDist() ));
+                            double currentEnergyCharge = ElectricItem.manager.getCharge(stack);
+
+                            // EMT.LOGGER.info( String.format("FD: %f DMG: %f EPD: %d HDD: %f", event.distance,
+                            // tEnergyDemand, tUsedBoots.energyPerDamage, tUsedBoots.getMaxHealthyDropDist() ));
+
+                            if (tEnergyDemand <= currentEnergyCharge) {
                                 ElectricItem.manager
                                         .discharge(stack, tEnergyDemand, Integer.MAX_VALUE, true, false, false);
                                 event.setCanceled(true);
+                            } else {
+                                ElectricItem.manager
+                                        .discharge(stack, currentEnergyCharge, Integer.MAX_VALUE, true, false, false);
+                                float energyDeficit = (float) (tEnergyDemand - currentEnergyCharge);
+                                float missingDistance = (energyDeficit / tUsedBoots.energyPerDamage + 4.0F)
+                                        / (event.distance > tUsedBoots.getMaxHealthyDropDist() ? 3.0F : 1.0F);
+
+                                event.distance = missingDistance;
                             }
                         }
                     }
