@@ -25,7 +25,6 @@ import ic2.api.recipe.IRecipeInput;
 import ic2.api.recipe.RecipeInputItemStack;
 import ic2.api.recipe.Recipes;
 import ic2.core.BasicMachineRecipeManager;
-import ic2.core.Ic2Items;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.CrucibleRecipe;
@@ -38,7 +37,6 @@ import thaumcraft.common.config.ConfigItems;
 
 public class EMTRecipes {
 
-    public static ItemStack uuMCell = new ItemStack(EMTItems.itemEMTItems, 1, 15);
     public static IRecipe ironOmnitool;
     public static IRecipe diamondChainsaw;
     public static IRecipe ductTape;
@@ -48,20 +46,6 @@ public class EMTRecipes {
     public static IRecipe featherWing;
     public static IRecipe featherWings;
     public static IRecipe taintedFeathers;
-    public static InfusionRecipe uraniumToIridium;
-    public static InfusionRecipe diamondToUranium;
-    public static InfusionRecipe goldToDiamond;
-    public static InfusionRecipe ironToGold;
-    public static InfusionRecipe stoneBricksToIronOre;
-    public static InfusionRecipe arcaneStoneToCopperOre;
-    public static InfusionRecipe arcaneStoneBricksToTinOre;
-    public static InfusionRecipe amberBlockToLeadOre;
-    public static InfusionRecipe amberBricksToUraniumOre;
-    public static InfusionRecipe charcoalToCoal;
-    public static InfusionRecipe shardToResin;
-    public static InfusionRecipe shardToRedstone;
-    public static InfusionRecipe shardToLapis;
-    public static InfusionRecipe glowstoneDustToBlock;
     public static InfusionRecipe infusedQuantumArmor;
     public static InfusionRecipe thaumiumDrill;
     public static InfusionRecipe thaumiumChainsaw;
@@ -128,7 +112,6 @@ public class EMTRecipes {
     public static CrucibleRecipe doubleEarthSolar;
     public static CrucibleRecipe tripleEarthSolar;
     public static CrucibleRecipe portableNode;
-    public static CrucibleRecipe uuMCrystal;
     public static IRecipe thaumiumPlate;
 
     /// The thaumium plate EMT's recipes consume: MaterialLib's under GregTech compatibility, else EMT's own.
@@ -266,159 +249,6 @@ public class EMTRecipes {
         registerShapedRecipes();
         registerShaplessRecipes();
         registerSmeltingRecipes();
-    }
-
-    public static void registerUUMInfusionRecipes() {
-
-        ItemStack iridium = IC2Items.getItem("iridiumOre").copy();
-        iridium.stackSize = 2;
-        uraniumToIridium = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                iridium,
-                4,
-                EMTCraftingAspects.uuMatterInfusions,
-                IC2Items.getItem("Uran238"),
-                new ItemStack[] { uuMCell, uuMCell, uuMCell, uuMCell, uuMCell, uuMCell, uuMCell, uuMCell, uuMCell,
-                        uuMCell, uuMCell, uuMCell });
-
-        ItemStack uranium = IC2Items.getItem("Uran238").copy();
-        uranium.stackSize = 2;
-        diamondToUranium = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                uranium,
-                4,
-                EMTCraftingAspects.lesserUUMInfusions,
-                new ItemStack(Items.diamond),
-                new ItemStack[] { uuMCell, uuMCell, uuMCell, uuMCell, uuMCell, uuMCell, uuMCell, uuMCell });
-
-        ItemStack diamond = new ItemStack(Items.diamond).copy();
-        diamond.stackSize = 1;
-        goldToDiamond = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                diamond,
-                4,
-                EMTCraftingAspects.cheapUUMInfusions,
-                new ItemStack(Items.gold_ingot),
-                new ItemStack[] { uuMCell, uuMCell, uuMCell, uuMCell });
-
-        ItemStack gold = new ItemStack(Items.gold_ingot).copy();
-        gold.stackSize = 2;
-        ironToGold = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                gold,
-                4,
-                EMTCraftingAspects.cheapestUUMInfusions,
-                new ItemStack(Items.iron_ingot),
-                new ItemStack[] { uuMCell, uuMCell, uuMCell });
-
-        ItemStack ironOre = Registry.enableGTCompat ? EMT_GT_Loader.stoneOre(Materials.Iron, 16)
-                : new ItemStack(Blocks.iron_ore, 16);
-        stoneBricksToIronOre = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                ironOre,
-                4,
-                EMTCraftingAspects.cheapUUMInfusions,
-                new ItemStack(Blocks.stonebrick),
-                new ItemStack[] { uuMCell, uuMCell });
-
-        /**
-         * ItemStack copperOre = Items.getItem("copperOre").copy(); BUGGED IN 1.6 IF IC2 OREGEN IS DISABLED
-         **/
-        ItemStack copperOre = Registry.enableGTCompat ? EMT_GT_Loader.crushedOre(Materials.Copper, 32)
-                : withSize(IC2Items.getItem("crushedCopperOre"), 32);
-        arcaneStoneToCopperOre = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                copperOre,
-                4,
-                EMTCraftingAspects.cheapUUMInfusions,
-                new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 6),
-                new ItemStack[] { uuMCell, uuMCell });
-
-        /**
-         * ItemStack tinOre = Items.getItem("tinOre").copy(); BUGGED IN 1.6 IF IC2 OREGEN IS DISABLED
-         **/
-        ItemStack tinOre = Registry.enableGTCompat ? EMT_GT_Loader.crushedOre(Materials.Tin, 32)
-                : withSize(IC2Items.getItem("crushedTinOre"), 32);
-        arcaneStoneBricksToTinOre = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                tinOre,
-                4,
-                EMTCraftingAspects.cheapUUMInfusions,
-                new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 7),
-                new ItemStack[] { uuMCell, uuMCell });
-
-        /**
-         * ItemStack leadOre = Items.getItem("leadOre").copy(); BUGGED IN 1.6 IF IC2 OREGEN IS DISABLED
-         **/
-        ItemStack leadOre = Registry.enableGTCompat ? EMT_GT_Loader.crushedOre(Materials.Lead, 32)
-                : withSize(IC2Items.getItem("crushedLeadOre"), 32);
-        amberBlockToLeadOre = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                leadOre,
-                4,
-                EMTCraftingAspects.cheapUUMInfusions,
-                new ItemStack(ConfigBlocks.blockCosmeticOpaque, 1, 0),
-                new ItemStack[] { uuMCell, uuMCell });
-
-        ItemStack uraniumOre = Registry.enableGTCompat ? EMT_GT_Loader.stoneOre(Materials.Uranium, 8)
-                : withSize(IC2Items.getItem("uraniumOre"), 8);
-        amberBricksToUraniumOre = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                uraniumOre,
-                4,
-                EMTCraftingAspects.lesserUUMInfusions,
-                new ItemStack(ConfigBlocks.blockCosmeticOpaque, 1, 1),
-                new ItemStack[] { uuMCell, uuMCell, uuMCell });
-
-        ItemStack coal = new ItemStack(Items.coal, 1, 0).copy();
-        coal.stackSize = 16;
-        charcoalToCoal = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                coal,
-                4,
-                EMTCraftingAspects.cheapUUMInfusions,
-                new ItemStack(Items.coal, 1, 1),
-                new ItemStack[] { uuMCell, uuMCell });
-
-        ItemStack stickyResin = IC2Items.getItem("resin").copy();
-        stickyResin.stackSize = 21;
-        shardToResin = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                stickyResin,
-                4,
-                EMTCraftingAspects.cheapUUMInfusions,
-                new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE),
-                new ItemStack[] { uuMCell, uuMCell, uuMCell });
-
-        ItemStack redstone = new ItemStack(Items.redstone).copy();
-        redstone.stackSize = 24;
-        shardToRedstone = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                redstone,
-                4,
-                EMTCraftingAspects.cheapUUMInfusions,
-                new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE),
-                new ItemStack[] { uuMCell, uuMCell, uuMCell });
-
-        ItemStack lapisLazuli = new ItemStack(Items.dye, 1, 4).copy();
-        lapisLazuli.stackSize = 8;
-        shardToLapis = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                lapisLazuli,
-                4,
-                EMTCraftingAspects.cheapUUMInfusions,
-                new ItemStack(ConfigItems.itemShard, 1, OreDictionary.WILDCARD_VALUE),
-                new ItemStack[] { uuMCell, uuMCell, uuMCell });
-
-        ItemStack glowstone = new ItemStack(Blocks.glowstone).copy();
-        glowstone.stackSize = 1;
-        glowstoneDustToBlock = addInfusionCraftingRecipe(
-                "UU-Matter Infusion",
-                glowstone,
-                4,
-                EMTCraftingAspects.cheapestUUMInfusions,
-                new ItemStack(Items.glowstone_dust),
-                new ItemStack[] { uuMCell });
     }
 
     public static void registerLateRecipes() {
@@ -1051,12 +881,6 @@ public class EMTRecipes {
                 itemStack,
                 EMTCraftingAspects.portableNode);
 
-        uuMCrystal = addCrucibleRecipe(
-                "UU-Matter Infusion",
-                new ItemStack(EMTItems.itemEMTItems, 1, 15),
-                Ic2Items.uuMatterCell.copy(),
-                EMTCraftingAspects.uuMatterCrystal);
-
         /** IC2 Stuff related recipes **/
 
         final boolean isDreamcraftNotLoaded = !Loader.isModLoaded("dreamcraft");
@@ -1198,11 +1022,5 @@ public class EMTRecipes {
                     IC2Items.getItem("smallTinDust"),
                     new ItemStack(ConfigItems.itemResource, 1, 3));
         }
-    }
-
-    private static ItemStack withSize(ItemStack stack, int size) {
-        ItemStack copy = stack.copy();
-        copy.stackSize = size;
-        return copy;
     }
 }

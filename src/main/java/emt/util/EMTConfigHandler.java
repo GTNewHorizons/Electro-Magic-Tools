@@ -134,7 +134,6 @@ public class EMTConfigHandler {
     public static boolean airSolarsResearch;
     public static boolean earthSolarsResearch;
     public static boolean saxumGenResearch;
-    public static boolean uuMInfusionResearch;
     public static boolean portableNodeResarch;
     public static boolean electricHoeGrowthResearch;
     public static boolean chargeFocusResearch;
@@ -430,7 +429,6 @@ public class EMTConfigHandler {
         airSolarsResearch = config.get(RESEARCH, "Air Solar Panels", false).getBoolean(airSolarsResearch);
         earthSolarsResearch = config.get(RESEARCH, "Earth Solar Panels", false).getBoolean(earthSolarsResearch);
         saxumGenResearch = config.get(RESEARCH, "Saxum Generator", false).getBoolean(saxumGenResearch);
-        uuMInfusionResearch = config.get(RESEARCH, "UU-Mater Infusion", false).getBoolean(uuMInfusionResearch);
         portableNodeResarch = config.get(RESEARCH, "Portable Node", false).getBoolean(portableNodeResarch);
         electricHoeGrowthResearch = config.get(RESEARCH, "Electric Hoe of Growth", false)
                 .getBoolean(electricHoeGrowthResearch);

@@ -28,7 +28,6 @@ public class Registry {
         }
         EMTRecipes.registerLateRecipes();
         // new EMT_GTNH_Recipes_And_Researches().run();
-        EMTRecipes.registerUUMInfusionRecipes();
         EMTResearches.register();
         if (enableGTCompat) {
             Solars.registerReverseRecipes();
