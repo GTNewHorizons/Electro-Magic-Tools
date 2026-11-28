@@ -358,9 +358,6 @@ emt.rsname.Earth Infused Solar Panels=注魔太阳能发电机(地)
 emt.tag.Earth Infused Solar Panels=非幽闭症患者定制
 emt.text.Earth Infused Solar Panels=你已决定向地心更进一步.这些太阳能在Y=10层以下的地方工作,但是记住它们仍需要在太阳的沐浴下才能工作.
 
-emt.rsname.UU-Matter Infusion=UU物质注魔
-emt.tag.UU-Matter Infusion=蕴含魔力的百变液体...
-emt.text.UU-Matter Infusion=你总是觉得UU物质拥有的力量十分奇特,甚至...看起来像魔法般神奇,特别是大量种类的正确排列能合成物质.然后现在,你已发现了通过注魔合成塑造uu液体的方法.你能使用许多种合成,并且他们大都消耗4~32单位每种基础要素源质.
 
 emt.rsname.Portable Node=便携式节点
 emt.tag.Portable Node=处处实用

@@ -67,14 +67,6 @@ public class EMTCraftingAspects {
             .add(Aspect.EXCHANGE, 16);
     public static AspectList earthSolars = new AspectList().add(Aspect.EARTH, 16).add(Aspect.MAGIC, 16)
             .add(Aspect.EXCHANGE, 16);
-    public static AspectList uuMatterInfusions = new AspectList().add(Aspect.FIRE, 32).add(Aspect.WATER, 32)
-            .add(Aspect.AIR, 32).add(Aspect.EARTH, 32).add(Aspect.ORDER, 32).add(Aspect.ENTROPY, 32);
-    public static AspectList lesserUUMInfusions = new AspectList().add(Aspect.FIRE, 16).add(Aspect.WATER, 16)
-            .add(Aspect.AIR, 16).add(Aspect.EARTH, 16).add(Aspect.ORDER, 16).add(Aspect.ENTROPY, 16);
-    public static AspectList cheapUUMInfusions = new AspectList().add(Aspect.FIRE, 8).add(Aspect.WATER, 8)
-            .add(Aspect.AIR, 8).add(Aspect.EARTH, 8).add(Aspect.ORDER, 8).add(Aspect.ENTROPY, 8);
-    public static AspectList cheapestUUMInfusions = new AspectList().add(Aspect.FIRE, 4).add(Aspect.WATER, 4)
-            .add(Aspect.AIR, 4).add(Aspect.EARTH, 4).add(Aspect.ORDER, 4).add(Aspect.ENTROPY, 4);
     public static AspectList portableNode = new AspectList().add(Aspect.MAGIC, 32).add(Aspect.AURA, 32)
             .add(Aspect.GREED, 32);
     public static AspectList electricHoeGrowth = new AspectList().add(Aspect.ENERGY, 32).add(Aspect.PLANT, 25)
@@ -96,6 +88,4 @@ public class EMTCraftingAspects {
     public static AspectList quantumWing = new AspectList().add(Aspect.FLIGHT, 48).add(Aspect.AIR, 32)
             .add(Aspect.MECHANISM, 48).add(Aspect.ENERGY, 32).add(Aspect.ARMOR, 48);
     public static AspectList aerGenerator = new AspectList().add(Aspect.EXCHANGE, 16).add(Aspect.AIR, 8);
-    public static AspectList uuMatterCrystal = new AspectList().add(Aspect.CRYSTAL, 8).add(Aspect.COLD, 8)
-            .add(Aspect.MAGIC, 8);
 }

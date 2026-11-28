@@ -73,8 +73,6 @@ public class EMTResearchAspects {
     public static AspectList airSolars = new AspectList().add(Aspect.AIR, 4).add(Aspect.MAGIC, 3).add(Aspect.ENERGY, 4);
     public static AspectList earthSolars = new AspectList().add(Aspect.EARTH, 4).add(Aspect.MAGIC, 3)
             .add(Aspect.ENERGY, 4);
-    public static AspectList uuMInfusion = new AspectList().add(Aspect.ELDRITCH, 4).add(Aspect.MAGIC, 4)
-            .add(Aspect.CRAFT, 5);
     public static AspectList portableNode = new AspectList().add(Aspect.MAGIC, 5).add(Aspect.AURA, 5)
             .add(Aspect.GREED, 5);
     public static AspectList electricHoeGrowth = new AspectList().add(Aspect.ENERGY, 4).add(Aspect.PLANT, 4)

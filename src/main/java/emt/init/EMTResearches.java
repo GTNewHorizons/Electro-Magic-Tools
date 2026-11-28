@@ -554,33 +554,6 @@ public class EMTResearches {
             }
         }
 
-        if (!EMTConfigHandler.uuMInfusionResearch) {
-            new EMTResearchItem(
-                    "UU-Matter Infusion",
-                    EMTResearchAspects.uuMInfusion,
-                    5,
-                    5,
-                    3,
-                    new ItemStack(EMTItems.itemEMTItems, 1, 15)).setParentsHidden("Electric Magic Tools").setConcealed()
-                            .registerResearchItem().setPages(
-                                    new ResearchPage(""),
-                                    new ResearchPage(EMTRecipes.uuMCrystal),
-                                    new ResearchPage(EMTRecipes.charcoalToCoal),
-                                    new ResearchPage(EMTRecipes.glowstoneDustToBlock),
-                                    new ResearchPage(EMTRecipes.stoneBricksToIronOre),
-                                    new ResearchPage(EMTRecipes.arcaneStoneToCopperOre),
-                                    new ResearchPage(EMTRecipes.arcaneStoneBricksToTinOre),
-                                    new ResearchPage(EMTRecipes.amberBlockToLeadOre),
-                                    new ResearchPage(EMTRecipes.amberBricksToUraniumOre),
-                                    new ResearchPage(EMTRecipes.shardToResin),
-                                    new ResearchPage(EMTRecipes.shardToRedstone),
-                                    new ResearchPage(EMTRecipes.shardToLapis),
-                                    new ResearchPage(EMTRecipes.ironToGold),
-                                    new ResearchPage(EMTRecipes.goldToDiamond),
-                                    new ResearchPage(EMTRecipes.diamondToUranium),
-                                    new ResearchPage(EMTRecipes.uraniumToIridium));
-        }
-
         if (!EMTConfigHandler.portableNodeResarch) {
             new EMTResearchItem(
                     "Portable Node",
